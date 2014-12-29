@@ -42,26 +42,17 @@ var config = require('./testConfig'),
         '/gardens'
     );
 
-function cleanDbs(callback) {
-    async.series([
-        async.apply(mongoUtils.cleanDb, 'localhost', 'lwtm2m'),
-        async.apply(mongoUtils.cleanDb, 'localhost', 'iotagent'),
-        async.apply(mongoUtils.cleanDb, config.ngsi.contextBroker.host, 'orion-smartgondor'),
-        async.apply(mongoUtils.cleanDb, config.ngsi.contextBroker.host, 'orion')
-    ], callback);
-}
-
-describe.only('Device auto-registration test', function() {
+describe('Device auto-registration test', function() {
     beforeEach(function(done) {
         async.series([
-            cleanDbs,
+            async.apply(mongoUtils.cleanDbs,  config.ngsi.contextBroker.host),
             async.apply(iotAgent.start, config)
         ], done);
     });
     afterEach(function(done) {
         async.series([
             iotAgent.stop,
-            cleanDbs
+            async.apply(mongoUtils.cleanDbs,  config.ngsi.contextBroker.host)
         ], done);
     });
     describe('When a device sends a registration request to the LWM2M endpoint of the IoT Agent', function(done) {

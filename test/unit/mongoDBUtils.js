@@ -22,7 +22,8 @@
  */
 'use strict';
 
-var MongoClient = require('mongodb').MongoClient;
+var MongoClient = require('mongodb').MongoClient,
+    async = require('async');
 
 function cleanDb(host, name, callback) {
     var url = 'mongodb://' + host + ':27017/' + name;
@@ -34,4 +35,14 @@ function cleanDb(host, name, callback) {
     });
 }
 
+function cleanDbs(host, callback) {
+    async.series([
+        async.apply(cleanDb, 'localhost', 'lwtm2m'),
+        async.apply(cleanDb, 'localhost', 'iotagent'),
+        async.apply(cleanDb, host, 'orion-smartgondor'),
+        async.apply(cleanDb, host, 'orion')
+    ], callback);
+}
+
 exports.cleanDb = cleanDb;
+exports.cleanDbs = cleanDbs;
