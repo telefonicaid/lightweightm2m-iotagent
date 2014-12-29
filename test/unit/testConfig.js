@@ -27,6 +27,12 @@ config.lwm2m = {
     logLevel: 'ERROR',
     port: 60001,
     defaultType: 'Device',
+    deviceRegistry: {
+        type: 'mongodb',
+        host: 'localhost',
+        port: '27017',
+        db: 'lwtm2m'
+    },
     types: [
         {
             name: 'Light',
@@ -50,7 +56,8 @@ config.ngsi = {
     },
     deviceRegistry: {
         type: 'mongodb',
-        host: 'localhost'
+        host: 'localhost',
+        db: 'iotagent'
     },
     types: {
         'Light': {

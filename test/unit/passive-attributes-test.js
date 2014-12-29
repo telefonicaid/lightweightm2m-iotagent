@@ -26,39 +26,37 @@ var config = require('./testConfig'),
     lwm2mClient = require('iotagent-lwm2m-lib').client,
     iotAgent = require('../../lib/iotAgentLwm2m'),
     ngsiTestUtils = require('./ngsiTestUtils'),
+    mongoUtils = require('./mongoDBUtils'),
     async = require('async'),
-    apply = async.apply,
+    should = require('should'),
     clientConfig = {
         host: 'localhost',
         port: '60001',
         endpointName: 'TestClient',
         url: '/light'
     },
-    deviceConfiguration;
+    ngsiClient = ngsiTestUtils.create(
+        config.ngsi.contextBroker.host,
+        config.ngsi.contextBroker.port,
+        'smartGondor',
+        '/gardens'
+    );
 
 describe('Passive attributes test', function() {
-    /*
     beforeEach(function(done) {
         async.series([
-            apply(iotAgent.start, config),
-            apply(lwm2mClient.register,
-                clientConfig.host,
-                clientConfig.port,
-                clientConfig.url,
-                clientConfig.endpointName
-            )
-        ], function (error, results) {
-            done();
-        });
-    });
-
-    afterEach(function(done) {
-        async.series([
-            apply(lwm2mClient.unregister, deviceInformation),
-            iotAgent.stop
+            async.apply(mongoUtils.cleanDb, config.ngsi.contextBroker.host, 'smartGondor'),
+            async.apply(mongoUtils.cleanDb, config.ngsi.contextBroker.host, 'orion'),
+            async.apply(iotAgent.start, config)
         ], done);
     });
-*/
+    afterEach(function(done) {
+        async.series([
+            iotAgent.stop,
+            async.apply(mongoUtils.cleanDb, config.ngsi.contextBroker.host, 'smartGondor'),
+            async.apply(mongoUtils.cleanDb, config.ngsi.contextBroker.host, 'orion')
+        ], done);
+    });
     describe('When a passive attribute of the entity corresponding to a device is queried in Orion', function() {
         it('should query the value in the LWM2M device via the IoT Agent');
     });

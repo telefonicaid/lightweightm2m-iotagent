@@ -42,19 +42,26 @@ var config = require('./testConfig'),
         '/gardens'
     );
 
-describe('Device auto-registration test', function() {
+function cleanDbs(callback) {
+    async.series([
+        async.apply(mongoUtils.cleanDb, 'localhost', 'lwtm2m'),
+        async.apply(mongoUtils.cleanDb, 'localhost', 'iotagent'),
+        async.apply(mongoUtils.cleanDb, config.ngsi.contextBroker.host, 'orion-smartgondor'),
+        async.apply(mongoUtils.cleanDb, config.ngsi.contextBroker.host, 'orion')
+    ], callback);
+}
+
+describe.only('Device auto-registration test', function() {
     beforeEach(function(done) {
         async.series([
-            async.apply(mongoUtils.cleanDb, config.ngsi.contextBroker.host, 'smartGondor'),
-            async.apply(mongoUtils.cleanDb, config.ngsi.contextBroker.host, 'orion'),
+            cleanDbs,
             async.apply(iotAgent.start, config)
         ], done);
     });
     afterEach(function(done) {
         async.series([
             iotAgent.stop,
-            async.apply(mongoUtils.cleanDb, config.ngsi.contextBroker.host, 'smartGondor'),
-            async.apply(mongoUtils.cleanDb, config.ngsi.contextBroker.host, 'orion')
+            cleanDbs
         ], done);
     });
     describe('When a device sends a registration request to the LWM2M endpoint of the IoT Agent', function(done) {
@@ -89,6 +96,43 @@ describe('Device auto-registration test', function() {
                     });
                 }
             );
+        });
+    });
+
+    describe('When a device sends a unregistration request to the LWM2M endpoint of the IoT Agent', function() {
+        var deviceInformation;
+
+        beforeEach(function (done) {
+            lwm2mClient.register(
+                clientConfig.host,
+                clientConfig.port,
+                clientConfig.url,
+                clientConfig.endpointName,
+                function (error, result) {
+                    deviceInformation = result;
+                    done();
+                }
+            );
+        });
+
+        it('should not return any error', function (done) {
+            lwm2mClient.unregister(deviceInformation, function (error) {
+                should.not.exist(error);
+                done();
+            });
+        });
+        it('should unregister the context provider', function (done) {
+            lwm2mClient.unregister(deviceInformation, function (error) {
+                setTimeout(function () {
+                    ngsiClient.discover('TestClient:Light', 'Light', undefined, function(error, response, body) {
+                        should.not.exist(error);
+                        should.exist(body);
+                        should.exist(body.errorCode);
+                        body.errorCode.code.should.equal('404');
+                        done();
+                    });
+                }, 1500);
+            });
         });
     });
 });
