@@ -24,7 +24,7 @@
 var config = {};
 
 config.lwm2m = {
-    logLevel: 'DEBUG',
+    logLevel: 'ERROR',
     port: 60001,
     defaultType: 'Device',
     types: [
@@ -40,7 +40,7 @@ config.lwm2m = {
 };
 
 config.ngsi = {
-    logLevel: 'DEBUG',
+    logLevel: 'ERROR',
     contextBroker: {
         host: '130.206.82.182',
         port: '1026'
@@ -50,7 +50,7 @@ config.ngsi = {
     },
     deviceRegistry: {
         type: 'mongodb',
- 	host: 'localhost'
+        host: 'localhost'
     },
     types: {
         'Light': {
