@@ -40,25 +40,61 @@ var config = require('./testConfig'),
         config.ngsi.contextBroker.port,
         'smartGondor',
         '/gardens'
-    );
+    ),
+    deviceInformation;
 
-describe('Passive attributes test', function() {
+describe.only('Passive attributes test', function() {
     beforeEach(function(done) {
         async.series([
-            async.apply(mongoUtils.cleanDb, config.ngsi.contextBroker.host, 'smartGondor'),
-            async.apply(mongoUtils.cleanDb, config.ngsi.contextBroker.host, 'orion'),
+            async.apply(mongoUtils.cleanDbs,  config.ngsi.contextBroker.host),
             async.apply(iotAgent.start, config)
-        ], done);
+        ], function () {
+            lwm2mClient.register(
+                clientConfig.host,
+                clientConfig.port,
+                clientConfig.url,
+                clientConfig.endpointName,
+                function (error, result) {
+                    deviceInformation = result;
+                    done();
+                }
+            );
+        });
     });
     afterEach(function(done) {
         async.series([
             iotAgent.stop,
-            async.apply(mongoUtils.cleanDb, config.ngsi.contextBroker.host, 'smartGondor'),
-            async.apply(mongoUtils.cleanDb, config.ngsi.contextBroker.host, 'orion')
+            async.apply(mongoUtils.cleanDbs,  config.ngsi.contextBroker.host)
         ], done);
     });
-    describe('When a passive attribute of the entity corresponding to a device is queried in Orion', function() {
-        it('should query the value in the LWM2M device via the IoT Agent');
+    describe.only('When a passive attribute of the entity corresponding to a device is queried in Orion', function() {
+        beforeEach(function (done) {
+            async.series([
+                async.apply(lwm2mClient.registry.create, '/6/0'),
+                async.apply(lwm2mClient.registry.setAttribute, '/6/0', '3', '12')
+            ], done);
+        });
+
+        it('should query the value in the LWM2M device via the IoT Agent', function(done) {
+            var handleExecuted = false;
+
+            function handleRead(objectType, objectId, resourceId, value, callback) {
+                objectType.should.equal('6');
+                objectId.should.equal('0');
+                resourceId.should.equal('3');
+                handleExecuted = true;
+                callback();
+            }
+
+            lwm2mClient.setHandler(deviceInformation.serverInfo, 'read', handleRead);
+
+            ngsiClient.query('TestClient:Light', 'Light', ['luminescence'], function(error, result) {
+                should.not.exist(error);
+                handleExecuted.should.equal(true);
+
+                done();
+            });
+        });
     });
     describe('When a passive attribute of the entity corresponding to a device is modified in Orion', function() {
         it('should write the value in the LWM2M device via the IoT Agent');

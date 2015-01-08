@@ -42,6 +42,7 @@ var config = require('./testConfig'),
         '/gardens'
     );
 
+
 describe('Device auto-registration test', function() {
     beforeEach(function(done) {
         async.series([

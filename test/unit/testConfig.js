@@ -46,9 +46,9 @@ config.lwm2m = {
 };
 
 config.ngsi = {
-    logLevel: 'ERROR',
+    logLevel: 'DEBUG',
     contextBroker: {
-        host: '130.206.82.182',
+        host: '192.168.56.101',
         port: '1026'
     },
     server: {
@@ -75,7 +75,14 @@ config.ngsi = {
                     name: 'status',
                     type: 'Boolean'
                 }
-            ]
+            ],
+            lwm2mResourceMapping: {
+                'luminescence' : {
+                    objectType: 6,
+                    objectInstance: 0,
+                    objectResource: 3
+                }
+            }
         },
         'Pressure': {
             service: 'dumbMordor',
@@ -97,7 +104,7 @@ config.ngsi = {
     },
     service: 'smartGondor',
     subservice: '/gardens',
-    providerUrl: 'http://10.95.232.183:4041',
+    providerUrl: 'http://192.168.56.1:4041/NGSI10',
     deviceRegistrationDuration: 'P1M'
 };
 
