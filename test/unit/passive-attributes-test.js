@@ -43,7 +43,7 @@ var config = require('./testConfig'),
     ),
     deviceInformation;
 
-describe.only('Passive attributes test', function() {
+describe('Passive attributes test', function() {
     beforeEach(function(done) {
         async.series([
             async.apply(mongoUtils.cleanDbs,  config.ngsi.contextBroker.host),
@@ -67,7 +67,7 @@ describe.only('Passive attributes test', function() {
             async.apply(mongoUtils.cleanDbs,  config.ngsi.contextBroker.host)
         ], done);
     });
-    describe.only('When a passive attribute of the entity corresponding to a device is queried in Orion', function() {
+    describe('When a passive attribute of the entity corresponding to a device is queried in Orion', function() {
         beforeEach(function (done) {
             async.series([
                 async.apply(lwm2mClient.registry.create, '/6/0'),
