@@ -28,6 +28,7 @@ var config = require('./testConfig'),
     ngsiTestUtils = require('./../../lib/ngsiUtils'),
     mongoUtils = require('./mongoDBUtils'),
     async = require('async'),
+    apply = async.apply,
     should = require('should'),
     clientConfig = {
         host: 'localhost',
@@ -47,10 +48,10 @@ var config = require('./testConfig'),
 describe('Active attributes test', function() {
     beforeEach(function(done) {
         async.series([
-            async.apply(mongoUtils.cleanDbs,  config.ngsi.contextBroker.host),
-            async.apply(iotAgent.start, config),
-            async.apply(lwm2mClient.registry.create, '/5/0'),
-            async.apply(lwm2mClient.registry.setAttribute, '/5/0', '2', '789')
+            apply(mongoUtils.cleanDbs,  config.ngsi.contextBroker.host),
+            apply(iotAgent.start, config),
+            apply(lwm2mClient.registry.create, '/5/0'),
+            apply(lwm2mClient.registry.setAttribute, '/5/0', '2', '789')
         ], function (error) {
             lwm2mClient.register(
                 clientConfig.host,
@@ -66,8 +67,9 @@ describe('Active attributes test', function() {
     });
     afterEach(function(done) {
         async.series([
+            apply(lwm2mClient.unregister, deviceInformation),
             iotAgent.stop,
-            async.apply(mongoUtils.cleanDbs,  config.ngsi.contextBroker.host)
+            apply(mongoUtils.cleanDbs,  config.ngsi.contextBroker.host)
         ], done);
     });
 
