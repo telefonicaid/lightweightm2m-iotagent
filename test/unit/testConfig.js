@@ -46,7 +46,7 @@ config.lwm2m = {
 };
 
 config.ngsi = {
-    logLevel: 'DEBUG',
+    logLevel: 'ERROR',
     contextBroker: {
         host: '192.168.56.101',
         port: '1026'
@@ -88,18 +88,24 @@ config.ngsi = {
             service: 'dumbMordor',
             subservice: '/deserts',
             commands: [],
-            lazy: [
+            lazy: [],
+            active: [
+                {
+                    name: 'status',
+                    type: 'Boolean'
+                },
                 {
                     name: 'pressure',
                     type: 'bars'
                 }
             ],
-            active: [
-                {
-                    name: 'status',
-                    type: 'Boolean'
+            lwm2mResourceMapping: {
+                'pressure' : {
+                    objectType: 5,
+                    objectInstance: 0,
+                    objectResource: 2
                 }
-            ]
+            }
         }
     },
     service: 'smartGondor',
