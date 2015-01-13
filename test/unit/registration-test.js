@@ -25,7 +25,7 @@
 var config = require('./testConfig'),
     lwm2mClient = require('iotagent-lwm2m-lib').client,
     iotAgent = require('../../lib/iotAgentLwm2m'),
-    ngsiTestUtils = require('./ngsiTestUtils'),
+    ngsiTestUtils = require('./../../lib/ngsiUtils'),
     mongoUtils = require('./mongoDBUtils'),
     async = require('async'),
     should = require('should'),
