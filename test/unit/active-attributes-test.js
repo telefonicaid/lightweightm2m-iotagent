@@ -48,17 +48,17 @@ var config = require('./testConfig'),
 describe('Active attributes test', function() {
     beforeEach(function(done) {
         async.series([
-            apply(mongoUtils.cleanDbs,  config.ngsi.contextBroker.host),
+            apply(mongoUtils.cleanDbs, config.ngsi.contextBroker.host),
             apply(iotAgent.start, config),
             apply(lwm2mClient.registry.create, '/5/0'),
             apply(lwm2mClient.registry.setAttribute, '/5/0', '2', '789')
-        ], function (error) {
+        ], function(error) {
             lwm2mClient.register(
                 clientConfig.host,
                 clientConfig.port,
                 clientConfig.url,
                 clientConfig.endpointName,
-                function (error, result) {
+                function(error, result) {
                     deviceInformation = result;
                     done();
                 }
@@ -69,7 +69,7 @@ describe('Active attributes test', function() {
         async.series([
             apply(lwm2mClient.unregister, deviceInformation),
             iotAgent.stop,
-            apply(mongoUtils.cleanDbs,  config.ngsi.contextBroker.host)
+            apply(mongoUtils.cleanDbs, config.ngsi.contextBroker.host)
         ], done);
     });
 
@@ -79,8 +79,10 @@ describe('Active attributes test', function() {
                 async.apply(lwm2mClient.registry.setAttribute, '/5/0', '2', '89'),
                 async.apply(lwm2mClient.registry.setAttribute, '/5/0', '2', '19')
             ], function() {
-                setTimeout(function () {
-                    ngsiClient.query('ActiveTestClient:Pressure', 'Pressure', ['pressure'], function(error, response, body) {
+                setTimeout(function() {
+                    ngsiClient.query('ActiveTestClient:Pressure', 'Pressure', ['pressure'],
+                        function(error, response, body) {
+
                         should.not.exist(error);
                         should.exist(body);
                         should.not.exist(body.errorCode);
