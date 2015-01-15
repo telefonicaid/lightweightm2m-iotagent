@@ -69,6 +69,7 @@ describe('Active attributes test', function() {
         async.series([
             apply(lwm2mClient.unregister, deviceInformation),
             iotAgent.stop,
+            lwm2mClient.registry.reset,
             apply(mongoUtils.cleanDbs, config.ngsi.contextBroker.host)
         ], done);
     });
@@ -83,18 +84,41 @@ describe('Active attributes test', function() {
                     ngsiClient.query('ActiveTestClient:Pressure', 'Pressure', ['pressure'],
                         function(error, response, body) {
 
-                        should.not.exist(error);
-                        should.exist(body);
-                        should.not.exist(body.errorCode);
+                            should.not.exist(error);
+                            should.exist(body);
+                            should.not.exist(body.errorCode);
+                            body.contextResponses[0].contextElement.attributes[0].value.should.match(/19|89/);
 
-                        done();
-                    });
+                            done();
+                        });
                 }, 500);
             });
         });
     });
 
-    describe('When a new object is registered in the client and its value changes', function() {
-        it('should update its value in the corresponding Orion entity');
+    describe('When a new object is registered in the client and the registration is updated', function() {
+        it('should update its value in the corresponding Orion entity', function(done) {
+            async.series([
+                apply(lwm2mClient.registry.setAttribute, '/5/0', '2', '89'),
+                apply(lwm2mClient.registry.create, '/67/0'),
+                apply(lwm2mClient.update, deviceInformation),
+                apply(lwm2mClient.registry.setAttribute, '/67/0', '1', '4756')
+            ], function(error) {
+                setTimeout(function() {
+                    ngsiClient.query('ActiveTestClient:Pressure', 'Pressure', ['position'],
+                        function(error, response, body) {
+
+                            should.not.exist(error);
+                            should.exist(body);
+                            should.not.exist(body.errorCode);
+                            body.contextResponses[0].contextElement.attributes[0].value.should.equal('4756');
+
+                            done();
+                        });
+                }, 500);
+            });
+        });
+
+        it('should update the list of observers in the IOT Agent');
     });
 });
