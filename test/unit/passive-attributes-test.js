@@ -73,7 +73,7 @@ describe('Passive attributes test', function() {
         beforeEach(function(done) {
             async.series([
                 async.apply(lwm2mClient.registry.create, '/6/0'),
-                async.apply(lwm2mClient.registry.setAttribute, '/6/0', '3', '12')
+                async.apply(lwm2mClient.registry.setResource, '/6/0', '3', '12')
             ], done);
         });
 
