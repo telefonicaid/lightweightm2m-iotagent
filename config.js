@@ -35,6 +35,10 @@ config.lwm2m = {
         {
             name: 'Pressure',
             url: '/pres'
+        },
+        {
+            name: 'Arduino',
+            url: '/arduino'
         }
     ]
 };

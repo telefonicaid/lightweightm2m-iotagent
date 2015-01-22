@@ -97,6 +97,10 @@ config.ngsi = {
                 {
                     name: 'pressure',
                     type: 'bars'
+                },
+                {
+                    name: 'position',
+                    type: 'coordinates'
                 }
             ],
             lwm2mResourceMapping: {
@@ -104,6 +108,11 @@ config.ngsi = {
                     objectType: 5,
                     objectInstance: 0,
                     objectResource: 2
+                },
+                'position' : {
+                    objectType: 67,
+                    objectInstance: 0,
+                    objectResource: 1
                 }
             }
         }

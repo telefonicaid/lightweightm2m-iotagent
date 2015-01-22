@@ -22,15 +22,28 @@
  */
 'use strict';
 
-/**
- * Parse the register payload, containing the full set of objects supported by the LWM2M Client.
- *
- * @param {String} payload      List of supported objects. E.g.: '</0/1>,</3/14>,</2/9>'
- * @return {Array}              A list of the supported Object URIs.
- */
-function parseObjectUriList(payload) {
-    return payload.replace(/</g, '').replace(/>/g, '').split(',');
+var iotAgent = require('../lib/iotAgentLwm2m'),
+    context = {
+        op: 'IOTAgent.Executable'
+    },
+    logger = require('logops');
+
+function start() {
+    var config;
+
+    if (process.argv.length === 3) {
+        config = require('../' + process.argv[2]);
+    } else {
+        config = require('../config');
+    }
+
+    iotAgent.start(config, function (error) {
+        if (error) {
+            logger.error(context, 'Error starting Agent: [%s] Exiting process', error);
+        } else {
+            logger.info(context, 'Lightweight M2M IoT Agent started');
+        }
+    });
 }
 
-exports.parseObjectUriList = parseObjectUriList;
-
+start();

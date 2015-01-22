@@ -46,14 +46,14 @@ var config = require('./testConfig'),
 describe('Device auto-registration test', function() {
     beforeEach(function(done) {
         async.series([
-            async.apply(mongoUtils.cleanDbs,  config.ngsi.contextBroker.host),
+            async.apply(mongoUtils.cleanDbs, config.ngsi.contextBroker.host),
             async.apply(iotAgent.start, config)
         ], done);
     });
     afterEach(function(done) {
         async.series([
             iotAgent.stop,
-            async.apply(mongoUtils.cleanDbs,  config.ngsi.contextBroker.host)
+            async.apply(mongoUtils.cleanDbs, config.ngsi.contextBroker.host)
         ], done);
     });
     describe('When a device sends a registration request to the LWM2M endpoint of the IoT Agent', function(done) {
@@ -63,7 +63,7 @@ describe('Device auto-registration test', function() {
                 clientConfig.port,
                 clientConfig.url,
                 clientConfig.endpointName,
-                function (error, result) {
+                function(error, result) {
                     should.not.exist(error);
                     should.exist(result);
                     should.exist(result.serverInfo);
@@ -79,7 +79,7 @@ describe('Device auto-registration test', function() {
                 clientConfig.port,
                 clientConfig.url,
                 clientConfig.endpointName,
-                function (error, result) {
+                function(error, result) {
                     ngsiClient.discover('TestClient:Light', 'Light', undefined, function(error, response, body) {
                         should.not.exist(error);
                         should.exist(body);
@@ -94,28 +94,28 @@ describe('Device auto-registration test', function() {
     describe('When a device sends a unregistration request to the LWM2M endpoint of the IoT Agent', function() {
         var deviceInformation;
 
-        beforeEach(function (done) {
+        beforeEach(function(done) {
             lwm2mClient.register(
                 clientConfig.host,
                 clientConfig.port,
                 clientConfig.url,
                 clientConfig.endpointName,
-                function (error, result) {
+                function(error, result) {
                     deviceInformation = result;
                     done();
                 }
             );
         });
 
-        it('should not return any error', function (done) {
-            lwm2mClient.unregister(deviceInformation, function (error) {
+        it('should not return any error', function(done) {
+            lwm2mClient.unregister(deviceInformation, function(error) {
                 should.not.exist(error);
                 done();
             });
         });
-        it('should unregister the context provider', function (done) {
-            lwm2mClient.unregister(deviceInformation, function (error) {
-                setTimeout(function () {
+        it('should unregister the context provider', function(done) {
+            lwm2mClient.unregister(deviceInformation, function(error) {
+                setTimeout(function() {
                     ngsiClient.discover('TestClient:Light', 'Light', undefined, function(error, response, body) {
                         should.not.exist(error);
                         should.exist(body);
