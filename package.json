@@ -1,7 +1,7 @@
 {
   "name": "iotagent-prototype",
   "description": "Prototype of an IoT Agent accepting COAP requests and redirecting to NGSI consumer",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "homepage": "https://github.com/dmoranj/iotagent-prototype",
   "author": {
     "name": "Daniel Moran",
