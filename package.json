@@ -24,8 +24,8 @@
     "coap-cli": "*",
     "coap": "*",
     "logops": "*",
-    "fiware-iotagent-lib": "https://github.com/telefonicaid/iotagent-node-lib/tarball/develop",
-    "iotagent-lwm2m-lib": "https://github.com/telefonicaid/iotagent-lwm2m-lib/tarball/develop"
+    "fiware-iotagent-lib": "https://github.com/telefonicaid/iotagent-node-lib/tarball/master",
+    "iotagent-lwm2m-lib": "https://github.com/telefonicaid/iotagent-lwm2m-lib/tarball/master"
   },
   "devDependencies": {
     "nock": "0.48.0",
