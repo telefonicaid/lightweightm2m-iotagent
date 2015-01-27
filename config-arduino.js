@@ -53,13 +53,12 @@ config.ngsi = {
             service: 'arduino',
             subservice: '/devices',
             commands: [],
-            lazy: [
-                {
-                    name: 'digital0',
-                    type: 'boolean'
-                }
-            ],
+            lazy: [],
             active: [
+                {
+                    name: 'D04',
+                    type: 'string'
+                },
                 {
                     name: 'A0',
                     type: 'number'
@@ -67,48 +66,32 @@ config.ngsi = {
                 {
                     name: 'A1',
                     type: 'number'
-                },
-                {
-                    name: 'A3',
-                    type: 'number'
-                },
-                {
-                    name: 'A4',
-                    type: 'number'
-                },
-                {
-                    name: 'A5',
-                    type: 'number'
-                },
-                {
-                    name: 'A6',
-                    type: 'number'
                 }
             ],
             lwm2mResourceMapping: {
                 'D00' : {
-                    objectType: 5002,
-                    objectInstance: 1,
+                    objectType: 5001,
+                    objectInstance: 2,
                     objectResource: 0
                 },
                 'D01' : {
-                    objectType: 5002,
-                    objectInstance: 1,
+                    objectType: 5001,
+                    objectInstance: 2,
                     objectResource: 1
                 },
                 'D02' : {
-                    objectType: 5002,
-                    objectInstance: 1,
+                    objectType: 5001,
+                    objectInstance: 2,
                     objectResource: 2
                 },
                 'D03' : {
-                    objectType: 5002,
-                    objectInstance: 1,
+                    objectType: 5001,
+                    objectInstance: 2,
                     objectResource: 3
                 },
                 'D04' : {
-                    objectType: 5002,
-                    objectInstance: 1,
+                    objectType: 5001,
+                    objectInstance: 2,
                     objectResource: 4
                 },
                 'D05' : {
