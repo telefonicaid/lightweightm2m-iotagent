@@ -24,10 +24,12 @@
 
 var config = require('./testConfig'),
     lwm2mClient = require('iotagent-lwm2m-lib').client,
+    request = require('request'),
     iotAgent = require('../../lib/iotAgentLwm2m'),
     ngsiTestUtils = require('./../../lib/ngsiUtils'),
     mongoUtils = require('./mongoDBUtils'),
     async = require('async'),
+    utils = require('../utils'),
     should = require('should'),
     clientConfig = {
         host: 'localhost',
@@ -125,6 +127,68 @@ describe('Device auto-registration test', function() {
                     });
                 }, 1500);
             });
+        });
+    });
+
+    describe('When a device sends a registration request for an unknown type', function(done) {
+        it('should return the registration information', function(done) {
+            lwm2mClient.register(
+                clientConfig.host,
+                clientConfig.port,
+                '/longitude',
+                clientConfig.endpointName,
+                function(error, result) {
+                    should.exist(error);
+
+                    done();
+                }
+            );
+        });
+    });
+
+    describe('When a preprovisioned device sends a registration request to the the IoT Agent', function(done) {
+        var options = {
+            url: 'http://localhost:' + config.ngsi.server.port + '/iot/devices',
+            method: 'POST',
+            json: utils.readExampleFile('./test/provisionExamples/preprovisionDevice.json')
+        };
+
+        beforeEach(function(done) {
+            request(options, function(error, response, body) {
+                done();
+            });
+        });
+        it('should return the registration information', function(done) {
+            lwm2mClient.register(
+                clientConfig.host,
+                clientConfig.port,
+                '/rd',
+                'Light1',
+                function(error, result) {
+                    should.not.exist(error);
+                    should.exist(result);
+                    should.exist(result.serverInfo);
+                    should.exist(result.location);
+
+                    done();
+                }
+            );
+        });
+        it('should register its passive attributes in the Context Broker as a Context Provider', function(done) {
+            lwm2mClient.register(
+                clientConfig.host,
+                clientConfig.port,
+                clientConfig.url,
+                clientConfig.endpointName,
+                function(error, result) {
+                    ngsiClient.discover('TheFirstLight', 'TheLightType', undefined, function(error, response, body) {
+                        should.not.exist(error);
+                        should.exist(body);
+                        should.not.exist(body.errorCode);
+                        done();
+                    });
+                }
+            );
         });
     });
 });
