@@ -52,6 +52,7 @@ config.ngsi = {
         'Arduino': {
             service: 'arduino',
             subservice: '/devices',
+            removeSuffix: true,
             commands: [],
             lazy: [],
             active: [
