@@ -1,4 +1,4 @@
-OMA Lightweight M2M Internet of Things Agent
+OMA Lightweight M2M IoT Agent
 ==================
 
 # Overview
