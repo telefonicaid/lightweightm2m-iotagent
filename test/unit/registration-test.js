@@ -94,6 +94,12 @@ describe('Device auto-registration test', function() {
                         should.not.exist(error);
                         should.exist(body);
                         should.not.exist(body.errorCode);
+                        body
+                            .contextRegistrationResponses['0']
+                            .contextRegistration
+                            .attributes['0']
+                            .name
+                            .should.equal('luminescence');
                         done();
                     });
                 }
@@ -101,11 +107,11 @@ describe('Device auto-registration test', function() {
         });
     });
 
-    describe('When a device sends a registration request with resources not found in the config', function(done) {
+    describe('When a device sends a registration request with OMA objects not configured', function(done) {
         beforeEach(function(done) {
             async.series([
-                apply(lwm2mClient.registry.setResource, '/12/0', '2', '89'),
-                apply(lwm2mClient.registry.setResource, '/19/0', '9', '19')
+                apply(lwm2mClient.registry.create, '/0/2'),
+                apply(lwm2mClient.registry.create,  '/1/3')
             ], function(error) {
                 done();
             });
@@ -126,6 +132,29 @@ describe('Device auto-registration test', function() {
                     should.exist(result.location);
 
                     done();
+                }
+            );
+        });
+        it('should register the resources as passive attributes in the CB with their URI', function(done) {
+            lwm2mClient.register(
+                clientConfig.host,
+                clientConfig.port,
+                clientConfig.url,
+                clientConfig.endpointName,
+                function(error, result) {
+                    ngsiClient.discover('TestClient:Light', 'Light', undefined, function(error, response, body) {
+                        should.not.exist(error);
+                        should.exist(body);
+                        should.not.exist(body.errorCode);
+                        body
+                            .contextRegistrationResponses['0']
+                            .contextRegistration
+                            .attributes
+                            .length
+                            .should.equal(7);
+
+                        done();
+                    });
                 }
             );
         });
