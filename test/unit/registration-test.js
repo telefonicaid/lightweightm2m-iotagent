@@ -111,7 +111,7 @@ describe('Device auto-registration test', function() {
         beforeEach(function(done) {
             async.series([
                 apply(lwm2mClient.registry.create, '/0/2'),
-                apply(lwm2mClient.registry.create,  '/1/3')
+                apply(lwm2mClient.registry.create, '/1/3')
             ], function(error) {
                 done();
             });
