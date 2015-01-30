@@ -32,4 +32,15 @@ This IoT Agent is currently under development, so the only way to install it is 
 
 # Configuration
 
+# Testing
+The IoT Agent comes with a test suite to check the main functionalities. In order to execute the test suite you must have the Grunt client installed. You can install it using the following command (you will need root permissions):
+```
+npm install -g grunt-cli
+```
+Once the client is installed and the dependencies are downloaded, you can execute the tests using:
+```
+grunt
+```
+This will execute the functional tests and the syntax checking as well.
 
+NOTE: This are end to end tests, so they execute against real instances of the components (so make sure you have a real Context Broker configured in the config.js). Be aware that the tests clean the databases before and after they have been executed so DO NOT EXECUTE THIS TESTS ON PRODUCTION MACHINES.
