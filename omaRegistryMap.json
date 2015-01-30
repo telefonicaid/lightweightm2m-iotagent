@@ -1,0 +1,36 @@
+{
+  "0": {
+    "name": "LWM2M Security",
+    "resources": [
+      {
+        "name": "LWM2M Server URI",
+        "type": "String"
+      },
+      {
+        "name": "Bootstrap Server",
+        "type": "Boolean"
+      },
+      {
+        "name": "Security Mode",
+        "type": "Integer"
+      },
+      {
+        "name": "Public Key or Identity",
+        "type": "Opaque"
+      }
+    ]
+  },
+  "1": {
+    "name": "LWM2M Server",
+    "resources": [
+      {
+        "name": "Short Server ID",
+        "type": "Integer"
+      },
+      {
+        "name": "Lifetime",
+        "type": "Integer"
+      }
+    ]
+  }
+}
