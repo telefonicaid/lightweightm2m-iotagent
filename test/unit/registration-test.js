@@ -29,6 +29,7 @@ var config = require('./testConfig'),
     ngsiTestUtils = require('./../../lib/ngsiUtils'),
     mongoUtils = require('./mongoDBUtils'),
     async = require('async'),
+    apply = async.apply,
     utils = require('../utils'),
     should = require('should'),
     clientConfig = {
@@ -42,21 +43,28 @@ var config = require('./testConfig'),
         config.ngsi.contextBroker.port,
         'smartGondor',
         '/gardens'
-    );
+    ),
+    deviceInformation;
 
 
 describe('Device auto-registration test', function() {
     beforeEach(function(done) {
         async.series([
-            async.apply(mongoUtils.cleanDbs, config.ngsi.contextBroker.host),
-            async.apply(iotAgent.start, config)
+            apply(mongoUtils.cleanDbs, config.ngsi.contextBroker.host),
+            apply(iotAgent.start, config)
         ], done);
     });
     afterEach(function(done) {
-        async.series([
+        var actions = [
             iotAgent.stop,
-            async.apply(mongoUtils.cleanDbs, config.ngsi.contextBroker.host)
-        ], done);
+            apply(mongoUtils.cleanDbs, config.ngsi.contextBroker.host)
+        ];
+
+        if (deviceInformation) {
+            actions.splice(0, 0, apply(lwm2mClient.unregister, deviceInformation));
+        }
+
+        async.series(actions, done);
     });
     describe('When a device sends a registration request to the LWM2M endpoint of the IoT Agent', function(done) {
         it('should return the registration information', function(done) {
@@ -88,6 +96,36 @@ describe('Device auto-registration test', function() {
                         should.not.exist(body.errorCode);
                         done();
                     });
+                }
+            );
+        });
+    });
+
+    describe('When a device sends a registration request with resources not found in the config', function(done) {
+        beforeEach(function(done) {
+            async.series([
+                apply(lwm2mClient.registry.setResource, '/12/0', '2', '89'),
+                apply(lwm2mClient.registry.setResource, '/19/0', '9', '19')
+            ], function(error) {
+                done();
+            });
+        });
+        afterEach(function(done) {
+            done();
+        });
+        it('should register normally, ignoring those objects', function(done) {
+            lwm2mClient.register(
+                clientConfig.host,
+                clientConfig.port,
+                clientConfig.url,
+                clientConfig.endpointName,
+                function(error, result) {
+                    should.not.exist(error);
+                    should.exist(result);
+                    should.exist(result.serverInfo);
+                    should.exist(result.location);
+
+                    done();
                 }
             );
         });
