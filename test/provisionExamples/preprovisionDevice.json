@@ -1,14 +1,23 @@
 {
-  "name": "Light1",
+  "name": "PreprovisionedLight1",
   "service" : "smartGondor",
   "service_path": "/gardens",
-  "entity_name": "TheFirstLight",
-  "entity_type": "TheLightType",
-  "attributes": [],
-  "commands": [
+  "entity_name": "ThePreprovisionedLight",
+  "entity_type": "APreprovisionedDevice",
+  "attributes": [
     {
-      "name": "luminance",
-      "type": "lumens"
+      "name": "pressure",
+      "type": "bars"
     }
-  ]
+  ],
+  "commands": [],
+  "internal_attributes": {
+    "lwm2mResourceMapping": {
+      "pressure" : {
+        "objectType": 5,
+        "objectInstance": 0,
+        "objectResource": 2
+      }
+    }
+  }
 }

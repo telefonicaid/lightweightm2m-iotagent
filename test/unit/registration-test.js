@@ -222,7 +222,11 @@ describe('Device auto-registration test', function() {
 
         beforeEach(function(done) {
             request(options, function(error, response, body) {
-                done();
+                async.series([
+                    apply(lwm2mClient.registry.create, '/5/0'),
+                    async.apply(lwm2mClient.registry.setResource, '/5/0', '2', '89'),
+                    async.apply(lwm2mClient.registry.setResource, '/5/0', '2', '19')
+                ], done);
             });
         });
         it('should return the registration information', function(done) {
@@ -230,7 +234,7 @@ describe('Device auto-registration test', function() {
                 clientConfig.host,
                 clientConfig.port,
                 '/rd',
-                'Light1',
+                'PreprovisionedLight1',
                 function(error, result) {
                     should.not.exist(error);
                     should.exist(result);
@@ -245,15 +249,37 @@ describe('Device auto-registration test', function() {
             lwm2mClient.register(
                 clientConfig.host,
                 clientConfig.port,
-                clientConfig.url,
-                clientConfig.endpointName,
+                '/rd',
+                'PreprovisionedLight1',
                 function(error, result) {
-                    ngsiClient.discover('TheFirstLight', 'TheLightType', undefined, function(error, response, body) {
-                        should.not.exist(error);
-                        should.exist(body);
-                        should.not.exist(body.errorCode);
-                        done();
+                    ngsiClient.discover('ThePreprovisionedLight', 'APreprovisionedDevice', undefined,
+                        function(error, response, body) {
+                            should.not.exist(error);
+                            should.exist(body);
+                            should.not.exist(body.errorCode);
+                            done();
                     });
+                }
+            );
+        });
+        it('should subscribe to its active attributes', function(done) {
+            lwm2mClient.register(
+                clientConfig.host,
+                clientConfig.port,
+                '/rd',
+                'PreprovisionedLight1',
+                function(error, result) {
+                    setTimeout(function() {
+                        ngsiClient.query('ThePreprovisionedLight', 'APreprovisionedDevice', ['pressure'],
+                            function(error, response, body) {
+                                should.not.exist(error);
+                                should.exist(body);
+                                should.not.exist(body.errorCode);
+                                body.contextResponses[0].contextElement.attributes[0].value.should.match(/19|89/);
+
+                                done();
+                            });
+                    }, 500);
                 }
             );
         });
