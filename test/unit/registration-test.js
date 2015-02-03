@@ -252,11 +252,12 @@ describe('Device auto-registration test', function() {
                 '/rd',
                 'PreprovisionedLight1',
                 function(error, result) {
-                    ngsiClient.discover('ThePreprovisionedLight', 'APreprovisionedDevice', undefined, function(error, response, body) {
-                        should.not.exist(error);
-                        should.exist(body);
-                        should.not.exist(body.errorCode);
-                        done();
+                    ngsiClient.discover('ThePreprovisionedLight', 'APreprovisionedDevice', undefined,
+                        function(error, response, body) {
+                            should.not.exist(error);
+                            should.exist(body);
+                            should.not.exist(body.errorCode);
+                            done();
                     });
                 }
             );
