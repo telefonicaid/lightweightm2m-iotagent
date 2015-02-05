@@ -14,7 +14,7 @@
   "bugs": {
     "url": "https://github.com/dmoranj/iotagent-prototype/issues"
   },
-  "main": "iotagent-prototype",
+  "main": "iotAgentLwm2m",
   "engines": {
     "node": ">=0.10.8"
   },
