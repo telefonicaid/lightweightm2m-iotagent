@@ -44,8 +44,7 @@ var config = require('./testConfig'),
     ),
     deviceInformation;
 
-// TODO: Should be executed against an updated context broker
-describe.skip('Passive attributes test', function() {
+describe('Passive attributes test', function() {
     beforeEach(function(done) {
         async.series([
             async.apply(mongoUtils.cleanDbs, config.ngsi.contextBroker.host),
@@ -91,7 +90,7 @@ describe.skip('Passive attributes test', function() {
 
             lwm2mClient.setHandler(deviceInformation.serverInfo, 'read', handleRead);
 
-            ngsiClient.query('TestClient:Light', 'Light', ['luminescence'], function(error, result) {
+            ngsiClient.query('TestClient:Light', 'Light', ['luminescence'], function(error, response, body) {
                 should.not.exist(error);
                 handleExecuted.should.equal(true);
 

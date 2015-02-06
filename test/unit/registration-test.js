@@ -214,7 +214,7 @@ describe('Device auto-registration test', function() {
     });
 
     // TODO: This test is broken; it should update the values in order for the value to be updated to the CB
-    describe.skip('When a preprovisioned device sends a registration request to the the IoT Agent', function(done) {
+    describe('When a preprovisioned device sends a registration request to the the IoT Agent', function(done) {
         var options = {
             url: 'http://localhost:' + config.ngsi.server.port + '/iot/devices',
             method: 'POST',
