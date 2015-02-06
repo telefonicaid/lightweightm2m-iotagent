@@ -98,7 +98,15 @@ describe('Passive attributes test', function() {
             });
         });
     });
-    describe.skip('When a passive attribute of the entity corresponding to a device is modified in Orion', function() {
+    describe('When a passive attribute of the entity corresponding to a device is modified in Orion', function() {
+        var attributes = [
+            {
+                name: 'luminescence',
+                type: 'Lumens',
+                value: '8375'
+            }
+        ];
+
         beforeEach(function(done) {
             async.series([
                 async.apply(lwm2mClient.registry.create, '/6/0'),
@@ -119,7 +127,7 @@ describe('Passive attributes test', function() {
 
             lwm2mClient.setHandler(deviceInformation.serverInfo, 'write', handleWrite);
 
-            ngsiClient.update('TestClient:Light', 'Light', ['luminescence'], function(error, response, body) {
+            ngsiClient.update('TestClient:Light', 'Light', attributes, function(error, response, body) {
                 should.not.exist(error);
                 handleExecuted.should.equal(true);
 
