@@ -98,7 +98,33 @@ describe('Passive attributes test', function() {
             });
         });
     });
-    describe('When a passive attribute of the entity corresponding to a device is modified in Orion', function() {
-        it('should write the value in the LWM2M device via the IoT Agent');
+    describe.skip('When a passive attribute of the entity corresponding to a device is modified in Orion', function() {
+        beforeEach(function(done) {
+            async.series([
+                async.apply(lwm2mClient.registry.create, '/6/0'),
+                async.apply(lwm2mClient.registry.setResource, '/6/0', '3', '12')
+            ], done);
+        });
+
+        it('should write the value in the LWM2M device via the IoT Agent', function(done) {
+            var handleExecuted = false;
+
+            function handleWrite(objectType, objectId, resourceId, value, callback) {
+                objectType.should.equal('6');
+                objectId.should.equal('0');
+                resourceId.should.equal('3');
+                handleExecuted = true;
+                callback();
+            }
+
+            lwm2mClient.setHandler(deviceInformation.serverInfo, 'write', handleWrite);
+
+            ngsiClient.update('TestClient:Light', 'Light', ['luminescence'], function(error, response, body) {
+                should.not.exist(error);
+                handleExecuted.should.equal(true);
+
+                done();
+            });
+        });
     });
 });
