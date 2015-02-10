@@ -23,6 +23,8 @@
     "request": "2.39.0",
     "underscore": "*",
     "coap-cli": "*",
+    "cheerio": "*",
+    "xmldom": "*",
     "coap": "*",
     "logops": "*",
     "fiware-iotagent-lib": "https://github.com/telefonicaid/iotagent-node-lib/tarball/develop",
