@@ -185,4 +185,52 @@ describe('Passive attributes test', function() {
             });
         });
     });
+    describe('When a passive OMA attribute is modified in Orion', function() {
+        var attributes = [
+            {
+                name: 'LWM2M  Server URI',
+                type: 'string',
+                value: 'coap://remotehost:9786'
+            }
+        ];
+
+        beforeEach(function (done) {
+            async.series([
+                async.apply(lwm2mClient.registry.create, '/0/0'),
+                async.apply(lwm2mClient.registry.setResource, '/0/0', '0', 'coap://localhost')
+            ], function (error) {
+                lwm2mClient.register(
+                    clientConfig.host,
+                    clientConfig.port,
+                    clientConfig.url,
+                    clientConfig.endpointName,
+                    function(error, result) {
+                        deviceInformation = result;
+                        done();
+                    }
+                );
+            });
+        });
+
+        it('should write the value in the LWM2M device via the IoT Agent', function(done) {
+            var handleExecuted = false;
+
+            function handleWrite(objectType, objectId, resourceId, value, callback) {
+                objectType.should.equal('0');
+                objectId.should.equal('0');
+                resourceId.should.equal('0');
+                handleExecuted = true;
+                callback();
+            }
+
+            lwm2mClient.setHandler(deviceInformation.serverInfo, 'write', handleWrite);
+
+            ngsiClient.update('TestClient:Light', 'Light', attributes, function(error, response, body) {
+                should.not.exist(error);
+                handleExecuted.should.equal(true);
+
+                done();
+            });
+        });
+    });
 });
