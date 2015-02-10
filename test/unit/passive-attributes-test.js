@@ -48,14 +48,16 @@ describe('Passive attributes test', function() {
     beforeEach(function(done) {
         async.series([
             async.apply(mongoUtils.cleanDbs, config.ngsi.contextBroker.host),
-            async.apply(iotAgent.start, config)
+            async.apply(iotAgent.start, config),
+            lwm2mClient.registry.reset
         ], done);
     });
     afterEach(function(done) {
         async.series([
             apply(lwm2mClient.unregister, deviceInformation),
             iotAgent.stop,
-            apply(mongoUtils.cleanDbs, config.ngsi.contextBroker.host)
+            apply(mongoUtils.cleanDbs, config.ngsi.contextBroker.host),
+            lwm2mClient.registry.reset
         ], done);
     });
     describe('When a passive attribute of the entity corresponding to a device is queried in Orion', function() {
@@ -143,7 +145,7 @@ describe('Passive attributes test', function() {
         });
     });
 
-    describe.only('When a passive OMA attribute request is queried in orion', function() {
+    describe('When a passive OMA attribute request is queried in orion', function() {
         beforeEach(function (done) {
             async.series([
                 async.apply(lwm2mClient.registry.create, '/0/0'),

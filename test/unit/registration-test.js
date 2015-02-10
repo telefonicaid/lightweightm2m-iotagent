@@ -151,7 +151,7 @@ describe('Device auto-registration test', function() {
                             .contextRegistration
                             .attributes
                             .length
-                            .should.equal(28);
+                            .should.equal(22);
 
                         done();
                     });
