@@ -146,11 +146,11 @@ describe('Passive attributes test', function() {
     });
 
     describe('When a passive OMA attribute request is queried in orion', function() {
-        beforeEach(function (done) {
+        beforeEach(function(done) {
             async.series([
                 async.apply(lwm2mClient.registry.create, '/0/0'),
                 async.apply(lwm2mClient.registry.setResource, '/0/0', '0', 'coap://localhost')
-            ], function (error) {
+            ], function(error) {
                 lwm2mClient.register(
                     clientConfig.host,
                     clientConfig.port,
@@ -194,11 +194,11 @@ describe('Passive attributes test', function() {
             }
         ];
 
-        beforeEach(function (done) {
+        beforeEach(function(done) {
             async.series([
                 async.apply(lwm2mClient.registry.create, '/0/0'),
                 async.apply(lwm2mClient.registry.setResource, '/0/0', '0', 'coap://localhost')
-            ], function (error) {
+            ], function(error) {
                 lwm2mClient.register(
                     clientConfig.host,
                     clientConfig.port,
