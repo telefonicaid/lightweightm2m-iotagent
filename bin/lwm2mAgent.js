@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 /*
  * Copyright 2014 Telefonica Investigación y Desarrollo, S.A.U
  *
