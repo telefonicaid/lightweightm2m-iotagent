@@ -15,9 +15,14 @@ One of the features to provide through the IoT Agent is the mapping between the 
 
 In order to accomplish this task, the agent supports:
 * An aditional property `lwm2mResourceMapping` that lets the user configure names for to each of the particular resources exposed by a device Type
-* An optional configuration file, `omaRegistr.json` containing the automatic mappings that will be applied in case there are no custom mappings.
+* Two optional configuration file, `omaRegistry.json` containing the automatic mappings that will be applied in case there are no custom mappings.
 
-In case there is neither a per type configuration nor an OMA Registry mapping, the attribute will be mapped to the resource URI, changing the slash characters ('/') to underscores ('_'). 
+Custom mappings defined by the user in the config.js file or by preprovisioning devices take precedence over any other available mapping.
+
+### OMA Registry mapping
+The IoT Agent provides a mean to map Lightweight M2M objects supported by the client without the need to map them in the type or prevoprovision information. The mapping works as follows: whenever a device registration arrives to the IoT Agent **if there is no configured mapping for any of the objects supported by the decive** (that should appear in the registration payload), then **all the resources supported by the object in the OMA Registry** are configured **as passive resources** offered by the object.
+
+The OMA Registry information is read from two files: `omaRegistryMap.json` and `omaRegistryInverseMap.json`. This two files can be generated with the last information in the OMA Registry with the command `bin/downloadOmaRegistry.js`. Notice that the generated files **do not** have the same name than the original ones (so the result can be double-checked before changing them). In order to use the freshly downloaded ones, just remove the former and rename the latter.
 
 ## Preprovisioning
 For individual provisioning of devices, LWM2M devices can be preprovisioned to the server, sending all the required information to the IoT Agent Provisioning API. Preprovisioned devices should target the standard '/rd' url instead of a type url. The preprovision configuration will be identified by the Endpoint name sent by the device.
