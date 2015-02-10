@@ -8,6 +8,7 @@ var cheerio = require('cheerio'),
         op: 'IOTAgent.OMARegistry'
     },
     registryTargetFile = 'omaRegistry.json',
+    inverseRegistryTargetFile = 'omaInverseRegistry.json',
     DOMParser = require('xmldom').DOMParser,
     _ = require('underscore');
 
@@ -100,9 +101,31 @@ function createInternalMap(registryObj, callback) {
         return previous;
     }
 
-    var resultingRegistry = registryObj.reduce(createMapWithIds, {});
+    function createMapFromIds(previous, current) {
+        if (current.resources) {
+            for (var i = 0; i < current.resources.length; i++) {
+                previous[current.resources[i].name] = {
+                    objectResource: i,
+                    objectType: current.id,
+                    objectInstance: 0
+                };
+            }
+        }
 
-    callback(null, JSON.stringify(resultingRegistry, null, 4));
+        return previous;
+    }
+
+    var directRegistryMap = registryObj.reduce(createMapWithIds, {}),
+        inverseRegistryMap = registryObj.reduce(createMapFromIds, {});
+
+    callback(null, JSON.stringify(directRegistryMap, null, 4), JSON.stringify(inverseRegistryMap, null, 4));
+}
+
+function writeResults(directMappings, inverseMappings, callback) {
+    async.series([
+        async.apply(fs.writeFile, registryTargetFile, directMappings),
+        async.apply(fs.writeFile, inverseRegistryTargetFile, inverseMappings)
+    ], callback);
 }
 
 function processRegistry(callback) {
@@ -112,7 +135,7 @@ function processRegistry(callback) {
         parseRegistry,
         discoverResources,
         createInternalMap,
-        async.apply(fs.writeFile, registryTargetFile)
+        writeResults
     ], callback);
 }
 
