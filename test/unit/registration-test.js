@@ -23,7 +23,7 @@
 'use strict';
 
 var config = require('./testConfig'),
-    lwm2mClient = require('iotagent-lwm2m-lib').client,
+    lwm2mClient = require('lwm2m-node-lib').client,
     request = require('request'),
     iotAgent = require('../../lib/iotAgentLwm2m'),
     ngsiTestUtils = require('./../../lib/ngsiUtils'),

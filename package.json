@@ -1,5 +1,5 @@
 {
-  "name": "iotagent-prototype",
+  "name": "lightweightm2m-iotagent",
   "description": "Prototype of an IoT Agent accepting COAP requests and redirecting to NGSI consumer",
   "version": "0.2.0",
   "homepage": "https://github.com/dmoranj/iotagent-prototype",
@@ -27,8 +27,8 @@
     "xmldom": "*",
     "coap": "*",
     "logops": "*",
-    "fiware-iotagent-lib": "https://github.com/telefonicaid/iotagent-node-lib/tarball/develop",
-    "iotagent-lwm2m-lib": "https://github.com/telefonicaid/iotagent-lwm2m-lib/tarball/develop"
+    "iotagent-node-lib": "0.2.0",
+    "lwm2m-node-lib": "0.2.0"
   },
   "devDependencies": {
     "nock": "0.48.0",
