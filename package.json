@@ -3,6 +3,14 @@
   "description": "Prototype of an IoT Agent accepting COAP requests and redirecting to NGSI consumer",
   "version": "0.2.0",
   "homepage": "https://github.com/dmoranj/iotagent-prototype",
+  "keywords": [
+    "OMA",
+    "lightweight",
+    "iotagent",
+    "fiware",
+    "coap",
+    "ngsi"
+  ],
   "author": {
     "name": "Daniel Moran",
     "email": "dmj@tid.es"
