@@ -36,7 +36,7 @@
     "coap": "*",
     "logops": "*",
     "iotagent-node-lib": "0.2.0",
-    "lwm2m-node-lib": "0.2.0"
+    "lwm2m-node-lib": "https://github.com/telefonicaid/lwm2m-node-lib/tarball/develop"
   },
   "devDependencies": {
     "nock": "0.48.0",
