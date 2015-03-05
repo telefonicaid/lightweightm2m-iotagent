@@ -135,6 +135,12 @@ function createInternalMap(registryObj, callback) {
                     objectInstance: 0
                 };
             }
+        } else {
+            previous[current.name] = {
+                objectResource: 0,
+                objectType: current.id,
+                objectInstance: null
+            };
         }
 
         return previous;
