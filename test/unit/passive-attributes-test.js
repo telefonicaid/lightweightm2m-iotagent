@@ -31,10 +31,11 @@ var config = require('./testConfig'),
     apply = async.apply,
     should = require('should'),
     clientConfig = {
-        host: 'localhost',
+        host: '::1',
         port: '60001',
         endpointName: 'TestClient',
-        url: '/light'
+        url: '/light',
+        ipProtocol: 'udp6'
     },
     ngsiClient = ngsiTestUtils.create(
         config.ngsi.contextBroker.host,
@@ -70,8 +71,8 @@ describe('Passive attributes test', function() {
                 function(error, result) {
                     deviceInformation = result;
                     async.series([
-                        async.apply(lwm2mClient.registry.create, '/6/0'),
-                        async.apply(lwm2mClient.registry.setResource, '/6/0', '3', '12')
+                        async.apply(lwm2mClient.registry.create, '/6000/0'),
+                        async.apply(lwm2mClient.registry.setResource, '/6000/0', '3', '12')
                     ], done);
                 }
             );
@@ -81,7 +82,7 @@ describe('Passive attributes test', function() {
             var handleExecuted = false;
 
             function handleRead(objectType, objectId, resourceId, value, callback) {
-                objectType.should.equal('6');
+                objectType.should.equal('6000');
                 objectId.should.equal('0');
                 resourceId.should.equal('3');
                 handleExecuted = true;
@@ -116,8 +117,8 @@ describe('Passive attributes test', function() {
                 function(error, result) {
                     deviceInformation = result;
                     async.series([
-                        async.apply(lwm2mClient.registry.create, '/6/0'),
-                        async.apply(lwm2mClient.registry.setResource, '/6/0', '3', '12')
+                        async.apply(lwm2mClient.registry.create, '/6000/0'),
+                        async.apply(lwm2mClient.registry.setResource, '/6000/0', '3', '12')
                     ], done);
                 }
             );
@@ -127,7 +128,7 @@ describe('Passive attributes test', function() {
             var handleExecuted = false;
 
             function handleWrite(objectType, objectId, resourceId, value, callback) {
-                objectType.should.equal('6');
+                objectType.should.equal('6000');
                 objectId.should.equal('0');
                 resourceId.should.equal('3');
                 handleExecuted = true;
@@ -149,7 +150,7 @@ describe('Passive attributes test', function() {
         beforeEach(function(done) {
             async.series([
                 async.apply(lwm2mClient.registry.create, '/0/0'),
-                async.apply(lwm2mClient.registry.setResource, '/0/0', '0', 'coap://localhost')
+                async.apply(lwm2mClient.registry.setResource, '/0/0', '0', 'coap://::1')
             ], function(error) {
                 lwm2mClient.register(
                     clientConfig.host,
@@ -197,7 +198,7 @@ describe('Passive attributes test', function() {
         beforeEach(function(done) {
             async.series([
                 async.apply(lwm2mClient.registry.create, '/0/0'),
-                async.apply(lwm2mClient.registry.setResource, '/0/0', '0', 'coap://localhost')
+                async.apply(lwm2mClient.registry.setResource, '/0/0', '0', 'coap://::1')
             ], function(error) {
                 lwm2mClient.register(
                     clientConfig.host,

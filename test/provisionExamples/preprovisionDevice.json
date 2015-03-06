@@ -1,7 +1,5 @@
 {
   "name": "PreprovisionedLight1",
-  "service" : "smartGondor",
-  "service_path": "/gardens",
   "entity_name": "ThePreprovisionedLight",
   "entity_type": "APreprovisionedDevice",
   "attributes": [
@@ -14,7 +12,7 @@
   "internal_attributes": {
     "lwm2mResourceMapping": {
       "pressure" : {
-        "objectType": 5,
+        "objectType": 5000,
         "objectInstance": 0,
         "objectResource": 2
       }

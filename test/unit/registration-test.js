@@ -33,10 +33,11 @@ var config = require('./testConfig'),
     utils = require('../utils'),
     should = require('should'),
     clientConfig = {
-        host: 'localhost',
+        host: '::1',
         port: '60001',
         endpointName: 'TestClient',
-        url: '/light'
+        url: '/light',
+        ipProtocol: 'udp6'
     },
     ngsiClient = ngsiTestUtils.create(
         config.ngsi.contextBroker.host,
@@ -213,7 +214,7 @@ describe('Device auto-registration test', function() {
         });
     });
 
-    describe.only('When a device sends a registration request for a provisioned device without type configuration' +
+    describe('When a device sends a registration request for a provisioned device without type configuration' +
         ' and without an explicit LWM2M Mapping', function(done) {
         var registration = {
             url: 'http://localhost:' + config.ngsi.server.port + '/iot/devices',
@@ -293,15 +294,19 @@ describe('Device auto-registration test', function() {
         var options = {
             url: 'http://localhost:' + config.ngsi.server.port + '/iot/devices',
             method: 'POST',
-            json: utils.readExampleFile('./test/provisionExamples/preprovisionDevice.json')
+            json: utils.readExampleFile('./test/provisionExamples/preprovisionDevice.json'),
+            headers: {
+                'fiware-service': 'smartGondor',
+                'fiware-servicepath': '/gardens'
+            }
         };
 
         beforeEach(function(done) {
             request(options, function(error, response, body) {
                 async.series([
-                    apply(lwm2mClient.registry.create, '/5/0'),
-                    async.apply(lwm2mClient.registry.setResource, '/5/0', '2', '89'),
-                    async.apply(lwm2mClient.registry.setResource, '/5/0', '2', '19')
+                    apply(lwm2mClient.registry.create, '/5000/0'),
+                    async.apply(lwm2mClient.registry.setResource, '/5000/0', '2', '89'),
+                    async.apply(lwm2mClient.registry.setResource, '/5000/0', '2', '19')
                 ], done);
             });
         });

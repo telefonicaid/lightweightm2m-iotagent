@@ -31,10 +31,11 @@ var config = require('./testConfig'),
     apply = async.apply,
     should = require('should'),
     clientConfig = {
-        host: 'localhost',
+        host: '::1',
         port: '60001',
         endpointName: 'ActiveTestClient',
-        url: '/pres'
+        url: '/pres',
+        ipProtocol: 'udp6'
     },
     ngsiClient = ngsiTestUtils.create(
         config.ngsi.contextBroker.host,
@@ -50,8 +51,8 @@ describe('Active attributes test', function() {
         async.series([
             apply(mongoUtils.cleanDbs, config.ngsi.contextBroker.host),
             apply(iotAgent.start, config),
-            apply(lwm2mClient.registry.create, '/5/0'),
-            apply(lwm2mClient.registry.setResource, '/5/0', '2', '789')
+            apply(lwm2mClient.registry.create, '/5000/0'),
+            apply(lwm2mClient.registry.setResource, '/5000/0', '2', '789')
         ], function(error) {
             lwm2mClient.register(
                 clientConfig.host,
@@ -77,8 +78,8 @@ describe('Active attributes test', function() {
     describe('When an active attribute changes its value in the device', function() {
         it('should update its value in the corresponding Orion entity', function(done) {
             async.series([
-                async.apply(lwm2mClient.registry.setResource, '/5/0', '2', '89'),
-                async.apply(lwm2mClient.registry.setResource, '/5/0', '2', '19')
+                async.apply(lwm2mClient.registry.setResource, '/5000/0', '2', '89'),
+                async.apply(lwm2mClient.registry.setResource, '/5000/0', '2', '19')
             ], function() {
                 setTimeout(function() {
                     ngsiClient.query('ActiveTestClient:Pressure', 'Pressure', ['pressure'],
@@ -99,10 +100,10 @@ describe('Active attributes test', function() {
     describe('When a new object is registered in the client and the registration is updated', function() {
         it('should update its value in the corresponding Orion entity', function(done) {
             async.series([
-                apply(lwm2mClient.registry.setResource, '/5/0', '2', '89'),
-                apply(lwm2mClient.registry.create, '/67/0'),
+                apply(lwm2mClient.registry.setResource, '/5000/0', '2', '89'),
+                apply(lwm2mClient.registry.create, '/67000/0'),
                 apply(lwm2mClient.update, deviceInformation),
-                apply(lwm2mClient.registry.setResource, '/67/0', '1', '4756')
+                apply(lwm2mClient.registry.setResource, '/67000/0', '1', '4756')
             ], function(error) {
                 setTimeout(function() {
                     ngsiClient.query('ActiveTestClient:Pressure', 'Pressure', ['position'],
