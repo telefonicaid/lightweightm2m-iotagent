@@ -33,11 +33,11 @@ var config = require('./testConfig'),
     utils = require('../utils'),
     should = require('should'),
     clientConfig = {
-        host: '::1',
+        host: 'localhost',
         port: '60001',
         endpointName: 'TestClient',
         url: '/light',
-        ipProtocol: 'udp6'
+        ipProtocol: 'udp4'
     },
     ngsiClient = ngsiTestUtils.create(
         config.ngsi.contextBroker.host,
@@ -361,6 +361,78 @@ describe('Device auto-registration test', function() {
                                 done();
                             });
                     }, 500);
+                }
+            );
+        });
+    });
+
+    describe('When a preprovisioned device registers to the the IoT Agent with an active attribute ' +
+        'without internal mapping, but present in the OMA registry', function(done) {
+        var options = {
+            url: 'http://localhost:' + config.ngsi.server.port + '/iot/devices',
+            method: 'POST',
+            json: utils.readExampleFile('./test/provisionExamples/preprovisionDeviceOMANoInternalMapping.json'),
+            headers: {
+                'fiware-service': 'smartGondor',
+                'fiware-servicepath': '/gardens'
+            }
+        };
+
+        beforeEach(function(done) {
+            request(options, function(error, response, body) {
+                async.series([
+                    apply(lwm2mClient.registry.create, '/3303/0'),
+                    async.apply(lwm2mClient.registry.setResource, '/3303/0', '0', '19')
+                ], done);
+            });
+        });
+        it('should return the registration information', function(done) {
+            lwm2mClient.register(
+                clientConfig.host,
+                clientConfig.port,
+                '/rd',
+                'ws1',
+                function(error, result) {
+                    should.not.exist(error);
+                    should.exist(result);
+                    should.exist(result.serverInfo);
+                    should.exist(result.location);
+
+                    done();
+                }
+            );
+        });
+    });
+
+    describe('When a preprovisioned device registers with an unmappable attribute', function(done) {
+        var options = {
+            url: 'http://localhost:' + config.ngsi.server.port + '/iot/devices',
+            method: 'POST',
+            json: utils.readExampleFile('./test/provisionExamples/preprovisionUnmappableAttribute.json'),
+            headers: {
+                'fiware-service': 'smartGondor',
+                'fiware-servicepath': '/gardens'
+            }
+        };
+
+        beforeEach(function(done) {
+            request(options, function(error, response, body) {
+                async.series([
+                    apply(lwm2mClient.registry.create, '/3303/0'),
+                    async.apply(lwm2mClient.registry.setResource, '/3303/0', '0', '19')
+                ], done);
+            });
+        });
+        it('should return the registration information', function(done) {
+            lwm2mClient.register(
+                clientConfig.host,
+                clientConfig.port,
+                '/rd',
+                'ws1',
+                function(error, result) {
+                    should.exist(error);
+
+                    done();
                 }
             );
         });

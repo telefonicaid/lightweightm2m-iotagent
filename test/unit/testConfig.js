@@ -27,7 +27,7 @@ config.lwm2m = {
     logLevel: 'FATAL',
     port: 60001,
     defaultType: 'Device',
-    serverProtocol: 'udp6',
+    serverProtocol: 'udp4',
     deviceRegistry: {
         type: 'mongodb',
         host: 'localhost',

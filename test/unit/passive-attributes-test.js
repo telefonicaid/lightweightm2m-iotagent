@@ -31,11 +31,11 @@ var config = require('./testConfig'),
     apply = async.apply,
     should = require('should'),
     clientConfig = {
-        host: '::1',
+        host: 'localhost',
         port: '60001',
         endpointName: 'TestClient',
         url: '/light',
-        ipProtocol: 'udp6'
+        ipProtocol: 'udp4'
     },
     ngsiClient = ngsiTestUtils.create(
         config.ngsi.contextBroker.host,
@@ -150,7 +150,7 @@ describe('Passive attributes test', function() {
         beforeEach(function(done) {
             async.series([
                 async.apply(lwm2mClient.registry.create, '/0/0'),
-                async.apply(lwm2mClient.registry.setResource, '/0/0', '0', 'coap://::1')
+                async.apply(lwm2mClient.registry.setResource, '/0/0', '0', 'coap://localhost')
             ], function(error) {
                 lwm2mClient.register(
                     clientConfig.host,
@@ -198,7 +198,7 @@ describe('Passive attributes test', function() {
         beforeEach(function(done) {
             async.series([
                 async.apply(lwm2mClient.registry.create, '/0/0'),
-                async.apply(lwm2mClient.registry.setResource, '/0/0', '0', 'coap://::1')
+                async.apply(lwm2mClient.registry.setResource, '/0/0', '0', 'coap://localhost')
             ], function(error) {
                 lwm2mClient.register(
                     clientConfig.host,

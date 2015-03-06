@@ -1,0 +1,12 @@
+{
+  "name": "ws1",
+  "entity_name": "weather1",
+  "entity_type": "weatherStation",
+  "attributes": [
+    {
+      "name": "Temperature Sensor",
+      "type": "string"
+    }
+  ],
+  "commands": []
+}

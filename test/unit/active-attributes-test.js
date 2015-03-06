@@ -31,11 +31,11 @@ var config = require('./testConfig'),
     apply = async.apply,
     should = require('should'),
     clientConfig = {
-        host: '::1',
+        host: 'localhost',
         port: '60001',
         endpointName: 'ActiveTestClient',
         url: '/pres',
-        ipProtocol: 'udp6'
+        ipProtocol: 'udp4'
     },
     ngsiClient = ngsiTestUtils.create(
         config.ngsi.contextBroker.host,
