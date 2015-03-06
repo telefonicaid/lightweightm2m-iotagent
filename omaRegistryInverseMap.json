@@ -353,5 +353,175 @@
         "objectResource": 6,
         "objectType": "7",
         "objectInstance": 0
+    },
+    "Lock and Wipe": {
+        "objectResource": 0,
+        "objectType": "8",
+        "objectInstance": null
+    },
+    "Sofware Update": {
+        "objectResource": 0,
+        "objectType": "9",
+        "objectInstance": null
+    },
+    "Cellular connectivity": {
+        "objectResource": 0,
+        "objectType": "10",
+        "objectInstance": null
+    },
+    "APN connection profile": {
+        "objectResource": 0,
+        "objectType": "11",
+        "objectInstance": null
+    },
+    "WLAN connectivity": {
+        "objectResource": 0,
+        "objectType": "12",
+        "objectInstance": null
+    },
+    "Bearer selection": {
+        "objectResource": 0,
+        "objectType": "13",
+        "objectInstance": null
+    },
+    "DevCapMgmt": {
+        "objectResource": 0,
+        "objectType": "15",
+        "objectInstance": null
+    },
+    "CmdhPolicy ": {
+        "objectResource": 0,
+        "objectType": "2048",
+        "objectInstance": null
+    },
+    "ActiveCmdhPolicy": {
+        "objectResource": 0,
+        "objectType": "2049",
+        "objectInstance": null
+    },
+    "CmdhDefaults ": {
+        "objectResource": 0,
+        "objectType": "2050",
+        "objectInstance": null
+    },
+    "CmdhDefEcValues ": {
+        "objectResource": 0,
+        "objectType": "2051",
+        "objectInstance": null
+    },
+    "cmdhDefEcParamsValues ": {
+        "objectResource": 0,
+        "objectType": "2052",
+        "objectInstance": null
+    },
+    "CmdhLimits": {
+        "objectResource": 0,
+        "objectType": "2053",
+        "objectInstance": null
+    },
+    "CmdhNetworkAccessRules": {
+        "objectResource": 0,
+        "objectType": "2054",
+        "objectInstance": null
+    },
+    "CmdhNwAccessRule ": {
+        "objectResource": 0,
+        "objectType": "2055",
+        "objectInstance": null
+    },
+    "CmdhBuffer  ": {
+        "objectResource": 0,
+        "objectType": "2056",
+        "objectInstance": null
+    },
+    "Digital Input": {
+        "objectResource": 0,
+        "objectType": "3200",
+        "objectInstance": null
+    },
+    "Digital Output": {
+        "objectResource": 0,
+        "objectType": "3201",
+        "objectInstance": null
+    },
+    "Analogue Input": {
+        "objectResource": 0,
+        "objectType": "3202",
+        "objectInstance": null
+    },
+    "Analogue Output": {
+        "objectResource": 0,
+        "objectType": "3203",
+        "objectInstance": null
+    },
+    "Generic Sensor": {
+        "objectResource": 0,
+        "objectType": "3300",
+        "objectInstance": null
+    },
+    "Luminosity Sensor": {
+        "objectResource": 0,
+        "objectType": "3301",
+        "objectInstance": null
+    },
+    "Presence Sensor": {
+        "objectResource": 0,
+        "objectType": "3302",
+        "objectInstance": null
+    },
+    "Temperature Sensor": {
+        "objectResource": 0,
+        "objectType": "3303",
+        "objectInstance": null
+    },
+    "Humidity Sensor": {
+        "objectResource": 0,
+        "objectType": "3304",
+        "objectInstance": null
+    },
+    "Power Measurement": {
+        "objectResource": 0,
+        "objectType": "3305",
+        "objectInstance": null
+    },
+    "Actuation": {
+        "objectResource": 0,
+        "objectType": "3306",
+        "objectInstance": null
+    },
+    "Set Point": {
+        "objectResource": 0,
+        "objectType": "3308",
+        "objectInstance": null
+    },
+    "Load Control": {
+        "objectResource": 0,
+        "objectType": "3310",
+        "objectInstance": null
+    },
+    "Light Control": {
+        "objectResource": 0,
+        "objectType": "3311",
+        "objectInstance": null
+    },
+    "Power Control": {
+        "objectResource": 0,
+        "objectType": "3312",
+        "objectInstance": null
+    },
+    "Accelerometer": {
+        "objectResource": 0,
+        "objectType": "3313",
+        "objectInstance": null
+    },
+    "Magnetometer": {
+        "objectResource": 0,
+        "objectType": "3314",
+        "objectInstance": null
+    },
+    "Barometer": {
+        "objectResource": 0,
+        "objectType": "3315",
+        "objectInstance": null
     }
 }

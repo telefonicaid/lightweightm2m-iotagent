@@ -27,6 +27,7 @@ config.lwm2m = {
     logLevel: 'FATAL',
     port: 60001,
     defaultType: 'Device',
+    serverProtocol: 'udp6',
     deviceRegistry: {
         type: 'mongodb',
         host: 'localhost',
@@ -78,7 +79,7 @@ config.ngsi = {
             ],
             lwm2mResourceMapping: {
                 'luminescence' : {
-                    objectType: 6,
+                    objectType: 6000,
                     objectInstance: 0,
                     objectResource: 3
                 }
@@ -105,12 +106,12 @@ config.ngsi = {
             ],
             lwm2mResourceMapping: {
                 'pressure' : {
-                    objectType: 5,
+                    objectType: 5000,
                     objectInstance: 0,
                     objectResource: 2
                 },
                 'position' : {
-                    objectType: 67,
+                    objectType: 67000,
                     objectInstance: 0,
                     objectResource: 1
                 }

@@ -30,10 +30,8 @@
     "async": "0.9.0",
     "request": "2.39.0",
     "underscore": "*",
-    "coap-cli": "*",
     "cheerio": "*",
     "xmldom": "*",
-    "coap": "*",
     "logops": "*",
     "iotagent-node-lib": "https://github.com/telefonicaid/iotagent-node-lib/tarball/develop",
     "lwm2m-node-lib": "https://github.com/telefonicaid/lwm2m-node-lib/tarball/develop"
