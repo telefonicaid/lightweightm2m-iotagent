@@ -61,7 +61,7 @@ describe('Active attributes test', function() {
                 clientConfig.endpointName,
                 function(error, result) {
                     deviceInformation = result;
-                    done();
+                    setTimeout(done, 1000);
                 }
             );
         });
@@ -80,7 +80,7 @@ describe('Active attributes test', function() {
             async.series([
                 async.apply(lwm2mClient.registry.setResource, '/5000/0', '2', '89'),
                 async.apply(lwm2mClient.registry.setResource, '/5000/0', '2', '19')
-            ], function() {
+            ], function(error) {
                 setTimeout(function() {
                     ngsiClient.query('ActiveTestClient:Pressure', 'Pressure', ['pressure'],
                         function(error, response, body) {
@@ -95,31 +95,5 @@ describe('Active attributes test', function() {
                 }, 500);
             });
         });
-    });
-
-    describe('When a new object is registered in the client and the registration is updated', function() {
-        it('should update its value in the corresponding Orion entity', function(done) {
-            async.series([
-                apply(lwm2mClient.registry.setResource, '/5000/0', '2', '89'),
-                apply(lwm2mClient.registry.create, '/67000/0'),
-                apply(lwm2mClient.update, deviceInformation),
-                apply(lwm2mClient.registry.setResource, '/67000/0', '1', '4756')
-            ], function(error) {
-                setTimeout(function() {
-                    ngsiClient.query('ActiveTestClient:Pressure', 'Pressure', ['position'],
-                        function(error, response, body) {
-
-                            should.not.exist(error);
-                            should.exist(body);
-                            should.not.exist(body.errorCode);
-                            body.contextResponses[0].contextElement.attributes[0].value.should.equal('4756');
-
-                            done();
-                        });
-                }, 500);
-            });
-        });
-
-        it('should update the list of observers in the IOT Agent');
     });
 });
