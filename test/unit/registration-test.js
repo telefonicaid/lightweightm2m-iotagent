@@ -290,6 +290,58 @@ describe('Device auto-registration test', function() {
         it('should use its internal mappings instead of the type configured ones');
     });
 
+    describe('When a device registers to a URL defined as the resource of a configuration', function() {
+        var configuration = {
+                url: 'http://localhost:' + config.ngsi.server.port + '/iot/agents/default/services',
+                method: 'POST',
+                json: utils.readExampleFile('./test/provisionExamples/newConfiguration.json'),
+                headers: {
+                    'fiware-service': 'smartGondor',
+                    'fiware-servicepath': '/gardens'
+                }
+            },
+            removeConfiguration = {
+                url: 'http://localhost:' + config.ngsi.server.port + '/iot/agents/default/services',
+                method: 'DELETE',
+                json: {},
+                headers: {
+                    'fiware-service': 'smartGondor',
+                    'fiware-servicepath': '/gardens'
+                }
+            };
+
+        beforeEach(function(done) {
+            request(configuration, function (error, result, body){
+                done();
+            });
+        });
+
+        afterEach(function(done) {
+            request(removeConfiguration, done);
+        });
+
+        it('should register its passive attributes in the Context Broker as a Context Provider', function(done) {
+            lwm2mClient.register(
+                clientConfig.host,
+                clientConfig.port,
+                '/lightConfig',
+                'PreprovisionedLight2',
+                function(error, result) {
+                    ngsiClient.discover(
+                        'PreprovisionedLight2:ConfiguredDevice',
+                        'ConfiguredDevice',
+                        ['Luminosity Sensor'],
+                        function(error, response, body) {
+                            should.not.exist(error);
+                            should.exist(body);
+                            should.not.exist(body.errorCode);
+                            done();
+                        });
+                }
+            );
+        });
+    });
+
     describe('When a preprovisioned device sends a registration request to the the IoT Agent', function(done) {
         var options = {
             url: 'http://localhost:' + config.ngsi.server.port + '/iot/devices',
