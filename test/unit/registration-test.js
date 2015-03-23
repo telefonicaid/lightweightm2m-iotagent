@@ -311,7 +311,7 @@ describe('Device auto-registration test', function() {
             };
 
         beforeEach(function(done) {
-            request(configuration, function (error, result, body){
+            request(configuration, function(error, result, body) {
                 done();
             });
         });
