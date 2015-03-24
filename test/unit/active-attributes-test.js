@@ -72,7 +72,7 @@ describe('Active attributes test', function() {
             iotAgent.stop,
             lwm2mClient.registry.reset,
             apply(mongoUtils.cleanDbs, config.ngsi.contextBroker.host)
-        ], function (error, results) {
+        ], function(error, results) {
             done();
         });
     });
