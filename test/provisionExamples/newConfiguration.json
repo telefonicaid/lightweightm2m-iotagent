@@ -2,7 +2,7 @@
   "services": [
     {
       "resource": "/lightConfig",
-      "apikey": "801230BJKL23Y9090DSFL123HJK09H324HV8732",
+      "apikey": "",
       "type": "ConfiguredDevice",
       "commands": [],
       "lazy": [
