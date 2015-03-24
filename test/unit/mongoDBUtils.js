@@ -29,8 +29,10 @@ function cleanDb(host, name, callback) {
     var url = 'mongodb://' + host + ':27017/' + name;
 
     MongoClient.connect(url, function(err, db) {
-        db.dropDatabase();
-        db.close();
+        if (db) {
+            db.dropDatabase();
+            db.close();
+        }
         callback();
     });
 }
@@ -39,7 +41,8 @@ function cleanDbs(host, callback) {
     var operations = [
             async.apply(cleanDb, 'localhost', 'lwtm2m'),
             async.apply(cleanDb, 'localhost', 'iotagent'),
-            async.apply(cleanDb, host, 'orion')
+            async.apply(cleanDb, host, 'orion'),
+            async.apply(cleanDb, host, 'iotagent')
         ],
         remoteDatabases = [
             'smartgondor',

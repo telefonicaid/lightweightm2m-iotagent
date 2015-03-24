@@ -72,7 +72,9 @@ describe('Active attributes test', function() {
             iotAgent.stop,
             lwm2mClient.registry.reset,
             apply(mongoUtils.cleanDbs, config.ngsi.contextBroker.host)
-        ], done);
+        ], function(error, results) {
+            done();
+        });
     });
 
     describe('When an active attribute changes its value in the device', function() {
