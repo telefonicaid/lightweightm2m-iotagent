@@ -312,7 +312,11 @@ describe('Device auto-registration test', function() {
 
         beforeEach(function(done) {
             request(configuration, function(error, result, body) {
-                done();
+                async.series([
+                        apply(lwm2mClient.registry.create, '/3303/0'),
+                        async.apply(lwm2mClient.registry.setResource, '/3303/0', '0', '89'),
+                        async.apply(lwm2mClient.registry.setResource, '/3303/0', '0', '19')
+                    ], done);
             });
         });
 
@@ -341,26 +345,35 @@ describe('Device auto-registration test', function() {
             );
         });
 
-        xit('should observe its active attributes', function(done) {
-            async.series([
-                async.apply(lwm2mClient.registry.setResource, '/3003/0', '2', '89'),
-                async.apply(lwm2mClient.registry.setResource, '/3003/0', '2', '19')
-            ], function(error) {
-                setTimeout(function() {
-                    ngsiClient.query(
-                        'PreprovisionedLight2:ConfiguredDevice',
-                        'ConfiguredDevice',
-                        ['Temperature Sensor'],
-                        function(error, response, body) {
-                            should.not.exist(error);
-                            should.exist(body);
-                            should.not.exist(body.errorCode);
-                            body.contextResponses[0].contextElement.attributes[0].value.should.match(/19|89/);
+        it('should observe its active attributes', function(done) {
+            lwm2mClient.register(
+                clientConfig.host,
+                clientConfig.port,
+                '/lightConfig',
+                'PreprovisionedLight2',
+                function(error, result) {
+                    async.series([
+                        utils.delay(100),
+                        async.apply(lwm2mClient.registry.setResource, '/3303/0', '0', '2539'),
+                        async.apply(lwm2mClient.registry.setResource, '/3303/0', '0', '10397'),
+                        utils.delay(100)
+                    ], function() {
+                        ngsiClient.query(
+                            'PreprovisionedLight2:ConfiguredDevice',
+                            'ConfiguredDevice',
+                            ['Temperature Sensor'],
+                            function(error, response, body) {
+                                should.not.exist(error);
+                                should.exist(body);
+                                should.not.exist(body.errorCode);
+                                body.contextResponses[0].contextElement.attributes[0].name
+                                    .should.equal('Temperature Sensor');
 
-                            done();
-                        });
-                }, 500);
-            });
+                                done();
+                            });
+                    });
+                }
+            );
         });
     });
 
