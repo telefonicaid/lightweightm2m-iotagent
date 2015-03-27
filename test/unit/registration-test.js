@@ -340,6 +340,28 @@ describe('Device auto-registration test', function() {
                 }
             );
         });
+
+        xit('should observe its active attributes', function(done) {
+            async.series([
+                async.apply(lwm2mClient.registry.setResource, '/3003/0', '2', '89'),
+                async.apply(lwm2mClient.registry.setResource, '/3003/0', '2', '19')
+            ], function(error) {
+                setTimeout(function() {
+                    ngsiClient.query(
+                        'PreprovisionedLight2:ConfiguredDevice',
+                        'ConfiguredDevice',
+                        ['Temperature Sensor'],
+                        function(error, response, body) {
+                            should.not.exist(error);
+                            should.exist(body);
+                            should.not.exist(body.errorCode);
+                            body.contextResponses[0].contextElement.attributes[0].value.should.match(/19|89/);
+
+                            done();
+                        });
+                }, 500);
+            });
+        });
     });
 
     describe('When a preprovisioned device sends a registration request to the the IoT Agent', function(done) {
