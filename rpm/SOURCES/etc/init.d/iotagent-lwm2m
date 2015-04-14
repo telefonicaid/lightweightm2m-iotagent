@@ -1,0 +1,113 @@
+#!/bin/bash
+#
+# iotagent-lwm2m         Start/Stop the Lightweight M2M IoT Agent
+#
+# chkconfig: 2345 99 60
+# description: Lightweight M2M IoT Agent
+### BEGIN INIT INFO
+# Provides: pepProxy
+# Required-Start: $local_fs $syslog
+# Required-Stop: $local_fs $syslog
+# Default-Start:  345
+# Default-Stop: 90
+# Short-Description: run iotagent-lwm2m
+# The Lightweight M2M IoT Agent works as a gateway from LWM2M powered devices to the NGSI
+#  applications defined by FIWARE. IoT Agent behavior is described in FIWARE's documentation
+#  as well as in the README.md documentation that can be found in the root of the project.
+### END INIT INFO
+
+# Copyright 2015 Telefonica Investigacion y Desarrollo, S.A.U
+#
+# This file is part of Lightweight M2M IoT Agent.
+#
+# Lightweight M2M IoT Agent is free software: you can redistribute it and/or
+# modify it under the terms of the GNU Affero General Public License as
+# published by the Free Software Foundation, either version 3 of the
+# License, or (at your option) any later version.
+#
+# Lightweight M2M IoT Agent is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero
+# General Public License for more details.
+#
+# You should have received a copy of the GNU Affero General Public License
+# along with Orion Policy Enforcement Point. If not, see http://www.gnu.org/licenses/.
+#
+# For those usages not covered by this license please contact with
+# [iot_support@tid.es]
+
+
+. /etc/rc.d/init.d/functions
+
+PARAM=$1
+NAME=iotagent-lwm2m
+EXECUTABLE=bin/lwm2mAgent.js
+PROXY_PATH=/opt/iotagent-lwm2m
+PIDFILE=$PROXY_PATH/$NAME.pid
+LOG_PATH=/var/log/iotagent-lwm2m/${NAME}.log
+
+# Load the environment
+if [[ -f /etc/sysconfig/${NAME} ]]; then
+    set -a
+    . /etc/sysconfig/${NAME}
+else
+   echo "Configuration file /etc/sysconfig/${NAME} not found"
+   echo "Please read the documentation for information on setting up ${NAME}"
+   exit 1
+fi
+
+iotagentlwm2m_start()
+{
+    printf "%-50s" "Starting ${NAME}..."
+    cd $PROXY_PATH
+    if [[ -x ${EXECUTABLE} ]]; then
+        cd $PROXY_PATH
+        su $PROXY_USER -p -c "cd $PROXY_PATH; nohup ${EXECUTABLE} &>> $LOG_PATH & echo \$! > $PIDFILE"
+        echo "Success"
+    else
+        printf "%s\n" "Fail - missing ${EXECUTABLE} executable"
+        exit 1
+    fi
+}
+
+iotagentlwm2m_stop()
+{
+    printf "%-50s" "Stopping $NAME..."
+    if [ -f "${PIDFILE}" ]; then
+        kill -9 $(cat ${PIDFILE})
+        rm -f ${PIDFILE}
+        printf "%s\n" "$(success)"
+    else
+        printf "%s\n" "$(failure)"
+    fi
+}
+
+iotagentlwm2m_status()
+{
+    status -p ${PIDFILE} ${EXECUTABLE}
+}
+
+case ${PARAM} in
+
+    'start')
+        echo "Starting..."
+        status -p ${PIDFILE} ${EXECUTABLE} && exit 0
+        iotagentlwm2m_start
+        ;;
+
+    'stop')
+        echo "Stopping..."
+        status -p ${PIDFILE} ${EXECUTABLE} || exit 0
+        iotagentlwm2m_stop
+        ;;
+
+    'restart')
+        iotagentlwm2m_stop
+        iotagentlwm2m_start
+        ;;
+
+    'status')
+        iotagentlwm2m_status
+        ;;
+
+esac
