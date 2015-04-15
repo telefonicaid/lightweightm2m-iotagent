@@ -1,37 +1,36 @@
-#!/bin/bash
-# Copyright 2014 Telefonica Investigacion y Desarrollo, S.A.U
+# Copyright 2015 Telefonica Investigacion y Desarrollo, S.A.U
 #
-# This file is part of the Fiware PEP Proxy.
+# This file is part of Lightweight M2M IoT Agent.
 #
-# the Fiware PEP Proxy is free software: you can redistribute it and/or
+# Lightweight M2M IoT Agent is free software: you can redistribute it and/or
 # modify it under the terms of the GNU Affero General Public License as
 # published by the Free Software Foundation, either version 3 of the
 # License, or (at your option) any later version.
 #
-# the Fiware PEP Proxy is distributed in the hope that it will be useful,
+# Lightweight M2M IoT Agent is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero
 # General Public License for more details.
 #
 # You should have received a copy of the GNU Affero General Public License
-# along with the Fiware PEP Proxy. If not, see http://www.gnu.org/licenses/.
+# along with Orion Policy Enforcement Point. If not, see http://www.gnu.org/licenses/.
 #
 # For those usages not covered by this license please contact with
 # iot_support at tid dot es
 
-PROXY_VERSION=$2
-if [ -z "$PROXY_VERSION" ]; then
-  PROXY_VERSION=0.4.0_next
+IOTA_VERSION=$2
+if [ -z "$IOTA_VERSION" ]; then
+  IOTA_VERSION=0.4.0_next
 fi
-PROXY_RELEASE=$1
-if [ -z "$PROXY_RELEASE" ]; then
-  PROXY_RELEASE=0
+IOTA_RELEASE=$1
+if [ -z "$IOTA_RELEASE" ]; then
+  IOTA_RELEASE=0
 fi
 RPM_TOPDIR=$PWD
-PROXY_USER=pepproxy
+IOTA_USER=iota
 
-rpmbuild -ba $RPM_TOPDIR/SPECS/pepProxy.spec \
+rpmbuild -ba $RPM_TOPDIR/SPECS/iotagentLwm2m.spec \
     --define "_topdir $RPM_TOPDIR" \
-    --define "_project_user $PROXY_USER" \
-    --define "_product_version $PROXY_VERSION" \
-    --define "_product_release $PROXY_RELEASE"
+    --define "_project_user $IOTA_USER" \
+    --define "_product_version $IOTA_VERSION" \
+    --define "_product_release $IOTA_RELEASE"
