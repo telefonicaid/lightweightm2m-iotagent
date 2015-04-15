@@ -1,7 +1,16 @@
 OMA Lightweight M2M IoT Agent
 ==================
+# Index
 
-# Overview
+* [Overview](#overview)
+* [Prerequisites](#prerequisites)
+* [Installation](#installation)
+* [Usage](#usage)
+* [Configuration](#configuration)
+* [Packaging](#packaging)
+* [Testing](#testing)
+
+#  <a name="overview"/> Overview
 ## Description
 An Internet of Things Agent is a component that lets groups of devices send their data to and be managed from a FIWARE NGSI Context Broker using their own native protocols. This project provides the IoT Agent for the Lightweight M2M protocol, i.e. the bridge between OMA Lightweight M2M enabled devices and a NGSI Context Broker. 
 
@@ -34,26 +43,49 @@ For individual provisioning of devices, LWM2M devices can be preprovisioned to t
 ## A note about security
 IoT Agent security is still in development, so no Southbound or Northbound security mechanisms are provided. The NGSI Context Broker can be secured with a [PEP Proxy]() anyway, so the IoT Agent should be able to deal with token based security. This mechanism is achieved with the use of Keystone Trust Tokens. For more information on how to use them, please read the Security Section in [Node IoT Agent Library](https://github.com/telefonicaid/iotagent-node-lib).
 
-# Prerequisites
+#  <a name="prerequisites"/>  Prerequisites
 The IOT Agent requires Node.js 0.10.x to work and uses NPM as its package manager. Most Linux distributions offer packages to install it. For other OS, you can find instructions to install Node.js [here](https://nodejs.org/). 
 
 NOTE: the current version of Node.js, 0.12.x has not been tested with the Agent, so we suggest to download and use the previous version (that process can be eased with utilities as `n` or  `nvm`).
 
-# Installation
-This IoT Agent is currently under development, so the only way to install it is  by cloning the Github repository. Once the repository is cloned, from the root folder of the project execute:
+#  <a name="installation"/> Installation
+
+## Cloning the Github repository
+Once the repository is cloned, from the root folder of the project execute:
 ```
 npm install
 ```
 This will download the dependencies for the project, and let it ready to the execution.
 
-# Usage
-In order to execute the IOTAgent, just issue the following command from the root folder of the project:
+## Using the RPM 
+To see how to generate the RPM, follow the instructions in [Packaging](#rpm).
+
+To install the RPM, use the YUM tool:
+```
+yum localinstall --nogpg <rpm-file>
+```
+
+# <a name="usage"/> Usage
+## Github installation
+In order to execute the IOTAgent, just issue the following command from the root folder of the cloned project:
 ```
 bin/lwm2mAgent.js [config file]
 ```
 The optional name of a config file is optional and described in the following section.
 
-# Configuration
+## RPM installation
+The RPM installs a linux service that can be managed with the typical instructions:
+```
+service iotagent-lwm2m start
+
+service iotagent-lwm2m status
+
+service iotagent-lwm2m stop
+```
+
+In this mode, the log file is written in `/var/log/iotagent-lwm2m/iotagent-lwm2m.log`.
+
+# <a name="configuration"/> Configuration
 There are two ways to provide the IOT Agent with a configuration set: passing the name of a config file (related to the root folder of the project) or customize the example `config.js` in the root. 
 
 The configuration file is divided in two sections: one standard section for the NGSI North bound `ngsi`, and another one for the specific Lightweight M2M South bound, `lwm2m`. The former follows the same format described for the Node.js IOT Agent Framework, described [here](https://github.com/telefonicaid/iotagent-node-lib#global-configuration). The latter configures the Lightweight M2M library used for communicating with the devices, as described [here](https://github.com/telefonicaid/lwm2m-node-lib#-configuration) (`server` section).
@@ -77,8 +109,19 @@ These are the specific LWM2M parameters that can be configured for the agent:
             url: '/arduino'
         }
 ```
+# <a name="packaging"/> Packaging
+The only package type allowed is RPM. In order to execute the packaging scripts, the RPM Build Tools must be available
+in the system.
 
-# Testing
+From the root folder of the project, create the RPM with the following commands:
+```
+cd rpm
+./create-rpm.sh <release-number> <version-number>
+```
+Where `<version-number>` is the version (x.y.z) you want the package to have and `<release-number>` is an increasing
+number dependent un previous installations. 
+
+# <a name="testing"/> Testing
 The IoT Agent comes with a test suite to check the main functionalities. In order to execute the test suite you must have the Grunt client installed. You can install it using the following command (you will need root permissions):
 ```
 npm install -g grunt-cli
