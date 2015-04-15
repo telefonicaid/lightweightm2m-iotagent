@@ -141,7 +141,6 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(755,%{_project_user},%{_project_user},755)
 %config /etc/init.d/%{_service_name}
-%config /etc/sysconfig/%{_service_name}
 %config /etc/sysconfig/logrotate-iotagentlwm2m-size
 %config /etc/logrotate.d/logrotate-iotagentlwm2m.conf
 %config /etc/cron.d/cron-logrotate-iotagentlwm2m-size

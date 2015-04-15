@@ -46,16 +46,6 @@ PROXY_PATH=/opt/iotagent-lwm2m
 PIDFILE=$PROXY_PATH/$NAME.pid
 LOG_PATH=/var/log/iotagent-lwm2m/${NAME}.log
 
-# Load the environment
-if [[ -f /etc/sysconfig/${NAME} ]]; then
-    set -a
-    . /etc/sysconfig/${NAME}
-else
-   echo "Configuration file /etc/sysconfig/${NAME} not found"
-   echo "Please read the documentation for information on setting up ${NAME}"
-   exit 1
-fi
-
 iotagentlwm2m_start()
 {
     printf "%-50s" "Starting ${NAME}..."
