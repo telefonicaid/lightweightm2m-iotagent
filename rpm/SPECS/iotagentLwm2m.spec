@@ -4,7 +4,7 @@ Version: %{_product_version}
 Release: %{_product_release}
 License: AGPLv3
 BuildRoot: %{_topdir}/BUILDROOT/
-BuildArch: noarch
+BuildArch: x86_64
 Requires: nodejs >= 0.10.24
 Requires: logrotate
 Requires(post): /sbin/chkconfig, /usr/sbin/useradd npm
@@ -41,6 +41,8 @@ cp -R %{_srcdir}/lib \
       %{_srcdir}/bin \
       %{_srcdir}/config.js \
       %{_srcdir}/package.json \
+      %{_srcdir}/omaRegistryMap.json \
+      %{_srcdir}/omeRegistryInverseMap.json \
       %{_srcdir}/LICENSE \
       %{_build_root_project}
 

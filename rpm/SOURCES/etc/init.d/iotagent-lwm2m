@@ -42,17 +42,17 @@
 PARAM=$1
 NAME=iotagent-lwm2m
 EXECUTABLE=bin/lwm2mAgent.js
-PROXY_PATH=/opt/iotagent-lwm2m
-PIDFILE=$PROXY_PATH/$NAME.pid
+IOTA_PATH=/opt/iotagent-lwm2m
+PIDFILE=$IOTA_PATH/$NAME.pid
 LOG_PATH=/var/log/iotagent-lwm2m/${NAME}.log
 
 iotagentlwm2m_start()
 {
     printf "%-50s" "Starting ${NAME}..."
-    cd $PROXY_PATH
+    cd $IOTA_PATH
     if [[ -x ${EXECUTABLE} ]]; then
-        cd $PROXY_PATH
-        su $PROXY_USER -p -c "cd $PROXY_PATH; nohup ${EXECUTABLE} &>> $LOG_PATH & echo \$! > $PIDFILE"
+        cd $IOTA_PATH
+        su $IOTA_USER -p -c "cd $IOTA_PATH; nohup ${EXECUTABLE} &>> $LOG_PATH & echo \$! > $PIDFILE"
         echo "Success"
     else
         printf "%s\n" "Fail - missing ${EXECUTABLE} executable"
