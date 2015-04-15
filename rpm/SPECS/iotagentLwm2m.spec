@@ -42,7 +42,7 @@ cp -R %{_srcdir}/lib \
       %{_srcdir}/config.js \
       %{_srcdir}/package.json \
       %{_srcdir}/omaRegistryMap.json \
-      %{_srcdir}/omeRegistryInverseMap.json \
+      %{_srcdir}/omaRegistryInverseMap.json \
       %{_srcdir}/LICENSE \
       %{_build_root_project}
 
