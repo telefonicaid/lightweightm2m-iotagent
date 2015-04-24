@@ -27,20 +27,7 @@ config.lwm2m = {
     logLevel: 'FATAL',
     port: 60001,
     defaultType: 'Device',
-    types: [
-        {
-            name: 'Light',
-            url: '/light'
-        },
-        {
-            name: 'Pressure',
-            url: '/pres'
-        },
-        {
-            name: 'Arduino',
-            url: '/arduino'
-        }
-    ]
+    types: [ ]
 };
 
 config.ngsi = {
@@ -56,42 +43,7 @@ config.ngsi = {
         type: 'mongodb',
  	host: 'localhost'
     },
-    types: {
-        'Light': {
-            service: 'smartGondor',
-            subservice: '/gardens',
-            commands: [],
-            lazy: [
-                {
-                    name: 'luminescence',
-                    type: 'Lumens'
-                }
-            ],
-            active: [
-                {
-                    name: 'status',
-                    type: 'Boolean'
-                }
-            ]
-        },
-        'Pressure': {
-            service: 'dumbMordor',
-            subservice: '/deserts',
-            commands: [],
-            lazy: [
-                {
-                    name: 'pressure',
-                    type: 'bars'
-                }
-            ],
-            active: [
-                {
-                    name: 'status',
-                    type: 'Boolean'
-                }
-            ]
-        }
-    },
+    types: { },
     service: 'smartGondor',
     subservice: '/gardens',
     providerUrl: 'http://192.168.56.1:4041',
