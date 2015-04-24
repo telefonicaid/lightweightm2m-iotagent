@@ -27,6 +27,27 @@ config.lwm2m = {
     logLevel: 'FATAL',
     port: 60001,
     defaultType: 'Device',
+    ipProtocol: 'udp4',
+    serverProtocol: 'udp4',
+    formats: [
+        {
+            name: 'application-vnd-oma-lwm2m/text',
+            value: 1541
+        },
+        {
+            name: 'application-vnd-oma-lwm2m/tlv',
+            value: 1542
+        },
+        {
+            name: 'application-vnd-oma-lwm2m/json',
+            value: 1543
+        },
+        {
+            name: 'application-vnd-oma-lwm2m/opaque',
+            value: 1544
+        }
+    ],
+    writeFormat: 'application-vnd-oma-lwm2m/text',
     types: [ ]
 };
 
