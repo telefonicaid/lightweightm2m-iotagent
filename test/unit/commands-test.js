@@ -54,6 +54,7 @@ describe('Command attributes test', function() {
         ], done);
     });
     afterEach(function(done) {
+        //lwm2mClient.setHandler(deviceInformation.serverInfo, 'execute');
         async.series([
             apply(lwm2mClient.unregister, deviceInformation),
             iotAgent.stop,
