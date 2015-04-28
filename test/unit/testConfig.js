@@ -42,6 +42,10 @@ config.lwm2m = {
         {
             name: 'Pressure',
             url: '/pres'
+        },
+        {
+            name: 'Robot',
+            url: '/robot'
         }
     ]
 };
@@ -114,6 +118,24 @@ config.ngsi = {
                     objectType: 67000,
                     objectInstance: 0,
                     objectResource: 1
+                }
+            }
+        },
+        'Robot': {
+            commands: [
+                {
+                    name: 'position',
+                    type: 'Array'
+                }
+            ],
+            lazy: [],
+            staticAttributes: [],
+            active: [],
+            lwm2mResourceMapping: {
+                'position' : {
+                    objectType: 9090,
+                    objectInstance: 0,
+                    objectResource: 0
                 }
             }
         }
