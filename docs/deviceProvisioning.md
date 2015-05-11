@@ -48,7 +48,6 @@ are two attributes that you will want to taylor:
 be your machine's IP and the default port, but in case you are using an external context broker (or one deployed in 
 a Virtual Machine) it may differ.
 
-
 You should change at least the log level, anyway, as in the default value (`FATAL`) it will show no information of 
 what's going on with the execution.
 
