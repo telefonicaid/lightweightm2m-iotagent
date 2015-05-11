@@ -14,8 +14,9 @@ registered and start being used with the agent.
 This guide will use a Lightweight M2M client to simulate the interaction with the device. The installation and use of
 this client will be explained when appropriate.
 
-In this guide we will provide an explicit mapping for all the device attributes. Some of them could be mapped automatically
-using the OMA Registry automatic mapping (that will be covered in a different step-by-step guide).
+In this guide we will provide an explicit mapping for all the device attributes, using the `Robot` example given in the
+[Getting Started](gettingStarted.md) section. Some of them could be mapped automatically using the OMA Registry 
+automatic mapping (but those will be covered in other step-by-step guides).
 
 # <a name="installation"/> Installation
 ## Installation of the Agent
@@ -66,11 +67,12 @@ bin/iotagent-lwm2m-client.js
 ```
 
 ## Provisioning the device
-Before starting to use any device, the device must be provisioned or a device configuration or type should be created.
-In this step, we'll be sending a preprovisioning request for a Robot device. To send the preprovisioning request we will
-be using the `curl` command that comes installed with any Unix-like OS.
+Before starting to use any device, the device must be provisioned. In this step, we'll be sending a preprovisioning 
+request for a 'Robot' device. To send the preprovisioning request we will be using the `curl` command that comes installed 
+with any Unix-like OS.
 
-This request is sent to the administrative port of the IoT Agent (default value 4041), not to the Lightweight M2M port. 
+This request has to be sent to the administrative port of the IoT Agent (default value 4041), not to the
+Lightweight M2M port. 
 
 The following request provision the device with device ID `robot1`:
 ```
@@ -185,6 +187,7 @@ Now you should be able to see the Entity in your Context Broker. You can do that
 }
 EOF
 ```
+Note that the headers of the request to the Context Broker should match the ones you used in the Device Provisioning.
 
 ### Updating the active attributes
 In order to update the value of an attribute, issue a new `set` command, like the following:
