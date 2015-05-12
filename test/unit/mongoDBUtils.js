@@ -31,7 +31,7 @@ function cleanDb(host, name, callback) {
     MongoClient.connect(url, function(err, db) {
         if (db) {
             var deviceCollection = db.collection('devices'),
-                groupCollection = db.collection('devices'),
+                groupCollection = db.collection('groups'),
                 entities = db.collection('entities'),
                 registrations = db.collection('registrations');
 
