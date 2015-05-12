@@ -180,7 +180,7 @@ Now you should be able to see the Entity in your Context Broker. You can do that
         {
             "type": "Robot",
             "isPattern": "false",
-            "id": "robot1"
+            "id": "robot1:Robot"
         }
     ]
 }
@@ -208,7 +208,7 @@ the following case:
         {
             "type": "Robot",
             "isPattern": "false",
-            "id": "robot1"
+            "id": "robot1:Robot"
         }
     ],
     "attributes" : [
@@ -230,7 +230,7 @@ just update the command attribute in the Context Broker entity, with the followi
         {
             "type": "Robot",
             "isPattern": "false",
-            "id": "robot1",
+            "id": "robot1:Robot",
             "attributes": [
             {
                 "name": "Position",
