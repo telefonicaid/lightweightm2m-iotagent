@@ -30,27 +30,15 @@ function cleanDb(host, name, callback) {
 
     MongoClient.connect(url, function(err, db) {
         if (db) {
-            var deviceCollection = db.collection('devices'),
-                groupCollection = db.collection('groups'),
-                entities = db.collection('entities'),
-                registrations = db.collection('registrations');
+            var collections = ['devices', 'groups', 'entities', 'registrations'];
 
-            if (deviceCollection) {
-                deviceCollection.drop();
+            for (var i in collections) {
+                var collection = db.collection(collections[i]);
+
+                if (collection) {
+                    collection.drop();
+                }
             }
-
-            if (groupCollection) {
-                groupCollection.drop();
-            }
-
-            if (entities) {
-                entities.drop();
-            }
-
-            if (registrations) {
-                registrations.drop();
-            }
-
             db.close();
         }
 
