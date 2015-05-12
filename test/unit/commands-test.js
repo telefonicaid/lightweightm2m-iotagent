@@ -24,11 +24,13 @@
 
 var config = require('./testConfig'),
     lwm2mClient = require('lwm2m-node-lib').client,
+    request = require('request'),
     iotAgent = require('../../lib/iotAgentLwm2m'),
     ngsiTestUtils = require('./../../lib/ngsiUtils'),
     mongoUtils = require('./mongoDBUtils'),
     async = require('async'),
     apply = async.apply,
+    utils = require('../utils'),
     should = require('should'),
     clientConfig = {
         host: 'localhost',
@@ -54,7 +56,6 @@ describe('Command attributes test', function() {
         ], done);
     });
     afterEach(function(done) {
-        //lwm2mClient.setHandler(deviceInformation.serverInfo, 'execute');
         async.series([
             apply(lwm2mClient.unregister, deviceInformation),
             iotAgent.stop,
@@ -63,7 +64,7 @@ describe('Command attributes test', function() {
         ], done);
     });
 
-    describe('When a command value si changed in Orion', function() {
+    describe('When a command value is changed in Orion for a statically configured type', function() {
         beforeEach(function(done) {
             lwm2mClient.register(
                 clientConfig.host,
@@ -107,5 +108,95 @@ describe('Command attributes test', function() {
                 done();
             });
         });
+
+        it('should return a 200 OK statusCode', function(done) {
+            var attributes = [
+                    {
+                        name: 'position',
+                        type: 'Array',
+                        value: '[15,6234,312]'
+                    }
+                ];
+
+            function handleExecute(objectType, objectId, resourceId, args, callback) {
+                callback();
+            }
+
+            lwm2mClient.setHandler(deviceInformation.serverInfo, 'execute', handleExecute);
+
+            ngsiClient.update('TestClient:Robot', 'Robot', attributes, function(error, response, body) {
+                should.not.exist(error);
+                should.exist(body);
+                should.exist(body.contextResponses);
+                body.contextResponses.length.should.equal(1);
+                body.contextResponses[0].statusCode.code.should.equal('200');
+
+                done();
+            });
+        });
+    });
+
+    describe('When a command value is changed in Orion for a preprovisioned device', function() {
+        var options = {
+            url: 'http://localhost:' + config.ngsi.server.port + '/iot/devices',
+            method: 'POST',
+            json: utils.readExampleFile('./test/provisionExamples/provisionDeviceWithCommands.json'),
+            headers: {
+                'fiware-service': 'smartGondor',
+                'fiware-servicepath': '/gardens'
+            }
+        };
+
+        beforeEach(function(done) {
+            request(options, function(error, response, body) {
+                lwm2mClient.register(
+                    clientConfig.host,
+                    clientConfig.port,
+                    clientConfig.url,
+                    'TestRobotPre',
+                    function(error, result) {
+                        deviceInformation = result;
+                        async.series([
+                            async.apply(lwm2mClient.registry.create, '/6789/0'),
+                            async.apply(lwm2mClient.registry.setResource, '/6789/0', '17', '[]')
+                        ], done);
+                    }
+                );
+            });
+        });
+
+        it('should send the execution command to the LWM2M client', function(done) {
+            var handleExecuted = false,
+                attributes = [
+                    {
+                        name: 'position',
+                        type: 'Array',
+                        value: '[15,6234,312]'
+                    }
+                ];
+
+            function handleExecute(objectType, objectId, resourceId, args, callback) {
+                objectType.should.equal('6789');
+                objectId.should.equal('0');
+                resourceId.should.equal('17');
+                handleExecuted = true;
+                callback();
+            }
+
+            lwm2mClient.setHandler(deviceInformation.serverInfo, 'execute', handleExecute);
+
+            ngsiClient.update('TestRobotPre:RobotPre', 'RobotPre', attributes, function(error, response, body) {
+                should.not.exist(error);
+                handleExecuted.should.equal(true);
+
+                done();
+            });
+        });
+        it('should return a 200 OK statusCode');
+    });
+
+    describe('When a command value is changed in Orion for a device registering in a configuration', function() {
+        it('should send the execution command to the LWM2M client');
+        it('should return a 200 OK statusCode');
     });
 });
