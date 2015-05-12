@@ -472,6 +472,7 @@ describe('Device auto-registration test', function() {
                     async.apply(lwm2mClient.registry.setResource, '/3303/0', '0', '19')
                 ], done);
             });
+            
         });
         it('should return the registration information', function(done) {
             lwm2mClient.register(
@@ -492,36 +493,6 @@ describe('Device auto-registration test', function() {
     });
 
     describe('When a preprovisioned device registers with an unmappable attribute', function(done) {
-        var options = {
-            url: 'http://localhost:' + config.ngsi.server.port + '/iot/devices',
-            method: 'POST',
-            json: utils.readExampleFile('./test/provisionExamples/preprovisionUnmappableAttribute.json'),
-            headers: {
-                'fiware-service': 'smartGondor',
-                'fiware-servicepath': '/gardens'
-            }
-        };
-
-        beforeEach(function(done) {
-            request(options, function(error, response, body) {
-                async.series([
-                    apply(lwm2mClient.registry.create, '/3303/0'),
-                    async.apply(lwm2mClient.registry.setResource, '/3303/0', '0', '19')
-                ], done);
-            });
-        });
-        it('should return the registration information', function(done) {
-            lwm2mClient.register(
-                clientConfig.host,
-                clientConfig.port,
-                '/rd',
-                'ws1',
-                function(error, result) {
-                    should.exist(error);
-
-                    done();
-                }
-            );
-        });
+        it('should fail to be provisioned');
     });
 });
