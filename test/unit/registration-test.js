@@ -472,7 +472,6 @@ describe('Device auto-registration test', function() {
                     async.apply(lwm2mClient.registry.setResource, '/3303/0', '0', '19')
                 ], done);
             });
-            
         });
         it('should return the registration information', function(done) {
             lwm2mClient.register(
