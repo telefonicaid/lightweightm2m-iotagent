@@ -377,7 +377,7 @@ describe('Device auto-registration test', function() {
         });
     });
 
-    describe('When a preprovisioned device sends a registration request to the the IoT Agent', function(done) {
+    describe.only('When a preprovisioned device sends a registration request to the the IoT Agent', function(done) {
         var options = {
             url: 'http://localhost:' + config.ngsi.server.port + '/iot/devices',
             method: 'POST',
