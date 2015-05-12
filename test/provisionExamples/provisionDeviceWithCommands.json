@@ -1,0 +1,21 @@
+{
+  "name": "TestRobotPre",
+  "entity_type": "RobotPre",
+  "attributes": [],
+  "lazy": [],
+  "commands": [
+    {
+      "name": "position",
+      "type": "Array"
+    }
+  ],
+  "internal_attributes": {
+    "lwm2mResourceMapping": {
+      "position" : {
+        "objectType": 6789,
+        "objectInstance": 0,
+        "objectResource": 17
+      }
+    }
+  }
+}

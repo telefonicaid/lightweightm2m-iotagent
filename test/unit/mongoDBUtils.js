@@ -30,9 +30,18 @@ function cleanDb(host, name, callback) {
 
     MongoClient.connect(url, function(err, db) {
         if (db) {
-            db.dropDatabase();
+            var collections = ['devices', 'groups', 'entities', 'registrations'];
+
+            for (var i in collections) {
+                var collection = db.collection(collections[i]);
+
+                if (collection) {
+                    collection.drop();
+                }
+            }
             db.close();
         }
+
         callback();
     });
 }

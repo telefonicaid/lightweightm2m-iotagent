@@ -2,7 +2,8 @@
   "name": "PreprovisionedLight1",
   "entity_name": "ThePreprovisionedLight",
   "entity_type": "APreprovisionedDevice",
-  "attributes": [
+  "attributes": [],
+  "lazy": [
     {
       "name": "pressure",
       "type": "bars"

@@ -8,8 +8,8 @@ Device Provisioning Guide
 
 # <a name="overview"/> Overview
 This guide will show the process of using the IoT Agent with device preprovisioning. In this use case, the owner of the
-devices, before connecting each device, will provision the device information into the agent. Then, the device can be
-registered and start being used with the agent. 
+devices, before connecting each device, will provision the device information into the agent. Then, the device can register
+itself in the server and start being used with the agent. 
 
 This guide will use a Lightweight M2M client to simulate the interaction with the device. The installation and use of
 this client will be explained when appropriate.
@@ -141,7 +141,7 @@ LWM2M-Client> set /7392/0 1 89
 ```
 * Message attribute:
 ```
-LWM2M-Client> set /7392/0 2 "I'm the first robot here"
+LWM2M-Client> set /7392/0 2 "First robot here"
 ```
 * Position attribute:
 ```
