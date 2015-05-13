@@ -186,7 +186,7 @@ Now you should be able to see the Entity in your Context Broker. You can do that
 }
 EOF
 ```
-Note that the headers of the request to the Context Broker should match the ones you used in the Device Provisioning.
+Note that the headers of the request to the Context Broker should match the ones you used in the Device Provisioning. Another thing to note is the Entity ID: it is formed by the concatenation of the Device ID and the type, sepparated by a colon. This convention can be overriden in the provisioning request.
 
 ### Updating the active attributes
 In order to update the value of an attribute, issue a new `set` command, like the following:
