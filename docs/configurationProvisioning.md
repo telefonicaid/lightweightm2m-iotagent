@@ -8,8 +8,8 @@ Configuration Provisioning guide
 
 
 # <a name="overview"/> Overview
-This guide will show the process of using the IoT Agent with configuration preprovisioning. In this use case, the owner 
-of the devices, before connecting each device, provision a device configuration that will be shared among all the devices
+This guide will show the process of using the IoT Agent with configuration provisioning. In this use case, the owner 
+of the devices, before connecting each one of them, provisions a device configuration that will be shared among all the devices
 of the same type. The pieces of information that will be used to distinguish between devices will be the `resource` and
 the API key.
 
@@ -145,7 +145,7 @@ LWM2M-Client> set /3303/0 0 23
 ```
 * Power attribute:
 ```
-LWM2M-Client> set /3312/0 On
+LWM2M-Client> set /3312/0 0 On
 ```
 
 ### Connection to the server
@@ -184,7 +184,7 @@ with the following command:
         }
     ],
     "attributes" : [
-        "﻿﻿Latitude"
+        "Latitude"
     ]    
 }
 EOF

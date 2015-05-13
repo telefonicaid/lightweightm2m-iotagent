@@ -78,7 +78,7 @@ config.ngsi = {
     [...]
     
     types: {
-        'Arduino': {
+        'Robot': {
             service: 'Factory',
             subservice: '/robots',
             commands: [
@@ -164,7 +164,7 @@ LWM2M-Client> set /7392/0 1 89
 ```
 * Message attribute:
 ```
-LWM2M-Client> set /7392/0 2 "I'm the first robot here"
+LWM2M-Client> set /7392/0 2 "First robot here"
 ```
 * Position attribute:
 ```
@@ -174,13 +174,12 @@ LWM2M-Client> set /7392/0 3 "[0, 0]"
 ### Connection to the server
 Once all the objects are created in the device, connect with the server with the following command:
 ```
-connect localhost 60001 robot1 /
+connect localhost 60001 robot1 /robots
 ```
 A few notes about this command:
 * First of all, note that the *endpoint name* used, `robot1`, is the same we provisioned in advance with the provisioning 
 request.
-* Note the url used is `/`. This is the default URL and should be used for those devices that are not part of a specific
-configuration. For examples in how to use configuration, check the [Configuration Provisioning Guide](configurationProvisioning.md).
+* Note the url used is `/robots`. This is the URL we configured in the `config.lwm2m.types` attribute.
 
 The following information should be presented in the client's console:
 ```
@@ -203,7 +202,7 @@ Now you should be able to see the Entity in your Context Broker. You can do that
         {
             "type": "Robot",
             "isPattern": "false",
-            "id": "robot1"
+            "id": "robot1:Robot"
         }
     ]
 }
@@ -231,7 +230,7 @@ the following case:
         {
             "type": "Robot",
             "isPattern": "false",
-            "id": "robot1"
+            "id": "robot1:Robot"
         }
     ],
     "attributes" : [
@@ -253,7 +252,7 @@ just update the command attribute in the Context Broker entity, with the followi
         {
             "type": "Robot",
             "isPattern": "false",
-            "id": "robot1",
+            "id": "robot1:Robot",
             "attributes": [
             {
                 "name": "Position",
