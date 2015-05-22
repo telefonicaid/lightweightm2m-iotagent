@@ -20,7 +20,7 @@
 
 IOTA_VERSION=$2
 if [ -z "$IOTA_VERSION" ]; then
-  IOTA_VERSION=0.2.0
+  IOTA_VERSION=0.2.0-next
 fi
 IOTA_RELEASE=$1
 if [ -z "$IOTA_RELEASE" ]; then
