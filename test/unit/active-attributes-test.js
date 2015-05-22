@@ -23,7 +23,7 @@
 'use strict';
 
 var config = require('./testConfig'),
-    lwm2mClient = require('iotagent-lwm2m-lib').client,
+    lwm2mClient = require('lwm2m-node-lib').client,
     iotAgent = require('../../lib/iotAgentLwm2m'),
     ngsiTestUtils = require('./../../lib/ngsiUtils'),
     mongoUtils = require('./mongoDBUtils'),
@@ -34,7 +34,8 @@ var config = require('./testConfig'),
         host: 'localhost',
         port: '60001',
         endpointName: 'ActiveTestClient',
-        url: '/pres'
+        url: '/pres',
+        ipProtocol: 'udp4'
     },
     ngsiClient = ngsiTestUtils.create(
         config.ngsi.contextBroker.host,
@@ -50,8 +51,8 @@ describe('Active attributes test', function() {
         async.series([
             apply(mongoUtils.cleanDbs, config.ngsi.contextBroker.host),
             apply(iotAgent.start, config),
-            apply(lwm2mClient.registry.create, '/5/0'),
-            apply(lwm2mClient.registry.setResource, '/5/0', '2', '789')
+            apply(lwm2mClient.registry.create, '/5000/0'),
+            apply(lwm2mClient.registry.setResource, '/5000/0', '2', '789')
         ], function(error) {
             lwm2mClient.register(
                 clientConfig.host,
@@ -60,7 +61,7 @@ describe('Active attributes test', function() {
                 clientConfig.endpointName,
                 function(error, result) {
                     deviceInformation = result;
-                    done();
+                    setTimeout(done, 1000);
                 }
             );
         });
@@ -71,15 +72,17 @@ describe('Active attributes test', function() {
             iotAgent.stop,
             lwm2mClient.registry.reset,
             apply(mongoUtils.cleanDbs, config.ngsi.contextBroker.host)
-        ], done);
+        ], function(error, results) {
+            done();
+        });
     });
 
     describe('When an active attribute changes its value in the device', function() {
         it('should update its value in the corresponding Orion entity', function(done) {
             async.series([
-                async.apply(lwm2mClient.registry.setResource, '/5/0', '2', '89'),
-                async.apply(lwm2mClient.registry.setResource, '/5/0', '2', '19')
-            ], function() {
+                async.apply(lwm2mClient.registry.setResource, '/5000/0', '2', '89'),
+                async.apply(lwm2mClient.registry.setResource, '/5000/0', '2', '19')
+            ], function(error) {
                 setTimeout(function() {
                     ngsiClient.query('ActiveTestClient:Pressure', 'Pressure', ['pressure'],
                         function(error, response, body) {
@@ -94,31 +97,5 @@ describe('Active attributes test', function() {
                 }, 500);
             });
         });
-    });
-
-    describe('When a new object is registered in the client and the registration is updated', function() {
-        it('should update its value in the corresponding Orion entity', function(done) {
-            async.series([
-                apply(lwm2mClient.registry.setResource, '/5/0', '2', '89'),
-                apply(lwm2mClient.registry.create, '/67/0'),
-                apply(lwm2mClient.update, deviceInformation),
-                apply(lwm2mClient.registry.setResource, '/67/0', '1', '4756')
-            ], function(error) {
-                setTimeout(function() {
-                    ngsiClient.query('ActiveTestClient:Pressure', 'Pressure', ['position'],
-                        function(error, response, body) {
-
-                            should.not.exist(error);
-                            should.exist(body);
-                            should.not.exist(body.errorCode);
-                            body.contextResponses[0].contextElement.attributes[0].value.should.equal('4756');
-
-                            done();
-                        });
-                }, 500);
-            });
-        });
-
-        it('should update the list of observers in the IOT Agent');
     });
 });

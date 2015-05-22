@@ -24,9 +24,10 @@
 var config = {};
 
 config.lwm2m = {
-    logLevel: 'ERROR',
+    logLevel: 'FATAL',
     port: 60001,
     defaultType: 'Device',
+    serverProtocol: 'udp4',
     deviceRegistry: {
         type: 'mongodb',
         host: 'localhost',
@@ -41,12 +42,16 @@ config.lwm2m = {
         {
             name: 'Pressure',
             url: '/pres'
+        },
+        {
+            name: 'Robot',
+            url: '/robot'
         }
     ]
 };
 
 config.ngsi = {
-    logLevel: 'ERROR',
+    logLevel: 'FATAL',
     contextBroker: {
         host: '192.168.56.101',
         port: '1026'
@@ -78,7 +83,7 @@ config.ngsi = {
             ],
             lwm2mResourceMapping: {
                 'luminescence' : {
-                    objectType: 6,
+                    objectType: 6000,
                     objectInstance: 0,
                     objectResource: 3
                 }
@@ -105,14 +110,32 @@ config.ngsi = {
             ],
             lwm2mResourceMapping: {
                 'pressure' : {
-                    objectType: 5,
+                    objectType: 5000,
                     objectInstance: 0,
                     objectResource: 2
                 },
                 'position' : {
-                    objectType: 67,
+                    objectType: 67000,
                     objectInstance: 0,
                     objectResource: 1
+                }
+            }
+        },
+        'Robot': {
+            commands: [
+                {
+                    name: 'position',
+                    type: 'Array'
+                }
+            ],
+            lazy: [],
+            staticAttributes: [],
+            active: [],
+            lwm2mResourceMapping: {
+                'position' : {
+                    objectType: 9090,
+                    objectInstance: 0,
+                    objectResource: 0
                 }
             }
         }

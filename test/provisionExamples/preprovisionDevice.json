@@ -1,0 +1,22 @@
+{
+  "name": "PreprovisionedLight1",
+  "entity_name": "ThePreprovisionedLight",
+  "entity_type": "APreprovisionedDevice",
+  "attributes": [],
+  "lazy": [
+    {
+      "name": "pressure",
+      "type": "bars"
+    }
+  ],
+  "commands": [],
+  "internal_attributes": {
+    "lwm2mResourceMapping": {
+      "pressure" : {
+        "objectType": 5000,
+        "objectInstance": 0,
+        "objectResource": 2
+      }
+    }
+  }
+}

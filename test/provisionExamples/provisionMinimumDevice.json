@@ -1,0 +1,6 @@
+{
+    "name": "ws1",
+    "entity_name": "Weather1",
+    "entity_type": "WeatherStation",
+    "attributes": []
+}

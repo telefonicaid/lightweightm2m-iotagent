@@ -1,0 +1,22 @@
+{
+  "services": [
+    {
+      "resource": "/lightConfig",
+      "apikey": "",
+      "type": "ConfiguredDevice",
+      "commands": [],
+      "lazy": [
+        {
+          "name": "Luminosity Sensor",
+          "type": "Lumens"
+        }
+      ],
+      "active": [
+        {
+          "name": "Temperature Sensor",
+          "type": "Lumens"
+        }
+      ]
+    }
+  ]
+}

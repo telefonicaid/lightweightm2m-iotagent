@@ -29,19 +29,40 @@ function cleanDb(host, name, callback) {
     var url = 'mongodb://' + host + ':27017/' + name;
 
     MongoClient.connect(url, function(err, db) {
-        db.dropDatabase();
-        db.close();
+        if (db) {
+            var collections = ['devices', 'groups', 'entities', 'registrations'];
+
+            for (var i in collections) {
+                var collection = db.collection(collections[i]);
+
+                if (collection) {
+                    collection.drop();
+                }
+            }
+            db.close();
+        }
+
         callback();
     });
 }
 
 function cleanDbs(host, callback) {
-    async.series([
-        async.apply(cleanDb, 'localhost', 'lwtm2m'),
-        async.apply(cleanDb, 'localhost', 'iotagent'),
-        async.apply(cleanDb, host, 'orion-smartgondor'),
-        async.apply(cleanDb, host, 'orion')
-    ], callback);
+    var operations = [
+            async.apply(cleanDb, 'localhost', 'lwtm2m'),
+            async.apply(cleanDb, 'localhost', 'iotagent'),
+            async.apply(cleanDb, host, 'orion'),
+            async.apply(cleanDb, host, 'iotagent')
+        ],
+        remoteDatabases = [
+            'smartgondor',
+            'dumbmordor'
+    ];
+
+    for (var i in remoteDatabases) {
+        operations.push(async.apply(cleanDb, host, 'orion-' + remoteDatabases[i]));
+    }
+
+    async.series(operations, callback);
 }
 
 exports.cleanDb = cleanDb;

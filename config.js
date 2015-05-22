@@ -27,20 +27,28 @@ config.lwm2m = {
     logLevel: 'DEBUG',
     port: 60001,
     defaultType: 'Device',
-    types: [
+    ipProtocol: 'udp4',
+    serverProtocol: 'udp4',
+    formats: [
         {
-            name: 'Light',
-            url: '/light'
+            name: 'application-vnd-oma-lwm2m/text',
+            value: 1541
         },
         {
-            name: 'Pressure',
-            url: '/pres'
+            name: 'application-vnd-oma-lwm2m/tlv',
+            value: 1542
         },
         {
-            name: 'Arduino',
-            url: '/arduino'
+            name: 'application-vnd-oma-lwm2m/json',
+            value: 1543
+        },
+        {
+            name: 'application-vnd-oma-lwm2m/opaque',
+            value: 1544
         }
-    ]
+    ],
+    writeFormat: 'application-vnd-oma-lwm2m/text',
+    types: [ ]
 };
 
 config.ngsi = {
@@ -56,42 +64,7 @@ config.ngsi = {
         type: 'mongodb',
  	host: 'localhost'
     },
-    types: {
-        'Light': {
-            service: 'smartGondor',
-            subservice: '/gardens',
-            commands: [],
-            lazy: [
-                {
-                    name: 'luminescence',
-                    type: 'Lumens'
-                }
-            ],
-            active: [
-                {
-                    name: 'status',
-                    type: 'Boolean'
-                }
-            ]
-        },
-        'Pressure': {
-            service: 'dumbMordor',
-            subservice: '/deserts',
-            commands: [],
-            lazy: [
-                {
-                    name: 'pressure',
-                    type: 'bars'
-                }
-            ],
-            active: [
-                {
-                    name: 'status',
-                    type: 'Boolean'
-                }
-            ]
-        }
-    },
+    types: { },
     service: 'smartGondor',
     subservice: '/gardens',
     providerUrl: 'http://192.168.56.1:4041',
