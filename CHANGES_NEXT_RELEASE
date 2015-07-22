@@ -1,8 +1,0 @@
-- Add Keywords to the package.json
-- Improve documentation
-- Add OMA Registry download tool
-- Add Mappings from OMA Registry for unconfigured attributes
-- Change the library dependencies for iotagents and lwm2m to the official NPM package
-- Fix several bugs found during CPBR#8
-- Fix active attributes not being observed for Device Group registrations (#23)
-- Fix lazy interactions with preprovisioned devices (broken in previous releases) (#33)
