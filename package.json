@@ -23,6 +23,9 @@
     "url": "https://github.com/telefonicaid/lightweightm2m-iotagent/issues"
   },
   "main": "iotAgentLwm2m",
+  "bin": {
+    "lwm2mAgent": "bin/lwm2mAgent.js"
+  },
   "engines": {
     "node": ">=0.10.8"
   },
