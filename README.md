@@ -67,6 +67,13 @@ To install the RPM, use the YUM tool:
 yum localinstall --nogpg <rpm-file>
 ```
 
+## Using Docker
+There are automatic builds of the development version of the IOTAgent published in Docker hub. In order to install using the docker version, just execute the following:
+```
+docker run --link orion:orion fiwareiotplatform/lighteweightm2m-iotagent
+```
+As you can see, the Lightweight M2M (as any other IOTA) requires a Context Broker to work. In order to link it, just use the option `--link` as shown in the example.
+
 # <a name="usage"/> Usage
 ## Github installation
 In order to execute the IOTAgent, just issue the following command from the root folder of the cloned project:
