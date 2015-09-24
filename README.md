@@ -5,7 +5,7 @@ OMA Lightweight M2M IoT Agent: Overview
 * [Overview](#overview)
 * [Architecture](docs/architecture.md)
 * [Installation and Administration Guide](docs/administrationGuide.md)
-* [User & Programmers Manual](docs/userManual.md)
+* [User & Programmers Manual](docs/userGuide.md)
         
 #  <a name="overview"/> Overview
 ## Description
@@ -15,7 +15,9 @@ For more information on what an IoT Agent is or how it should work, please check
 
 For more information on [OMA Lightweight M2M](http://openmobilealliance.org/about-oma/work-program/m2m-enablers/) you can check the [Node.js OMA Lightweight M2M library](https://github.com/telefonicaid/lwm2m-node-lib) we are using.
 
-If you just want to start using the agent, jump to the [Quick Start Guide](doc/userManual.md#gettingstarted). 
+If you just want to start using the agent, jump to the [Quick Start Guide](docs/userManual.md#gettingstarted). 
+
+You will find some  more general considerations about the LWM2M Mapping we are using in the following subsections.
 
 ## Type configuration
 In order to assign the proper configuration for each type of device, a mechanism to assign types to new arriving devices should be used. This mechanism is based on Prefixes for the registrarion URL. For each type configured in the `lwm2m` configuration section in the `config.js` config file, a url prefix has to be defined. Whenever a registration arrives to an url with that prefix, the device will be assigned the corresponding type.
