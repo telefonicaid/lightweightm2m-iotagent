@@ -143,6 +143,15 @@ udp        0      0 0.0.0.0:60001               0.0.0.0:*                       
 ```
 where the `<PID>` corresponds to the PID of the IoT Agent.
 
+## Checking the service is up
+A quick way to check if the service is working is to use the `status` command of the service. Execute:
+```
+service iotagent-lwm2m status
+```
+This will tell you if the SO thinks the IOTA Service is up. Be aware that this is just a quick method based on PID checking, 
+that doesn't check the actual working Agent, just the existence of the process. Querying the administrative interface
+is always a stronger check.
+
 ## Making a simple Lightweight M2M Protocol Check
 In order to make a simple LWM2M Check, a LWM2M client should be installed. The best approach is to install the client
 of the same library the IoT Agent uses, the [Node.js LWM2M Library](https://github.com/telefonicaid/lwm2m-node-lib).
