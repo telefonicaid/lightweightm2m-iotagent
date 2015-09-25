@@ -6,6 +6,8 @@ OMA Lightweight M2M IoT Agent: Administration Guide
 * [Installation](#installation)
 * [Configuration](#configuration)
 * [Packaging](#packaging)
+* [Sanity checks](#sanity)
+* [Diagnosis procedures](#diagnosis)
 
 #  <a name="prerequisites"/>  Prerequisites
 The IOT Agent requires Node.js 0.10.x to work and uses NPM as its package manager. Most Linux distributions offer packages to install it. For other OS, you can find instructions to install Node.js [here](https://nodejs.org/). 
@@ -93,3 +95,6 @@ cd rpm
 Where `<version-number>` is the version (x.y.z) you want the package to have and `<release-number>` is an increasing
 number dependent un previous installations. 
 
+# <a name="sanity"/> Sanity checks
+
+# <a name="diagnosis"/> Diagnosis procedures

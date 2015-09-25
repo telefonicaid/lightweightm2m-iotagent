@@ -3,7 +3,6 @@ OMA Lightweight M2M IoT Agent: Overview
 # Index
 
 * [Overview](#overview)
-* [Architecture](docs/architecture.md)
 * [Installation and Administration Guide](docs/administrationGuide.md)
 * [User & Programmers Manual](docs/userGuide.md)
         
