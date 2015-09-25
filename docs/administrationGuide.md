@@ -191,10 +191,13 @@ written to the stdout. Whenever you are trying to debug a log, change first the 
 section. Be aware that the northbound and southbound sides of the IOTA have different log levels, that can be set independently.
 
 ## Resource availability
+To be filled soon by DevOps.
 
 ## Remote Service Access
+Check the [User Manual](userGuide.md) for more information on the exposed APIs.
 
 ## Resource consumption
+To be filled soon by DevOps.
 
 ## I/O Flows
 The Lightweight M2M IoT Agent follows the standard I/O flows for agents shown in the Node.js IoT Agent library. The flow
