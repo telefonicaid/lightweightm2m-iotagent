@@ -1,12 +1,16 @@
 {
-  "name": "ws1",
-  "entity_name": "weather1",
-  "entity_type": "weatherStation",
-  "attributes": [
+  "devices": [
     {
-      "name": "Temperature Sensor",
-      "type": "string"
+      "device_id": "ws1",
+      "entity_name": "weather1",
+      "entity_type": "weatherStation",
+      "attributes": [
+        {
+          "name": "Temperature Sensor",
+          "type": "string"
+        }
+      ],
+      "commands": []
     }
-  ],
-  "commands": []
+  ]
 }

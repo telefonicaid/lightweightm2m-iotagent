@@ -1,6 +1,10 @@
 {
-    "name": "ws1",
-    "entity_name": "Weather1",
-    "entity_type": "WeatherStation",
-    "attributes": []
+  "devices": [
+    {
+      "device_id": "ws1",
+      "entity_name": "Weather1",
+      "entity_type": "WeatherStation",
+      "attributes": []
+    }
+  ]
 }
