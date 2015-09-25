@@ -4,6 +4,8 @@ OMA Lightweight M2M IoT Agent: Overview
 
 * [Overview](#overview)
 * [Installation and Administration Guide](docs/administrationGuide.md)
+  * [Sanity check procedures](docs/administrationGuide.md#sanity)
+  * [Diagnosis Procedures](docs/administrationGuide.md#diagnosis)
 * [User & Programmers Manual](docs/userGuide.md)
         
 #  <a name="overview"/> Overview
