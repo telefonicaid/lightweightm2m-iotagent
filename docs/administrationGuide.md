@@ -60,9 +60,15 @@ service iotagent-lwm2m stop
 In this mode, the log file is written in `/var/log/iotagent-lwm2m/iotagent-lwm2m.log`.
 
 # <a name="configuration"/> Configuration
-There are two ways to provide the IOT Agent with a configuration set: passing the name of a config file (related to the root folder of the project) or customize the example `config.js` in the root. 
+There are two ways to provide the IOT Agent with a configuration set: passing the name of a config file (related to the 
+root folder of the project) or customize the example `config.js` in the root. 
 
-The configuration file is divided in two sections: one standard section for the NGSI North bound `ngsi`, and another one for the specific Lightweight M2M South bound, `lwm2m`. The former follows the same format described for the Node.js IOT Agent Framework, described [here](https://github.com/telefonicaid/iotagent-node-lib#global-configuration). The latter configures the Lightweight M2M library used for communicating with the devices, as described [here](https://github.com/telefonicaid/lwm2m-node-lib#-configuration) (`server` section).
+The configuration file is divided in two sections: one standard section for the NGSI North bound `ngsi`, and another 
+one for the specific Lightweight M2M South bound, `lwm2m`. The former follows the same format described for the Node.js 
+IOT Agent Framework, described [here](https://github.com/telefonicaid/iotagent-node-lib#global-configuration).
+
+The latter configures the Lightweight M2M library used for communicating with the devices, as described 
+[here](https://github.com/telefonicaid/lwm2m-node-lib#-configuration) (`server` section).
 
 These are the specific LWM2M parameters that can be configured for the agent:
 * **logLevel**: level of logs for the IOTAgent specific information. E.g.: 'DEBUG'.
@@ -96,6 +102,10 @@ Where `<version-number>` is the version (x.y.z) you want the package to have and
 number dependent un previous installations. 
 
 # <a name="sanity"/> Sanity checks
+The Sanity Check Procedures are the steps that a System Administrator will take to verify that an installation is ready
+to be tested. This is therefore a preliminary set of tests to ensure that obvious or basic malfunctioning is fixed 
+before proceeding to unit tests, integration tests and user validation
+
 ## Checking the administrative interface is up 
 The first procedure that can be executed to check if the IoTAgent is running is to get the version from the administrative
 interface. A curl command can be used to do so:
@@ -103,6 +113,7 @@ interface. A curl command can be used to do so:
 curl -v http://<server_ip>:4041/iot/about
 ```
 The result of this execution must be a 200 OK return code along with the version of the IoT Agent library being executed:
+
 ```
 HTTP/1.1 200 OK
 X-Powered-By: Express
@@ -115,7 +126,20 @@ Connection: keep-alive
 {"version":"0.8.1","port":4041,"baseRoot":"/"}
 ```
 
-## Checking both southbound and northbound ports are up
+## List of running processes
+The Agent runs a single node.js process, executing the `bin/lwm2mAgent.js` script. Here is an example of the runnig process.
+```
+root       732 31786  8 10:14 pts/0    00:00:00 node bin/lwm2mAgent.js
+```
+If the process is running as a service, the PID number can be found in the `/opt/iotagent-lwm2m/iotagent-lwm2m.pid` file.
+
+## Databases
+The Lightweight M2M can work with in-memory databases (for testing purposes) or with MongoDB, depending on the selected
+configuration. The host, port and database name are configured in the config file as well. Check the [Configuration](configuration)
+section for details. Be aware that both the North Bound and the South Bound make use of the DB, and that their configurations
+can differ.
+
+## Network Interfaces Up & Open
 Using `netstat` in a Linux machine, the ports can be checked up. The IoT Agent should be listening in two ports: the 
 administration and provisioning port (tipically TCP 4041) and the Lightweight M2M port (typically 60001). 
 
@@ -152,7 +176,7 @@ This will tell you if the SO thinks the IOTA Service is up. Be aware that this i
 that doesn't check the actual working Agent, just the existence of the process. Querying the administrative interface
 is always a stronger check.
 
-## Making a simple Lightweight M2M Protocol Check
+## End to end testing
 In order to make a simple LWM2M Check, a LWM2M client should be installed. The best approach is to install the client
 of the same library the IoT Agent uses, the [Node.js LWM2M Library](https://github.com/telefonicaid/lwm2m-node-lib).
 This library contains a simple command line Lightweight M2M Client that can be used to test simple scenarios. For examples
