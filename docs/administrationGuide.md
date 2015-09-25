@@ -189,3 +189,20 @@ in order to check what kind of problema has happened. If the IoT Agent has been 
 located in the `/var/log/iotagent-lwm2m` folder. If the IoT Agent has been started from the command line, logs are 
 written to the stdout. Whenever you are trying to debug a log, change first the log level as explained in the configuration
 section. Be aware that the northbound and southbound sides of the IOTA have different log levels, that can be set independently.
+
+## Resource availability
+
+## Remote Service Access
+
+## Resource consumption
+
+## I/O Flows
+The Lightweight M2M IoT Agent follows the standard I/O flows for agents shown in the Node.js IoT Agent library. The flow
+is reproduced here, for clarity:
+
+![General ](https://raw.github.com/dmoranj/iotagent-node-lib/develop/img/ngsiInteractions.png "NGSI Interactions")
+
+The interaction in the South Bound follows the flows defined by the [OMA Lightweight M2M Specification](http://openmobilealliance.org/about-oma/work-program/m2m-enablers/).
+ 
+
+
