@@ -1,12 +1,16 @@
 {
-  "name": "ws1",
-  "entity_name": "weather1",
-  "entity_type": "weatherStation",
-  "attributes": [
+  "devices": [
     {
-      "name": "Alien Teleportation Scanner",
-      "type": "string"
+      "device_id": "ws1",
+      "entity_name": "weather1",
+      "entity_type": "weatherStation",
+      "attributes": [
+        {
+          "name": "Alien Teleportation Scanner",
+          "type": "string"
+        }
+      ],
+      "commands": []
     }
-  ],
-  "commands": []
+  ]
 }
