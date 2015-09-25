@@ -96,5 +96,63 @@ Where `<version-number>` is the version (x.y.z) you want the package to have and
 number dependent un previous installations. 
 
 # <a name="sanity"/> Sanity checks
+## Checking the administrative interface is up 
+The first procedure that can be executed to check if the IoTAgent is running is to get the version from the administrative
+interface. A curl command can be used to do so:
+```
+curl -v http://<server_ip>:4041/iot/about
+```
+The result of this execution must be a 200 OK return code along with the version of the IoT Agent library being executed:
+```
+HTTP/1.1 200 OK
+X-Powered-By: Express
+Content-Type: application/json; charset=utf-8
+Content-Length: 46
+ETag: W/"2e-d494dc75"
+Date: Fri, 25 Sep 2015 08:14:45 GMT
+Connection: keep-alive
+ 
+{"version":"0.8.1","port":4041,"baseRoot":"/"}
+```
+
+## Checking both southbound and northbound ports are up
+Using `netstat` in a Linux machine, the ports can be checked up. The IoT Agent should be listening in two ports: the 
+administration and provisioning port (tipically TCP 4041) and the Lightweight M2M port (typically 60001). 
+
+The administrative port can be checked with the following command:
+```
+netstat -ntpl | grep 4041
+```
+
+and the result should be a single line like the following:
+
+```
+tcp        0      0 0.0.0.0:4041                0.0.0.0:*                   LISTEN      <PID>/node            
+```
+where the `<PID>` corresponds to the PID of the IoT Agent.
+
+
+The Lightweight M2M port can be checked with the following command:
+```
+netstat -nupl | grep 60001
+```
+
+and the expected result would be a line like the following:
+```
+udp        0      0 0.0.0.0:60001               0.0.0.0:*                               589/node
+```
+where the `<PID>` corresponds to the PID of the IoT Agent.
+
+## Making a simple Lightweight M2M Protocol Check
+In order to make a simple LWM2M Check, a LWM2M client should be installed. The best approach is to install the client
+of the same library the IoT Agent uses, the [Node.js LWM2M Library](https://github.com/telefonicaid/lwm2m-node-lib).
+This library contains a simple command line Lightweight M2M Client that can be used to test simple scenarios. For examples
+on how to perform these kind of tests, see the How-To's in the [Getting Started section of the User Manual](userGuide.md#gettingstarted)
+that shows simple registrations and send measure tests.
 
 # <a name="diagnosis"/> Diagnosis procedures
+Whenever a problem is risen in the IoT Agent, or if the Sanity Checks fail, the administrator should look at the log files
+in order to check what kind of problema has happened. If the IoT Agent has been deployed using the RPMs, logs will be 
+located in the `/var/log/iotagent-lwm2m` folder. If the IoT Agent has been started from the command line, logs are 
+written to the stdout. Whenever you are trying to debug a log, change first the log level as explained in the configuration
+section. Be aware that the northbound and southbound sides of the IOTA have different log levels, that can be set independently.
