@@ -1,0 +1,601 @@
+{
+    "0": {
+        "name": "LWM2M Security",
+        "urn": "urn:oma:lwm2m:oma:0",
+        "id": "0",
+        "schema": "http://www.openmobilealliance.org/tech/profiles/LWM2M_Security-v1_0.xml",
+        "resources": [
+            {
+                "name": "LWM2M  Server URI",
+                "type": "String",
+                "operations": ""
+            },
+            {
+                "name": "Bootstrap Server",
+                "type": "Boolean",
+                "operations": ""
+            },
+            {
+                "name": "Security Mode",
+                "type": "Integer",
+                "operations": ""
+            },
+            {
+                "name": "Public Key or Identity",
+                "type": "Opaque",
+                "operations": ""
+            },
+            {
+                "name": "Server Public Key or Identity",
+                "type": "Opaque",
+                "operations": ""
+            },
+            {
+                "name": "Secret Key",
+                "type": "Opaque",
+                "operations": ""
+            },
+            {
+                "name": "SMS Security Mode",
+                "type": "Integer",
+                "operations": ""
+            },
+            {
+                "name": "SMS Binding Key Parameters",
+                "type": "Opaque",
+                "operations": ""
+            },
+            {
+                "name": "SMS Binding Secret Keys",
+                "type": "Opaque",
+                "operations": ""
+            },
+            {
+                "name": "LWM2M Server SMS Number",
+                "type": "Integer",
+                "operations": ""
+            },
+            {
+                "name": "Short Server ID",
+                "type": "Integer",
+                "operations": ""
+            },
+            {
+                "name": "Client Hold Off Time",
+                "type": "Integer",
+                "operations": ""
+            }
+        ]
+    },
+    "1": {
+        "name": "LWM2M Server",
+        "urn": "urn:oma:lwm2m:oma:1",
+        "id": "1",
+        "schema": "http://www.openmobilealliance.org/tech/profiles/LWM2M_Server-v1_0.xml",
+        "resources": [
+            {
+                "name": "Short Server ID",
+                "type": "Integer",
+                "operations": "R"
+            },
+            {
+                "name": "Lifetime",
+                "type": "Integer",
+                "operations": "RW"
+            },
+            {
+                "name": "Default Minimum Period",
+                "type": "Integer",
+                "operations": "RW"
+            },
+            {
+                "name": "Default Maximum Period",
+                "type": "Integer",
+                "operations": "RW"
+            },
+            {
+                "name": "Disable",
+                "type": "",
+                "operations": "E"
+            },
+            {
+                "name": "Disable Timeout",
+                "type": "Integer",
+                "operations": "RW"
+            },
+            {
+                "name": "Notification Storing When Disabled or Offline",
+                "type": "Boolean",
+                "operations": "RW"
+            },
+            {
+                "name": "Binding",
+                "type": "String",
+                "operations": "RW"
+            },
+            {
+                "name": "Registration Update Trigger",
+                "type": "",
+                "operations": "E"
+            }
+        ]
+    },
+    "2": {
+        "name": "Access Control",
+        "urn": "urn:oma:lwm2m:oma:2",
+        "id": "2",
+        "schema": "http://www.openmobilealliance.org/tech/profiles/LWM2M_Access_Control-v1_0.xml",
+        "resources": [
+            {
+                "name": "Object ID",
+                "type": "Integer",
+                "operations": "R"
+            },
+            {
+                "name": "Object Instance ID",
+                "type": "Integer",
+                "operations": "R"
+            },
+            {
+                "name": "ACL",
+                "type": "Integer",
+                "operations": "RW"
+            },
+            {
+                "name": "Access Control Owner",
+                "type": "Integer",
+                "operations": "RW"
+            }
+        ]
+    },
+    "3": {
+        "name": "Device",
+        "urn": "urn:oma:lwm2m:oma:3",
+        "id": "3",
+        "schema": "http://www.openmobilealliance.org/tech/profiles/LWM2M_Device-v1_0.xml",
+        "resources": [
+            {
+                "name": "Manufacturer",
+                "type": "String",
+                "operations": "R"
+            },
+            {
+                "name": "Model Number",
+                "type": "String",
+                "operations": "R"
+            },
+            {
+                "name": "Serial Number",
+                "type": "String",
+                "operations": "R"
+            },
+            {
+                "name": "Firmware Version",
+                "type": "String",
+                "operations": "R"
+            },
+            {
+                "name": "Reboot",
+                "type": "",
+                "operations": "E"
+            },
+            {
+                "name": "Factory Reset",
+                "type": "",
+                "operations": "E"
+            },
+            {
+                "name": "Available Power Sources",
+                "type": "Integer",
+                "operations": "R"
+            },
+            {
+                "name": "Power Source Voltage",
+                "type": "Integer",
+                "operations": "R"
+            },
+            {
+                "name": "Power Source Current",
+                "type": "Integer",
+                "operations": "R"
+            },
+            {
+                "name": "Battery Level",
+                "type": "Integer",
+                "operations": "R"
+            },
+            {
+                "name": "Memory Free",
+                "type": "Integer",
+                "operations": "R"
+            },
+            {
+                "name": "Error Code",
+                "type": "Integer",
+                "operations": "R"
+            },
+            {
+                "name": "Reset Error Code",
+                "type": "",
+                "operations": "E"
+            },
+            {
+                "name": "Current Time",
+                "type": "Time",
+                "operations": "RW"
+            },
+            {
+                "name": "UTC Offset",
+                "type": "String",
+                "operations": "RW"
+            },
+            {
+                "name": "Timezone",
+                "type": "String",
+                "operations": "RW"
+            },
+            {
+                "name": "Supported Binding and Modes",
+                "type": "String",
+                "operations": "R"
+            }
+        ]
+    },
+    "4": {
+        "name": "Connectivity Monitoring",
+        "urn": "urn:oma:lwm2m:oma:4",
+        "id": "4",
+        "schema": "http://www.openmobilealliance.org/tech/profiles/LWM2M_Connectivity_Monitoring-v1_0.xml",
+        "resources": [
+            {
+                "name": "Network Bearer",
+                "type": "Integer",
+                "operations": "R"
+            },
+            {
+                "name": "Available Network Bearer",
+                "type": "Integer",
+                "operations": "R"
+            },
+            {
+                "name": "Radio Signal Strength",
+                "type": "Integer",
+                "operations": "R"
+            },
+            {
+                "name": "Link Quality",
+                "type": "Integer",
+                "operations": "R"
+            },
+            {
+                "name": "IP Addresses",
+                "type": "String",
+                "operations": "R"
+            },
+            {
+                "name": "Router IP Addresse",
+                "type": "String",
+                "operations": "R"
+            },
+            {
+                "name": "Link Utilization",
+                "type": "Integer",
+                "operations": "R"
+            },
+            {
+                "name": "APN",
+                "type": "String",
+                "operations": "R"
+            },
+            {
+                "name": "Cell ID",
+                "type": "Integer",
+                "operations": "R"
+            },
+            {
+                "name": "SMNC",
+                "type": "Integer",
+                "operations": "R"
+            },
+            {
+                "name": "SMCC",
+                "type": "Integer",
+                "operations": "R"
+            }
+        ]
+    },
+    "5": {
+        "name": "Firmware",
+        "urn": "urn:oma:lwm2m:oma:5",
+        "id": "5",
+        "schema": "http://www.openmobilealliance.org/tech/profiles/LWM2M_Firmware_Update-v1_0.xml",
+        "resources": [
+            {
+                "name": "Package",
+                "type": "Opaque",
+                "operations": "W"
+            },
+            {
+                "name": "Package URI",
+                "type": "String",
+                "operations": "W"
+            },
+            {
+                "name": "Update",
+                "type": "",
+                "operations": "E"
+            },
+            {
+                "name": "State",
+                "type": "Integer",
+                "operations": "R"
+            },
+            {
+                "name": "Update Supported Objects",
+                "type": "Boolean",
+                "operations": "RW"
+            },
+            {
+                "name": "Update Result",
+                "type": "Integer",
+                "operations": "R"
+            }
+        ]
+    },
+    "6": {
+        "name": "Location",
+        "urn": "urn:oma:lwm2m:oma:6",
+        "id": "6",
+        "schema": "http://www.openmobilealliance.org/tech/profiles/LWM2M_Location-v1_0.xml",
+        "resources": [
+            {
+                "name": "Latitude",
+                "type": "String",
+                "operations": "R"
+            },
+            {
+                "name": "Longitude",
+                "type": "String",
+                "operations": "R"
+            },
+            {
+                "name": "Altitude",
+                "type": "String",
+                "operations": "R"
+            },
+            {
+                "name": "Uncertainty",
+                "type": "String",
+                "operations": "R"
+            },
+            {
+                "name": "Velocity",
+                "type": "Opaque",
+                "operations": "R"
+            },
+            {
+                "name": "Timestamp",
+                "type": "Time",
+                "operations": "R"
+            }
+        ]
+    },
+    "7": {
+        "name": "Connectivity Statistics",
+        "urn": "urn:oma:lwm2m:oma:7",
+        "id": "7",
+        "schema": "http://www.openmobilealliance.org/tech/profiles/LWM2M_Connectivity_Statistics-v1_0.xml",
+        "resources": [
+            {
+                "name": "SMS Tx Counter",
+                "type": "Integer",
+                "operations": "R"
+            },
+            {
+                "name": "SMS Rx Counter",
+                "type": "Integer",
+                "operations": "R"
+            },
+            {
+                "name": "Tx Data",
+                "type": "Integer",
+                "operations": "R"
+            },
+            {
+                "name": "Rx Data",
+                "type": "Integer",
+                "operations": "R"
+            },
+            {
+                "name": "Max Message Size",
+                "type": "Integer",
+                "operations": "R"
+            },
+            {
+                "name": "Average Message Size",
+                "type": "Integer",
+                "operations": "R"
+            },
+            {
+                "name": "StartOrReset",
+                "type": "",
+                "operations": "E"
+            }
+        ]
+    },
+    "8": {
+        "name": "Lock and Wipe",
+        "urn": "urn:oma:lwm2m:oma:8",
+        "id": "8"
+    },
+    "9": {
+        "name": "Sofware Update",
+        "urn": "urn:oma:lwm2m:oma:9",
+        "id": "9"
+    },
+    "10": {
+        "name": "Cellular connectivity",
+        "urn": "urn:oma:lwm2m:oma:10",
+        "id": "10"
+    },
+    "11": {
+        "name": "APN connection profile",
+        "urn": "urn:oma:lwm2m:oma:11",
+        "id": "11"
+    },
+    "12": {
+        "name": "WLAN connectivity",
+        "urn": "urn:oma:lwm2m:oma:12",
+        "id": "12"
+    },
+    "13": {
+        "name": "Bearer selection",
+        "urn": "urn:oma:lwm2m:oma:13",
+        "id": "13"
+    },
+    "15": {
+        "name": "DevCapMgmt",
+        "urn": "urn:oma:lwm2m:oma:15",
+        "id": "15"
+    },
+    "2048": {
+        "name": "CmdhPolicy",
+        "urn": "urn:oma:lwm2m:\next:2048",
+        "id": "2048"
+    },
+    "2049": {
+        "name": "ActiveCmdhPolicy",
+        "urn": "urn:oma:lwm2m:\next:2049",
+        "id": "2049"
+    },
+    "2050": {
+        "name": "CmdhDefaults",
+        "urn": "urn:oma:lwm2m:\next:2050",
+        "id": "2050"
+    },
+    "2051": {
+        "name": "CmdhDefEcValues",
+        "urn": "urn:oma:lwm2m:\next:2051",
+        "id": "2051"
+    },
+    "2052": {
+        "name": "cmdhDefEcParamsValues",
+        "urn": "urn:oma:lwm2m:\next:2052",
+        "id": "2052"
+    },
+    "2053": {
+        "name": "CmdhLimits",
+        "urn": "urn:oma:lwm2m:\next:2053",
+        "id": "2053"
+    },
+    "2054": {
+        "name": "CmdhNetworkAccessRules",
+        "urn": "urn:oma:lwm2m:\next:2054",
+        "id": "2054"
+    },
+    "2055": {
+        "name": "CmdhNwAccessRule",
+        "urn": "urn:oma:lwm2m:\next:2055",
+        "id": "2055"
+    },
+    "2056": {
+        "name": "CmdhBuffer",
+        "urn": "urn:oma:lwm2m:\next:2056",
+        "id": "2056"
+    },
+    "3200": {
+        "name": "Digital Input",
+        "urn": "urn:oma:lwm2m:\next:3200",
+        "id": "3200"
+    },
+    "3201": {
+        "name": "Digital Output",
+        "urn": "urn:oma:lwm2m:\next:3201",
+        "id": "3201"
+    },
+    "3202": {
+        "name": "Analogue Input",
+        "urn": "urn:oma:lwm2m:\next:3202",
+        "id": "3202"
+    },
+    "3203": {
+        "name": "Analogue Output",
+        "urn": "urn:oma:lwm2m:\next:3203",
+        "id": "3203"
+    },
+    "3300": {
+        "name": "Generic Sensor",
+        "urn": "urn:oma:lwm2m:\next:3300",
+        "id": "3300"
+    },
+    "3301": {
+        "name": "Luminosity Sensor",
+        "urn": "urn:oma:lwm2m:\next:3301",
+        "id": "3301"
+    },
+    "3302": {
+        "name": "Presence Sensor",
+        "urn": "urn:oma:lwm2m:\next:3302",
+        "id": "3302"
+    },
+    "3303": {
+        "name": "Temperature Sensor",
+        "urn": "urn:oma:lwm2m:\next:3303",
+        "id": "3303"
+    },
+    "3304": {
+        "name": "Humidity Sensor",
+        "urn": "urn:oma:lwm2m:\next:3304",
+        "id": "3304"
+    },
+    "3305": {
+        "name": "Power Measurement",
+        "urn": "urn:oma:lwm2m:\next:3305",
+        "id": "3305"
+    },
+    "3306": {
+        "name": "Actuation",
+        "urn": "urn:oma:lwm2m:\next:3306",
+        "id": "3306"
+    },
+    "3308": {
+        "name": "Set Point",
+        "urn": "urn:oma:lwm2m:\next:3308",
+        "id": "3308"
+    },
+    "3310": {
+        "name": "Load Control",
+        "urn": "urn:oma:lwm2m:\next:3310",
+        "id": "3310"
+    },
+    "3311": {
+        "name": "Light Control",
+        "urn": "urn:oma:lwm2m:\next:3311",
+        "id": "3311"
+    },
+    "3312": {
+        "name": "Power Control",
+        "urn": "urn:oma:lwm2m:\next:3312",
+        "id": "3312"
+    },
+    "3313": {
+        "name": "Accelerometer",
+        "urn": "urn:oma:lwm2m:\next:3313",
+        "id": "3313"
+    },
+    "3314": {
+        "name": "Magnetometer",
+        "urn": "urn:oma:lwm2m:\next:3314",
+        "id": "3314"
+    },
+    "3315": {
+        "name": "Barometer",
+        "urn": "urn:oma:lwm2m:\next:3315",
+        "id": "3315"
+    },
+    "10241": {
+        "name": "HostDeviceInfo",
+        "urn": "urn:oma:lwm2m:x:10241",
+        "id": "10241"
+    }
+}
