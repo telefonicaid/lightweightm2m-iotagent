@@ -7,51 +7,63 @@
         "resources": [
             {
                 "name": "LWM2M  Server URI",
-                "type": "String"
+                "type": "String",
+                "operations": ""
             },
             {
                 "name": "Bootstrap Server",
-                "type": "Boolean"
+                "type": "Boolean",
+                "operations": ""
             },
             {
                 "name": "Security Mode",
-                "type": "Integer"
+                "type": "Integer",
+                "operations": ""
             },
             {
                 "name": "Public Key or Identity",
-                "type": "Opaque"
+                "type": "Opaque",
+                "operations": ""
             },
             {
                 "name": "Server Public Key or Identity",
-                "type": "Opaque"
+                "type": "Opaque",
+                "operations": ""
             },
             {
                 "name": "Secret Key",
-                "type": "Opaque"
+                "type": "Opaque",
+                "operations": ""
             },
             {
                 "name": "SMS Security Mode",
-                "type": "Integer"
+                "type": "Integer",
+                "operations": ""
             },
             {
                 "name": "SMS Binding Key Parameters",
-                "type": "Opaque"
+                "type": "Opaque",
+                "operations": ""
             },
             {
                 "name": "SMS Binding Secret Keys",
-                "type": "Opaque"
+                "type": "Opaque",
+                "operations": ""
             },
             {
                 "name": "LWM2M Server SMS Number",
-                "type": "Integer"
+                "type": "Integer",
+                "operations": ""
             },
             {
                 "name": "Short Server ID",
-                "type": "Integer"
+                "type": "Integer",
+                "operations": ""
             },
             {
                 "name": "Client Hold Off Time",
-                "type": "Integer"
+                "type": "Integer",
+                "operations": ""
             }
         ]
     },
@@ -63,39 +75,48 @@
         "resources": [
             {
                 "name": "Short Server ID",
-                "type": "Integer"
+                "type": "Integer",
+                "operations": "R"
             },
             {
                 "name": "Lifetime",
-                "type": "Integer"
+                "type": "Integer",
+                "operations": "RW"
             },
             {
                 "name": "Default Minimum Period",
-                "type": "Integer"
+                "type": "Integer",
+                "operations": "RW"
             },
             {
                 "name": "Default Maximum Period",
-                "type": "Integer"
+                "type": "Integer",
+                "operations": "RW"
             },
             {
                 "name": "Disable",
-                "type": ""
+                "type": "",
+                "operations": "E"
             },
             {
                 "name": "Disable Timeout",
-                "type": "Integer"
+                "type": "Integer",
+                "operations": "RW"
             },
             {
                 "name": "Notification Storing When Disabled or Offline",
-                "type": "Boolean"
+                "type": "Boolean",
+                "operations": "RW"
             },
             {
                 "name": "Binding",
-                "type": "String"
+                "type": "String",
+                "operations": "RW"
             },
             {
                 "name": "Registration Update Trigger",
-                "type": ""
+                "type": "",
+                "operations": "E"
             }
         ]
     },
@@ -107,19 +128,23 @@
         "resources": [
             {
                 "name": "Object ID",
-                "type": "Integer"
+                "type": "Integer",
+                "operations": "R"
             },
             {
                 "name": "Object Instance ID",
-                "type": "Integer"
+                "type": "Integer",
+                "operations": "R"
             },
             {
                 "name": "ACL",
-                "type": "Integer"
+                "type": "Integer",
+                "operations": "RW"
             },
             {
                 "name": "Access Control Owner",
-                "type": "Integer"
+                "type": "Integer",
+                "operations": "RW"
             }
         ]
     },
@@ -131,71 +156,88 @@
         "resources": [
             {
                 "name": "Manufacturer",
-                "type": "String"
+                "type": "String",
+                "operations": "R"
             },
             {
                 "name": "Model Number",
-                "type": "String"
+                "type": "String",
+                "operations": "R"
             },
             {
                 "name": "Serial Number",
-                "type": "String"
+                "type": "String",
+                "operations": "R"
             },
             {
                 "name": "Firmware Version",
-                "type": "String"
+                "type": "String",
+                "operations": "R"
             },
             {
                 "name": "Reboot",
-                "type": ""
+                "type": "",
+                "operations": "E"
             },
             {
                 "name": "Factory Reset",
-                "type": ""
+                "type": "",
+                "operations": "E"
             },
             {
                 "name": "Available Power Sources",
-                "type": "Integer"
+                "type": "Integer",
+                "operations": "R"
             },
             {
                 "name": "Power Source Voltage",
-                "type": "Integer"
+                "type": "Integer",
+                "operations": "R"
             },
             {
                 "name": "Power Source Current",
-                "type": "Integer"
+                "type": "Integer",
+                "operations": "R"
             },
             {
                 "name": "Battery Level",
-                "type": "Integer"
+                "type": "Integer",
+                "operations": "R"
             },
             {
                 "name": "Memory Free",
-                "type": "Integer"
+                "type": "Integer",
+                "operations": "R"
             },
             {
                 "name": "Error Code",
-                "type": "Integer"
+                "type": "Integer",
+                "operations": "R"
             },
             {
                 "name": "Reset Error Code",
-                "type": ""
+                "type": "",
+                "operations": "E"
             },
             {
                 "name": "Current Time",
-                "type": "Time"
+                "type": "Time",
+                "operations": "RW"
             },
             {
                 "name": "UTC Offset",
-                "type": "String"
+                "type": "String",
+                "operations": "RW"
             },
             {
                 "name": "Timezone",
-                "type": "String"
+                "type": "String",
+                "operations": "RW"
             },
             {
                 "name": "Supported Binding and Modes",
-                "type": "String"
+                "type": "String",
+                "operations": "R"
             }
         ]
     },
@@ -207,47 +249,58 @@
         "resources": [
             {
                 "name": "Network Bearer",
-                "type": "Integer"
+                "type": "Integer",
+                "operations": "R"
             },
             {
                 "name": "Available Network Bearer",
-                "type": "Integer"
+                "type": "Integer",
+                "operations": "R"
             },
             {
                 "name": "Radio Signal Strength",
-                "type": "Integer"
+                "type": "Integer",
+                "operations": "R"
             },
             {
                 "name": "Link Quality",
-                "type": "Integer"
+                "type": "Integer",
+                "operations": "R"
             },
             {
                 "name": "IP Addresses",
-                "type": "String"
+                "type": "String",
+                "operations": "R"
             },
             {
                 "name": "Router IP Addresse",
-                "type": "String"
+                "type": "String",
+                "operations": "R"
             },
             {
                 "name": "Link Utilization",
-                "type": "Integer"
+                "type": "Integer",
+                "operations": "R"
             },
             {
                 "name": "APN",
-                "type": "String"
+                "type": "String",
+                "operations": "R"
             },
             {
                 "name": "Cell ID",
-                "type": "Integer"
+                "type": "Integer",
+                "operations": "R"
             },
             {
                 "name": "SMNC",
-                "type": "Integer"
+                "type": "Integer",
+                "operations": "R"
             },
             {
                 "name": "SMCC",
-                "type": "Integer"
+                "type": "Integer",
+                "operations": "R"
             }
         ]
     },
@@ -259,27 +312,33 @@
         "resources": [
             {
                 "name": "Package",
-                "type": "Opaque"
+                "type": "Opaque",
+                "operations": "W"
             },
             {
                 "name": "Package URI",
-                "type": "String"
+                "type": "String",
+                "operations": "W"
             },
             {
                 "name": "Update",
-                "type": ""
+                "type": "",
+                "operations": "E"
             },
             {
                 "name": "State",
-                "type": "Integer"
+                "type": "Integer",
+                "operations": "R"
             },
             {
                 "name": "Update Supported Objects",
-                "type": "Boolean"
+                "type": "Boolean",
+                "operations": "RW"
             },
             {
                 "name": "Update Result",
-                "type": "Integer"
+                "type": "Integer",
+                "operations": "R"
             }
         ]
     },
@@ -291,27 +350,33 @@
         "resources": [
             {
                 "name": "Latitude",
-                "type": "String"
+                "type": "String",
+                "operations": "R"
             },
             {
                 "name": "Longitude",
-                "type": "String"
+                "type": "String",
+                "operations": "R"
             },
             {
                 "name": "Altitude",
-                "type": "String"
+                "type": "String",
+                "operations": "R"
             },
             {
                 "name": "Uncertainty",
-                "type": "String"
+                "type": "String",
+                "operations": "R"
             },
             {
                 "name": "Velocity",
-                "type": "Opaque"
+                "type": "Opaque",
+                "operations": "R"
             },
             {
                 "name": "Timestamp",
-                "type": "Time"
+                "type": "Time",
+                "operations": "R"
             }
         ]
     },
@@ -323,31 +388,38 @@
         "resources": [
             {
                 "name": "SMS Tx Counter",
-                "type": "Integer"
+                "type": "Integer",
+                "operations": "R"
             },
             {
                 "name": "SMS Rx Counter",
-                "type": "Integer"
+                "type": "Integer",
+                "operations": "R"
             },
             {
                 "name": "Tx Data",
-                "type": "Integer"
+                "type": "Integer",
+                "operations": "R"
             },
             {
                 "name": "Rx Data",
-                "type": "Integer"
+                "type": "Integer",
+                "operations": "R"
             },
             {
                 "name": "Max Message Size",
-                "type": "Integer"
+                "type": "Integer",
+                "operations": "R"
             },
             {
                 "name": "Average Message Size",
-                "type": "Integer"
+                "type": "Integer",
+                "operations": "R"
             },
             {
                 "name": "StartOrReset",
-                "type": ""
+                "type": "",
+                "operations": "E"
             }
         ]
     },
@@ -387,138 +459,143 @@
         "id": "15"
     },
     "2048": {
-        "name": "CmdhPolicy ",
-        "urn": "urn:oma:lwm2m:ext:2048",
+        "name": "CmdhPolicy",
+        "urn": "urn:oma:lwm2m:\next:2048",
         "id": "2048"
     },
     "2049": {
         "name": "ActiveCmdhPolicy",
-        "urn": "urn:oma:lwm2m:ext:2049",
+        "urn": "urn:oma:lwm2m:\next:2049",
         "id": "2049"
     },
     "2050": {
-        "name": "CmdhDefaults ",
-        "urn": "urn:oma:lwm2m:ext:2050",
+        "name": "CmdhDefaults",
+        "urn": "urn:oma:lwm2m:\next:2050",
         "id": "2050"
     },
     "2051": {
-        "name": "CmdhDefEcValues ",
-        "urn": "urn:oma:lwm2m:ext:2051",
+        "name": "CmdhDefEcValues",
+        "urn": "urn:oma:lwm2m:\next:2051",
         "id": "2051"
     },
     "2052": {
-        "name": "cmdhDefEcParamsValues ",
-        "urn": "urn:oma:lwm2m:ext:2052",
+        "name": "cmdhDefEcParamsValues",
+        "urn": "urn:oma:lwm2m:\next:2052",
         "id": "2052"
     },
     "2053": {
         "name": "CmdhLimits",
-        "urn": "urn:oma:lwm2m:ext:2053",
+        "urn": "urn:oma:lwm2m:\next:2053",
         "id": "2053"
     },
     "2054": {
         "name": "CmdhNetworkAccessRules",
-        "urn": "urn:oma:lwm2m:ext:2054",
+        "urn": "urn:oma:lwm2m:\next:2054",
         "id": "2054"
     },
     "2055": {
-        "name": "CmdhNwAccessRule ",
-        "urn": "urn:oma:lwm2m:ext:2055",
+        "name": "CmdhNwAccessRule",
+        "urn": "urn:oma:lwm2m:\next:2055",
         "id": "2055"
     },
     "2056": {
-        "name": "CmdhBuffer  ",
-        "urn": "urn:oma:lwm2m:ext:2056",
+        "name": "CmdhBuffer",
+        "urn": "urn:oma:lwm2m:\next:2056",
         "id": "2056"
     },
     "3200": {
         "name": "Digital Input",
-        "urn": "urn:oma:lwm2m:ext:3200",
+        "urn": "urn:oma:lwm2m:\next:3200",
         "id": "3200"
     },
     "3201": {
         "name": "Digital Output",
-        "urn": "urn:oma:lwm2m:ext:3201",
+        "urn": "urn:oma:lwm2m:\next:3201",
         "id": "3201"
     },
     "3202": {
         "name": "Analogue Input",
-        "urn": "urn:oma:lwm2m:ext:3202",
+        "urn": "urn:oma:lwm2m:\next:3202",
         "id": "3202"
     },
     "3203": {
         "name": "Analogue Output",
-        "urn": "urn:oma:lwm2m:ext:3203",
+        "urn": "urn:oma:lwm2m:\next:3203",
         "id": "3203"
     },
     "3300": {
         "name": "Generic Sensor",
-        "urn": "urn:oma:lwm2m:ext:3300",
+        "urn": "urn:oma:lwm2m:\next:3300",
         "id": "3300"
     },
     "3301": {
         "name": "Luminosity Sensor",
-        "urn": "urn:oma:lwm2m:ext:3301",
+        "urn": "urn:oma:lwm2m:\next:3301",
         "id": "3301"
     },
     "3302": {
         "name": "Presence Sensor",
-        "urn": "urn:oma:lwm2m:ext:3302",
+        "urn": "urn:oma:lwm2m:\next:3302",
         "id": "3302"
     },
     "3303": {
         "name": "Temperature Sensor",
-        "urn": "urn:oma:lwm2m:ext:3303",
+        "urn": "urn:oma:lwm2m:\next:3303",
         "id": "3303"
     },
     "3304": {
         "name": "Humidity Sensor",
-        "urn": "urn:oma:lwm2m:ext:3304",
+        "urn": "urn:oma:lwm2m:\next:3304",
         "id": "3304"
     },
     "3305": {
         "name": "Power Measurement",
-        "urn": "urn:oma:lwm2m:ext:3305",
+        "urn": "urn:oma:lwm2m:\next:3305",
         "id": "3305"
     },
     "3306": {
         "name": "Actuation",
-        "urn": "urn:oma:lwm2m:ext:3306",
+        "urn": "urn:oma:lwm2m:\next:3306",
         "id": "3306"
     },
     "3308": {
         "name": "Set Point",
-        "urn": "urn:oma:lwm2m:ext:3308",
+        "urn": "urn:oma:lwm2m:\next:3308",
         "id": "3308"
     },
     "3310": {
         "name": "Load Control",
-        "urn": "urn:oma:lwm2m:ext:3310",
+        "urn": "urn:oma:lwm2m:\next:3310",
         "id": "3310"
     },
     "3311": {
         "name": "Light Control",
-        "urn": "urn:oma:lwm2m:ext:3311",
+        "urn": "urn:oma:lwm2m:\next:3311",
         "id": "3311"
     },
     "3312": {
         "name": "Power Control",
-        "urn": "urn:oma:lwm2m:ext:3312",
+        "urn": "urn:oma:lwm2m:\next:3312",
         "id": "3312"
     },
     "3313": {
         "name": "Accelerometer",
-        "urn": "urn:oma:lwm2m:ext:3313",
+        "urn": "urn:oma:lwm2m:\next:3313",
         "id": "3313"
     },
     "3314": {
         "name": "Magnetometer",
-        "urn": "urn:oma:lwm2m:ext:3314",
+        "urn": "urn:oma:lwm2m:\next:3314",
         "id": "3314"
     },
     "3315": {
         "name": "Barometer",
-        "urn": "urn:oma:lwm2m:ext:3315",
+        "urn": "urn:oma:lwm2m:\next:3315",
         "id": "3315"
+    },
+    "10241": {
+        "name": "HostDeviceInfo",
+        "urn": "urn:oma:lwm2m:x:10241",
+        "id": "10241"
     }
 }

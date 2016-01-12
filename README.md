@@ -7,16 +7,16 @@ OMA Lightweight M2M IoT Agent: Overview
   * [Sanity check procedures](docs/administrationGuide.md#sanity)
   * [Diagnosis Procedures](docs/administrationGuide.md#diagnosis)
 * [User & Programmers Manual](docs/userGuide.md)
-        
+
 #  <a name="overview"/> Overview
 ## Description
-An Internet of Things Agent is a component that lets groups of devices send their data to and be managed from a FIWARE NGSI Context Broker using their own native protocols. This project provides the IoT Agent for the Lightweight M2M protocol, i.e. the bridge between OMA Lightweight M2M enabled devices and a NGSI Context Broker. 
+An Internet of Things Agent is a component that lets groups of devices send their data to and be managed from a FIWARE NGSI Context Broker using their own native protocols. This project provides the IoT Agent for the Lightweight M2M protocol, i.e. the bridge between OMA Lightweight M2M enabled devices and a NGSI Context Broker.
 
 For more information on what an IoT Agent is or how it should work, please check the documentation on the [Node IoT Agent Library](https://github.com/telefonicaid/iotagent-node-lib).
 
 For more information on [OMA Lightweight M2M](http://openmobilealliance.org/about-oma/work-program/m2m-enablers/) you can check the [Node.js OMA Lightweight M2M library](https://github.com/telefonicaid/lwm2m-node-lib) we are using.
 
-If you just want to start using the agent, jump to the [Quick Start Guide](docs/userManual.md#gettingstarted). 
+If you just want to start using the agent, jump to the [Quick Start Guide](docs/userManual.md#gettingstarted).
 
 You will find some  more general considerations about the LWM2M Mapping we are using in the following subsections.
 
@@ -37,7 +37,7 @@ Custom mappings defined by the user in the config.js file or by preprovisioning 
 ### OMA Registry mapping
 The IoT Agent provides a mean to map Lightweight M2M objects supported by the client without the need to map them in the type or prevoprovision information. The mapping works as follows: whenever a device registration arrives to the IoT Agent **if there is no configured mapping for any of the objects supported by the decive** (that should appear in the registration payload), then **all the resources supported by the object in the OMA Registry** are configured **as passive resources** offered by the object.
 
-The OMA Registry information is read from two files: `omaRegistryMap.json` and `omaRegistryInverseMap.json`. This two files can be generated with the last information in the OMA Registry with the command `bin/downloadOmaRegistry.js`. Notice that the generated files **do not** have the same name than the original ones (so the result can be double-checked before changing them). In order to use the freshly downloaded ones, just remove the former and rename the latter.
+The OMA Registry information is read from two files: `omaRegistry.json` and `omaInverseRegistry.json`. This two files can be generated with the last information in the OMA Registry with the command `bin/downloadOmaRegistry.js`. Notice that the generated files **do not** have the same name than the original ones (so the result can be double-checked before changing them). In order to use the freshly downloaded ones, just remove the former and rename the latter.
 
 ## Preprovisioning
 For individual provisioning of devices, LWM2M devices can be preprovisioned to the server, sending all the required information to the IoT Agent Provisioning API. Preprovisioned devices should target the standard '/rd' url instead of a type url. The preprovision configuration will be identified by the Endpoint name sent by the device.
