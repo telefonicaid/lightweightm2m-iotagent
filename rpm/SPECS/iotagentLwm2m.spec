@@ -41,8 +41,8 @@ cp -R %{_srcdir}/lib \
       %{_srcdir}/bin \
       %{_srcdir}/config.js \
       %{_srcdir}/package.json \
-      %{_srcdir}/omaRegistryMap.json \
-      %{_srcdir}/omaRegistryInverseMap.json \
+      %{_srcdir}/omaRegistry.json \
+      %{_srcdir}/omaInverseRegistry.json \
       %{_srcdir}/LICENSE \
       %{_build_root_project}
 
