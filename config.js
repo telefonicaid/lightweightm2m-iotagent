@@ -25,10 +25,10 @@ var config = {};
 
 config.lwm2m = {
     logLevel: 'DEBUG',
-    port: 5683,
+    port: 60001,
     defaultType: 'Device',
-    ipProtocol: 'udp6',
-    serverProtocol: 'udp6',
+    ipProtocol: 'udp4',
+    serverProtocol: 'udp4',
     formats: [{
         name: 'application-vnd-oma-lwm2m/text',
         value: 1541
@@ -43,22 +43,13 @@ config.lwm2m = {
         value: 1544
     }],
     writeFormat: 'application-vnd-oma-lwm2m/text',
-    types: [{
-        name: "IPex16",
-        url: "/ipex16"
-    }, {
-        name: "Robot",
-        url: "/robot"
-    }, {
-        name: "Device",
-        url: "/"
-    }]
+    types: []
 };
 
 config.ngsi = {
     logLevel: 'DEBUG',
     contextBroker: {
-        host: '155.54.205.185',
+        host: '192.168.56.101',
         port: '1026'
     },
     server: {
@@ -68,38 +59,10 @@ config.ngsi = {
         type: 'mongodb',
         host: 'localhost'
     },
-    types: {
-        'Device': {
-            "service": "odins",
-            "subservice": "/",
-            "removeSuffix": true,
-            "active": [{
-                "name": "Boton",
-                "type": "Integer"
-            }],
-            "lazy": [{
-                "name": "Led",
-                "type": "Integer"
-            }],
-            "commands": [],
-            "lwm2mResourceMapping": {
-                "Boton": {
-                    "objectType": 60000,
-                    "objectInstance": 0,
-                    "objectResource": 0
-                },
-                "Led": {
-                    "objectType": 60000,
-                    "objectInstance": 0,
-                    "objectResource": 1
-                }
-
-            }
-        }
-    },
-    service: 'odins',
-    subservice: '/',
-    providerUrl: 'http://155.54.205.214:4041',
+    types: {},
+    service: 'smartGondor',
+    subservice: '/gardens',
+    providerUrl: 'http://192.168.56.1:4041',
     deviceRegistrationDuration: 'P1M'
 };
 
