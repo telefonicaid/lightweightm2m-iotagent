@@ -82,7 +82,37 @@ Being an Open Source project, everyone can contribute, provided that it respect 
 * Code must be developed following the branching model and changelog policies defined below.
 * For any new feature added, unit tests must be provided, following the example of the ones already created.
 
-Contributions following this guidelines will be added to the `develop` branch, and released in the next version.
+In order to start contributing:
+1. Fork this repository clicking on the "Fork" button on the upper-right area of the page.
+2. Clone your just forked repository:
+```
+git clone https://github.com/your-github-username/lightweightm2m-iotagent.git
+```
+3. Add the main lightweightm2m-iotagent repository as a remote to your forked repository (use any name for your remote 
+repository, it does not have to be lightweightm2m-iotagent, although we will use it in the next steps):
+```
+git remote add lightweightm2m-iotagent https://github.com/telefonicaid/lightweightm2m-iotagent.git
+```
+
+Before starting contributing, remember to synchronize the `develop` branch in your forked repository with the `develop` 
+branch in the main lightweightm2m-iotagent repository, by following this steps
+
+1. Change to your local `develop` branch (in case you are not in it already):
+```
+  git checkout develop
+```
+2. Fetch the remote changes:
+```
+  git fetch lightweightm2m-iotagent
+```
+3. Merge them:
+```
+  git rebase lightweightm2m-iotagent/develop
+```
+
+Contributions following this guidelines will be added to the `develop` branch, and released in the next version. The 
+release process is explaind in the *Releasing* section below.
+
 
 ### Branching model
 There are two special branches in the repository:
