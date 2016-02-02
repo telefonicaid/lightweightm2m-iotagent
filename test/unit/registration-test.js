@@ -398,7 +398,7 @@ describe('Device auto-registration test', function() {
             });
         });
 
-        xit('should return the registration information', function(done) {
+        it('should return the registration information', function(done) {
             lwm2mClient.register(
                 clientConfig.host,
                 clientConfig.port,
