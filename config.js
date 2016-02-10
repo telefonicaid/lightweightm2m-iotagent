@@ -72,3 +72,4 @@ config.ngsi = {
 };
 
 module.exports = config;
+

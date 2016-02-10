@@ -45,7 +45,7 @@ function downloadRegistry(url) {
             method: 'GET'
         };
 
-        request(options, function (error, response, body) {
+        request(options, function(error, response, body) {
             if (error) {
                 logger.error(context, 'Couldn\'t retrieve OMA Registry due to a connection error: ' + error);
                 callback(new errors.OmaRegistryConnectionError(error));
@@ -63,7 +63,7 @@ function parseRegistry(registryData, callback) {
         initiateData = false,
         registry = [];
 
-    $('tr').each(function (i, elem) {
+    $('tr').each(function(i, elem) {
         if (!initiateData && $.html(this).indexOf('URN') > 0) {
             logger.info('Initiating data parse.');
             initiateData = true;
@@ -98,16 +98,15 @@ function discoverResources(registryObj, callback) {
                         newObj = _.clone(item);
 
                     newObj.resources = [];
-
                     for (var i = 0; i < items.length; i++) {
                         var resource = {
                             name: items[i].getElementsByTagName('Name')[0].textContent,
-                            type: items[i].getElementsByTagName('Type')[0].textContent
+                            type: items[i].getElementsByTagName('Type')[0].textContent,
+                            operations: items[i].getElementsByTagName('Operations')[0].textContent
                         };
 
                         newObj.resources.push(resource);
                     }
-
                     callback(null, newObj);
                 }
             });
@@ -132,7 +131,8 @@ function createInternalMap(registryObj, callback) {
                 previous[current.resources[i].name] = {
                     objectResource: i,
                     objectType: current.id,
-                    objectInstance: 0
+                    objectInstance: 0,
+                    operations: current.resources[i].operations
                 };
             }
         } else {
@@ -170,7 +170,7 @@ function processRegistry(callback) {
     ], callback);
 }
 
-processRegistry(function (error) {
+processRegistry(function(error) {
     if (error) {
         console.log('Download OMA Registry failed: ' + error);
     } else {
