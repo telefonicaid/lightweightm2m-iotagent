@@ -73,6 +73,7 @@ describe('Active attributes test', function() {
             lwm2mClient.registry.reset,
             apply(mongoUtils.cleanDbs, config.ngsi.contextBroker.host)
         ], function(error, results) {
+
             done();
         });
     });

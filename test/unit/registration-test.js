@@ -48,7 +48,7 @@ var config = require('./testConfig'),
     deviceInformation;
 
 
-describe('Device auto-registration test', function() {
+describe.only('Device auto-registration test', function() {
     beforeEach(function(done) {
         async.series([
             apply(mongoUtils.cleanDbs, config.ngsi.contextBroker.host),

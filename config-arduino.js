@@ -25,7 +25,7 @@ var config = {};
 
 config.lwm2m = {
     logLevel: 'DEBUG',
-    port: 60001,
+    port: 5684,
     defaultType: 'Device',
     types: [
         {
