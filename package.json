@@ -36,7 +36,7 @@
     "cheerio": "*",
     "xmldom": "*",
     "logops": "*",
-    "iotagent-node-lib": "0.9.8",
+    "iotagent-node-lib": "git://github.com/telefonicaid/iotagent-node-lib.git#develop",
     "lwm2m-node-lib": "git://github.com/telefonicaid/lwm2m-node-lib.git#develop"
   },
   "devDependencies": {
