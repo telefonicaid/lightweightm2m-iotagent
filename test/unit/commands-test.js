@@ -185,7 +185,7 @@ describe('Command attributes test', function() {
 
             lwm2mClient.setHandler(deviceInformation.serverInfo, 'execute', handleExecute);
 
-            ngsiClient.update('TestRobotPre:RobotPre', 'RobotPre', attributes, function(error, response, body) {
+            ngsiClient.update('RobotPre:TestRobotPre', 'RobotPre', attributes, function(error, response, body) {
                 should.not.exist(error);
                 handleExecuted.should.equal(true);
 
