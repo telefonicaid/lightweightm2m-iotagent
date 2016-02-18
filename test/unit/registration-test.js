@@ -453,7 +453,7 @@ describe('Device auto-registration test', function() {
         });
     });
 
-    describe.skip('When a preprovisioned device registers to the the IoT Agent with an active attribute ' +
+    describe('When a preprovisioned device registers to the the IoT Agent with an active attribute ' +
         'without internal mapping, but present in the OMA registry', function(done) {
         var options = {
             url: 'http://localhost:' + config.ngsi.server.port + '/iot/devices',
