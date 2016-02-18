@@ -156,6 +156,14 @@ new target version (without any sufix), and PR into `develop`.
 this as the development version).
 
 ## Testing
+### Prerequisites
+Its important to remark that this component's tests are End To End tests, that have some software requirements to be run.
+This requirements are the following:
+* An instance of MongoDB running in `localhost`.
+* An instance of Orion Context Broker running in the location configured in `testConfig.js` (defaults to the alias `oriondb`). 
+This instance has to have the 1026 and 27017 open for connections coming from the Grunt tester.
+
+### Libraries
 [Mocha](http://visionmedia.github.io/mocha/) Test Runner + [Chai](http://chaijs.com/) Assertion Library + [Sinon](http://sinonjs.org/) Spies, stubs.
 
 The test environment is preconfigured to run [BDD](http://chaijs.com/api/bdd/) testing style with
@@ -163,6 +171,7 @@ The test environment is preconfigured to run [BDD](http://chaijs.com/api/bdd/) t
 
 Module mocking during testing can be done with [proxyquire](https://github.com/thlorenz/proxyquire)
 
+### Execution
 To run tests, type
 ```bash
 grunt test

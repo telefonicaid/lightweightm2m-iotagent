@@ -73,6 +73,10 @@ The latter configures the Lightweight M2M library used for communicating with th
 These are the specific LWM2M parameters that can be configured for the agent:
 * **logLevel**: level of logs for the IOTAgent specific information. E.g.: 'DEBUG'.
 * **port**: UDP port where the IOTAgent will be listening. E.g.: 60001.
+* **delayedObservationTimeout**: When a LWM2M client has active attributes, the IOTA sends an observe instruction for 
+each one, just after the client registers. This may cause cause an error when the client takes too long to start listening, 
+as the observe requests may not reach its destiny. This timeout (ms) is used to give the client the opportunity to create 
+the listener before the server sends the requests.
 * **defaultType**: for the cases when no type can be assigned to a device (no preprovision or path asignation of type), this type will be assigned by default. E.g.: 'Device'
 * **types**: for IOTAgents with multiple southbound paths, this attribute maps attribute types (defined either in the configuration file or by using the Device Configuration API) to southbound interfaces. E.g.:
 ```
