@@ -333,7 +333,7 @@ describe('Device auto-registration test', function() {
                     ngsiClient.discover(
                         'PreprovisionedLight2:ConfiguredDevice',
                         'ConfiguredDevice',
-                        [ 'Luminosity Sensor' ],
+                        ['Luminosity Sensor'],
                         function(error, response, body) {
                             should.not.exist(error);
                             should.exist(body);
