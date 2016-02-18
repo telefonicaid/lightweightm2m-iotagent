@@ -1,1 +1,2 @@
-- Fix broken tests.
+- Fix broken tests (#49 and #42).
+- Update RPM Creation tool (#57).
