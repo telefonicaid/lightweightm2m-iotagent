@@ -29,6 +29,13 @@ config.lwm2m = {
     defaultType: 'Device',
     ipProtocol: 'udp4',
     serverProtocol: 'udp4',
+    /**
+     * When a LWM2M client has active attributes, the IOTA sends an observe instruction for each one, just after the
+     * client registers. This may cause cause an error when the client takes too long to start listening, as the
+     * observe requests may not reach its destiny. This timeout (ms) is used to give the client the opportunity to
+     * create the listener before the server sends the requests.
+     */
+    delayedObservationTimeout: 50,
     formats: [
         {
             name: 'application-vnd-oma-lwm2m/text',

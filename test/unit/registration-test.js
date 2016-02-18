@@ -48,7 +48,7 @@ var config = require('./testConfig'),
     deviceInformation;
 
 
-describe.only('Device auto-registration test', function() {
+describe('Device auto-registration test', function() {
     beforeEach(function(done) {
         async.series([
             apply(mongoUtils.cleanDbs, config.ngsi.contextBroker.host),
@@ -397,7 +397,7 @@ describe.only('Device auto-registration test', function() {
             });
         });
 
-        xit('should return the registration information', function(done) {
+        it('should return the registration information', function(done) {
             lwm2mClient.register(
                 clientConfig.host,
                 clientConfig.port,
