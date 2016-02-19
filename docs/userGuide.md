@@ -42,7 +42,7 @@ with the following characteristics:
 
 Each guide is presented with a brief explanation about its contents:
 
-* [Device Provisioning Guide](deviceProvisioning.md): this guide shows how to configure, launcha and use an IoT Agent,
+* [Device Provisioning Guide](deviceProvisioning.md): this guide shows how to configure, launch and use an IoT Agent,
 provisioning each device before sending its measures.
 * [Configuration Provisioning Guide](configurationProvisioning.md): this guide shows how to configure a group of devices
 for being autoprovisioned when they register in the agent.
