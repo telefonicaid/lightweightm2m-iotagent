@@ -48,7 +48,7 @@ are two attributes that you will want to taylor:
 be your machine's IP and the default port, but in case you are using an external context broker (or one deployed in 
 a Virtual Machine) it may differ.
 
-You should change at least the log level, anyway, as in the default value (`FATAL`) it will show no information of 
+You should change at least the log level to `DEBUG`, as in other levels it will show no information of 
 what's going on with the execution.
 
 # <a name="usage"/> Usage
@@ -79,45 +79,49 @@ The following request provision the device with device ID `robot1`:
   --header 'Accept: application/json' --header 'fiware-service: Factory' --header 'fiware-servicepath: /robots' \
   -d @- | python -mjson.tool) <<EOF
 {
-    "name": "robot1",
-    "entity_type": "Robot",
-    "attributes": [
+  "devices": [
       {
-        "name": "Battery",
-        "type": "number"
-      }
-    ],
-    "lazy": [
-      {
-        "name": "Message",
-        "type": "string"
-      }
-    ],
-    "commands": [
-      {
-        "name": "Position",
-        "type": "location"
-      }
-    ],
-  "internal_attributes": {
-    "lwm2mResourceMapping": {
-      "Battery" : {
-        "objectType": 7392,
-        "objectInstance": 0,
-        "objectResource": 1
-      },
-      "Message" : {
-        "objectType": 7392,
-        "objectInstance": 0,
-        "objectResource": 2
-      },
-      "Position" : {
-        "objectType": 7392,
-        "objectInstance": 0,
-        "objectResource": 3
+        "device_id": "robot1",
+        "entity_type": "Robot",
+        "attributes": [
+          {
+            "name": "Battery",
+            "type": "number"
+          }
+        ],
+        "lazy": [
+          {
+            "name": "Message",
+            "type": "string"
+          }
+        ],
+        "commands": [
+          {
+            "name": "Position",
+            "type": "location"
+          }
+        ],
+      "internal_attributes": {
+        "lwm2mResourceMapping": {
+          "Battery" : {
+            "objectType": 7392,
+            "objectInstance": 0,
+            "objectResource": 1
+          },
+          "Message" : {
+            "objectType": 7392,
+            "objectInstance": 0,
+            "objectResource": 2
+          },
+          "Position" : {
+            "objectType": 7392,
+            "objectInstance": 0,
+            "objectResource": 3
+          }
+        }
       }
     }
-  }
+  ]
 }
 EOF
 ```
@@ -151,7 +155,7 @@ LWM2M-Client> set /7392/0 3 "[0, 0]"
 ### Connection to the server
 Once all the objects are created in the device, connect with the server with the following command:
 ```
-connect localhost 60001 robot1 /
+connect localhost 5684 robot1 /
 ```
 A few notes about this command:
 * First of all, note that the *endpoint name* used, `robot1`, is the same we provisioned in advance with the provisioning 
@@ -163,9 +167,9 @@ The following information should be presented in the client's console:
 ```
 Connected:
 --------------------------------
-Device location: rd/2
+Device location: rd/1
 ```
-This indicates that the server has accepted the connection request and assigned the `rd/2` location for the client's 
+This indicates that the server has accepted the connection request and assigned the `rd/1` location for the client's 
 requests. This exact location may change from device to device (every device has a unique location).
 
 If you configured the server in `DEBUG` mode, check the standard output to see what happened with the client registration.
@@ -180,13 +184,15 @@ Now you should be able to see the Entity in your Context Broker. You can do that
         {
             "type": "Robot",
             "isPattern": "false",
-            "id": "robot1:Robot"
+            "id": "Robot:robot1"
         }
     ]
 }
 EOF
 ```
-Note that the headers of the request to the Context Broker should match the ones you used in the Device Provisioning. Another thing to note is the Entity ID: it is formed by the concatenation of the Device ID and the type, sepparated by a colon. This convention can be overriden in the provisioning request.
+Note that the headers of the request to the Context Broker should match the ones you used in the Device Provisioning. 
+Another thing to note is the Entity ID: it is formed by the concatenation of the type and the Device ID, separated by a colon. 
+This convention can be overriden in the provisioning request.
 
 ### Updating the active attributes
 In order to update the value of an attribute, issue a new `set` command, like the following:
@@ -208,7 +214,7 @@ the following case:
         {
             "type": "Robot",
             "isPattern": "false",
-            "id": "robot1:Robot"
+            "id": "Robot:robot1"
         }
     ],
     "attributes" : [
@@ -230,7 +236,7 @@ just update the command attribute in the Context Broker entity, with the followi
         {
             "type": "Robot",
             "isPattern": "false",
-            "id": "robot1:Robot",
+            "id": "Robot:robot1",
             "attributes": [
             {
                 "name": "Position",
@@ -245,4 +251,5 @@ just update the command attribute in the Context Broker entity, with the followi
 EOF
 ```
 
-
+This action will trigger an Execute action in the client. It will also update the "<attribute>_status" field of the
+entity with the "PENDING" value, stating the execution is pending of the client result.

@@ -26,7 +26,7 @@ different types of configurations. It's important to remark that those configura
 an IoT Agent can have some device preprovisioned, some configuration groups defined and some static configurations also,
 each for different types of devices.
 
-Some the guides will share the use of a faked device type called `Robot` with the following characteristics:
+Some of the guides will share the use of a faked device type called `Robot` with the following characteristics:
 * be part of the service `Factory` and subservice `/robots`.
 * have an active attribute called `Battery` with type `number`, mapped to the LWM2M resource ID /7392/0/1.
 * have a passive attribute called `Message` with type `string`, mapped to the LWM2M resource ID /7392/0/2.
@@ -42,7 +42,7 @@ with the following characteristics:
 
 Each guide is presented with a brief explanation about its contents:
 
-* [Device Provisioning Guide](deviceProvisioning.md): this guide shows how to configure and start an IoT Agent and use it
+* [Device Provisioning Guide](deviceProvisioning.md): this guide shows how to configure, launch and use an IoT Agent,
 provisioning each device before sending its measures.
 * [Configuration Provisioning Guide](configurationProvisioning.md): this guide shows how to configure a group of devices
 for being autoprovisioned when they register in the agent.
