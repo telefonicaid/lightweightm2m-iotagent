@@ -48,6 +48,8 @@ var config = require('./testConfig'),
 
 describe('Active attributes test', function() {
     beforeEach(function(done) {
+        lwm2mClient.init(config);
+
         async.series([
             apply(mongoUtils.cleanDbs, config.ngsi.contextBroker.host),
             apply(iotAgent.start, config),
