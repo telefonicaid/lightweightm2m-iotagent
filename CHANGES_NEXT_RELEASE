@@ -2,3 +2,4 @@
 - Update RPM Creation tool (#57).
 - Update Howtos with the last changes of the IoT Agent library (#48).
 - Add test cases to check first observation of a value (#54).
+- Update to IoTAgent Library 0.10.0 and LWM2M Library 0.5.0.

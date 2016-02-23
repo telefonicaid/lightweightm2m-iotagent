@@ -30,14 +30,14 @@
     "node": ">=0.10.8"
   },
   "dependencies": {
-    "async": "*",
-    "request": "*",
-    "underscore": "*",
-    "cheerio": "*",
-    "xmldom": "*",
-    "logops": "*",
-    "iotagent-node-lib": "git://github.com/telefonicaid/iotagent-node-lib.git#develop",
-    "lwm2m-node-lib": "git://github.com/telefonicaid/lwm2m-node-lib.git#develop"
+    "async": "1.5.2",
+    "request": "2.69.0",
+    "underscore": "1.8.3",
+    "cheerio": "0.20.0",
+    "xmldom": "0.1.22",
+    "logops": "0.5.0",
+    "iotagent-node-lib": "0.10.0",
+    "lwm2m-node-lib": "0.5.0"
   },
   "devDependencies": {
     "nock": "0.48.0",
