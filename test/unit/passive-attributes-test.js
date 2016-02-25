@@ -178,7 +178,7 @@ describe('Passive attributes test', function() {
 
             lwm2mClient.setHandler(deviceInformation.serverInfo, 'read', handleRead);
 
-            ngsiClient.query('TestClient:Light', 'Light', ['LWM2M  Server URI'], function(error, response, body) {
+            ngsiClient.query('TestClient:Light', 'Light', ['LWM2M Server URI'], function(error, response, body) {
                 should.not.exist(error);
                 handleExecuted.should.equal(true);
 
@@ -189,7 +189,7 @@ describe('Passive attributes test', function() {
     describe('When a passive OMA attribute is modified in Orion', function() {
         var attributes = [
             {
-                name: 'LWM2M  Server URI',
+                name: 'LWM2M Server URI',
                 type: 'string',
                 value: 'coap://remotehost:9786'
             }

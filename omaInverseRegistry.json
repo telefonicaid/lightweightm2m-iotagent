@@ -1,358 +1,429 @@
 {
-    "LWM2M  Server URI": {
+    "LWM2M Server URI": {
         "objectResource": 0,
         "objectType": "0",
-        "objectInstance": 0
+        "objectInstance": 0,
+        "operations": ""
     },
     "Bootstrap Server": {
         "objectResource": 1,
         "objectType": "0",
-        "objectInstance": 0
+        "objectInstance": 0,
+        "operations": ""
     },
     "Security Mode": {
         "objectResource": 2,
         "objectType": "0",
-        "objectInstance": 0
+        "objectInstance": 0,
+        "operations": ""
     },
     "Public Key or Identity": {
         "objectResource": 3,
         "objectType": "0",
-        "objectInstance": 0
+        "objectInstance": 0,
+        "operations": ""
     },
     "Server Public Key or Identity": {
         "objectResource": 4,
         "objectType": "0",
-        "objectInstance": 0
+        "objectInstance": 0,
+        "operations": ""
     },
     "Secret Key": {
         "objectResource": 5,
         "objectType": "0",
-        "objectInstance": 0
+        "objectInstance": 0,
+        "operations": ""
     },
     "SMS Security Mode": {
         "objectResource": 6,
         "objectType": "0",
-        "objectInstance": 0
+        "objectInstance": 0,
+        "operations": ""
     },
     "SMS Binding Key Parameters": {
         "objectResource": 7,
         "objectType": "0",
-        "objectInstance": 0
+        "objectInstance": 0,
+        "operations": ""
     },
     "SMS Binding Secret Keys": {
         "objectResource": 8,
         "objectType": "0",
-        "objectInstance": 0
+        "objectInstance": 0,
+        "operations": ""
     },
     "LWM2M Server SMS Number": {
         "objectResource": 9,
         "objectType": "0",
-        "objectInstance": 0
+        "objectInstance": 0,
+        "operations": ""
     },
     "Short Server ID": {
         "objectResource": 0,
         "objectType": "1",
-        "objectInstance": 0
+        "objectInstance": 0,
+        "operations": "R"
     },
     "Client Hold Off Time": {
         "objectResource": 11,
         "objectType": "0",
-        "objectInstance": 0
+        "objectInstance": 0,
+        "operations": ""
     },
     "Lifetime": {
         "objectResource": 1,
         "objectType": "1",
-        "objectInstance": 0
+        "objectInstance": 0,
+        "operations": "RW"
     },
     "Default Minimum Period": {
         "objectResource": 2,
         "objectType": "1",
-        "objectInstance": 0
+        "objectInstance": 0,
+        "operations": "RW"
     },
     "Default Maximum Period": {
         "objectResource": 3,
         "objectType": "1",
-        "objectInstance": 0
+        "objectInstance": 0,
+        "operations": "RW"
     },
     "Disable": {
         "objectResource": 4,
         "objectType": "1",
-        "objectInstance": 0
+        "objectInstance": 0,
+        "operations": "E"
     },
     "Disable Timeout": {
         "objectResource": 5,
         "objectType": "1",
-        "objectInstance": 0
+        "objectInstance": 0,
+        "operations": "RW"
     },
     "Notification Storing When Disabled or Offline": {
         "objectResource": 6,
         "objectType": "1",
-        "objectInstance": 0
+        "objectInstance": 0,
+        "operations": "RW"
     },
     "Binding": {
         "objectResource": 7,
         "objectType": "1",
-        "objectInstance": 0
+        "objectInstance": 0,
+        "operations": "RW"
     },
     "Registration Update Trigger": {
         "objectResource": 8,
         "objectType": "1",
-        "objectInstance": 0
+        "objectInstance": 0,
+        "operations": "E"
     },
     "Object ID": {
         "objectResource": 0,
         "objectType": "2",
-        "objectInstance": 0
+        "objectInstance": 0,
+        "operations": "R"
     },
     "Object Instance ID": {
         "objectResource": 1,
         "objectType": "2",
-        "objectInstance": 0
+        "objectInstance": 0,
+        "operations": "R"
     },
     "ACL": {
         "objectResource": 2,
         "objectType": "2",
-        "objectInstance": 0
+        "objectInstance": 0,
+        "operations": "RW"
     },
     "Access Control Owner": {
         "objectResource": 3,
         "objectType": "2",
-        "objectInstance": 0
+        "objectInstance": 0,
+        "operations": "RW"
     },
     "Manufacturer": {
         "objectResource": 0,
         "objectType": "3",
-        "objectInstance": 0
+        "objectInstance": 0,
+        "operations": "R"
     },
     "Model Number": {
         "objectResource": 1,
         "objectType": "3",
-        "objectInstance": 0
+        "objectInstance": 0,
+        "operations": "R"
     },
     "Serial Number": {
         "objectResource": 2,
         "objectType": "3",
-        "objectInstance": 0
+        "objectInstance": 0,
+        "operations": "R"
     },
     "Firmware Version": {
         "objectResource": 3,
         "objectType": "3",
-        "objectInstance": 0
+        "objectInstance": 0,
+        "operations": "R"
     },
     "Reboot": {
         "objectResource": 4,
         "objectType": "3",
-        "objectInstance": 0
+        "objectInstance": 0,
+        "operations": "E"
     },
     "Factory Reset": {
         "objectResource": 5,
         "objectType": "3",
-        "objectInstance": 0
+        "objectInstance": 0,
+        "operations": "E"
     },
     "Available Power Sources": {
         "objectResource": 6,
         "objectType": "3",
-        "objectInstance": 0
+        "objectInstance": 0,
+        "operations": "R"
     },
     "Power Source Voltage": {
         "objectResource": 7,
         "objectType": "3",
-        "objectInstance": 0
+        "objectInstance": 0,
+        "operations": "R"
     },
     "Power Source Current": {
         "objectResource": 8,
         "objectType": "3",
-        "objectInstance": 0
+        "objectInstance": 0,
+        "operations": "R"
     },
     "Battery Level": {
         "objectResource": 9,
         "objectType": "3",
-        "objectInstance": 0
+        "objectInstance": 0,
+        "operations": "R"
     },
     "Memory Free": {
         "objectResource": 10,
         "objectType": "3",
-        "objectInstance": 0
+        "objectInstance": 0,
+        "operations": "R"
     },
     "Error Code": {
         "objectResource": 11,
         "objectType": "3",
-        "objectInstance": 0
+        "objectInstance": 0,
+        "operations": "R"
     },
     "Reset Error Code": {
         "objectResource": 12,
         "objectType": "3",
-        "objectInstance": 0
+        "objectInstance": 0,
+        "operations": "E"
     },
     "Current Time": {
         "objectResource": 13,
         "objectType": "3",
-        "objectInstance": 0
+        "objectInstance": 0,
+        "operations": "RW"
     },
     "UTC Offset": {
         "objectResource": 14,
         "objectType": "3",
-        "objectInstance": 0
+        "objectInstance": 0,
+        "operations": "RW"
     },
     "Timezone": {
         "objectResource": 15,
         "objectType": "3",
-        "objectInstance": 0
+        "objectInstance": 0,
+        "operations": "RW"
     },
     "Supported Binding and Modes": {
         "objectResource": 16,
         "objectType": "3",
-        "objectInstance": 0
+        "objectInstance": 0,
+        "operations": "R"
     },
     "Network Bearer": {
         "objectResource": 0,
         "objectType": "4",
-        "objectInstance": 0
+        "objectInstance": 0,
+        "operations": "R"
     },
     "Available Network Bearer": {
         "objectResource": 1,
         "objectType": "4",
-        "objectInstance": 0
+        "objectInstance": 0,
+        "operations": "R"
     },
     "Radio Signal Strength": {
         "objectResource": 2,
         "objectType": "4",
-        "objectInstance": 0
+        "objectInstance": 0,
+        "operations": "R"
     },
     "Link Quality": {
         "objectResource": 3,
         "objectType": "4",
-        "objectInstance": 0
+        "objectInstance": 0,
+        "operations": "R"
     },
     "IP Addresses": {
         "objectResource": 4,
         "objectType": "4",
-        "objectInstance": 0
+        "objectInstance": 0,
+        "operations": "R"
     },
     "Router IP Addresse": {
         "objectResource": 5,
         "objectType": "4",
-        "objectInstance": 0
+        "objectInstance": 0,
+        "operations": "R"
     },
     "Link Utilization": {
         "objectResource": 6,
         "objectType": "4",
-        "objectInstance": 0
+        "objectInstance": 0,
+        "operations": "R"
     },
     "APN": {
         "objectResource": 7,
         "objectType": "4",
-        "objectInstance": 0
+        "objectInstance": 0,
+        "operations": "R"
     },
     "Cell ID": {
         "objectResource": 8,
         "objectType": "4",
-        "objectInstance": 0
+        "objectInstance": 0,
+        "operations": "R"
     },
     "SMNC": {
         "objectResource": 9,
         "objectType": "4",
-        "objectInstance": 0
+        "objectInstance": 0,
+        "operations": "R"
     },
     "SMCC": {
         "objectResource": 10,
         "objectType": "4",
-        "objectInstance": 0
+        "objectInstance": 0,
+        "operations": "R"
     },
     "Package": {
         "objectResource": 0,
         "objectType": "5",
-        "objectInstance": 0
+        "objectInstance": 0,
+        "operations": "W"
     },
     "Package URI": {
         "objectResource": 1,
         "objectType": "5",
-        "objectInstance": 0
+        "objectInstance": 0,
+        "operations": "W"
     },
     "Update": {
         "objectResource": 2,
         "objectType": "5",
-        "objectInstance": 0
+        "objectInstance": 0,
+        "operations": "E"
     },
     "State": {
         "objectResource": 3,
         "objectType": "5",
-        "objectInstance": 0
+        "objectInstance": 0,
+        "operations": "R"
     },
     "Update Supported Objects": {
         "objectResource": 4,
         "objectType": "5",
-        "objectInstance": 0
+        "objectInstance": 0,
+        "operations": "RW"
     },
     "Update Result": {
         "objectResource": 5,
         "objectType": "5",
-        "objectInstance": 0
+        "objectInstance": 0,
+        "operations": "R"
     },
     "Latitude": {
         "objectResource": 0,
         "objectType": "6",
-        "objectInstance": 0
+        "objectInstance": 0,
+        "operations": "R"
     },
     "Longitude": {
         "objectResource": 1,
         "objectType": "6",
-        "objectInstance": 0
+        "objectInstance": 0,
+        "operations": "R"
     },
     "Altitude": {
         "objectResource": 2,
         "objectType": "6",
-        "objectInstance": 0
+        "objectInstance": 0,
+        "operations": "R"
     },
     "Uncertainty": {
         "objectResource": 3,
         "objectType": "6",
-        "objectInstance": 0
+        "objectInstance": 0,
+        "operations": "R"
     },
     "Velocity": {
         "objectResource": 4,
         "objectType": "6",
-        "objectInstance": 0
+        "objectInstance": 0,
+        "operations": "R"
     },
     "Timestamp": {
         "objectResource": 5,
         "objectType": "6",
-        "objectInstance": 0
+        "objectInstance": 0,
+        "operations": "R"
     },
     "SMS Tx Counter": {
         "objectResource": 0,
         "objectType": "7",
-        "objectInstance": 0
+        "objectInstance": 0,
+        "operations": "R"
     },
     "SMS Rx Counter": {
         "objectResource": 1,
         "objectType": "7",
-        "objectInstance": 0
+        "objectInstance": 0,
+        "operations": "R"
     },
     "Tx Data": {
         "objectResource": 2,
         "objectType": "7",
-        "objectInstance": 0
+        "objectInstance": 0,
+        "operations": "R"
     },
     "Rx Data": {
         "objectResource": 3,
         "objectType": "7",
-        "objectInstance": 0
+        "objectInstance": 0,
+        "operations": "R"
     },
     "Max Message Size": {
         "objectResource": 4,
         "objectType": "7",
-        "objectInstance": 0
+        "objectInstance": 0,
+        "operations": "R"
     },
     "Average Message Size": {
         "objectResource": 5,
         "objectType": "7",
-        "objectInstance": 0
+        "objectInstance": 0,
+        "operations": "R"
     },
     "StartOrReset": {
         "objectResource": 6,
         "objectType": "7",
-        "objectInstance": 0
+        "objectInstance": 0,
+        "operations": "E"
     },
     "Lock and Wipe": {
         "objectResource": 0,
@@ -389,7 +460,7 @@
         "objectType": "15",
         "objectInstance": null
     },
-    "CmdhPolicy ": {
+    "CmdhPolicy": {
         "objectResource": 0,
         "objectType": "2048",
         "objectInstance": null
@@ -399,17 +470,17 @@
         "objectType": "2049",
         "objectInstance": null
     },
-    "CmdhDefaults ": {
+    "CmdhDefaults": {
         "objectResource": 0,
         "objectType": "2050",
         "objectInstance": null
     },
-    "CmdhDefEcValues ": {
+    "CmdhDefEcValues": {
         "objectResource": 0,
         "objectType": "2051",
         "objectInstance": null
     },
-    "cmdhDefEcParamsValues ": {
+    "cmdhDefEcParamsValues": {
         "objectResource": 0,
         "objectType": "2052",
         "objectInstance": null
@@ -424,12 +495,12 @@
         "objectType": "2054",
         "objectInstance": null
     },
-    "CmdhNwAccessRule ": {
+    "CmdhNwAccessRule": {
         "objectResource": 0,
         "objectType": "2055",
         "objectInstance": null
     },
-    "CmdhBuffer  ": {
+    "CmdhBuffer": {
         "objectResource": 0,
         "objectType": "2056",
         "objectInstance": null
@@ -522,6 +593,11 @@
     "Barometer": {
         "objectResource": 0,
         "objectType": "3315",
+        "objectInstance": null
+    },
+    "HostDeviceInfo": {
+        "objectResource": 0,
+        "objectType": "10241",
         "objectInstance": null
     }
 }

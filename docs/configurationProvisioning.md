@@ -79,7 +79,7 @@ Lightweight M2M port.
 
 The following request creates the configuration group for devices with type `WeatherBaloon`:
 ```
-(curl localhost:4041/iot/agents/default/services -s -S --header 'Content-Type: application/json' \
+(curl localhost:4041/iot/services -s -S --header 'Content-Type: application/json' \
   --header 'Accept: application/json' --header 'fiware-service: Weather' --header 'fiware-servicepath: /baloons' \
   -d @- | python -mjson.tool) <<EOF
 {
@@ -131,6 +131,7 @@ LWM2M-Client> create /3303/0
 LWM2M-Client> create /3312/0
 ```
 Once the object is created, give a default value for each of the attributes:
+
 * Longitude attribute:
 ```
 LWM2M-Client> set /6/0 0 12
@@ -151,12 +152,12 @@ LWM2M-Client> set /3312/0 0 On
 ### Connection to the server
 Once all the objects are created in the device, connect with the server with the following command:
 ```
-connect localhost 60001 weather1 /weatherBaloon
+connect localhost 5684 weather1 /weatherBaloon
 ```
 A few notes about this command:
 * First of all, the *endpoint name* used, `weather1`, can be whatever ID available; the type of device and its features
 will not be determined based on its Device ID, but based on the resource it is accessing.
-* The URL is `/weatherBaloon` the same one we used in the previous step for in the Configuration provisioning.
+* The URL is `/weatherBaloon` the same one we used in the previous step, in the Configuration provisioning.
 
 The following information should be presented in the client's console:
 ```
@@ -180,7 +181,7 @@ with the following command:
         {
             "type": "WeatherBaloon",
             "isPattern": "false",
-            "id": "﻿weather1:WeatherBaloon"
+            "id": "weather1:WeatherBaloon"
         }
     ],
     "attributes" : [

@@ -174,7 +174,7 @@ LWM2M-Client> set /7392/0 3 "[0, 0]"
 ### Connection to the server
 Once all the objects are created in the device, connect with the server with the following command:
 ```
-connect localhost 60001 robot1 /robots
+connect localhost 5684 robot1 /robots
 ```
 A few notes about this command:
 * First of all, note that the *endpoint name* used, `robot1`, is the same we provisioned in advance with the provisioning 

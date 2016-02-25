@@ -285,14 +285,13 @@ describe('Device auto-registration test', function() {
         it('should support the unregistered attributes with a register in OMA Registry');
     });
 
-    describe('When a preprovisioned device sends a registration request to the the IoT Agent ' +
-        'and it has its own LWM2M Mappings', function() {
+    describe('When a preprovisioned device sends a registration request with its own LWM2M Mappings', function() {
         it('should use its internal mappings instead of the type configured ones');
     });
 
     describe('When a device registers to a URL defined as the resource of a configuration', function() {
         var configuration = {
-                url: 'http://localhost:' + config.ngsi.server.port + '/iot/agents/default/services',
+                url: 'http://localhost:' + config.ngsi.server.port + '/iot/services',
                 method: 'POST',
                 json: utils.readExampleFile('./test/provisionExamples/newConfiguration.json'),
                 headers: {
@@ -301,7 +300,7 @@ describe('Device auto-registration test', function() {
                 }
             },
             removeConfiguration = {
-                url: 'http://localhost:' + config.ngsi.server.port + '/iot/agents/default/services',
+                url: 'http://localhost:' + config.ngsi.server.port + '/iot/services',
                 method: 'DELETE',
                 json: {},
                 headers: {
@@ -398,7 +397,7 @@ describe('Device auto-registration test', function() {
             });
         });
 
-        xit('should return the registration information', function(done) {
+        it('should return the registration information', function(done) {
             lwm2mClient.register(
                 clientConfig.host,
                 clientConfig.port,
@@ -454,7 +453,7 @@ describe('Device auto-registration test', function() {
         });
     });
 
-    describe.skip('When a preprovisioned device registers to the the IoT Agent with an active attribute ' +
+    describe('When a preprovisioned device registers to the the IoT Agent with an active attribute ' +
         'without internal mapping, but present in the OMA registry', function(done) {
         var options = {
             url: 'http://localhost:' + config.ngsi.server.port + '/iot/devices',

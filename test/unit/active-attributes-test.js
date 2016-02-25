@@ -48,11 +48,12 @@ var config = require('./testConfig'),
 
 describe('Active attributes test', function() {
     beforeEach(function(done) {
+        lwm2mClient.init(config);
+
         async.series([
             apply(mongoUtils.cleanDbs, config.ngsi.contextBroker.host),
             apply(iotAgent.start, config),
-            apply(lwm2mClient.registry.create, '/5000/0'),
-            apply(lwm2mClient.registry.setResource, '/5000/0', '2', '789')
+            apply(lwm2mClient.registry.create, '/5000/0')
         ], function(error) {
             lwm2mClient.register(
                 clientConfig.host,
@@ -73,14 +74,39 @@ describe('Active attributes test', function() {
             lwm2mClient.registry.reset,
             apply(mongoUtils.cleanDbs, config.ngsi.contextBroker.host)
         ], function(error, results) {
+
             done();
         });
     });
 
-    describe('When an active attribute changes its value in the device', function() {
+    describe('When an active attribute changes a value in the device', function() {
         it('should update its value in the corresponding Orion entity', function(done) {
             async.series([
+                async.apply(lwm2mClient.registry.setResource, '/5000/0', '2', '89')
+            ], function(error) {
+                setTimeout(function() {
+                    ngsiClient.query('ActiveTestClient:Pressure', 'Pressure', ['pressure'],
+                        function(error, response, body) {
+
+                            should.not.exist(error);
+                            should.exist(body);
+                            should.not.exist(body.errorCode);
+                            body.contextResponses[0].contextElement.attributes[0].value.should.equal('89');
+
+                            done();
+                        });
+                }, 500);
+            });
+        });
+    });
+
+    describe('When an active attribute changes multiple values in the device', function() {
+        it('should last value should appear in Orion entity', function(done) {
+            async.series([
                 async.apply(lwm2mClient.registry.setResource, '/5000/0', '2', '89'),
+                async.nextTick,
+                async.apply(lwm2mClient.registry.setResource, '/5000/0', '2', '33'),
+                async.nextTick,
                 async.apply(lwm2mClient.registry.setResource, '/5000/0', '2', '19')
             ], function(error) {
                 setTimeout(function() {
@@ -90,11 +116,11 @@ describe('Active attributes test', function() {
                             should.not.exist(error);
                             should.exist(body);
                             should.not.exist(body.errorCode);
-                            body.contextResponses[0].contextElement.attributes[0].value.should.match(/19|89/);
+                            body.contextResponses[0].contextElement.attributes[0].value.should.equal('19');
 
                             done();
                         });
-                }, 500);
+                }, 100);
             });
         });
     });
