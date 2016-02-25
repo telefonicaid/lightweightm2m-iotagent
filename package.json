@@ -1,7 +1,7 @@
 {
   "name": "lightweightm2m-iotagent",
   "description": "Prototype of an IoT Agent accepting COAP requests and redirecting to NGSI consumer",
-  "version": "0.2.1-next",
+  "version": "0.3.0",
   "homepage": "https://github.com/telefonicaid/lightweightm2m-iotagent",
   "keywords": [
     "OMA",
