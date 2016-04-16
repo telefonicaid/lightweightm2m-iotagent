@@ -8,4 +8,4 @@ COPY . /opt/iota-lwm2m
 WORKDIR /opt/iota-lwm2m
 RUN npm install
 
-ENTRYPOINT bin/lwm2mAgent.js config-blank.js
+ENTRYPOINT bin/lwm2mAgent.js config.js
