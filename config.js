@@ -36,6 +36,9 @@ config.lwm2m = {
      * create the listener before the server sends the requests.
      */
     delayedObservationTimeout: 50,
+    /** When at the same time several requests are demanded , the requests (read/write/execute) will be sent one
+    * after the other in order to avoid bottle necks in devices connected through slow mediums (SMS, proxy, ..). */
+    requestSerially: false,
     formats: [
         {
             name: 'application-vnd-oma-lwm2m/text',
