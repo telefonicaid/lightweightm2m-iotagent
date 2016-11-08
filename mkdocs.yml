@@ -1,40 +1,31 @@
 site_name: Fiware-iotagent-lwm2m
-
-
 site_url: https://fiware-iotagent-ul.readthedocs.org
-
 repo_url: https://github.com/telefonicaid/iotagent-lwm2m.git
-
 site_description: IoT Agent LWM2M (CoAP/UDP transport) Documentation
-
-docs_dir: /
-
+docs_dir: docs
 site_dir: html
-
 markdown_extensions: [toc,fenced_code]
-
 use_directory_urls: false
-
 theme: readthedocs
 
 extra_css: ["https://fiware.org/style/fiware_readthedocs.css"]
 
 pages:
 
-- Home: README.md
+- Home: index.md
 
 - 'User & Programmers Manual':
 
-- ‘Intro & Development guide’: ‘docs/userGuide.md’
+- ‘Intro & Development guide’: ‘userGuide.md’
 
-- ‘API Walkthrough & Device provisioning’: ‘docs/deviceProvisioning.md’
+- ‘API Walkthrough & Device provisioning’: ‘deviceProvisioning.md’
 
-- ‘Operation with Static configuration’: ‘docs/staticConfiguration.md’
+- ‘Operation with Static configuration’: ‘staticConfiguration.md’
 
-- ‘Operation with Provisioning configuration’: ‘docs/configurationProvisioning.md’
+- ‘Operation with Provisioning configuration’: ‘configurationProvisioning.md’
 
 - 'Docker': ‘Dockerfile’
 
-- 'Installation & Administration Manual': ‘docs/administrationGuide.md.md’
+- 'Installation & Administration Manual': ‘administrationGuide.md.md’
 
 
