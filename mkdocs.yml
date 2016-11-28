@@ -12,20 +12,18 @@ extra_css: ["https://fiware.org/style/fiware_readthedocs.css"]
 
 pages:
 
-- Home: index.md
+- 'Home': 'index.md'
 
-- 'User & Programmers Manual':
+- 'User & Programmers Manual': 
 
-- ‘Intro & Development guide’: ‘userGuide.md’
+- 'Intro & Development guide': 'userGuide.md'
 
-- ‘API Walkthrough & Device provisioning’: ‘deviceProvisioning.md’
+- 'API Walkthrough & Device provisioning': 'deviceProvisioning.md'
 
-- ‘Operation with Static configuration’: ‘staticConfiguration.md’
+- 'Operation with Static configuration': 'staticConfiguration.md'
 
-- ‘Operation with Provisioning configuration’: ‘configurationProvisioning.md’
+- 'Operation with Provisioning configuration': 'configurationProvisioning.md'
 
-- 'Docker': ‘Dockerfile’
-
-- 'Installation & Administration Manual': ‘administrationGuide.md.md’
+- 'Installation & Administration Manual': 'administrationGuide.md.md'
 
 
