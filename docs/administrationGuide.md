@@ -207,7 +207,7 @@ To be filled soon by DevOps.
 The Lightweight M2M IoT Agent follows the standard I/O flows for agents shown in the Node.js IoT Agent library. The flow
 is reproduced here, for clarity:
 
-![General ](https://raw.github.com/dmoranj/iotagent-node-lib/develop/img/ngsiInteractions.png "NGSI Interactions")
+![General ](https://raw.githubusercontent.com/telefonicaid/iotagent-node-lib/master/img/ngsiInteractions.png "NGSI Interactions")
 
 The interaction in the South Bound follows the flows defined by the [OMA Lightweight M2M Specification](http://openmobilealliance.org/about-oma/work-program/m2m-enablers/).
  
