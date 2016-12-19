@@ -7,15 +7,12 @@ site_dir: html
 markdown_extensions: [toc,fenced_code]
 use_directory_urls: false
 theme: readthedocs
-
 extra_css: ["https://fiware.org/style/fiware_readthedocs.css"]
-
 pages:
-
-- 'Home': 'index.md'
-- 'User & Programmers Manual': 
-   - 'Intro & Development guide': 'userGuide.md'
-   - 'API Walkthrough & Device provisioning': 'deviceProvisioning.md'
-   - 'Operation with Static configuration': 'staticConfiguration.md'
-   - 'Operation with Provisioning configuration': 'configurationProvisioning.md'
-- 'Installation & Administration Manual': 'administrationGuide.md'
+  - 'Home': 'index.md'
+  - 'User & Programmers Manual': 
+    - 'Intro & Development guide': 'userGuide.md'
+    - 'API Walkthrough & Device provisioning': 'deviceProvisioning.md'
+    - 'Operation with Static configuration': 'staticConfiguration.md'
+    - 'Operation with Provisioning configuration': 'configurationProvisioning.md'
+  - 'Installation & Administration Manual': 'administrationGuide.md'
