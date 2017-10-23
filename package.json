@@ -27,7 +27,7 @@
     "lwm2mAgent": "bin/lwm2mAgent.js"
   },
   "engines": {
-    "node": ">=0.10.8"
+    "node": ">=4.8.4"
   },
   "dependencies": {
     "async": "1.5.2",
