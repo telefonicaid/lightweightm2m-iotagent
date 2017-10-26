@@ -19,6 +19,8 @@
  *
  * For those usages not covered by the GNU Affero General Public License
  * please contact with::[contacto@tid.es]
+ *
+ * Modified by: Daniel Calvo - ATOS Research & Innovation
  */
 'use strict';
 
@@ -152,7 +154,7 @@ describe('Device auto-registration test', function() {
                             .contextRegistration
                             .attributes
                             .length
-                            .should.equal(22);
+                            .should.equal(21);
 
                         done();
                     });

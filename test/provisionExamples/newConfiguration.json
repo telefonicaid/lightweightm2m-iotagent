@@ -11,7 +11,7 @@
           "type": "Lumens"
         }
       ],
-      "active": [
+      "attributes": [
         {
           "name": "Temperature Sensor",
           "type": "Lumens"

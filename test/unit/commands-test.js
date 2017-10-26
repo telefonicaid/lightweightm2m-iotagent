@@ -57,7 +57,7 @@ describe('Command attributes test', function() {
     });
     afterEach(function(done) {
         async.series([
-            apply(lwm2mClient.unregister, deviceInformation),
+            /*apply(lwm2mClient.unregister, deviceInformation),*/
             iotAgent.stop,
             apply(mongoUtils.cleanDbs, config.ngsi.contextBroker.host),
             lwm2mClient.registry.reset

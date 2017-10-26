@@ -19,6 +19,8 @@
  *
  * For those usages not covered by the GNU Affero General Public License
  * please contact with::[contacto@tid.es]
+ *
+ * Modified by: Daniel Calvo - ATOS Research & Innovation
  */
 
 var config = {};
@@ -98,7 +100,7 @@ config.ngsi = {
                     type: 'Lumens'
                 }
             ],
-            active: [
+            attributes: [
                 {
                     name: 'status',
                     type: 'Boolean'
@@ -117,7 +119,7 @@ config.ngsi = {
             subservice: '/deserts',
             commands: [],
             lazy: [],
-            active: [
+            attributes: [
                 {
                     name: 'status',
                     type: 'Boolean'
@@ -153,7 +155,7 @@ config.ngsi = {
             ],
             lazy: [],
             staticAttributes: [],
-            active: [],
+            attributes: [],
             lwm2mResourceMapping: {
                 'position' : {
                     objectType: 9090,

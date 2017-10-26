@@ -103,7 +103,7 @@ The following request creates the configuration group for devices with type `Wea
           "type": "degrees"
         }
       ],
-      "active": [
+      "attributes": [
         {
           "name": "Power Control",
           "type": "Boolean"

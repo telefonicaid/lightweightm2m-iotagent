@@ -93,7 +93,7 @@ config.ngsi = {
                 "type": "string"
               }            
             ],
-            active: [
+            attributes: [
               {
                 "name": "Battery",
                 "type": "number"
