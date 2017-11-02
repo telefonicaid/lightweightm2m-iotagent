@@ -61,7 +61,7 @@ In this mode, the log file is written in `/var/log/iotagent-lwm2m/iotagent-lwm2m
 
 # <a name="configuration"> Configuration </a>
 There are two ways to provide the IOT Agent with a configuration set: passing the name of a config file (related to the 
-root folder of the project) or customize the example `config.js` in the root. 
+root folder of the project) or customise the example `config.js` in the root. 
 
 The configuration file is divided in two sections: one standard section for the NGSI North bound `ngsi`, and another 
 one for the specific Lightweight M2M South bound, `lwm2m`. The former follows the same format described for the Node.js 
@@ -71,14 +71,15 @@ The latter configures the Lightweight M2M library used for communicating with th
 [here](https://github.com/telefonicaid/lwm2m-node-lib#-configuration) (`server` section).
 
 These are the specific LWM2M parameters that can be configured for the agent:
-* **logLevel**: level of logs for the IOTAgent specific information. E.g.: 'DEBUG'.
-* **port**: UDP port where the IOTAgent will be listening. E.g.: 60001.
-* **delayedObservationTimeout**: When a LWM2M client has active attributes, the IOTA sends an observe instruction for 
+
+- **logLevel**: level of logs for the IOTAgent specific information. E.g.: 'DEBUG'.
+- **port**: UDP port where the IOTAgent will be listening. E.g.: 60001.
+- **delayedObservationTimeout**: When a LWM2M client has active attributes, the IOTA sends an observe instruction for 
 each one, just after the client registers. This may cause cause an error when the client takes too long to start listening, 
 as the observe requests may not reach its destiny. This timeout (ms) is used to give the client the opportunity to create 
 the listener before the server sends the requests.
-* **defaultType**: for the cases when no type can be assigned to a device (no preprovision or path asignation of type), this type will be assigned by default. E.g.: 'Device'
-* **types**: for IOTAgents with multiple southbound paths, this attribute maps attribute types (defined either in the configuration file or by using the Device Configuration API) to southbound interfaces. E.g.:
+- **defaultType**: for the cases when no type can be assigned to a device (no pre-provision or path assignation of type), this type will be assigned by default. E.g.: 'Device'
+- **types**: for IOTAgents with multiple southbound paths, this attribute maps attribute types (defined either in the configuration file or by using the Device Configuration API) to southbound interfaces. E.g.:
 ```
         {
             name: 'Light',
@@ -93,6 +94,7 @@ the listener before the server sends the requests.
             url: '/arduino'
         }
 ```
+
 # <a name="packaging"> Packaging </a>
 The only package type allowed is RPM. In order to execute the packaging scripts, the RPM Build Tools must be available
 in the system.
@@ -103,7 +105,7 @@ cd rpm
 ./create-rpm.sh <release-number> <version-number>
 ```
 Where `<version-number>` is the version (x.y.z) you want the package to have and `<release-number>` is an increasing
-number dependent un previous installations. 
+number dependent on previous installations. 
 
 # <a name="sanity"> Sanity checks </a>
 The Sanity Check Procedures are the steps that a System Administrator will take to verify that an installation is ready
