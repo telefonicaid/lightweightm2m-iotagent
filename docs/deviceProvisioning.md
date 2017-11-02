@@ -49,7 +49,7 @@ are two attributes that you will want to tailor:
 be your machine's IP and the default port, but in case you are using an external context broker (or one deployed in 
 a Virtual Machine) it may differ.
 
-You should change at least the log level to `DEBUG`, as in other levels it will show no information of 
+You should change at least the log level to `DEBUG`, as in other levels it will not show information of 
 what's going on with the execution.
 
 # <a name="usage"> Usage </a>
