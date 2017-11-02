@@ -42,9 +42,10 @@ npm install
 
 # <a name="configuration"> Configuration </a>
 Most of the the default `config.js` file coming with the repository should meet your needs for this guide, but there 
-are two attributes that you will want to taylor:
-* *config.ngsi.contextBroker.host*: host IP for the ContextBroker you will be using with the IoT Agent.
-* *config.ngsi.providerUrl*: url where your IoT Agent will be listening for ContextProvider requests. Usually this will
+are two attributes that you will want to tailor:
+
+- *config.ngsi.contextBroker.host*: host IP for the ContextBroker you will be using with the IoT Agent.
+- *config.ngsi.providerUrl*: url where your IoT Agent will be listening for ContextProvider requests. Usually this will
 be your machine's IP and the default port, but in case you are using an external context broker (or one deployed in 
 a Virtual Machine) it may differ.
 
@@ -155,7 +156,7 @@ LWM2M-Client> set /7392/0 3 "[0, 0]"
 ### Connection to the server
 Once all the objects are created in the device, connect with the server with the following command:
 ```
-connect localhost 5684 robot1 /
+LWM2M-Client> connect localhost 5684 robot1 /
 ```
 A few notes about this command:
 * First of all, note that the *endpoint name* used, `robot1`, is the same we provisioned in advance with the provisioning 
