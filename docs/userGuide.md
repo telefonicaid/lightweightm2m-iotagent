@@ -14,7 +14,7 @@ with the internal protocol for the FIWARE components (OMA NGSI). This IoT Agent 
 Node.js IoT Agent Library, where more information can be found about what the IoT Agents are and their different APIs. 
 
 This project has, then, two APIs:
-* The South Bound (LWM2M): information about it can be found in the [OMA Lightweight M2M](http://openmobilealliance.hs-sites.com/lightweight-m2m-specification-from-oma) official page. Information about the subset of Lightweight M2M already supported can be found in the [LWM2M Library for Node.js](https://github.com/telefonicaid/lwm2m-node-lib) we are using.
+* The South Bound (LWM2M): information about it can be found in the [OMA Lightweight M2M](http://openmobilealliance.org/iot/lightweight-m2m-lwm2m) official page. Information about the subset of Lightweight M2M already supported can be found in the [LWM2M Library for Node.js](https://github.com/telefonicaid/lwm2m-node-lib) we are using.
 * The North Bound Administration API: all the IoT Agents share a single Administration API, and it can be found in the [Node.JS IoT Agent Library Documentation](https://github.com/telefonicaid/iotagent-node-lib).
 * The North Bound NGSI API: information about the northbound NGSI mapping can be obtained in the same Node.JS IOTA Library documentation.
  
