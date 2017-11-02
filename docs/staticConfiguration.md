@@ -15,7 +15,7 @@ This guide will use a Lightweight M2M client to simulate the interaction with th
 this client will be explained when appropriate.
 
 In this guide we will provide an explicit mapping for all the device attributes, using the `Robot` example given in the
-[Getting Started](gettingStarted.md) section. Some of them could be mapped automatically using the OMA Registry 
+[Getting Started](userGuide.md#gettingstarted) section. Some of them could be mapped automatically using the OMA Registry 
 automatic mapping (but those will be covered in other step-by-step guides).
 
 # <a name="installation"> Installation </a>
@@ -123,8 +123,7 @@ config.ngsi = {
 };
 ```
 
-You should change at least the log level, anyway, as in the default value (`FATAL`) it will show no information of 
-what's going on with the execution.
+You may need to change at least the log level to `DEBUG` to show information of what's going on with the execution.
 
 # <a name="usage"> Usage </a>
 ## Start the agent
@@ -174,7 +173,7 @@ LWM2M-Client> set /7392/0 3 "[0, 0]"
 ### Connection to the server
 Once all the objects are created in the device, connect with the server with the following command:
 ```
-connect localhost 5684 robot1 /robots
+LWM2M-Client> connect localhost 5684 robot1 /robots
 ```
 A few notes about this command:
 * First of all, note that the *endpoint name* used, `robot1`, is the same we provisioned in advance with the provisioning 
