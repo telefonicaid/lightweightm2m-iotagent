@@ -8,7 +8,7 @@ OMA Lightweight M2M IoT Agent: User and Development Guide
 * [Development](#development)
 
 
-# <a name="overview"/> Overview
+# <a name="overview"> Overview </a>
 The Lightweight M2M IoT Agent is a standard Fiware IoT Agent that implements the bridge of the OMA Lightweight M2M protocol
 with the internal protocol for the FIWARE components (OMA NGSI). This IoT Agent is based in the public 
 Node.js IoT Agent Library, where more information can be found about what the IoT Agents are and their different APIs. 
@@ -20,7 +20,7 @@ This project has, then, two APIs:
  
 You will find examples and more detailed information in the Getting Started howtos below.
  
-# <a name="gettingstarted"/> Getting started
+# <a name="gettingstarted"> Getting started </a>
 This document links a set of howtos oriented to give a quick step-by-step example on how to use the agent with 
 different types of configurations. It's important to remark that those configuration options are not mutually exclusive:
 an IoT Agent can have some device preprovisioned, some configuration groups defined and some static configurations also,
@@ -49,7 +49,7 @@ for being autoprovisioned when they register in the agent.
 * [Static Configuration Guide](staticConfiguration.md): this guide shows how to configure static routes that map incoming
 devices to different statically configured types.
  
-# <a name="testing"/> Testing
+# <a name="testing"> Testing </a>
 The IoT Agent comes with a test suite to check the main functionalities. In order to execute the test suite you must have the Grunt client installed. You can install it using the following command (you will need root permissions):
 ```
 npm install -g grunt-cli
@@ -62,7 +62,7 @@ This will execute the functional tests and the syntax checking as well.
 
 NOTE: This are end to end tests, so they execute against real instances of the components (so make sure you have a real Context Broker configured in the config.js). Be aware that the tests clean the databases before and after they have been executed so DO NOT EXECUTE THIS TESTS ON PRODUCTION MACHINES.
 
-# <a name="development"/> Development
+# <a name="development"> Development </a>
 ## Project build
 The project is managed using Grunt Task Runner.
 
