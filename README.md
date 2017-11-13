@@ -1,5 +1,11 @@
 OMA Lightweight M2M IoT Agent: Overview
 ==================
+
+[![License badge](https://img.shields.io/badge/license-AGPL-blue.svg)](https://opensource.org/licenses/AGPL-3.0)
+[![Documentation badge](https://readthedocs.org/projects/fiware-iotagent-lwm2m/badge/?version=latest)](http://fiware-iotagent-lwm2m.readthedocs.org/en/latest/?badge=latest)
+[![Docker badge](https://img.shields.io/docker/pulls/fiware/lightweightm2m-iotagent.svg)](https://hub.docker.com/r/fiware/lightweightm2m-iotagent/)
+[![Support badge]( https://img.shields.io/badge/support-sof-yellowgreen.svg)](http://stackoverflow.com/questions/tagged/fiware)
+
 # Index
 
 * [Overview](#overview)

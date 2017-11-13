@@ -1,0 +1,22 @@
+language: node_js
+
+sudo: required
+
+node_js:
+ - "4"
+ - "6"
+
+branches:
+  only:
+    - master
+
+services:
+ - mongodb
+
+install:
+ - npm install
+
+before_install:
+ - npm install -g grunt-cli
+
+dist: precise

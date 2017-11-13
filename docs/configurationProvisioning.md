@@ -7,7 +7,7 @@ Configuration Provisioning guide
 * [Usage](#overview)
 
 
-# <a name="overview"/> Overview
+# <a name="overview"> Overview </a>
 This guide will show the process of using the IoT Agent with configuration provisioning. In this use case, the owner 
 of the devices, before connecting each one of them, provisions a device configuration that will be shared among all the devices
 of the same type. The pieces of information that will be used to distinguish between devices will be the `resource` and
@@ -17,10 +17,10 @@ This guide will use a Lightweight M2M client to simulate the interaction with th
 this client will be explained when appropriate.
 
 This guide will make use of the automatic OMA Registry mapping, with the example of the `WeatherBaloon` defined in the
-[Getting Started](gettingStarted.md) section. So, the attributes will be defined exclusively by its name, and the mapping
+[Getting Started](userGuide.md#gettingstarted) section. So, the attributes will be defined exclusively by their name, and the mapping
 from and to a full LWM2M Mapping (like /387/3/23) will be performed by the IoT Agent.
 
-# <a name="installation"/> Installation
+# <a name="installation"> Installation </a>
 ## Installation of the Agent
 In order to install the agent, first of all, clone the Github repository:
 ```
@@ -42,19 +42,20 @@ And download the dependencies, executing, from the root folder of the project:
 npm install
 ```
 
-# <a name="configuration"/> Configuration
+# <a name="configuration"> Configuration </a>
 Most of the the default `config.js` file coming with the repository should meet your needs for this guide, but there 
-are two attributes that you will want to taylor:
-* *config.ngsi.contextBroker.host*: host IP for the ContextBroker you will be using with the IoT Agent.
-* *config.ngsi.providerUrl*: url where your IoT Agent will be listening for ContextProvider requests. Usually this will
+are two attributes that you will want to tailor:
+
+- *config.ngsi.contextBroker.host*: host IP for the ContextBroker you will be using with the IoT Agent.
+- *config.ngsi.providerUrl*: url where your IoT Agent will be listening for ContextProvider requests. Usually this will
 be your machine's IP and the default port, but in case you are using an external context broker (or one deployed in 
 a Virtual Machine) it may differ.
 
 
-You should change at least the log level, anyway, as in the default value (`FATAL`) it will show no information of 
+You should change at least the log level to `DEBUG`, as in other levels it will not show information of 
 what's going on with the execution.
 
-# <a name="usage"/> Usage
+# <a name="usage"> Usage </a>
 
 ## Start the agent
 In order to start the agent, from the root folder of the repository type:
@@ -152,7 +153,7 @@ LWM2M-Client> set /3312/0 0 On
 ### Connection to the server
 Once all the objects are created in the device, connect with the server with the following command:
 ```
-connect localhost 5684 weather1 /weatherBaloon
+LWM2M-Client> connect localhost 5684 weather1 /weatherBaloon
 ```
 A few notes about this command:
 * First of all, the *endpoint name* used, `weather1`, can be whatever ID available; the type of device and its features
