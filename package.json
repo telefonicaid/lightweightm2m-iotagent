@@ -27,39 +27,40 @@
     "lwm2mAgent": "bin/lwm2mAgent.js"
   },
   "engines": {
-    "node": ">=0.10.8"
+    "node": ">=4.8.4"
   },
   "dependencies": {
     "async": "1.5.2",
-    "request": "2.69.0",
+    "request": "^2.69.0",
     "underscore": "1.8.3",
     "cheerio": "0.20.0",
     "xmldom": "0.1.22",
-    "logops": "0.5.0",
+    "logops": "1.0.0-alpha.7",
     "iotagent-node-lib": "0.10.0",
     "lwm2m-node-lib": "0.5.0"
   },
   "devDependencies": {
     "nock": "0.48.0",
-    "should": "4.0.4",
-    "grunt-contrib-jshint": "~0.6.4",
-    "grunt-contrib-watch": "~0.5.3",
-    "grunt-gjslint": "~0.1.0",
-    "grunt": "~0.4.1",
-    "mocha": "~1.13.0",
-    "grunt-mocha-test": "~0.7.0",
+    "should": "8.2.2",
+    "grunt-contrib-jshint": "0.12.0",
+    "grunt-contrib-watch": "0.6.1",
+    "grunt-gjslint": "0.2.1",
+    "grunt": "0.4.5",
+    "mocha": "2.4.5",
+    "grunt-mocha-test": "0.12.7",
     "chai": "~1.8.0",
     "sinon": "~1.7.3",
     "istanbul": "~0.1.34",
-    "grunt-exec": "~0.4.0",
-    "grunt-dox": "~0.5.0",
-    "grunt-github-pages": "~0.0.3",
-    "grunt-plato": "~0.2.0",
+    "grunt-exec": "0.4.6",
+    "grunt-dox": "0.5.0",
+    "grunt-github-pages": "0.0.4",
+    "grunt-plato": "^1.3.0",
     "sinon-chai": "2.4.0",
     "proxyquire": "0.5.1",
-    "grunt-mkdir": "~0.1.1",
-    "grunt-contrib-clean": "~0.5.0",
-    "grunt-githooks": "~0.3.1",
-    "mongodb": "1.4.20"
+    "grunt-mkdir": "0.1.2",
+    "grunt-contrib-clean": "0.7.0",
+    "grunt-githooks": "0.5.0",
+    "mongodb": "2.2.19",
+    "closure-linter-wrapper": "1.0.1"
   }
 }
