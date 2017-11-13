@@ -4,4 +4,3 @@
 - Add test cases to check first observation of a value (#54).
 - Update to master branch of IoTAgent Library and LWM2M Library 0.5.0.
 - FEATURE update node version to 4.8.4
-- 
