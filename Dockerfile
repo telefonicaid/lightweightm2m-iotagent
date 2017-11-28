@@ -46,7 +46,7 @@ RUN yum update -y && \
   echo "INFO: node version <$(node -e "console.log(process.version)")>" && \
   echo "INFO: npm version <$(npm --version)>" && \
   echo "INFO: npm install --production..." && \
-  cd /opt/iotaul && npm install --production && \
+  cd /opt/iota-lwm2m && npm install --production && \
   echo "INFO: Cleaning unused software..." && \
   yum erase -y gcc-c++ gcc ppl cpp glibc-devel glibc-headers kernel-headers libgomp libstdc++-devel mpfr libss yum-utils libxml2-python git && \
   rm -rf /opt/node-v${NODEJS_VERSION}.tar.gz /opt/node-v${NODEJS_VERSION} && \
@@ -64,7 +64,7 @@ RUN yum update -y && \
   # We use /bin/cp instead of cp to avoid any alias substitution, which in some cases has been problematic
   /bin/cp -f /usr/lib/locale/locale-archive /usr/lib/locale/locale-archive.tmpl && \
   build-locale-archive && \
-  find /opt/iotaul -name '.[^.]*' 2>/dev/null | xargs -r rm -rf && \
+  find /opt/iota-lwm2m -name '.[^.]*' 2>/dev/null | xargs -r rm -rf && \
   # Clean npm cache
   npm cache clean && \
   # Don't need unused files inside docker images
