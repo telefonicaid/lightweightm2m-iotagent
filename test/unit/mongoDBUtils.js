@@ -27,9 +27,19 @@ var MongoClient = require('mongodb').MongoClient,
 
 function cleanDb(host, name, callback) {
     var url = 'mongodb://' + host + ':27017/' + name;
+    MongoClient.connect(
+        url,
+        {
+            server: {
+                socketOptions: {
+                    connectTimeoutMS: 500
+                }
+            }
+        },
+        function(err, db) {
 
-    MongoClient.connect(url, function(err, db) {
         if (db) {
+
             var collections = ['devices', 'groups', 'entities', 'registrations'];
 
             for (var i in collections) {
@@ -39,6 +49,7 @@ function cleanDb(host, name, callback) {
                     collection.drop();
                 }
             }
+
             db.close();
         }
 

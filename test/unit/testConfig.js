@@ -26,7 +26,7 @@
 var config = {};
 
 config.lwm2m = {
-    logLevel: 'FATAL',
+    logLevel: 'DEBUG',
     port: 60001,
     defaultType: 'Device',
     serverProtocol: 'udp4',
@@ -73,9 +73,9 @@ config.client = {
 };
 
 config.ngsi = {
-    logLevel: 'FATAL',
+    logLevel: 'DEBUG',
     contextBroker: {
-        host: '192.168.56.101',
+        host: 'localhost',
         port: '1026'
     },
     server: {
@@ -91,7 +91,7 @@ config.ngsi = {
     },
     types: {
         'Light': {
-            service: 'smartGondor',
+            service: 'smartgondor',
             subservice: '/gardens',
             commands: [],
             lazy: [
@@ -115,7 +115,7 @@ config.ngsi = {
             }
         },
         'Pressure': {
-            service: 'dumbMordor',
+            service: 'dumbmordor',
             subservice: '/deserts',
             commands: [],
             lazy: [],
@@ -147,6 +147,8 @@ config.ngsi = {
             }
         },
         'Robot': {
+            service: 'dumbmordor',
+            subservice: '/deserts',
             commands: [
                 {
                     name: 'position',
@@ -165,9 +167,9 @@ config.ngsi = {
             }
         }
     },
-    service: 'smartGondor',
+    service: 'smartgondor',
     subservice: '/gardens',
-    providerUrl: 'http://192.168.56.1:4041/NGSI10',
+    providerUrl: 'http://localhost:4041/NGSI10',
     deviceRegistrationDuration: 'P1M'
 };
 

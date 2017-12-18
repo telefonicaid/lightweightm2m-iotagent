@@ -42,19 +42,35 @@ var config = require('./testConfig'),
     ngsiClient = ngsiTestUtils.create(
         config.ngsi.contextBroker.host,
         config.ngsi.contextBroker.port,
-        'smartGondor',
-        '/gardens'
+        'dumbmordor',
+        '/deserts'
     ),
     deviceInformation;
 
 describe('Command attributes test', function() {
     beforeEach(function(done) {
+
+        lwm2mClient.init(config);
+
         async.series([
-            async.apply(mongoUtils.cleanDbs, config.ngsi.contextBroker.host),
-            async.apply(iotAgent.start, config),
-            lwm2mClient.registry.reset
-        ], done);
+            apply(mongoUtils.cleanDbs, config.ngsi.contextBroker.host),
+            apply(iotAgent.start, config),
+            apply(lwm2mClient.registry.create, '/5000/0')
+        ], function(error) {
+            lwm2mClient.register(
+                clientConfig.host,
+                clientConfig.port,
+                clientConfig.url,
+                clientConfig.endpointName,
+                function(error, result) {
+                    deviceInformation = result;
+                    setTimeout(done, 1000);
+                }
+            );
+        });
     });
+
+
     afterEach(function(done) {
         async.series([
             apply(lwm2mClient.unregister, deviceInformation),
@@ -101,7 +117,8 @@ describe('Command attributes test', function() {
 
             lwm2mClient.setHandler(deviceInformation.serverInfo, 'execute', handleExecute);
 
-            ngsiClient.update('TestClient:Robot', 'Robot', attributes, function(error, response, body) {
+            ngsiClient.update('TestClient:Robot', 'Robot',
+             attributes, function(error, response, body) {
                 should.not.exist(error);
                 handleExecuted.should.equal(true);
 
@@ -124,7 +141,8 @@ describe('Command attributes test', function() {
 
             lwm2mClient.setHandler(deviceInformation.serverInfo, 'execute', handleExecute);
 
-            ngsiClient.update('TestClient:Robot', 'Robot', attributes, function(error, response, body) {
+            ngsiClient.update('TestClient:Robot', 'Robot',
+             attributes, function(error, response, body) {
                 should.not.exist(error);
                 should.exist(body);
                 should.exist(body.contextResponses);
@@ -142,8 +160,8 @@ describe('Command attributes test', function() {
             method: 'POST',
             json: utils.readExampleFile('./test/provisionExamples/provisionDeviceWithCommands.json'),
             headers: {
-                'fiware-service': 'smartGondor',
-                'fiware-servicepath': '/gardens'
+                'fiware-service': 'dumbmordor',
+                'fiware-servicepath': '/deserts'
             }
         };
 
