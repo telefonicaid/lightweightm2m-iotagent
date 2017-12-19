@@ -42,8 +42,8 @@ var config = require('./testConfig'),
     ngsiClient = ngsiTestUtils.create(
         config.ngsi.contextBroker.host,
         config.ngsi.contextBroker.port,
-        'dumbmordor',
-        '/deserts'
+        'smartgondor',
+        '/gardens'
     ),
     deviceInformation;
 
