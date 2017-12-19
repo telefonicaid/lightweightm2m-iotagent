@@ -29,6 +29,9 @@
   "engines": {
     "node": ">=4.8.4"
   },
+  "scripts": {
+    "test": "grunt test"
+  },
   "dependencies": {
     "async": "1.5.2",
     "request": "^2.69.0",
