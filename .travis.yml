@@ -12,11 +12,14 @@ branches:
 
 services:
  - mongodb
+ - docker
 
 install:
  - npm install
 
 before_install:
+ - docker pull fiware/orion:0.26
+ - docker run -d -p 1026:1026 -l orion fiware/orion:0.26
  - npm install -g grunt-cli
 
 dist: precise
