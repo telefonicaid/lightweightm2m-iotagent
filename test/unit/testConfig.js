@@ -147,8 +147,8 @@ config.ngsi = {
             }
         },
         'Robot': {
-            service: 'dumbmordor',
-            subservice: '/deserts',
+            service: 'smartgondor',
+            subservice: '/gardens',
             commands: [
                 {
                     name: 'position',
