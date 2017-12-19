@@ -57,7 +57,7 @@ config.lwm2m = {
 config.client = {
     lifetime: '85671',
     version: '1.0',
-    logLevel: 'DEBUG',
+    logLevel: 'FATAL',
     observe: {
         period: 3000
     },
@@ -73,7 +73,7 @@ config.client = {
 };
 
 config.ngsi = {
-    logLevel: 'DEBUG',
+    logLevel: 'FATAL',
     contextBroker: {
         host: 'localhost',
         port: '1026'
