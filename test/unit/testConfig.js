@@ -26,7 +26,7 @@
 var config = {};
 
 config.lwm2m = {
-    logLevel: 'DEBUG',
+    logLevel: 'FATAL',
     port: 60001,
     defaultType: 'Device',
     serverProtocol: 'udp4',
