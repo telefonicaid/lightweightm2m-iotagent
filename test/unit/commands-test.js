@@ -160,8 +160,8 @@ describe('Command attributes test', function() {
             method: 'POST',
             json: utils.readExampleFile('./test/provisionExamples/provisionDeviceWithCommands.json'),
             headers: {
-                'fiware-service': 'dumbmordor',
-                'fiware-servicepath': '/deserts'
+                'fiware-service': 'smartgondor',
+                'fiware-servicepath': '/gardens'
             }
         };
 

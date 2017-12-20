@@ -169,7 +169,7 @@ config.ngsi = {
     },
     service: 'smartgondor',
     subservice: '/gardens',
-    providerUrl: 'http://localhost:4041/NGSI10',
+    providerUrl: 'http://localhost:4041/v1',
     deviceRegistrationDuration: 'P1M'
 };
 
