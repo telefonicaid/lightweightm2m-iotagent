@@ -95,7 +95,7 @@ describe('Active attributes test', function() {
 
                             done();
                         });
-                }, 500);
+                }, 1000);
             });
         });
     });
@@ -120,7 +120,7 @@ describe('Active attributes test', function() {
 
                             done();
                         });
-                }, 100);
+                }, 1000);
             });
         });
     });
