@@ -67,9 +67,9 @@
       }
     },
     "ajv": {
-      "version": "5.5.1",
-      "resolved": "https://registry.npmjs.org/ajv/-/ajv-5.5.1.tgz",
-      "integrity": "sha1-s4u4h22ehr7plJVqBOch6IskjrI=",
+      "version": "5.5.2",
+      "resolved": "https://registry.npmjs.org/ajv/-/ajv-5.5.2.tgz",
+      "integrity": "sha1-c7Xuyj+rZT49P5Qis0GtQiBdyWU=",
       "requires": {
         "co": "4.6.0",
         "fast-deep-equal": "1.0.0",
@@ -1048,7 +1048,7 @@
         "ignore": "3.3.7",
         "imurmurhash": "0.1.4",
         "inquirer": "0.12.0",
-        "is-my-json-valid": "2.16.1",
+        "is-my-json-valid": "2.17.1",
         "is-resolvable": "1.0.1",
         "js-yaml": "3.10.0",
         "json-stable-stringify": "1.0.1",
@@ -1896,7 +1896,7 @@
       "resolved": "https://registry.npmjs.org/har-validator/-/har-validator-5.0.3.tgz",
       "integrity": "sha1-ukAsJmGU8VlW7xXg/PJCmT9qff0=",
       "requires": {
-        "ajv": "5.5.1",
+        "ajv": "5.5.2",
         "har-schema": "2.0.0"
       }
     },
@@ -2030,7 +2030,7 @@
       }
     },
     "iotagent-node-lib": {
-      "version": "git://github.com/telefonicaid/iotagent-node-lib.git#603d1a9d3666ae228277102c32a8a294331519f2",
+      "version": "git://github.com/telefonicaid/iotagent-node-lib.git#73a8cce3ce562a4cc0c32de5d6011959f8fcf6c7",
       "requires": {
         "async": "1.5.2",
         "body-parser": "1.18.2",
@@ -2166,11 +2166,6 @@
             "readable-stream": "2.1.5"
           }
         },
-        "node-uuid": {
-          "version": "1.4.8",
-          "resolved": "https://registry.npmjs.org/node-uuid/-/node-uuid-1.4.8.tgz",
-          "integrity": "sha1-sEDrCSOWivq/jTL7HxfxFn/auQc="
-        },
         "performance-now": {
           "version": "0.2.0",
           "resolved": "https://registry.npmjs.org/performance-now/-/performance-now-0.2.0.tgz",
@@ -2259,9 +2254,9 @@
       }
     },
     "is-my-json-valid": {
-      "version": "2.16.1",
-      "resolved": "https://registry.npmjs.org/is-my-json-valid/-/is-my-json-valid-2.16.1.tgz",
-      "integrity": "sha512-ochPsqWS1WXj8ZnMIV0vnNXooaMhp7cyL4FMSIPKTtnV0Ha/T19G2b9kkhcNsabV9bxYkze7/aLZJb/bYuFduQ==",
+      "version": "2.17.1",
+      "resolved": "https://registry.npmjs.org/is-my-json-valid/-/is-my-json-valid-2.17.1.tgz",
+      "integrity": "sha512-Q2khNw+oBlWuaYvEEHtKSw/pCxD2L5Rc1C+UQme9X6JdRDh7m5D7HkozA0qa3DUkQ6VzCnEm8mVIQPyIRkI5sQ==",
       "dev": true,
       "requires": {
         "generate-function": "2.0.0",
@@ -3753,6 +3748,11 @@
           "dev": true
         }
       }
+    },
+    "node-uuid": {
+      "version": "1.4.8",
+      "resolved": "https://registry.npmjs.org/node-uuid/-/node-uuid-1.4.8.tgz",
+      "integrity": "sha1-sEDrCSOWivq/jTL7HxfxFn/auQc="
     },
     "nomnom": {
       "version": "1.5.2",
