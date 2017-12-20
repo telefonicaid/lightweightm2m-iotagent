@@ -5,4 +5,4 @@
 - Update to master branch of IoTAgent Library and LWM2M Library 0.5.0.
 - FEATURE update node version to 4.8.4
 - Unit tests are executed as part of Travis CI.
-- npm-shrinkwrap file is updated (#99 and #100)
+- Fixing issues in the provisioning API (#99 and #100) as result of npm-shrinkwrap file update.
