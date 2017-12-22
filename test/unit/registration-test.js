@@ -51,10 +51,13 @@ var config = require('./testConfig'),
 
 
 describe('Device auto-registration test', function() {
+
     beforeEach(function(done) {
+        lwm2mClient.init(config);
         async.series([
             apply(mongoUtils.cleanDbs, config.ngsi.contextBroker.host),
-            apply(iotAgent.start, config)
+            apply(iotAgent.start, config),
+            apply(lwm2mClient.registry.create, '/5000/0')
         ], done);
     });
     afterEach(function(done) {
@@ -223,7 +226,7 @@ describe('Device auto-registration test', function() {
             method: 'POST',
             json: utils.readExampleFile('./test/provisionExamples/provisionMinimumDevice.json'),
             headers: {
-                'fiware-service': 'smartGondor',
+                'fiware-service': 'smartgondor',
                 'fiware-servicepath': '/gardens'
             }
         };
@@ -264,12 +267,13 @@ describe('Device auto-registration test', function() {
                     ]
                 },
                 headers: {
-                    'fiware-service': 'smartGondor',
+                    'fiware-service': 'smartgondor',
                     'fiware-servicepath': '/gardens'
                 }
             };
 
             request(ngsiQuery, function(error, response, body) {
+
                 should.not.exist(error);
                 should.not.exist(body.orionError);
                 response.statusCode.should.equal(200);
@@ -384,7 +388,7 @@ describe('Device auto-registration test', function() {
             method: 'POST',
             json: utils.readExampleFile('./test/provisionExamples/preprovisionDevice.json'),
             headers: {
-                'fiware-service': 'smartGondor',
+                'fiware-service': 'smartgondor',
                 'fiware-servicepath': '/gardens'
             }
         };
@@ -462,7 +466,7 @@ describe('Device auto-registration test', function() {
             method: 'POST',
             json: utils.readExampleFile('./test/provisionExamples/preprovisionDeviceOMANoInternalMapping.json'),
             headers: {
-                'fiware-service': 'smartGondor',
+                'fiware-service': 'smartgondor',
                 'fiware-servicepath': '/gardens'
             }
         };

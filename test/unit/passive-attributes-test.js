@@ -47,12 +47,14 @@ var config = require('./testConfig'),
 
 describe('Passive attributes test', function() {
     beforeEach(function(done) {
+        lwm2mClient.init(config);
         async.series([
             async.apply(mongoUtils.cleanDbs, config.ngsi.contextBroker.host),
             async.apply(iotAgent.start, config),
             lwm2mClient.registry.reset
         ], done);
     });
+
     afterEach(function(done) {
         async.series([
             apply(lwm2mClient.unregister, deviceInformation),
@@ -61,6 +63,7 @@ describe('Passive attributes test', function() {
             lwm2mClient.registry.reset
         ], done);
     });
+
     describe('When a passive attribute of the entity corresponding to a device is queried in Orion', function() {
         beforeEach(function(done) {
             lwm2mClient.register(
@@ -99,6 +102,8 @@ describe('Passive attributes test', function() {
             });
         });
     });
+
+
     describe('When a passive attribute of the entity corresponding to a device is modified in Orion', function() {
         var attributes = [
             {
