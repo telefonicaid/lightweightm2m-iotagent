@@ -87,7 +87,6 @@ describe('Active attributes test', function() {
                 setTimeout(function() {
                     ngsiClient.query('ActiveTestClient:Pressure', 'Pressure', ['pressure'],
                         function(error, response, body) {
-
                             should.not.exist(error);
                             should.exist(body);
                             should.not.exist(body.errorCode);

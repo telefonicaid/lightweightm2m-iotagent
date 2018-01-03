@@ -39,7 +39,7 @@ var config = require('./testConfig'),
         url: '/pres',
         ipProtocol: 'udp4'
     },
-    ngsiClient = ngsiTestUtils.create(
+    ngsiClient = ngsiTestUtils.createNgsi2(
         config.ngsi.contextBroker.host,
         config.ngsi.contextBroker.port,
         'dumbmordor',
@@ -96,9 +96,8 @@ describe('Active attributes test', function() {
                             body.pressure.value.should.equal('89');
                             done();
                         });
-                }, 500);
+                }, 1000);
             });
-
         });
     });
 
@@ -121,9 +120,8 @@ describe('Active attributes test', function() {
                             body.pressure.value.should.equal('19');
                             done();
                         });
-                }, 100);
+                }, 2000);
             });
         });
     });
-
 });
