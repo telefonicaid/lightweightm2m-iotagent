@@ -57,7 +57,7 @@ config.lwm2m = {
 config.client = {
     lifetime: '85671',
     version: '1.0',
-    logLevel: 'DEBUG',
+    logLevel: 'FATAL',
     observe: {
         period: 3000
     },
@@ -91,7 +91,7 @@ config.ngsi = {
     },
     types: {
         'Light': {
-            service: 'smartGondor',
+            service: 'smartgondor',
             subservice: '/gardens',
             commands: [],
             lazy: [
@@ -115,7 +115,7 @@ config.ngsi = {
             }
         },
         'Pressure': {
-            service: 'dumbMordor',
+            service: 'dumbmordor',
             subservice: '/deserts',
             commands: [],
             lazy: [],
@@ -147,6 +147,8 @@ config.ngsi = {
             }
         },
         'Robot': {
+            service: 'smartgondor',
+            subservice: '/gardens',
             commands: [
                 {
                     name: 'position',
@@ -165,9 +167,9 @@ config.ngsi = {
             }
         }
     },
-    service: 'smartGondor',
+    service: 'smartgondor',
     subservice: '/gardens',
-    providerUrl: 'http://localhost/NGSI10',
+    providerUrl: 'http://localhost:4041/v1',
     deviceRegistrationDuration: 'P1M'
 };
 

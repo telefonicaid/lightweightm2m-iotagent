@@ -29,6 +29,9 @@
   "engines": {
     "node": ">=4.8.4"
   },
+  "scripts": {
+    "test": "grunt test"
+  },
   "dependencies": {
     "async": "1.5.2",
     "request": "^2.69.0",
@@ -37,7 +40,8 @@
     "xmldom": "0.1.22",
     "logops": "1.0.0-alpha.7",
     "iotagent-node-lib": "https://github.com/dcalvoalonso/iotagent-node-lib.git#task/activeAttsNgsi2",
-    "lwm2m-node-lib": "0.5.0"
+    "lwm2m-node-lib": "0.5.0",
+    "mongodb": "2.2.19"
   },
   "devDependencies": {
     "nock": "0.48.0",

@@ -2,4 +2,7 @@
 - Update RPM Creation tool (#57).
 - Update Howtos with the last changes of the IoT Agent library (#48).
 - Add test cases to check first observation of a value (#54).
-- Update to IoTAgent Library 0.10.0 and LWM2M Library 0.5.0.
+- Update to master branch of IoTAgent Library and LWM2M Library 0.5.0.
+- FEATURE update node version to 4.8.4
+- Unit tests are executed as part of Travis CI.
+- Fixing issues in the provisioning API (#99 and #100) as result of npm-shrinkwrap file update.

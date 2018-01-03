@@ -40,7 +40,7 @@ var config = require('./testConfig'),
     ngsiClient = ngsiTestUtils.create(
         config.ngsi.contextBroker.host,
         config.ngsi.contextBroker.port,
-        'dumbMordor',
+        'dumbmordor',
         '/deserts'
     ),
     deviceInformation;
@@ -95,7 +95,7 @@ describe('Active attributes test', function() {
 
                             done();
                         });
-                }, 500);
+                }, 1000);
             });
         });
     });
@@ -120,7 +120,7 @@ describe('Active attributes test', function() {
 
                             done();
                         });
-                }, 100);
+                }, 1000);
             });
         });
     });

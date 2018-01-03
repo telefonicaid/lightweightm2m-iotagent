@@ -1,6 +1,6 @@
 site_name: Fiware-iotagent-lwm2m
-site_url: https://fiware-iotagent-ul.readthedocs.org
-repo_url: https://github.com/telefonicaid/iotagent-lwm2m.git
+site_url: https://fiware-iotagent-lwm2m.readthedocs.io
+repo_url: https://github.com/telefonicaid/lightweightm2m-iotagent.git
 site_description: IoT Agent LWM2M (CoAP/UDP transport) Documentation
 docs_dir: docs
 site_dir: html

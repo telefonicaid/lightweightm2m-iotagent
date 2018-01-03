@@ -9,13 +9,13 @@ OMA Lightweight M2M IoT Agent: Administration Guide
 * [Sanity checks](#sanity)
 * [Diagnosis procedures](#diagnosis)
 
-#  <a name="prerequisites"/>  Prerequisites
+# <a name="prerequisites"> Prerequisites </a>
 The IOT Agent requires Node.js 0.10.x to work and uses NPM as its package manager. Most Linux distributions offer packages to install it. For other OS, you can find instructions to install Node.js [here](https://nodejs.org/). 
 
 NOTE: the current version of Node.js, 0.12.x has not been tested with the Agent, so we suggest to download and use the previous version (that process can be eased with utilities as `n` or  `nvm`).
 
 
-#  <a name="installation"/> Installation
+# <a name="installation"> Installation </a>
 
 ## Cloning the Github repository
 Once the repository is cloned, from the root folder of the project execute:
@@ -35,11 +35,11 @@ yum localinstall --nogpg <rpm-file>
 ## Using Docker
 There are automatic builds of the development version of the IOTAgent published in Docker hub. In order to install using the docker version, just execute the following:
 ```
-docker run --link orion:orion fiwareiotplatform/lighteweightm2m-iotagent
+docker run --link orion:orion telefonicaiot/lightweightm2m-iotagent
 ```
 As you can see, the Lightweight M2M (as any other IOTA) requires a Context Broker to work. In order to link it, just use the option `--link` as shown in the example.
 
-# <a name="usage"/> Usage
+# <a name="usage"> Usage </a>
 ## Github installation
 In order to execute the IOTAgent, just issue the following command from the root folder of the cloned project:
 ```
@@ -59,9 +59,9 @@ service iotagent-lwm2m stop
 
 In this mode, the log file is written in `/var/log/iotagent-lwm2m/iotagent-lwm2m.log`.
 
-# <a name="configuration"/> Configuration
+# <a name="configuration"> Configuration </a>
 There are two ways to provide the IOT Agent with a configuration set: passing the name of a config file (related to the 
-root folder of the project) or customize the example `config.js` in the root. 
+root folder of the project) or customise the example `config.js` in the root. 
 
 The configuration file is divided in two sections: one standard section for the NGSI North bound `ngsi`, and another 
 one for the specific Lightweight M2M South bound, `lwm2m`. The former follows the same format described for the Node.js 
@@ -71,14 +71,15 @@ The latter configures the Lightweight M2M library used for communicating with th
 [here](https://github.com/telefonicaid/lwm2m-node-lib#-configuration) (`server` section).
 
 These are the specific LWM2M parameters that can be configured for the agent:
-* **logLevel**: level of logs for the IOTAgent specific information. E.g.: 'DEBUG'.
-* **port**: UDP port where the IOTAgent will be listening. E.g.: 60001.
-* **delayedObservationTimeout**: When a LWM2M client has active attributes, the IOTA sends an observe instruction for 
+
+- **logLevel**: level of logs for the IOTAgent specific information. E.g.: 'DEBUG'.
+- **port**: UDP port where the IOTAgent will be listening. E.g.: 60001.
+- **delayedObservationTimeout**: When a LWM2M client has active attributes, the IOTA sends an observe instruction for 
 each one, just after the client registers. This may cause cause an error when the client takes too long to start listening, 
 as the observe requests may not reach its destiny. This timeout (ms) is used to give the client the opportunity to create 
 the listener before the server sends the requests.
-* **defaultType**: for the cases when no type can be assigned to a device (no preprovision or path asignation of type), this type will be assigned by default. E.g.: 'Device'
-* **types**: for IOTAgents with multiple southbound paths, this attribute maps attribute types (defined either in the configuration file or by using the Device Configuration API) to southbound interfaces. E.g.:
+- **defaultType**: for the cases when no type can be assigned to a device (no pre-provision or path assignation of type), this type will be assigned by default. E.g.: 'Device'
+- **types**: for IOTAgents with multiple southbound paths, this attribute maps attribute types (defined either in the configuration file or by using the Device Configuration API) to southbound interfaces. E.g.:
 ```
         {
             name: 'Light',
@@ -93,7 +94,8 @@ the listener before the server sends the requests.
             url: '/arduino'
         }
 ```
-# <a name="packaging"/> Packaging
+
+# <a name="packaging"> Packaging </a>
 The only package type allowed is RPM. In order to execute the packaging scripts, the RPM Build Tools must be available
 in the system.
 
@@ -103,9 +105,9 @@ cd rpm
 ./create-rpm.sh <release-number> <version-number>
 ```
 Where `<version-number>` is the version (x.y.z) you want the package to have and `<release-number>` is an increasing
-number dependent un previous installations. 
+number dependent on previous installations. 
 
-# <a name="sanity"/> Sanity checks
+# <a name="sanity"> Sanity checks </a>
 The Sanity Check Procedures are the steps that a System Administrator will take to verify that an installation is ready
 to be tested. This is therefore a preliminary set of tests to ensure that obvious or basic malfunctioning is fixed 
 before proceeding to unit tests, integration tests and user validation
@@ -187,7 +189,7 @@ This library contains a simple command line Lightweight M2M Client that can be u
 on how to perform these kind of tests, see the How-To's in the [Getting Started section of the User Manual](userGuide.md#gettingstarted)
 that shows simple registrations and send measure tests.
 
-# <a name="diagnosis"/> Diagnosis procedures
+# <a name="diagnosis"> Diagnosis procedures </a>
 Whenever a problem is risen in the IoT Agent, or if the Sanity Checks fail, the administrator should look at the log files
 in order to check what kind of problema has happened. If the IoT Agent has been deployed using the RPMs, logs will be 
 located in the `/var/log/iotagent-lwm2m` folder. If the IoT Agent has been started from the command line, logs are 

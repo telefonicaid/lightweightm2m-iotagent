@@ -6,7 +6,7 @@ Device Provisioning Guide
 * [Configuration](#overview)
 * [Usage](#overview)
 
-# <a name="overview"/> Overview
+# <a name="overview"> Overview </a>
 This guide will show the process of using the IoT Agent with device preprovisioning. In this use case, the owner of the
 devices, before connecting each device, will provision the device information into the agent. Then, the device can register
 itself in the server and start being used with the agent. 
@@ -18,7 +18,7 @@ In this guide we will provide an explicit mapping for all the device attributes,
 [Getting Started](gettingStarted.md) section. Some of them could be mapped automatically using the OMA Registry 
 automatic mapping (but those will be covered in other step-by-step guides).
 
-# <a name="installation"/> Installation
+# <a name="installation"> Installation </a>
 ## Installation of the Agent
 In order to install the agent, first of all, clone the Github repository:
 ```
@@ -40,18 +40,19 @@ And download the dependencies, executing, from the root folder of the project:
 npm install
 ```
 
-# <a name="configuration"/> Configuration
+# <a name="configuration"> Configuration </a>
 Most of the the default `config.js` file coming with the repository should meet your needs for this guide, but there 
-are two attributes that you will want to taylor:
-* *config.ngsi.contextBroker.host*: host IP for the ContextBroker you will be using with the IoT Agent.
-* *config.ngsi.providerUrl*: url where your IoT Agent will be listening for ContextProvider requests. Usually this will
+are two attributes that you will want to tailor:
+
+- *config.ngsi.contextBroker.host*: host IP for the ContextBroker you will be using with the IoT Agent.
+- *config.ngsi.providerUrl*: url where your IoT Agent will be listening for ContextProvider requests. Usually this will
 be your machine's IP and the default port, but in case you are using an external context broker (or one deployed in 
 a Virtual Machine) it may differ.
 
-You should change at least the log level to `DEBUG`, as in other levels it will show no information of 
+You should change at least the log level to `DEBUG`, as in other levels it will not show information of 
 what's going on with the execution.
 
-# <a name="usage"/> Usage
+# <a name="usage"> Usage </a>
 ## Start the agent
 In order to start the agent, from the root folder of the repository type:
 ```
@@ -155,7 +156,7 @@ LWM2M-Client> set /7392/0 3 "[0, 0]"
 ### Connection to the server
 Once all the objects are created in the device, connect with the server with the following command:
 ```
-connect localhost 5684 robot1 /
+LWM2M-Client> connect localhost 5684 robot1 /
 ```
 A few notes about this command:
 * First of all, note that the *endpoint name* used, `robot1`, is the same we provisioned in advance with the provisioning 
