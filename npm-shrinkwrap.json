@@ -2030,7 +2030,7 @@
       }
     },
     "iotagent-node-lib": {
-      "version": "git://github.com/telefonicaid/iotagent-node-lib.git#73a8cce3ce562a4cc0c32de5d6011959f8fcf6c7",
+      "version": "git://github.com/telefonicaid/iotagent-node-lib.git#e704310c029136af5cc712f79db607c90feaaad3",
       "requires": {
         "async": "1.5.2",
         "body-parser": "1.18.2",
