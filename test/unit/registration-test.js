@@ -495,6 +495,43 @@ describe('Device auto-registration test', function() {
                 }
             );
         });
+
+
+        it('should observe internal attributes', function(done) {
+            lwm2mClient.register(
+                clientConfig.host,
+                clientConfig.port,
+                '/rd',
+                'ws1',
+                function(error, result) {
+                    should.not.exist(error);
+                    should.exist(result);
+                    should.exist(result.serverInfo);
+                    should.exist(result.location);
+                    setTimeout(function() {
+                        async.series([
+                            async.apply(lwm2mClient.registry.setResource, '/3303/0', '0', '89'),
+                            async.nextTick,
+                            async.apply(lwm2mClient.registry.setResource, '/3303/0', '0', '33'),
+                            async.nextTick,
+                            async.apply(lwm2mClient.registry.setResource, '/3303/0', '0', '19'),
+                            async.nextTick
+                        ], function(error) {
+                            setTimeout(function() {
+                                ngsiClient.query('weather1', 'weatherStation', ['Temperature Sensor'],
+                                    function(error, response, body) {
+                                        should.not.exist(error);
+                                        should.exist(body);
+                                        should.not.exist(body.errorCode);
+                                        body.contextResponses[0].contextElement.attributes[0].value.should.equal('19');
+                                        done();
+                                    });
+                            }, 500);
+                        });
+                    }, 1000);
+                }
+            );
+        });
     });
 
     describe('When a preprovisioned device registers with an unmappable attribute', function(done) {
