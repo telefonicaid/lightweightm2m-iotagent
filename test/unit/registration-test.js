@@ -532,6 +532,47 @@ describe('Device auto-registration test', function() {
                 }
             );
         });
+
+        it('should handle device udate queries and restart observations', function(done) {
+            lwm2mClient.register(
+                clientConfig.host,
+                clientConfig.port,
+                '/rd',
+                'ws1',
+                function(error, result) {
+                    should.not.exist(error);
+                    should.exist(result);
+                    should.exist(result.serverInfo);
+                    should.exist(result.location);
+                    lwm2mClient.update(result, function(error, result) {
+                        should.not.exist(error);
+                        should.exist(result);
+                        should.exist(result.serverInfo);
+                        should.exist(result.location);
+                        setTimeout(function() {
+                            async.series([
+                                async.apply(lwm2mClient.registry.setResource, '/3303/0', '0', '44'),
+                                async.nextTick,
+                                async.apply(lwm2mClient.registry.setResource, '/3303/0', '0', '22'),
+                                async.nextTick,
+                                async.apply(lwm2mClient.registry.setResource, '/3303/0', '0', '00'),
+                                async.nextTick
+                            ], function(error) {
+                                setTimeout(function() {
+                                    ngsiClient.query('weather1', 'weatherStation', ['Temperature Sensor'],
+                                        function(error, response, body) {
+                                            should.not.exist(error);
+                                            should.exist(body);
+                                            should.not.exist(body.errorCode);
+                                            body.contextResponses[0].contextElement.attributes[0].value.should.equal('00');
+                                            done();
+                                        });
+                                }, 500);
+                            });
+                        }, 1000);
+                    });
+                });
+        });
     });
 
     describe('When a preprovisioned device registers with an unmappable attribute', function(done) {
