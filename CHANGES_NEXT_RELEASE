@@ -7,3 +7,4 @@
 - Unit tests are executed as part of Travis CI.
 - Fixing issues in the provisioning API (#99 and #100) as result of npm-shrinkwrap file update.
 - Fix: active attributes are not updated in CB for preregistered devices (#107).
+Add: allow NGSIv2 for updating active attributes at CB, through configuration (#104)
