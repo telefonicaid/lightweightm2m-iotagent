@@ -2030,7 +2030,7 @@
       }
     },
     "iotagent-node-lib": {
-      "version": "git://github.com/telefonicaid/iotagent-node-lib.git#b249f88db2e35e99292cefdd871036aa18ea1293",
+      "version": "git://github.com/telefonicaid/iotagent-node-lib.git#e704310c029136af5cc712f79db607c90feaaad3",
       "requires": {
         "async": "1.5.2",
         "body-parser": "1.18.2",
@@ -2078,9 +2078,9 @@
           }
         },
         "colors": {
-          "version": "1.2.1",
-          "resolved": "https://registry.npmjs.org/colors/-/colors-1.2.1.tgz",
-          "integrity": "sha512-s8+wktIuDSLffCywiwSxQOMqtPxML11a/dtHE17tMn4B1MSWw/C22EKf7M2KGUBcDaVFEGT+S8N02geDXeuNKg=="
+          "version": "1.1.2",
+          "resolved": "https://registry.npmjs.org/colors/-/colors-1.1.2.tgz",
+          "integrity": "sha1-FopHAXVran9RoSzgyXv6KMCE7WM="
         },
         "cryptiles": {
           "version": "2.0.5",
@@ -2150,7 +2150,7 @@
           "resolved": "https://registry.npmjs.org/logops/-/logops-1.0.0.tgz",
           "integrity": "sha1-RTdh2vumwKa/PJMZeJt4gs5Nqrw=",
           "requires": {
-            "colors": "1.2.1",
+            "colors": "1.1.2",
             "json-stringify-safe": "5.0.1",
             "lodash": "4.17.4",
             "serr": "0.3.0"
@@ -2769,7 +2769,9 @@
       "dev": true
     },
     "lwm2m-node-lib": {
-      "version": "git://github.com/telefonicaid/lwm2m-node-lib.git#083ff05ca37ac117f3e5b0692a196e0e83dc88c1",
+      "version": "0.5.0",
+      "resolved": "https://registry.npmjs.org/lwm2m-node-lib/-/lwm2m-node-lib-0.5.0.tgz",
+      "integrity": "sha1-nPRUmr89iGwT+/TVzHNtOmaTbM0=",
       "requires": {
         "async": "https://registry.npmjs.org/async/-/async-1.5.2.tgz",
         "coap": "https://registry.npmjs.org/coap/-/coap-0.13.1.tgz",
