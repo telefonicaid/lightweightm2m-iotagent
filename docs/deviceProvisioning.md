@@ -56,7 +56,7 @@ what's going on with the execution.
 ## Start the agent
 In order to start the agent, from the root folder of the repository type:
 ```
-bin/lwm2mAgent.js
+bin/lwm2mAgent.js examples/config-factory.js
 ```
 This will execute the IoT Agent in the foreground, so you can see the logs of what's happening.
 
@@ -77,7 +77,7 @@ Lightweight M2M port.
 The following request provision the device with device ID `robot1`:
 ```
 (curl localhost:4041/iot/devices -s -S --header 'Content-Type: application/json' \
-  --header 'Accept: application/json' --header 'fiware-service: Factory' --header 'fiware-servicepath: /robots' \
+  --header 'Accept: application/json' --header 'fiware-service: factory' --header 'fiware-servicepath: /robots' \
   -d @- | python -mjson.tool) <<EOF
 {
   "devices": [
@@ -178,7 +178,7 @@ If you configured the server in `DEBUG` mode, check the standard output to see w
 Now you should be able to see the Entity in your Context Broker. You can do that with the following command:
 ```
 (curl http://192.168.56.101:1026/v1/queryContext -s -S --header 'Content-Type: application/json' \
- --header 'Accept: application/json' --header 'fiware-service: Factory' --header 'fiware-servicepath: /robots' \
+ --header 'Accept: application/json' --header 'fiware-service: factory' --header 'fiware-servicepath: /robots' \
  -d @- | python -mjson.tool) <<EOF
 {
     "entities": [
@@ -208,7 +208,7 @@ In order to read the lazy attributes, just make a query to the entity specifying
 the following case:
 ```
 (curl http://192.168.56.101:1026/v1/queryContext -s -S --header 'Content-Type: application/json' \
- --header 'Accept: application/json' --header 'fiware-service: Factory' --header 'fiware-servicepath: /robots' \
+ --header 'Accept: application/json' --header 'fiware-service: factory' --header 'fiware-servicepath: /robots' \
  -d @- | python -mjson.tool) <<EOF
 {
     "entities": [
@@ -230,7 +230,7 @@ Sending commands to a device works much the same as the updating of lazy attribu
 just update the command attribute in the Context Broker entity, with the following command:
 ```
 (curl http://192.168.56.101:1026/v1/updateContext -s -S --header 'Content-Type: application/json' \
- --header 'Accept: application/json' --header 'fiware-service: Factory' --header 'fiware-servicepath: /robots' \
+ --header 'Accept: application/json' --header 'fiware-service: factory' --header 'fiware-servicepath: /robots' \
  -d @- | python -mjson.tool) <<EOF
 {
     "contextElements": [
