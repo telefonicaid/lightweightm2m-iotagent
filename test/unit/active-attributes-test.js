@@ -120,7 +120,7 @@ describe('Active attributes test', function() {
 
                             done();
                         });
-                }, 1000);
+                }, 1500);
             });
         });
     });
