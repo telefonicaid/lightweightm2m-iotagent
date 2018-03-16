@@ -107,12 +107,7 @@ describe('Active attributes test', function() {
                 async.nextTick,
                 async.apply(lwm2mClient.registry.setResource, '/5000/0', '2', '33'),
                 async.nextTick,
-                async.nextTick,
-                async.nextTick,
-                async.apply(lwm2mClient.registry.setResource, '/5000/0', '2', '19'),
-                async.nextTick,
-                async.nextTick,
-                async.nextTick
+                async.apply(lwm2mClient.registry.setResource, '/5000/0', '2', '19')
             ], function(error) {
                 setTimeout(function() {
                     ngsiClient.query('ActiveTestClient:Pressure', 'Pressure', ['pressure'],
