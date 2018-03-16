@@ -108,6 +108,8 @@ describe('Active attributes test', function() {
                 async.apply(lwm2mClient.registry.setResource, '/5000/0', '2', '33'),
                 async.nextTick,
                 async.apply(lwm2mClient.registry.setResource, '/5000/0', '2', '19'),
+                async.nextTick,
+                async.nextTick,
                 async.nextTick
             ], function(error) {
                 setTimeout(function() {
@@ -121,7 +123,7 @@ describe('Active attributes test', function() {
 
                             done();
                         });
-                }, 1500);
+                }, 1000);
             });
         });
     });
