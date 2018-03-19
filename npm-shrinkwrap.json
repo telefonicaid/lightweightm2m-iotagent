@@ -658,7 +658,7 @@
       "integrity": "sha1-dUu1v+VUUdpppYuU1F9MWwRi1Y8=",
       "dev": true,
       "requires": {
-        "es5-ext": "0.10.40"
+        "es5-ext": "0.10.41"
       }
     },
     "dashdash": {
@@ -886,13 +886,14 @@
       "integrity": "sha1-blwtClYhtdra7O+AuQ7ftc13cvA="
     },
     "es5-ext": {
-      "version": "0.10.40",
-      "resolved": "https://registry.npmjs.org/es5-ext/-/es5-ext-0.10.40.tgz",
-      "integrity": "sha512-S9Fh3oya5OOvYSNGvPZJ+vyrs6VYpe1IXPowVe3N1OhaiwVaGlwfn3Zf5P5klYcWOA0toIwYQW8XEv/QqhdHvQ==",
+      "version": "0.10.41",
+      "resolved": "https://registry.npmjs.org/es5-ext/-/es5-ext-0.10.41.tgz",
+      "integrity": "sha512-MYK02wXfwTMie5TEJWPolgOsXEmz7wKCQaGzgmRjZOoV6VLG8I5dSv2bn6AOClXhK64gnSQTQ9W9MKvx87J4gw==",
       "dev": true,
       "requires": {
         "es6-iterator": "2.0.3",
-        "es6-symbol": "3.1.1"
+        "es6-symbol": "3.1.1",
+        "next-tick": "1.0.0"
       }
     },
     "es6-iterator": {
@@ -902,7 +903,7 @@
       "dev": true,
       "requires": {
         "d": "1.0.0",
-        "es5-ext": "0.10.40",
+        "es5-ext": "0.10.41",
         "es6-symbol": "3.1.1"
       }
     },
@@ -913,7 +914,7 @@
       "dev": true,
       "requires": {
         "d": "1.0.0",
-        "es5-ext": "0.10.40",
+        "es5-ext": "0.10.41",
         "es6-iterator": "2.0.3",
         "es6-set": "0.1.5",
         "es6-symbol": "3.1.1",
@@ -932,7 +933,7 @@
       "dev": true,
       "requires": {
         "d": "1.0.0",
-        "es5-ext": "0.10.40",
+        "es5-ext": "0.10.41",
         "es6-iterator": "2.0.3",
         "es6-symbol": "3.1.1",
         "event-emitter": "0.3.5"
@@ -945,7 +946,7 @@
       "dev": true,
       "requires": {
         "d": "1.0.0",
-        "es5-ext": "0.10.40"
+        "es5-ext": "0.10.41"
       }
     },
     "es6-weak-map": {
@@ -955,7 +956,7 @@
       "dev": true,
       "requires": {
         "d": "1.0.0",
-        "es5-ext": "0.10.40",
+        "es5-ext": "0.10.41",
         "es6-iterator": "2.0.3",
         "es6-symbol": "3.1.1"
       }
@@ -1185,7 +1186,7 @@
       "dev": true,
       "requires": {
         "d": "1.0.0",
-        "es5-ext": "0.10.40"
+        "es5-ext": "0.10.41"
       }
     },
     "eventemitter2": {
@@ -2030,7 +2031,7 @@
       }
     },
     "iotagent-node-lib": {
-      "version": "git://github.com/telefonicaid/iotagent-node-lib.git#b249f88db2e35e99292cefdd871036aa18ea1293",
+      "version": "git://github.com/telefonicaid/iotagent-node-lib.git#c6ba66b9bcd3da0b7a1f1d16d830c175253f66d1",
       "requires": {
         "async": "1.5.2",
         "body-parser": "1.18.2",
@@ -2554,7 +2555,7 @@
         "cssom": "0.3.2",
         "cssstyle": "0.2.37",
         "escodegen": "1.9.1",
-        "nwmatcher": "1.4.3",
+        "nwmatcher": "1.4.4",
         "parse5": "1.5.1",
         "request": "2.85.0",
         "sax": "1.2.4",
@@ -2781,7 +2782,7 @@
       "dev": true
     },
     "lwm2m-node-lib": {
-      "version": "git://github.com/dcalvoalonso/lwm2m-node-lib.git#fdb307f462608a319f24449761b3a3f7591afe4f",
+      "version": "git://github.com/telefonicaid/lwm2m-node-lib.git#8baaad053eb27145a61b9dac1e6b7a41dc69ebe1",
       "requires": {
         "async": "1.5.2",
         "coap": "0.21.0",
@@ -3230,7 +3231,7 @@
           "resolved": "https://registry.npmjs.org/d/-/d-1.0.0.tgz",
           "integrity": "sha1-dUu1v+VUUdpppYuU1F9MWwRi1Y8=",
           "requires": {
-            "es5-ext": "0.10.40"
+            "es5-ext": "0.10.41"
           }
         },
         "date-now": {
@@ -3396,12 +3397,13 @@
           "integrity": "sha1-sph6o4ITR/zeZCsk/fyeT7cSvyY="
         },
         "es5-ext": {
-          "version": "0.10.40",
-          "resolved": "https://registry.npmjs.org/es5-ext/-/es5-ext-0.10.40.tgz",
-          "integrity": "sha512-S9Fh3oya5OOvYSNGvPZJ+vyrs6VYpe1IXPowVe3N1OhaiwVaGlwfn3Zf5P5klYcWOA0toIwYQW8XEv/QqhdHvQ==",
+          "version": "0.10.41",
+          "resolved": "https://registry.npmjs.org/es5-ext/-/es5-ext-0.10.41.tgz",
+          "integrity": "sha512-MYK02wXfwTMie5TEJWPolgOsXEmz7wKCQaGzgmRjZOoV6VLG8I5dSv2bn6AOClXhK64gnSQTQ9W9MKvx87J4gw==",
           "requires": {
             "es6-iterator": "2.0.3",
-            "es6-symbol": "3.1.1"
+            "es6-symbol": "3.1.1",
+            "next-tick": "1.0.0"
           }
         },
         "es6-iterator": {
@@ -3410,7 +3412,7 @@
           "integrity": "sha1-p96IkUGgWpSwhUQDstCg+/qY87c=",
           "requires": {
             "d": "1.0.0",
-            "es5-ext": "0.10.40",
+            "es5-ext": "0.10.41",
             "es6-symbol": "3.1.1"
           }
         },
@@ -3420,7 +3422,7 @@
           "integrity": "sha1-kTbgUD3MBqMBaQ8LsU/042TpSfA=",
           "requires": {
             "d": "1.0.0",
-            "es5-ext": "0.10.40",
+            "es5-ext": "0.10.41",
             "es6-iterator": "2.0.3",
             "es6-set": "0.1.5",
             "es6-symbol": "3.1.1",
@@ -3438,7 +3440,7 @@
           "integrity": "sha1-0rPsXU2ADO2BjbU40ol02wpzzLE=",
           "requires": {
             "d": "1.0.0",
-            "es5-ext": "0.10.40",
+            "es5-ext": "0.10.41",
             "es6-iterator": "2.0.3",
             "es6-symbol": "3.1.1",
             "event-emitter": "0.3.5"
@@ -3450,7 +3452,7 @@
           "integrity": "sha1-vwDvT9q2uhtG7Le2KbTH7VcVzHc=",
           "requires": {
             "d": "1.0.0",
-            "es5-ext": "0.10.40"
+            "es5-ext": "0.10.41"
           }
         },
         "es6-weak-map": {
@@ -3459,7 +3461,7 @@
           "integrity": "sha1-XjqzIlH/0VOKH45f+hNXdy+S2W8=",
           "requires": {
             "d": "1.0.0",
-            "es5-ext": "0.10.40",
+            "es5-ext": "0.10.41",
             "es6-iterator": "2.0.3",
             "es6-symbol": "3.1.1"
           }
@@ -3663,7 +3665,7 @@
           "integrity": "sha1-34xp7vFkeSPHFXuc6DhAYQsCzDk=",
           "requires": {
             "d": "1.0.0",
-            "es5-ext": "0.10.40"
+            "es5-ext": "0.10.41"
           }
         },
         "eventemitter2": {
@@ -4898,6 +4900,11 @@
           "resolved": "https://registry.npmjs.org/mute-stream/-/mute-stream-0.0.5.tgz",
           "integrity": "sha1-j7+rsKmKJT0xhDMfno3rc3L6xsA="
         },
+        "next-tick": {
+          "version": "1.0.0",
+          "resolved": "https://registry.npmjs.org/next-tick/-/next-tick-1.0.0.tgz",
+          "integrity": "sha1-yobR/ogoFpsBICCOPchCS524NCw="
+        },
         "nopt": {
           "version": "1.0.10",
           "resolved": "https://registry.npmjs.org/nopt/-/nopt-1.0.10.tgz",
@@ -6042,6 +6049,12 @@
       "resolved": "https://registry.npmjs.org/negotiator/-/negotiator-0.6.1.tgz",
       "integrity": "sha1-KzJxhOiZIQEXeyhWP7XnECrNDKk="
     },
+    "next-tick": {
+      "version": "1.0.0",
+      "resolved": "https://registry.npmjs.org/next-tick/-/next-tick-1.0.0.tgz",
+      "integrity": "sha1-yobR/ogoFpsBICCOPchCS524NCw=",
+      "dev": true
+    },
     "nock": {
       "version": "0.48.0",
       "resolved": "https://registry.npmjs.org/nock/-/nock-0.48.0.tgz",
@@ -6130,9 +6143,9 @@
       "dev": true
     },
     "nwmatcher": {
-      "version": "1.4.3",
-      "resolved": "https://registry.npmjs.org/nwmatcher/-/nwmatcher-1.4.3.tgz",
-      "integrity": "sha512-IKdSTiDWCarf2JTS5e9e2+5tPZGdkRJ79XjYV0pzK8Q9BpsFyBq1RGKxzs7Q8UBushGw7m6TzVKz6fcY99iSWw==",
+      "version": "1.4.4",
+      "resolved": "https://registry.npmjs.org/nwmatcher/-/nwmatcher-1.4.4.tgz",
+      "integrity": "sha512-3iuY4N5dhgMpCUrOVnuAdGrgxVqV2cJpM+XNccjR2DKOB1RUP0aA+wGXEiNziG/UKboFyGBIoKOaNlJxx8bciQ==",
       "optional": true
     },
     "oauth-sign": {
