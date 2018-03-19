@@ -101,13 +101,18 @@ describe('Active attributes test', function() {
     });
 
     describe('When an active attribute changes multiple values in the device', function() {
+        function setLwm2mResource(objectUri, resourceId, resourceValue, callback) {
+            setTimeout(function() {
+                lwm2mClient.registry.setResource(objectUri, resourceId, resourceValue, callback);
+            }, 500);
+        }
         it('should last value should appear in Orion entity', function(done) {
             async.series([
-                async.apply(lwm2mClient.registry.setResource, '/5000/0', '2', '89'),
+                async.apply(setLwm2mResource, '/5000/0', '2', '89'),
                 async.nextTick,
-                async.apply(lwm2mClient.registry.setResource, '/5000/0', '2', '33'),
+                async.apply(setLwm2mResource, '/5000/0', '2', '33'),
                 async.nextTick,
-                async.apply(lwm2mClient.registry.setResource, '/5000/0', '2', '19')
+                async.apply(setLwm2mResource, '/5000/0', '2', '19')
             ], function(error) {
                 setTimeout(function() {
                     ngsiClient.query('ActiveTestClient:Pressure', 'Pressure', ['pressure'],
@@ -120,7 +125,7 @@ describe('Active attributes test', function() {
 
                             done();
                         });
-                }, 1500);
+                }, 1000);
             });
         });
     });
