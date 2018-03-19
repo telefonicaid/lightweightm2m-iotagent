@@ -9,3 +9,4 @@
 - Fix: active attributes are not updated in CB for preregistered devices (#107).
 - Fix: update registration requests coming from devices are not correctly hanlded (#109).
 - Fix: correct device provisioning example (#117)
+- Fix: use master branch of lwm2m-node-lib (#120)
