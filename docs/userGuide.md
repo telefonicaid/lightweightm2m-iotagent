@@ -27,14 +27,14 @@ an IoT Agent can have some device preprovisioned, some configuration groups defi
 each for different types of devices.
 
 Some of the guides will share the use of a faked device type called `Robot` with the following characteristics:
-* be part of the service `Factory` and subservice `/robots`.
+* be part of the service `factory` and subservice `/robots`.
 * have an active attribute called `Battery` with type `number`, mapped to the LWM2M resource ID /7392/0/1.
 * have a passive attribute called `Message` with type `string`, mapped to the LWM2M resource ID /7392/0/2.
 * have a command attribute called `Position` with type `location`, mapped to the LWM2M resource ID /7392/0/3.
 
 Some guides will show the use of the automatic OMA Registry mapping, using a faked device of type 'WeatherBaloon', 
 with the following characteristics:
-* be part of the service `Weather` and subservice `/baloons`.
+* be part of the service `weather` and subservice `/baloons`.
 * a passive attribute with resource ID /6/0/0 (Position: Longitude).
 * a passive attribute with resource ID /6/0/1 (Position: Latitude).
 * a passive attribute with resource ID /3303/0/0 (Temperature Sensor).
