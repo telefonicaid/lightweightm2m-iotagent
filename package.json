@@ -34,14 +34,14 @@
   },
   "dependencies": {
     "async": "1.5.2",
-    "cheerio": "0.20.0",
-    "iotagent-node-lib": "git://github.com/m4n3dw0lf/iotagent-node-lib",
-    "logops": "1.0.0-alpha.7",
-    "mongodb": "2.2.19",
-    "lwm2m-node-lib": "git://github.com/m4n3dw0lf/lwm2m-node-lib",
     "request": "^2.69.0",
     "underscore": "1.8.3",
-    "xmldom": "0.1.22"
+    "cheerio": "0.20.0",
+    "xmldom": "0.1.22",
+    "logops": "1.0.0-alpha.7",
+    "iotagent-node-lib": "git://github.com/telefonicaid/iotagent-node-lib.git#master",
+    "lwm2m-node-lib": "git://github.com/telefonicaid/lwm2m-node-lib.git#master",
+    "mongodb": "2.2.19"
   },
   "devDependencies": {
     "nock": "0.48.0",
