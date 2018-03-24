@@ -39,6 +39,13 @@ function start() {
         config = require('../config');
     }
 
+    if ( typeof(config.ngsi.contextBroker.verify) != "undefined" ){
+      if (config.ngsi.contextBroker.verify == false) {
+        process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
+        logger.info(context, 'Verify certificate for contextBroker are disabled.');
+      }
+    }
+
     iotAgent.start(config, function (error) {
         if (error) {
             logger.error(context, 'Error starting Agent: [%s] Exiting process', error);
