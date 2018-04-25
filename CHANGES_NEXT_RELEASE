@@ -12,3 +12,4 @@
 - Fix: use master branch of lwm2m-node-lib (#120)
 - Fix: correct example for configuration provisioning (#113).
 - Fix: correct management of active attributes for configuration provisoning (#113).
+- Fix: fist observable value is processed and forwarded to the CB (#73).
