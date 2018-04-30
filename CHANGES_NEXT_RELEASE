@@ -1,3 +1,4 @@
+- Remove mongodb dependence from packages.json (already in iota-node-lib)
 - Fix broken tests (#49 and #42).
 - Update RPM Creation tool (#57).
 - Update Howtos with the last changes of the IoT Agent library (#48).
