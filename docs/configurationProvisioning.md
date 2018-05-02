@@ -81,7 +81,7 @@ Lightweight M2M port.
 The following request creates the configuration group for devices with type `WeatherBaloon`:
 ```
 (curl localhost:4041/iot/services -s -S --header 'Content-Type: application/json' \
-  --header 'Accept: application/json' --header 'fiware-service: Weather' --header 'fiware-servicepath: /baloons' \
+  --header 'Accept: application/json' --header 'fiware-service: weather' --header 'fiware-servicepath: /baloons' \
   -d @- | python -mjson.tool) <<EOF
 {
   "services": [
@@ -175,7 +175,7 @@ Now you should be able to see the Entity in your Context Broker. You can do that
 with the following command:
 ```
 (curl http://192.168.56.101:1026/v1/queryContext -s -S --header 'Content-Type: application/json' \
- --header 'Accept: application/json' --header 'fiware-service: Weather' --header 'fiware-servicepath: /baloons' \
+ --header 'Accept: application/json' --header 'fiware-service: weather' --header 'fiware-servicepath: /baloons' \
  -d @- | python -mjson.tool) <<EOF
 {
     "entities": [
