@@ -14,5 +14,4 @@
 - Fix: correct example for configuration provisioning (#113).
 - Fix: correct management of active attributes for configuration provisoning (#113).
 - Fix: first observable value is processed and forwarded to the CB (#73).
-- Fix: update registration requests coming from devices are not correctly hanlded (#109).
 - Add: allow NGSIv2 for updating active attributes at CB, through configuration (#104)
