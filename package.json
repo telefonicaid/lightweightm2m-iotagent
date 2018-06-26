@@ -40,7 +40,7 @@
     "xmldom": "0.1.22",
     "logops": "1.0.0-alpha.7",
     "iotagent-node-lib": "git://github.com/telefonicaid/iotagent-node-lib.git#master",
-    "lwm2m-node-lib": "git://github.com/telefonicaid/lwm2m-node-lib.git#8baaad053eb27145a61b9dac1e6b7a41dc69ebe1"
+    "lwm2m-node-lib": "git://github.com/dcalvoalonso/lwm2m-node-lib.git#bug/unitTests"
   },
   "devDependencies": {
     "nock": "0.48.0",
