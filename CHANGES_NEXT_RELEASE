@@ -15,3 +15,4 @@
 - Fix: correct management of active attributes for configuration provisoning (#113).
 - Fix: first observable value is processed and forwarded to the CB (#73).
 - Add: allow NGSIv2 for updating active attributes at CB, through configuration (#104)
+- Using precise dependencies (~=) in packages.json
