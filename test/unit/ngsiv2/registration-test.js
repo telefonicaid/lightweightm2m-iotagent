@@ -227,7 +227,7 @@ describe('Device auto-registration test', function() {
         var configuration = {
                 url: 'http://localhost:' + config.ngsi.server.port + '/iot/services',
                 method: 'POST',
-                json: utils.readExampleFile('./test/provisionExamples/newConfiguration.json'),
+                json: utils.readExampleFile('./test/unit/ngsiv2/provisionExamples/newConfiguration.json'),
                 headers: {
                     'fiware-service': 'smartGondor',
                     'fiware-servicepath': '/gardens'
@@ -267,7 +267,7 @@ describe('Device auto-registration test', function() {
                     ngsiClient.discover(
                         'PreprovisionedLight2:ConfiguredDevice',
                         'ConfiguredDevice',
-                        ['Luminosity Sensor'],
+                        ['LuminositySensor'],
                         function(error, response, body) {
                             should.not.exist(error);
                             should.exist(body);
@@ -294,11 +294,11 @@ describe('Device auto-registration test', function() {
                         ngsiClient.query(
                             'PreprovisionedLight2:ConfiguredDevice',
                             'ConfiguredDevice',
-                            ['Temperature Sensor'],
+                            ['TemperatureSensor'],
                             function(error, response, body) {
                                 should.not.exist(error);
                                 should.exist(body);
-                                should.exist(body['Temperature Sensor']);
+                                should.exist(body.TemperatureSensor);
                                 done();
                             });
                     });
