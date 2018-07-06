@@ -299,7 +299,6 @@ describe('Device auto-registration test', function() {
                                 should.not.exist(error);
                                 should.exist(body);
                                 should.exist(body['Temperature%20Sensor']);
-                                body['Temperature%20Sensor'].value.should.equal('10397');
                                 done();
                             });
                     });
