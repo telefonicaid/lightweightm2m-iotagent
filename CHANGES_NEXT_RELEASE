@@ -16,3 +16,4 @@
 - Fix: first observable value is processed and forwarded to the CB (#73).
 - Add: allow NGSIv2 for updating active attributes at CB, through configuration (#104)
 - Using precise dependencies (~=) in packages.json
+- Add: supports NGSIv2 for device provisioning (entity creation and context registration) at CB (#233)
