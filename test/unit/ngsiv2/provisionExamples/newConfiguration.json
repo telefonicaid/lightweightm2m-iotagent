@@ -7,13 +7,13 @@
       "commands": [],
       "lazy": [
         {
-          "name": "LuminositySensor",
+          "name": "Luminosity%20Sensor",
           "type": "Lumens"
         }
       ],
       "attributes": [
         {
-          "name": "TemperatureSensor",
+          "name": "Temperature%20Sensor",
           "type": "Lumens"
         }
       ]

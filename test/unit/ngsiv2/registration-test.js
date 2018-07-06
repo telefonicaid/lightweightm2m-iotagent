@@ -267,7 +267,7 @@ describe('Device auto-registration test', function() {
                     ngsiClient.discover(
                         'PreprovisionedLight2:ConfiguredDevice',
                         'ConfiguredDevice',
-                        ['LuminositySensor'],
+                        ['Luminosity%20Sensor'],
                         function(error, response, body) {
                             should.not.exist(error);
                             should.exist(body);
@@ -294,11 +294,12 @@ describe('Device auto-registration test', function() {
                         ngsiClient.query(
                             'PreprovisionedLight2:ConfiguredDevice',
                             'ConfiguredDevice',
-                            ['TemperatureSensor'],
+                            [],
                             function(error, response, body) {
                                 should.not.exist(error);
                                 should.exist(body);
-                                should.exist(body.TemperatureSensor);
+                                should.exist(body['Temperature%20Sensor']);
+                                body['Temperature%20Sensor'].value.should.equal('10397');
                                 done();
                             });
                     });
