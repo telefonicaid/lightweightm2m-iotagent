@@ -78,4 +78,4 @@ RUN yum update -y && \
   # Don't need old log files inside docker images
   rm -f /var/log/*log
 
-ENTRYPOINT bin/lwm2mAgent.js config-blank.js
+ENTRYPOINT bin/lwm2mAgent.js config-secure.js
