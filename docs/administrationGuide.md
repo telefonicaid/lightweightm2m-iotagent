@@ -81,7 +81,7 @@ the listener before the server sends the requests.
 - **defaultType**: for the cases when no type can be assigned to a device (no pre-provision or path assignation of type), this type will be assigned by default. E.g.: 'Device'
 - **types**: for IOTAgents with multiple southbound paths, this attribute maps attribute types (defined either in the configuration file or by using the Device Configuration API) to southbound interfaces. E.g.:
 
-```json
+```
         {
             name: 'Light',
             url: '/light'
