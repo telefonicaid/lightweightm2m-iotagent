@@ -3,7 +3,7 @@ OMA Lightweight M2M IoT Agent: User and Development Guide
 # Index
 
 * [Overview](#overview)
-* [Getting Started](#gettingstarted)
+* [Getting started](#getting-started)
 * [Testing](#testing)
 * [Development](#development)
 
@@ -16,11 +16,12 @@ Node.js IoT Agent Library, where more information can be found about what the Io
 This project has, then, two APIs:
 * The API for traffic south of the IoT Agent (LWM2M): information about it can be found in the [OMA Lightweight M2M](http://openmobilealliance.org/iot/lightweight-m2m-lwm2m) official page. Information about the subset of Lightweight M2M already supported can be found in the [LWM2M Library for Node.js](https://github.com/telefonicaid/lwm2m-node-lib) we are using.
 * The North Port Administration API: all the IoT Agents share a single Administration API, and it can be found in the [Node.JS IoT Agent Library Documentation](https://github.com/telefonicaid/iotagent-node-lib).
-* The API for traffic north of the IoT Agent (NGSI): information about the North Port NGSI mapping can be obtained in the same Node.JS IOTA Library documentation.
+* The API for traffic north of the IoT Agent (NGSI): information about the North Port NGSI mapping can be obtained in the same Node.JS IoT Agent Library documentation.
 
 You will find examples and more detailed information in the Getting Started howtos below.
 
 # Getting started
+
 This document links a set of howtos oriented to give a quick step-by-step example on how to use the agent with
 different types of configurations. It's important to remark that those configuration options are not mutually exclusive:
 an IoT Agent can have some device preprovisioned, some configuration groups defined and some static configurations also,

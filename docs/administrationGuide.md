@@ -4,13 +4,15 @@ OMA Lightweight M2M IoT Agent: Administration Guide
 
 * [Prerequisites](#prerequisites)
 * [Installation](#installation)
+* [Usage](#usage)
 * [Configuration](#configuration)
 * [Packaging](#packaging)
-* [Sanity checks](#sanity)
-* [Diagnosis procedures](#diagnosis)
+* [Sanity checks](#sanity-checks)
+* [Diagnosis procedures](#diagnosis-procedures)
 
 # Prerequisites
-The IOT Agent requires Node.js 0.10.x to work and uses NPM as its package manager. Most Linux distributions offer packages to install it. For other OS, you can find instructions to install Node.js [here](https://nodejs.org/).
+
+The IoT Agent requires Node.js 0.10.x to work and uses NPM as its package manager. Most Linux distributions offer packages to install it. For other OS, you can find instructions to install Node.js [here](https://nodejs.org/).
 
 NOTE: the current version of Node.js, 0.12.x has not been tested with the Agent, so we suggest to download and use the previous version (that process can be eased with utilities as `n` or  `nvm`).
 
@@ -33,15 +35,15 @@ yum localinstall --nogpg <rpm-file>
 ```
 
 ## Using Docker
-There are automatic builds of the development version of the IOTAgent published in Docker hub. In order to install using the docker version, just execute the following:
+There are automatic builds of the development version of the IoT Agent published in Docker hub. In order to install using the docker version, just execute the following:
 ```
 docker run --link orion:orion telefonicaiot/lightweightm2m-iotagent
 ```
-As you can see, the Lightweight M2M (as any other IOTA) requires a Context Broker to work. In order to link it, just use the option `--link` as shown in the example.
+As you can see, the Lightweight M2M (as any other IoT Agent) requires a Context Broker to work. In order to link it, just use the option `--link` as shown in the example.
 
 # Usage
 ## Github installation
-In order to execute the IOTAgent, just issue the following command from the root folder of the cloned project:
+In order to execute the IoT Agent, just issue the following command from the root folder of the cloned project:
 ```
 bin/lwm2mAgent.js [config file]
 ```
@@ -60,7 +62,7 @@ service iotagent-lwm2m stop
 In this mode, the log file is written in `/var/log/iotagent-lwm2m/iotagent-lwm2m.log`.
 
 # Configuration
-There are two ways to provide the IOT Agent with a configuration set: passing the name of a config file (related to the
+There are two ways to provide the IoT Agent with a configuration set: passing the name of a config file (related to the
 root folder of the project) or customise the example `config.js` in the root.
 
 The configuration file is divided in two sections: one standard section for the NGSI traffic North of the IoT Agent `ngsi`, and another
@@ -72,14 +74,14 @@ The latter configures the Lightweight M2M library used for communicating with th
 
 These are the specific LWM2M parameters that can be configured for the agent:
 
-- **logLevel**: level of logs for the IOTAgent specific information. E.g.: 'DEBUG'.
-- **port**: UDP port where the IOTAgent will be listening. E.g.: 60001.
-- **delayedObservationTimeout**: When a LWM2M client has active attributes, the IOTA sends an observe instruction for
+- **logLevel**: level of logs for the IoTAgent specific information. E.g.: 'DEBUG'.
+- **port**: UDP port where the IoT Agent will be listening. E.g.: 60001.
+- **delayedObservationTimeout**: When a LWM2M client has active attributes, the IoT Agent sends an observe instruction for
 each one, just after the client registers. This may cause cause an error when the client takes too long to start listening,
 as the observe requests may not reach its destiny. This timeout (ms) is used to give the client the opportunity to create
 the listener before the server sends the requests.
 - **defaultType**: for the cases when no type can be assigned to a device (no pre-provision or path assignation of type), this type will be assigned by default. E.g.: 'Device'
-- **types**: for IOTAgents with multiple southbound paths, this attribute maps attribute types (defined either in the configuration file or by using the Device Configuration API) to southbound interfaces. E.g.:
+- **types**: for IoT Agents with multiple southbound paths, this attribute maps attribute types (defined either in the configuration file or by using the Device Configuration API) to southbound interfaces. E.g.:
 
 ```
         {
@@ -183,7 +185,7 @@ A quick way to check if the service is working is to use the `status` command of
 ```
 service iotagent-lwm2m status
 ```
-This will tell you if the SO thinks the IOTA Service is up. Be aware that this is just a quick method based on PID checking,
+This will tell you if the SO thinks the IoT Agent Service is up. Be aware that this is just a quick method based on PID checking,
 that doesn't check the actual working Agent, just the existence of the process. Querying the administrative interface
 is always a stronger check.
 

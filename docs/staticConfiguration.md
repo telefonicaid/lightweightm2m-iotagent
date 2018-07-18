@@ -2,9 +2,9 @@ Static Configuration Guide
 ==================
 # Index
 * [Overview](#overview)
-* [Installation](#overview)
-* [Configuration](#overview)
-* [Usage](#overview)
+* [Installation](#installation)
+* [Configuration](#configuration)
+* [Usage](#usage)
 
 # Overview
 This guide will show the process of using the IoT Agent with a static configuration. In this use case, the owner of the

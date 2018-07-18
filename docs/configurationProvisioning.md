@@ -1,10 +1,11 @@
 Configuration Provisioning guide
 ==================
 # Index
+
 * [Overview](#overview)
-* [Installation](#overview)
-* [Configuration](#overview)
-* [Usage](#overview)
+* [Installation](#installation)
+* [Configuration](#configuration)
+* [Usage](#usage)
 
 
 # Overview
