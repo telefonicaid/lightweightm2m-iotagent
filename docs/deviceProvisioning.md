@@ -6,19 +6,19 @@ Device Provisioning Guide
 * [Configuration](#overview)
 * [Usage](#overview)
 
-# <a name="overview"> Overview </a>
+# Overview
 This guide will show the process of using the IoT Agent with device preprovisioning. In this use case, the owner of the
 devices, before connecting each device, will provision the device information into the agent. Then, the device can register
-itself in the server and start being used with the agent. 
+itself in the server and start being used with the agent.
 
 This guide will use a Lightweight M2M client to simulate the interaction with the device. The installation and use of
 this client will be explained when appropriate.
 
 In this guide we will provide an explicit mapping for all the device attributes, using the `Robot` example given in the
-[Getting Started](gettingStarted.md) section. Some of them could be mapped automatically using the OMA Registry 
+[Getting Started](gettingStarted.md) section. Some of them could be mapped automatically using the OMA Registry
 automatic mapping (but those will be covered in other step-by-step guides).
 
-# <a name="installation"> Installation </a>
+# Installation
 ## Installation of the Agent
 In order to install the agent, first of all, clone the Github repository:
 ```
@@ -40,42 +40,45 @@ And download the dependencies, executing, from the root folder of the project:
 npm install
 ```
 
-# <a name="configuration"> Configuration </a>
-Most of the the default `config.js` file coming with the repository should meet your needs for this guide, but there 
+# Configuration
+Most of the the default `config.js` file coming with the repository should meet your needs for this guide, but there
 are two attributes that you will want to tailor:
 
 - *config.ngsi.contextBroker.host*: host IP for the ContextBroker you will be using with the IoT Agent.
 - *config.ngsi.providerUrl*: url where your IoT Agent will be listening for ContextProvider requests. Usually this will
-be your machine's IP and the default port, but in case you are using an external context broker (or one deployed in 
+be your machine's IP and the default port, but in case you are using an external context broker (or one deployed in
 a Virtual Machine) it may differ.
 
-You should change at least the log level to `DEBUG`, as in other levels it will not show information of 
+You should change at least the log level to `DEBUG`, as in other levels it will not show information of
 what's going on with the execution.
 
-# <a name="usage"> Usage </a>
+# Usage
 ## Start the agent
 In order to start the agent, from the root folder of the repository type:
-```
+
+```bash
 bin/lwm2mAgent.js examples/config-factory.js
 ```
 This will execute the IoT Agent in the foreground, so you can see the logs of what's happening.
 
 With the agent still open, in other terminal, open the Client, typing the following command from the client's root
 folder
-```
+
+```bash
 bin/iotagent-lwm2m-client.js
 ```
 
 ## Provisioning the device
-Before starting to use any device, the device must be provisioned. In this step, we'll be sending a preprovisioning 
-request for a 'Robot' device. To send the preprovisioning request we will be using the `curl` command that comes installed 
+Before starting to use any device, the device must be provisioned. In this step, we'll be sending a preprovisioning
+request for a 'Robot' device. To send the preprovisioning request we will be using the `curl` command that comes installed
 with any Unix-like OS.
 
 This request has to be sent to the administrative port of the IoT Agent (default value 4041), not to the
-Lightweight M2M port. 
+Lightweight M2M port.
 
 The following request provision the device with device ID `robot1`:
-```
+
+```bash
 (curl localhost:4041/iot/devices -s -S --header 'Content-Type: application/json' \
   --header 'Accept: application/json' --header 'fiware-service: factory' --header 'fiware-servicepath: /robots' \
   -d @- | python -mjson.tool) <<EOF
@@ -126,40 +129,47 @@ The following request provision the device with device ID `robot1`:
 }
 EOF
 ```
+
 ## Using the device
-In order to use the device, change to the terminal where the client has been started. 
+In order to use the device, change to the terminal where the client has been started.
 
 ### Creation of the objects in the client
 The first thing we should do before connecting to a LWM2M Server is to create the objects that the client will be serving.
-The reason to perform this step before any other (specially before the registration) is that, during the registration of 
+The reason to perform this step before any other (specially before the registration) is that, during the registration of
 the client, it will send to the server a list of all its available objects, so the server can subscribe to those resources
 configured by the client as active.
 
 From the client console, type the following commands:
-```
+
+```bash
 LWM2M-Client> create /7392/0
 ```
 Once the object is created, give a default value for each of the attributes:
 * Battery attribute:
-```
+
+```bash
 LWM2M-Client> set /7392/0 1 89
 ```
 * Message attribute:
-```
+
+```bash
 LWM2M-Client> set /7392/0 2 "First robot here"
 ```
 * Position attribute:
-```
+
+```bash
 LWM2M-Client> set /7392/0 3 "[0, 0]"
 ```
 
 ### Connection to the server
 Once all the objects are created in the device, connect with the server with the following command:
-```
+
+```bash
 LWM2M-Client> connect localhost 5684 robot1 /
 ```
+
 A few notes about this command:
-* First of all, note that the *endpoint name* used, `robot1`, is the same we provisioned in advance with the provisioning 
+* First of all, note that the *endpoint name* used, `robot1`, is the same we provisioned in advance with the provisioning
 request.
 * Note the url used is `/`. This is the default URL and should be used for those devices that are not part of a specific
 configuration. For examples in how to use configuration, check the [Configuration Provisioning Guide](configurationProvisioning.md).
@@ -170,13 +180,14 @@ Connected:
 --------------------------------
 Device location: rd/1
 ```
-This indicates that the server has accepted the connection request and assigned the `rd/1` location for the client's 
+This indicates that the server has accepted the connection request and assigned the `rd/1` location for the client's
 requests. This exact location may change from device to device (every device has a unique location).
 
 If you configured the server in `DEBUG` mode, check the standard output to see what happened with the client registration.
 
 Now you should be able to see the Entity in your Context Broker. You can do that with the following command:
-```
+
+```bash
 (curl http://192.168.56.101:1026/v1/queryContext -s -S --header 'Content-Type: application/json' \
  --header 'Accept: application/json' --header 'fiware-service: factory' --header 'fiware-servicepath: /robots' \
  -d @- | python -mjson.tool) <<EOF
@@ -191,22 +202,26 @@ Now you should be able to see the Entity in your Context Broker. You can do that
 }
 EOF
 ```
-Note that the headers of the request to the Context Broker should match the ones you used in the Device Provisioning. 
-Another thing to note is the Entity ID: it is formed by the concatenation of the type and the Device ID, separated by a colon. 
+
+Note that the headers of the request to the Context Broker should match the ones you used in the Device Provisioning.
+Another thing to note is the Entity ID: it is formed by the concatenation of the type and the Device ID, separated by a colon.
 This convention can be overriden in the provisioning request.
 
 ### Updating the active attributes
 In order to update the value of an attribute, issue a new `set` command, like the following:
-```
+
+```bash
 LWM2M-Client> set /7392/0 1 67
 ```
-This should trigger an update to the Context Broker information. A new request for the stored information in the Context 
+
+This should trigger an update to the Context Broker information. A new request for the stored information in the Context
 Broker should show the update.
 
 ### Reading lazy attributes
 In order to read the lazy attributes, just make a query to the entity specifying the attribute you want to read, as in
 the following case:
-```
+
+```bash
 (curl http://192.168.56.101:1026/v1/queryContext -s -S --header 'Content-Type: application/json' \
  --header 'Accept: application/json' --header 'fiware-service: factory' --header 'fiware-servicepath: /robots' \
  -d @- | python -mjson.tool) <<EOF
@@ -228,7 +243,8 @@ EOF
 ### Sending a command to the device
 Sending commands to a device works much the same as the updating of lazy attributes. In order to send a new command,
 just update the command attribute in the Context Broker entity, with the following command:
-```
+
+```bash
 (curl http://192.168.56.101:1026/v1/updateContext -s -S --header 'Content-Type: application/json' \
  --header 'Accept: application/json' --header 'fiware-service: factory' --header 'fiware-servicepath: /robots' \
  -d @- | python -mjson.tool) <<EOF

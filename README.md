@@ -30,7 +30,7 @@ You will find some  more general considerations about the LWM2M Mapping we are u
 In order to assign the proper configuration for each type of device, a mechanism to assign types to new arriving devices should be used. This mechanism is based on Prefixes for the registrarion URL. For each type configured in the `lwm2m` configuration section in the `config.js` config file, a url prefix has to be defined. Whenever a registration arrives to an url with that prefix, the device will be assigned the corresponding type.
 
 ## Mappings
-One of the features to provide through the IoT Agent is the mapping between the protocol specific names of the South Bound to the application-specific names in the North Bound. In the case of Lightweight M2M, this means to map two things:
+One of the features to provide through the IoT Agent is the mapping between the protocol specific names of the South Port traffic to the application-specific names in the North Port. In the case of Lightweight M2M, this means to map two things:
 * OMA Registry objects and resources from their URIs (e.g.: '') to their common names (e.g.: '').
 * Custom device objects to the names defined by the user.
 
