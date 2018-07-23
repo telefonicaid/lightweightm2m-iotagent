@@ -74,30 +74,7 @@ config.ngsi = {
     deviceRegistry: {
         type: 'memory'
     },
-    types: {
-	   'Raspberry':{
-	       service: 'raspberry',
-	       subservice: '/devices',
-               removeSuffix: true,
-               commands: [],
-               lazy: [],
-               active: [
-                 {
-                   name: "Light",
-                   type: 'string'
-                 }
-               ],
-               lwm2mResourceMapping: {
-                 'Light' : {
-                   objectType: 3311,
-		   objectInstance: 0,
-                   objectResource: 0
-                 }
-               }
-          }
-    },
-    service: 'raspberry',
-    subservice: '/devices',
+    types: { },
     providerUrl: 'https://localhost:4041',
     deviceRegistrationDuration: 'P1M'
 };
