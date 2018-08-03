@@ -3,25 +3,26 @@ OMA Lightweight M2M IoT Agent: User and Development Guide
 # Index
 
 * [Overview](#overview)
-* [Getting Started](#gettingstarted)
+* [Getting started](#getting-started)
 * [Testing](#testing)
 * [Development](#development)
 
 
-# <a name="overview"> Overview </a>
+#  Overview
 The Lightweight M2M IoT Agent is a standard Fiware IoT Agent that implements the bridge of the OMA Lightweight M2M protocol
-with the internal protocol for the FIWARE components (OMA NGSI). This IoT Agent is based in the public 
-Node.js IoT Agent Library, where more information can be found about what the IoT Agents are and their different APIs. 
+with the internal protocol for the FIWARE components (OMA NGSI). This IoT Agent is based in the public
+Node.js IoT Agent Library, where more information can be found about what the IoT Agents are and their different APIs.
 
 This project has, then, two APIs:
-* The South Bound (LWM2M): information about it can be found in the [OMA Lightweight M2M](http://openmobilealliance.org/iot/lightweight-m2m-lwm2m) official page. Information about the subset of Lightweight M2M already supported can be found in the [LWM2M Library for Node.js](https://github.com/telefonicaid/lwm2m-node-lib) we are using.
-* The North Bound Administration API: all the IoT Agents share a single Administration API, and it can be found in the [Node.JS IoT Agent Library Documentation](https://github.com/telefonicaid/iotagent-node-lib).
-* The North Bound NGSI API: information about the northbound NGSI mapping can be obtained in the same Node.JS IOTA Library documentation.
- 
+* The API for traffic south of the IoT Agent (LWM2M): information about it can be found in the [OMA Lightweight M2M](http://openmobilealliance.org/iot/lightweight-m2m-lwm2m) official page. Information about the subset of Lightweight M2M already supported can be found in the [LWM2M Library for Node.js](https://github.com/telefonicaid/lwm2m-node-lib) we are using.
+* The North Port Administration API: all the IoT Agents share a single Administration API, and it can be found in the [Node.JS IoT Agent Library Documentation](https://github.com/telefonicaid/iotagent-node-lib).
+* The API for traffic north of the IoT Agent (NGSI): information about the North Port NGSI mapping can be obtained in the same Node.JS IoT Agent Library documentation.
+
 You will find examples and more detailed information in the Getting Started howtos below.
- 
-# <a name="gettingstarted"> Getting started </a>
-This document links a set of howtos oriented to give a quick step-by-step example on how to use the agent with 
+
+# Getting started
+
+This document links a set of howtos oriented to give a quick step-by-step example on how to use the agent with
 different types of configurations. It's important to remark that those configuration options are not mutually exclusive:
 an IoT Agent can have some device preprovisioned, some configuration groups defined and some static configurations also,
 each for different types of devices.
@@ -32,7 +33,7 @@ Some of the guides will share the use of a faked device type called `Robot` with
 * have a passive attribute called `Message` with type `string`, mapped to the LWM2M resource ID /7392/0/2.
 * have a command attribute called `Position` with type `location`, mapped to the LWM2M resource ID /7392/0/3.
 
-Some guides will show the use of the automatic OMA Registry mapping, using a faked device of type 'WeatherBaloon', 
+Some guides will show the use of the automatic OMA Registry mapping, using a faked device of type 'WeatherBaloon',
 with the following characteristics:
 * be part of the service `weather` and subservice `/baloons`.
 * a passive attribute with resource ID /6/0/0 (Position: Longitude).
@@ -48,25 +49,29 @@ provisioning each device before sending its measures.
 for being autoprovisioned when they register in the agent.
 * [Static Configuration Guide](staticConfiguration.md): this guide shows how to configure static routes that map incoming
 devices to different statically configured types.
- 
-# <a name="testing"> Testing </a>
+
+# Testing
 The IoT Agent comes with a test suite to check the main functionalities. In order to execute the test suite you must have the Grunt client installed. You can install it using the following command (you will need root permissions):
-```
+
+```bash
 npm install -g grunt-cli
 ```
 Once the client is installed and the dependencies are downloaded, you can execute the tests using:
-```
+
+```bash
 grunt
 ```
 This will execute the functional tests and the syntax checking as well.
 
 NOTE: This are end to end tests, so they execute against real instances of the components (so make sure you have a real Context Broker configured in the config.js). Be aware that the tests clean the databases before and after they have been executed so DO NOT EXECUTE THIS TESTS ON PRODUCTION MACHINES.
 
-# <a name="development"> Development </a>
+# Development
+
 ## Project build
 The project is managed using Grunt Task Runner.
 
 For a list of available task, type
+
 ```bash
 grunt --help
 ```
@@ -77,7 +82,7 @@ The following sections show the available options in detail.
 
 ### Overview
 Being an Open Source project, everyone can contribute, provided that it respect the following points:
-* Before contributing any code, the author must make sure all the tests work (see below how to launch the tests). 
+* Before contributing any code, the author must make sure all the tests work (see below how to launch the tests).
 * Developed code must adhere to the syntax guidelines enforced by the linters.
 * Code must be developed following the branching model and changelog policies defined below.
 * For any new feature added, unit tests must be provided, following the example of the ones already created.
@@ -85,32 +90,40 @@ Being an Open Source project, everyone can contribute, provided that it respect 
 In order to start contributing:
 1. Fork this repository clicking on the "Fork" button on the upper-right area of the page.
 2. Clone your just forked repository:
-```
+
+```bash
 git clone https://github.com/your-github-username/lightweightm2m-iotagent.git
 ```
-3. Add the main lightweightm2m-iotagent repository as a remote to your forked repository (use any name for your remote 
+
+3. Add the main lightweightm2m-iotagent repository as a remote to your forked repository (use any name for your remote
 repository, it does not have to be lightweightm2m-iotagent, although we will use it in the next steps):
-```
+
+```bash
 git remote add lightweightm2m-iotagent https://github.com/telefonicaid/lightweightm2m-iotagent.git
 ```
 
-Before starting contributing, remember to synchronize the `develop` branch in your forked repository with the `develop` 
+Before starting contributing, remember to synchronize the `develop` branch in your forked repository with the `develop`
 branch in the main lightweightm2m-iotagent repository, by following this steps
 
 1. Change to your local `develop` branch (in case you are not in it already):
-```
+
+```bash
   git checkout develop
 ```
+
 2. Fetch the remote changes:
-```
+
+```bash
   git fetch lightweightm2m-iotagent
 ```
+
 3. Merge them:
-```
+
+```bash
   git rebase lightweightm2m-iotagent/develop
 ```
 
-Contributions following this guidelines will be added to the `develop` branch, and released in the next version. The 
+Contributions following this guidelines will be added to the `develop` branch, and released in the next version. The
 release process is explaind in the *Releasing* section below.
 
 
@@ -128,7 +141,7 @@ and the tests before creating the Pull Request.
 
 Bug fixes work the same way as other tasks, with the exception of the branch name, that should be called `bug/<bugName>`.
 
-In order to contribute to the repository, these same scheme should be replicated in the forked repositories, so the 
+In order to contribute to the repository, these same scheme should be replicated in the forked repositories, so the
 new features or fixes should all come from the current version of `develop` and end up in `develop` again.
 
 All the `task/*` and `bug/*` branches are temporary, and should be removed once they have been merged.
@@ -139,7 +152,7 @@ point to each of the released versions of the project, they are permanent and th
 ### Changelog
 The project contains a version changelog, called CHANGES_NEXT_RELEASE, that can be found in the root of the project.
 Whenever a new feature or bug fix is going to be merged with `develop`, a new entry should be added to this changelog.
-The new entry should contain the reference number of the issue it is solving (if any). 
+The new entry should contain the reference number of the issue it is solving (if any).
 
 When a new version is released, the changelog is cleared, and remains fixed in the last commit of that version. The
 content of the changelog is also moved to the release description in the Github release.
@@ -160,7 +173,7 @@ this as the development version).
 Its important to remark that this component's tests are End To End tests, that have some software requirements to be run.
 This requirements are the following:
 * An instance of MongoDB running in `localhost`.
-* An instance of Orion Context Broker running in the location configured in `testConfig.js` (defaults to the alias `oriondb`). 
+* An instance of Orion Context Broker running in the location configured in `testConfig.js` (defaults to the alias `oriondb`).
 This instance has to have the 1026 and 27017 open for connections coming from the Grunt tester.
 
 ### Libraries
