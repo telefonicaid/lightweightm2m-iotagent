@@ -22,7 +22,7 @@ For more information on what an IoT Agent is or how it should work, please check
 
 For more information on [OMA Lightweight M2M](http://openmobilealliance.org/about-oma/work-program/m2m-enablers/) you can check the [Node.js OMA Lightweight M2M library](https://github.com/telefonicaid/lwm2m-node-lib) we are using.
 
-If you just want to start using the agent, jump to the [Quick Start Guide](docs/userManual.md#gettingstarted).
+If you just want to start using the agent, jump to the [Quick Start Guide](docs/userGuide.md#getting-started).
 
 You will find some  more general considerations about the LWM2M Mapping we are using in the following subsections.
 
