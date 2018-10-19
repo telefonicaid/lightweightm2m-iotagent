@@ -3,9 +3,10 @@ OMA Lightweight M2M IoT Agent: Overview
 
 [![FIWARE IoT Agents](https://nexus.lab.fiware.org/static/badges/chapters/iot-agents.svg)](https://www.fiware.org/developers/catalogue/)
 [![License: APGL](https://img.shields.io/github/license/telefonicaid/lightweightm2m-iotagent.svg)](https://opensource.org/licenses/AGPL-3.0)
-[![Documentation badge](https://img.shields.io/readthedocs/fiware-iotagent-lwm2m.svg)](http://fiware-iotagent-lwm2m.readthedocs.org/en/latest/?badge=latest)
 [![Docker badge](https://img.shields.io/docker/pulls/fiware/lightweightm2m-iotagent.svg)](https://hub.docker.com/r/fiware/lightweightm2m-iotagent/)
 [![Support badge](https://nexus.lab.fiware.org/repository/raw/public/badges/stackoverflow/iot-agents.svg)](https://stackoverflow.com/questions/tagged/fiware+iot)
+<br>
+[![Documentation badge](https://img.shields.io/readthedocs/fiware-iotagent-lwm2m.svg)](http://fiware-iotagent-lwm2m.readthedocs.org/en/latest/?badge=latest)
 ![Status](https://nexus.lab.fiware.org/static/badges/statuses/iot-lightweightm2m.svg)
 
 # Index
