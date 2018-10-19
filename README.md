@@ -1,10 +1,13 @@
 OMA Lightweight M2M IoT Agent: Overview
 ==================
 
-[![License badge](https://img.shields.io/badge/license-AGPL-blue.svg)](https://opensource.org/licenses/AGPL-3.0)
-[![Documentation badge](https://readthedocs.org/projects/fiware-iotagent-lwm2m/badge/?version=latest)](http://fiware-iotagent-lwm2m.readthedocs.org/en/latest/?badge=latest)
+[![FIWARE IoT Agents](https://nexus.lab.fiware.org/static/badges/chapters/iot-agents.svg)](https://www.fiware.org/developers/catalogue/)
+[![License: APGL](https://img.shields.io/github/license/telefonicaid/lightweightm2m-iotagent.svg)](https://opensource.org/licenses/AGPL-3.0)
 [![Docker badge](https://img.shields.io/docker/pulls/fiware/lightweightm2m-iotagent.svg)](https://hub.docker.com/r/fiware/lightweightm2m-iotagent/)
-[![Support badge]( https://img.shields.io/badge/support-sof-yellowgreen.svg)](http://stackoverflow.com/questions/tagged/fiware)
+[![Support badge](https://nexus.lab.fiware.org/repository/raw/public/badges/stackoverflow/iot-agents.svg)](https://stackoverflow.com/questions/tagged/fiware+iot)
+<br>
+[![Documentation badge](https://img.shields.io/readthedocs/fiware-iotagent-lwm2m.svg)](http://fiware-iotagent-lwm2m.readthedocs.org/en/latest/?badge=latest)
+![Status](https://nexus.lab.fiware.org/static/badges/statuses/iot-lightweightm2m.svg)
 
 # Index
 
@@ -14,7 +17,7 @@ OMA Lightweight M2M IoT Agent: Overview
   * [Diagnosis Procedures](docs/administrationGuide.md#diagnosis)
 * [User & Programmers Manual](docs/userGuide.md)
 
-#  <a name="overview"/> Overview
+# Overview
 ## Description
 An Internet of Things Agent is a component that lets groups of devices send their data to and be managed from a FIWARE NGSI Context Broker using their own native protocols. This project provides the IoT Agent for the Lightweight M2M protocol, i.e. the bridge between OMA Lightweight M2M enabled devices and a NGSI Context Broker.
 
