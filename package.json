@@ -48,7 +48,6 @@
     "lwm2m-node-lib": "git://github.com/dcalvoalonso/lwm2m-node-lib.git#task/updateDependencies"
   },
   "devDependencies": {
-    "grunt": "1.0.3",
     "istanbul": "~0.4.5",
     "jshint": "~2.9.6",
     "mocha": "5.2.0",
