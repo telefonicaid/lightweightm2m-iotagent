@@ -5,6 +5,8 @@ sudo: required
 node_js:
  - "4"
  - "6"
+ - "8"
+ - "10"
 
 branches:
   only:
@@ -20,4 +22,3 @@ install:
 before_install:
  - docker pull fiware/orion:latest
  - docker run -d --net host -l orion fiware/orion:latest
- - npm install -g grunt-cli

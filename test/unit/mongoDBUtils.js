@@ -43,7 +43,7 @@ function cleanDb(host, name, callback) {
             var collections = ['devices', 'groups', 'entities', 'registrations'];
 
             for (var i in collections) {
-                var collection = db.collection(collections[i]);
+                var collection = db.db().collection(collections[i]);
 
                 if (collection) {
                     collection.drop();
