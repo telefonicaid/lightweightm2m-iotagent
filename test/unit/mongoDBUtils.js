@@ -30,11 +30,8 @@ function cleanDb(host, name, callback) {
     MongoClient.connect(
         url,
         {
-            server: {
-                socketOptions: {
-                    connectTimeoutMS: 500
-                }
-            }
+            useNewUrlParser: true,
+            connectTimeoutMS: 500
         },
         function(err, db) {
 
