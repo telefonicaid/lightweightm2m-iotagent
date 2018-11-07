@@ -1,6 +1,6 @@
 Static Configuration Guide
 ==================
-# Index
+
 * [Overview](#overview)
 * [Installation](#installation)
 * [Configuration](#configuration)

@@ -1,6 +1,5 @@
 OMA Lightweight M2M IoT Agent: Administration Guide
 ==================
-# Index
 
 * [Prerequisites](#prerequisites)
 * [Installation](#installation)

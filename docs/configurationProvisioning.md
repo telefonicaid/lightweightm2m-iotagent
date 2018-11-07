@@ -1,6 +1,5 @@
 Configuration Provisioning guide
 ==================
-# Index
 
 * [Overview](#overview)
 * [Installation](#installation)

@@ -1,6 +1,6 @@
 Device Provisioning Guide
 ==================
-# Index
+
 * [Overview](#overview)
 * [Installation](#overview)
 * [Configuration](#overview)
