@@ -1,6 +1,5 @@
 OMA Lightweight M2M IoT Agent: User and Development Guide
 ==================
-# Index
 
 * [Overview](#overview)
 * [Getting started](#getting-started)
