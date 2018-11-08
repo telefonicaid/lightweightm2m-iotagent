@@ -26,7 +26,7 @@
 var config = {};
 
 config.lwm2m = {
-    logLevel: 'FATAL',
+    logLevel: 'DEBUG',
     port: 60001,
     defaultType: 'Device',
     serverProtocol: 'udp4',
@@ -60,7 +60,7 @@ config.lwm2m = {
 config.client = {
     lifetime: '85671',
     version: '1.0',
-    logLevel: 'FATAL',
+    logLevel: 'DEBUG',
     observe: {
         period: 3000
     },
@@ -76,7 +76,7 @@ config.client = {
 };
 
 config.ngsi = {
-    logLevel: 'FATAL',
+    logLevel: 'DEBUG',
     contextBroker: {
         host: 'localhost',
         port: '1026'
