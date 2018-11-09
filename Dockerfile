@@ -34,7 +34,7 @@ RUN \
   apt-get install -y git && \
   npm install pm2@3.2.2 -g && \
   echo "INFO: npm install --production..." && \
-  cd /opt/iotaul && npm install --production && \
+  cd /opt/iota-lwm2m && npm install --production && \
   # Clean apt cache
   apt-get clean && \
   apt-get remove -y git && \
