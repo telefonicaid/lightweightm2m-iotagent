@@ -55,17 +55,7 @@ config.lwm2m = {
         }
     ],
     writeFormat: 'application-vnd-oma-lwm2m/text',
-    types: [ ],
-    deviceRegistry: {
-        type: 'mongodb',
-    },
-    mongodb:{
-        host: 'localhost',
-        port: '27018',
-        db: 'lwtm2m',
-        replicaSet: 'rs0'
-    }
-
+    types: [ ]
 };
 
 config.ngsi = {
@@ -83,9 +73,9 @@ config.ngsi = {
     },
     mongodb: {
         host: 'localhost',
-        port: '27018',
-        //db: 'test',
-        replicaSet: 'rs0'
+        port: '27017',
+        db: 'iotagentlm2m'
+        //replicaSet: ''
     },
     types: { },
     service: 'smartGondor',
@@ -96,4 +86,3 @@ config.ngsi = {
 };
 
 module.exports = config;
-
