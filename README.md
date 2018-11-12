@@ -16,6 +16,7 @@ OMA Lightweight M2M IoT Agent: Overview
   * [Sanity check procedures](docs/administrationGuide.md#sanity)
   * [Diagnosis Procedures](docs/administrationGuide.md#diagnosis)
 * [User & Programmers Manual](docs/userGuide.md)
+* [Deprecated features](docs/deprecated.md)
 
 # Overview
 ## Description

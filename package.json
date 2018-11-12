@@ -45,7 +45,7 @@
     "xmldom": "0.1.27",
     "logops": "2.1.0",
     "iotagent-node-lib": "git://github.com/telefonicaid/iotagent-node-lib.git#master",
-    "lwm2m-node-lib": "git://github.com/dcalvoalonso/lwm2m-node-lib.git#task/updateDependencies"
+    "lwm2m-node-lib": "git://github.com/telefonicaid/lwm2m-node-lib.git#master"
   },
   "devDependencies": {
     "istanbul": "~0.4.5",

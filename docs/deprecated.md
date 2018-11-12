@@ -23,9 +23,9 @@ Although you are encouraged to use always the newest lightweightM2M-iotagent ver
 information in the case you want to use old versions:
 
 * Code corresponding to old releases is available at the [lightweightM2M-iotagent github repository](https://github.com/telefonicaid/lightweightm2m-iotagent). Each release number
-  (e.g. 0.23.0) has associated the following:
-	* A tag, e.g. `0.23.0`. It points to the base version.
-	* A release branch, `release/0.23.0`. The HEAD of this branch usually matches the aforementioned tag. However, if some
+  (e.g. 0.4.0 ) has associated the following:
+	* A tag, e.g. `0.4.0 `. It points to the base version.
+	* A release branch, `release/0.4.0 `. The HEAD of this branch usually matches the aforementioned tag. However, if some
     hotfixes were developed on the base version, this branch contains such hotfixes.
 * Documentation corresponding to old versions can be found at [readthedocs.io](https://fiware-iotagent-lwm2m.readthedocs.io).Use the panel in the right bottom corner to navigate to the right version.
     
@@ -36,5 +36,5 @@ The following table provides information about the last lightweightM2M-iotagent 
 | **Removed feature**                                                        | **Last lightweightM2M-iotagent version supporting feature** | **That version release date**   |
 |----------------------------------------------------------------------------|-------------------------------------------|---------------------------------|
 | NGSIv1 API                               | Not yet defined                 | Not yet defined
-| Support to Node.js v6                    | Not yet defined                 | Not yet defined                  
+| Support to Node.js v6                    | Not yet defined but it will be done by May 2019                 | Not yet defined                  
 | Support to Node.js v4                    | 0.4.0                           | Novemeber 28th, 2017             |

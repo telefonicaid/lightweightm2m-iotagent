@@ -44,4 +44,4 @@ USER node
 ENV NODE_ENV=production
 
 ENTRYPOINT ["pm2-runtime", "bin/lwm2mAgent.js"]
-CMD ["-- ", "config-blank.js"]
+CMD ["-- ", "config.js"]
