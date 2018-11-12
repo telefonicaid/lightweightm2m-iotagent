@@ -51,32 +51,16 @@ for being autoprovisioned when they register in the agent.
 devices to different statically configured types.
 
 # Testing
-The IoT Agent comes with a test suite to check the main functionalities. In order to execute the test suite you must have the Grunt client installed. You can install it using the following command (you will need root permissions):
+The IoT Agent comes with a test suite to check the main functionalities. Yoiu can execute the tests using:
 
 ```bash
-npm install -g grunt-cli
+npm test
 ```
-Once the client is installed and the dependencies are downloaded, you can execute the tests using:
-
-```bash
-grunt
-```
-This will execute the functional tests and the syntax checking as well.
+This will execute the functional tests.
 
 NOTE: This are end to end tests, so they execute against real instances of the components (so make sure you have a real Context Broker configured in the config.js). Be aware that the tests clean the databases before and after they have been executed so DO NOT EXECUTE THIS TESTS ON PRODUCTION MACHINES.
 
 # Development
-
-## Project build
-The project is managed using Grunt Task Runner.
-
-For a list of available task, type
-
-```bash
-grunt --help
-```
-
-The following sections show the available options in detail.
 
 ## Contribution Guidelines
 
@@ -100,6 +84,27 @@ repository, it does not have to be lightweightm2m-iotagent, although we will use
 
 ```bash
 git remote add lightweightm2m-iotagent https://github.com/telefonicaid/lightweightm2m-iotagent.git
+```
+
+Before starting contributing, remember to synchronize the `master` branch in your forked repository with the `master`
+branch in the main lightweightm2m-iotagent repository, by following this steps
+
+1. Change to your local `master` branch (in case you are not in it already):
+
+```bash
+  git checkout master
+```
+
+2. Fetch the remote changes:
+
+```bash
+  git fetch lightweightm2m-iotagent
+```
+
+3. Merge them:
+
+```bash
+  git rebase lightweightm2m-iotagent/master
 ```
 
 Contributions following this guidelines will be added to the `master` branch, and released in the next version. The

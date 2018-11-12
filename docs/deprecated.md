@@ -15,6 +15,7 @@ not maintained or evolved any longer. In particular:
 
 A list of deprecated features and the version in which they were deprecated follows:
 
+* Support to NGSIv1.
 * Support to Node.js v4 in lightweightM2M-iotagent 1.0.0. The use of Node.js v8 is highly recommended.
 
 ## Using old lightweightM2M-iotagent versions

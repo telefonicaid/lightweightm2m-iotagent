@@ -37,3 +37,5 @@
 	grunt and grunt related modules
 - Add: npm scripts to execute tests, coverage, watch and clean
 - Remove: support to Node.js v4
+- Add: use NodeJS 8 in Dockerfile
+- Fix: use PM2 in Dockerfile
