@@ -51,7 +51,7 @@ for being autoprovisioned when they register in the agent.
 devices to different statically configured types.
 
 # Testing
-The IoT Agent comes with a test suite to check the main functionalities. Yoiu can execute the tests using:
+The IoT Agent comes with a test suite to check the main functionalities. You can execute the tests using:
 
 ```bash
 npm test
