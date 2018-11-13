@@ -60,6 +60,8 @@ This will execute the functional tests.
 
 NOTE: This are end to end tests, so they execute against real instances of the components (so make sure you have a real Context Broker configured in the config.js). Be aware that the tests clean the databases before and after they have been executed so DO NOT EXECUTE THIS TESTS ON PRODUCTION MACHINES.
 
+It must be also noted that although the lightweightM2M-iotagent works with MongoDB replica sets, the unit testing suite and its scripts require using a single MongoDB instance.
+
 # Development
 
 ## Contribution Guidelines
