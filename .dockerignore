@@ -2,6 +2,7 @@ coverage/
 docs/
 examples/
 ghpages/
+node_modules/
 test/
 rpm/
 README.md 
