@@ -50,6 +50,7 @@ RUN if [ ${DOWNLOAD_TYPE} = "latest" ] ; then RELEASE="master"; else RELEASE=$(c
 	apt-get install -y  --no-install-recommends unzip && \
 	wget --no-check-certificate -O source.zip https://github.com/${GITHUB_ACCOUNT}/${GITHUB_REPOSITORY}/archive/${RELEASE}.zip && \
 	unzip source.zip && \
+	rm source.zip && \
 	mv ${GITHUB_REPOSITORY}-${RELEASE} /opt/iota-lwm2m && \
 	apt-get clean && \
 	apt-get remove -y unzip && \
