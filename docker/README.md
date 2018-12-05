@@ -107,7 +107,7 @@ for the LWM2M Port and Protocol - can be found in the IoT Agent for LightWeight 
 
 ## How to build your own image
 
-The [Dockerfile](https://github.com/telefonicaid/iotagent-json/blob/master/docker/Dockerfile) associated with this image can be used to build an image in several ways:
+The [Dockerfile](https://github.com/telefonicaid/lwm2m-node-lib/blob/master/docker/Dockerfile) associated with this image can be used to build an image in several ways:
 
 * By default, the `Dockerfile` retrieves the **latest** version of the codebase direct from
   GitHub (the `build-arg` is optional):
