@@ -127,12 +127,16 @@ more information on how to use them, please read the Security Section in
 
 Information about how to install the OMA Lightweight M2M IoT Agent can be found
 at the corresponding section of the
-[Installation & Administration Guide](https://fiware-iotagent-lwm2m.readthedocs.io/en/latest/administrationGuide).
+[Installation & Administration Guide](docs/administrationGuide.md).
+
+A `Dockerfile` is also available for your use - further information can be found [here](docker/README.md)
 
 ## Usage
 
 Information about how to use the IoT Agent can be found in the
-[User & Programmers Manual](https://fiware-iotagent-lwm2m.readthedocs.io/en/latest/userGuide).
+[User & Programmers Manual](docs/userGuide.md).
+
+The following feature are listed as [Deprecated](docs/deprecated.md)
 
 ## API
 
@@ -140,6 +144,8 @@ Apiary reference for the Configuration API can be found
 [here](http://docs.telefonicaiotiotagents.apiary.io/#reference/configuration-api).
 More information about IoT Agents and their APIs can be found in the IoT Agent
 Library [documentation](https://iotagent-node-lib.rtfd.io/).
+
+The latest OMA Lightweight M2M IoT Agent documentation is also available on [ReadtheDocs](https://fiware-iotagent-lwm2m.readthedocs.io/en/latest)
 
 ## Quality Assurance
 
