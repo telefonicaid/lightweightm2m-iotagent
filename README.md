@@ -136,7 +136,7 @@ A `Dockerfile` is also available for your use - further information can be found
 Information about how to use the IoT Agent can be found in the
 [User & Programmers Manual](docs/userGuide.md).
 
-The following feature are listed as [Deprecated](docs/deprecated.md)
+The following features are listed as [deprecated](docs/deprecated.md)
 
 ## API
 
@@ -168,7 +168,7 @@ follows:
 
 ---
 
-## Licence
+## License
 
 The IoT Agent for Lightweight Machine 2 Machine is licensed under Affero General
 Public License (GPL).
