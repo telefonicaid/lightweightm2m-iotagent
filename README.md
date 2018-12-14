@@ -33,7 +33,6 @@ check the FIWARE Catalogue entry for the
 -   [Install](#install)
 -   [Usage](#usage)
 -   [API](#api)
--   [Quality Assurance](#quality-assurance)
 -   [License](#license)
 
 ## Background
@@ -149,25 +148,6 @@ More information about IoT Agents and their APIs can be found in the IoT Agent
 Library [documentation](https://iotagent-node-lib.rtfd.io/).
 
 The latest OMA Lightweight M2M IoT Agent documentation is also available on [ReadtheDocs](https://fiware-iotagent-lwm2m.readthedocs.io/en/latest)
-
-## Quality Assurance
-
-This project is part of [FIWARE](https://fiware.org/) and has been rated as
-follows:
-
--   **Version Tested:**
-    ![ ](https://img.shields.io/badge/dynamic/json.svg?label=Version&url=https://fiware.github.io/catalogue/json/iotagent_LWM2M.json&query=$.version&colorB=blue)
--   **Documentation:**
-    ![ ](https://img.shields.io/badge/dynamic/json.svg?label=Completeness&url=https://fiware.github.io/catalogue/json/iotagent_LWM2M.json&query=$.docCompleteness&colorB=blue)
-    ![ ](https://img.shields.io/badge/dynamic/json.svg?label=Usability&url=https://fiware.github.io/catalogue/json/iotagent_LWM2M.json&query=$.docSoundness&colorB=blue)
--   **Responsiveness:**
-    ![ ](https://img.shields.io/badge/dynamic/json.svg?label=Time%20to%20Respond&url=https://fiware.github.io/catalogue/json/iotagent_LWM2M.json&query=$.timeToCharge&colorB=blue)
-    ![ ](https://img.shields.io/badge/dynamic/json.svg?label=Time%20to%20Fix&url=https://fiware.github.io/catalogue/json/iotagent_LWM2M.json&query=$.timeToFix&colorB=blue)
--   **FIWARE Testing:**
-    ![ ](https://img.shields.io/badge/dynamic/json.svg?label=Tests%20Passed&url=https://fiware.github.io/catalogue/json/iotagent_LWM2M.json&query=$.failureRate&colorB=blue)
-    ![ ](https://img.shields.io/badge/dynamic/json.svg?label=Scalability&url=https://fiware.github.io/catalogue/json/iotagent_LWM2M.json&query=$.scalability&colorB=blue)
-    ![ ](https://img.shields.io/badge/dynamic/json.svg?label=Performance&url=https://fiware.github.io/catalogue/json/iotagent_LWM2M.json&query=$.performance&colorB=blue)
-    ![ ](https://img.shields.io/badge/dynamic/json.svg?label=Stability&url=https://fiware.github.io/catalogue/json/iotagent_LWM2M.json&query=$.stability&colorB=blue)
 
 ---
 
