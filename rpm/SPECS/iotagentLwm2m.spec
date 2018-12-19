@@ -149,3 +149,35 @@ rm -rf $RPM_BUILD_ROOT
 %{_install_dir}
 
 %changelog
+* Wed Dec 19 2018 Fermin Galan <fermin.galanmarquez@telefonica.com>> 1.0.0-1
+- Set Nodejs 6.14.4 as minimum version in packages.json (effectively removing Nodev4 as supported version)
+- Add: allow NGSIv2 for updating active attributes at CB, through configuration (#104)
+- Add: supports NGSIv2 for device provisioning (entity creation and context registration) at CB (#104)
+- Add: npm scripts to execute tests, coverage, watch and clean
+- Add: use NodeJS 8 in Dockerfile
+- Add: use PM2 in Dockerfile
+- Fix: unit tests are executed as part of travis CI
+- Fix: issues in the provisioning API (#99 and #100) as result of npm-shrinkwrap file update
+- Fix: active attributes are not updated in CB for preregistered devices (#107)
+- Fix: update registration requests coming from devices are not correctly handled (#109)
+- Fix: correct device provisioning example (#117)
+- Fix: use master branch of lwm2m-node-lib (#120)
+- Fix: correct example for configuration provisioning (#113)
+- Fix: correct management of active attributes for configuration provisoning (#113)
+- Fix: first observable value is processed and forwarded to the CB (#73)
+- Upgrade: iotagent-node-lib dependence from master to 2.8.1
+- Upgrade: lwm2m-node-lib dependence from 0.5.0 to 1.1.0
+- Upgrade: async dependence from 1.5.2 to 2.6.1
+- Upgrade: request dependence from ~2.69.0 to ~2.88.0
+- Upgrade: underscore dependence from 1.8.3 to 1.9.1
+- Upgrade: logops dependence from 1.0.0-alpha.7 to 2.1.0
+- Upgrade: xmldom dependence from 0.1.22 to 0.1.27
+- Upgrade: cheerio dependence from 0.20.0 to 1.0.0-rc.2
+- Upgrade: nock development dependence from 0.48.0 to 10.0.2
+- Upgrade: mocha development dependence from 2.4.5 to 5.2.0
+- Upgrade: should development dependence from 8.4¡2.2 to 13.2.3
+- Upgrade: istanbul development dependence from ~0.1.34 to ~0.4.5
+- Ensure precise dependencies (~=) are used in packages.json
+- Remove mongodb dependence from packages.json (already in iota-node-lib)
+- Remove: old unused development dependencies (closure-linter-wrapper, sinon-chai, sinon, chai, grunt and grunt related modules)
+
