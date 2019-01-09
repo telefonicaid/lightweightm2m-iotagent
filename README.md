@@ -156,4 +156,4 @@ The latest OMA Lightweight M2M IoT Agent documentation is also available on [Rea
 The IoT Agent for Lightweight Machine 2 Machine is licensed under Affero General
 Public License (GPL).
 
-© 2018 Telefonica Investigación y Desarrollo, S.A.U
+© 2019 Telefonica Investigación y Desarrollo, S.A.U
