@@ -7,6 +7,7 @@
 <br>
 [![Documentation badge](https://img.shields.io/readthedocs/fiware-iotagent-lwm2m.svg)](http://fiware-iotagent-lwm2m.readthedocs.org/en/latest/?badge=latest)
 [![Build badge](https://img.shields.io/travis/telefonicaid/lightweightm2m-iotagent.svg)](https://travis-ci.org/telefonicaid/lightweightm2m-iotagent/)
+[![Coverage Status](https://coveralls.io/repos/github/telefonicaid/lightweightm2m-iotagent/badge.svg?branch=master)](https://coveralls.io/github/telefonicaid/lightweightm2m-iotagent?branch=master)
 ![Status](https://nexus.lab.fiware.org/static/badges/statuses/iot-lightweightm2m.svg)
 
 This Internet of Things Agent is designed to be a bridge between the
