@@ -6,6 +6,7 @@
 [![Support badge](https://nexus.lab.fiware.org/repository/raw/public/badges/stackoverflow/iot-agents.svg)](https://stackoverflow.com/questions/tagged/fiware+iot)
 <br>
 [![Documentation badge](https://img.shields.io/readthedocs/fiware-iotagent-lwm2m.svg)](http://fiware-iotagent-lwm2m.readthedocs.org/en/latest/?badge=latest)
+[![Build badge](https://img.shields.io/travis/telefonicaid/lightweightm2m-iotagent.svg)](https://travis-ci.org/telefonicaid/lightweightm2m-iotagent/)
 ![Status](https://nexus.lab.fiware.org/static/badges/statuses/iot-lightweightm2m.svg)
 
 This Internet of Things Agent is designed to be a bridge between the
