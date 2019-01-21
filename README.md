@@ -35,6 +35,7 @@ check the FIWARE Catalogue entry for the
 -   [Install](#install)
 -   [Usage](#usage)
 -   [API](#api)
+-   [Roadmap](#roadmap)
 -   [License](#license)
 
 ## Background
@@ -161,7 +162,9 @@ This product is a FIWARE Generic Enabler. If you would like to learn about the o
 
 This section elaborates on proposed new features or tasks which are expected to be added to the product in the foreseeable future.  There should be no assumption of a commitment to deliver these features on specific dates or in the order given. The development team will be doing their best to follow the proposed dates and priorities, but please bear in mind that plans to work on a given feature or task may be revised.  All information is provided as general guidelines only,  and this section may be revised to provide newer information at any time.
 
-### Short tem
+This section has been last updated in January 2019. Please take into account is content could be obsolete.
+
+### Short term
 
 The following list of features are planned to be addressed in the short term, and incorporated in the next release of the product:
 - Docker image protects username and password using environment variables (#159).
