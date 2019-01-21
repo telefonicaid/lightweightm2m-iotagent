@@ -35,6 +35,7 @@ check the FIWARE Catalogue entry for the
 -   [Install](#install)
 -   [Usage](#usage)
 -   [API](#api)
+-   [Roadmap](#roadmap)
 -   [License](#license)
 
 ## Background
@@ -151,7 +152,9 @@ Library [documentation](https://iotagent-node-lib.rtfd.io/).
 
 The latest OMA Lightweight M2M IoT Agent documentation is also available on [ReadtheDocs](https://fiware-iotagent-lwm2m.readthedocs.io/en/latest)
 
----
+## Roadmap
+
+The roadmap of this FIWARE GE is described [here](docs/roadmap.md)
 
 ## License
 
