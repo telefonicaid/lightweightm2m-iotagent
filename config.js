@@ -24,65 +24,65 @@
 var config = {};
 
 config.lwm2m = {
-  logLevel: 'DEBUG',
-  port: 5684,
-  defaultType: 'Device',
-  ipProtocol: 'udp4',
-  serverProtocol: 'udp4',
-  /**
-   * When a LWM2M client has active attributes, the IoT Agent sends an observe instruction for each one, just after the
-   * client registers. This may cause cause an error when the client takes too long to start listening, as the
-   * observe requests may not reach its destiny. This timeout (ms) is used to give the client the opportunity to
-   * create the listener before the server sends the requests.
-   */
-  delayedObservationTimeout: 50,
-  formats: [
-    {
-      name: 'application-vnd-oma-lwm2m/text',
-      value: 1541,
-    },
-    {
-      name: 'application-vnd-oma-lwm2m/tlv',
-      value: 1542,
-    },
-    {
-      name: 'application-vnd-oma-lwm2m/json',
-      value: 1543,
-    },
-    {
-      name: 'application-vnd-oma-lwm2m/opaque',
-      value: 1544,
-    },
-  ],
-  writeFormat: 'application-vnd-oma-lwm2m/text',
-  types: [],
+    logLevel: 'DEBUG',
+    port: 5684,
+    defaultType: 'Device',
+    ipProtocol: 'udp4',
+    serverProtocol: 'udp4',
+    /**
+     * When a LWM2M client has active attributes, the IoT Agent sends an observe instruction for each one, just after the
+     * client registers. This may cause cause an error when the client takes too long to start listening, as the
+     * observe requests may not reach its destiny. This timeout (ms) is used to give the client the opportunity to
+     * create the listener before the server sends the requests.
+     */
+    delayedObservationTimeout: 50,
+    formats: [
+        {
+            name: 'application-vnd-oma-lwm2m/text',
+            value: 1541,
+        },
+        {
+            name: 'application-vnd-oma-lwm2m/tlv',
+            value: 1542,
+        },
+        {
+            name: 'application-vnd-oma-lwm2m/json',
+            value: 1543,
+        },
+        {
+            name: 'application-vnd-oma-lwm2m/opaque',
+            value: 1544,
+        },
+    ],
+    writeFormat: 'application-vnd-oma-lwm2m/text',
+    types: [],
 };
 
 config.ngsi = {
-  logLevel: 'DEBUG',
-  contextBroker: {
-    host: 'localhost',
-    port: '1026',
-  },
-  server: {
-    port: 4041,
-  },
-  deviceRegistry: {
-    //type: 'memory'
-    type: 'mongodb',
-  },
-  mongodb: {
-    host: 'localhost',
-    port: '27017',
-    db: 'iotagentlm2m',
-    //replicaSet: ''
-  },
-  types: {},
-  service: 'smartGondor',
-  subservice: '/gardens',
-  providerUrl: 'http://localhost:4041',
-  deviceRegistrationDuration: 'P1Y',
-  defaultType: 'Thing',
+    logLevel: 'DEBUG',
+    contextBroker: {
+        host: 'localhost',
+        port: '1026',
+    },
+    server: {
+        port: 4041,
+    },
+    deviceRegistry: {
+        //type: 'memory'
+        type: 'mongodb',
+    },
+    mongodb: {
+        host: 'localhost',
+        port: '27017',
+        db: 'iotagentlm2m',
+        //replicaSet: ''
+    },
+    types: {},
+    service: 'smartGondor',
+    subservice: '/gardens',
+    providerUrl: 'http://localhost:4041',
+    deviceRegistrationDuration: 'P1Y',
+    defaultType: 'Thing',
 };
 
 module.exports = config;

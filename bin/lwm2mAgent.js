@@ -25,31 +25,31 @@
 'use strict';
 
 var iotAgent = require('../lib/iotAgentLwm2m'),
-  context = {
-    op: 'IOTAgent.Executable',
-  },
-  logger = require('logops');
+    context = {
+        op: 'IOTAgent.Executable',
+    },
+    logger = require('logops');
 
 function start() {
-  var config;
+    var config;
 
-  if (process.argv.length === 3) {
-    config = require('../' + process.argv[2]);
-  } else {
-    config = require('../config');
-  }
-
-  iotAgent.start(config, function(error) {
-    if (error) {
-      logger.error(
-        context,
-        'Error starting Agent: [%s] Exiting process',
-        error
-      );
+    if (process.argv.length === 3) {
+        config = require('../' + process.argv[2]);
     } else {
-      logger.info(context, 'Lightweight M2M IoT Agent started');
+        config = require('../config');
     }
-  });
+
+    iotAgent.start(config, function(error) {
+        if (error) {
+            logger.error(
+                context,
+                'Error starting Agent: [%s] Exiting process',
+                error
+            );
+        } else {
+            logger.info(context, 'Lightweight M2M IoT Agent started');
+        }
+    });
 }
 
 start();
