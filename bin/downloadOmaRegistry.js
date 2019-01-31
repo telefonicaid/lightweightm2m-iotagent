@@ -46,18 +46,12 @@ function downloadRegistry(url) {
 
         request(options, function(error, response, body) {
             if (error) {
-                logger.error(
-                    context,
-                    "Couldn't retrieve OMA Registry due to a connection error: " +
-                        error
-                );
+                logger.error(context, "Couldn't retrieve OMA Registry due to a connection error: " + error);
                 callback(new errors.OmaRegistryConnectionError(error));
             } else if (response.statusCode === 200) {
                 callback(null, body);
             } else {
-                callback(
-                    new errors.OmaRegistryServerError(response.statusCode)
-                );
+                callback(new errors.OmaRegistryServerError(response.statusCode));
             }
         });
     };
@@ -131,13 +125,9 @@ function discoverResources(registryObj, callback) {
                     newObj.resources = [];
                     for (var i = 0; i < items.length; i++) {
                         var resource = {
-                            name: items[i].getElementsByTagName('Name')[0]
-                                .textContent,
-                            type: items[i].getElementsByTagName('Type')[0]
-                                .textContent,
-                            operations: items[i].getElementsByTagName(
-                                'Operations'
-                            )[0].textContent,
+                            name: items[i].getElementsByTagName('Name')[0].textContent,
+                            type: items[i].getElementsByTagName('Type')[0].textContent,
+                            operations: items[i].getElementsByTagName('Operations')[0].textContent,
                         };
 
                         newObj.resources.push(resource);
@@ -184,22 +174,14 @@ function createInternalMap(registryObj, callback) {
     var directRegistryMap = registryObj.reduce(createMapWithIds, {}),
         inverseRegistryMap = registryObj.reduce(createMapFromIds, {});
 
-    callback(
-        null,
-        JSON.stringify(directRegistryMap, null, 4),
-        JSON.stringify(inverseRegistryMap, null, 4)
-    );
+    callback(null, JSON.stringify(directRegistryMap, null, 4), JSON.stringify(inverseRegistryMap, null, 4));
 }
 
 function writeResults(directMappings, inverseMappings, callback) {
     async.series(
         [
             async.apply(fs.writeFile, registryTargetFile, directMappings),
-            async.apply(
-                fs.writeFile,
-                inverseRegistryTargetFile,
-                inverseMappings
-            ),
+            async.apply(fs.writeFile, inverseRegistryTargetFile, inverseMappings),
         ],
         callback
     );

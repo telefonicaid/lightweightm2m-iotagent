@@ -31,28 +31,28 @@ config.lwm2m = {
     defaultType: 'Device',
     serverProtocol: 'udp4',
     deviceRegistry: {
-        type: 'mongodb'
+        type: 'mongodb',
     },
     mongodb: {
         host: 'localhost',
         port: '27017',
-        db: 'lwtm2m'
+        db: 'lwtm2m',
         //replicaSet: ''
     },
     types: [
         {
             name: 'Light',
-            url: '/light'
+            url: '/light',
         },
         {
             name: 'Pressure',
-            url: '/pres'
+            url: '/pres',
         },
         {
             name: 'Robot',
-            url: '/robot'
-        }
-    ]
+            url: '/robot',
+        },
+    ],
 };
 
 // Configuration of the LWTM2M Client
@@ -62,17 +62,17 @@ config.client = {
     version: '1.0',
     logLevel: 'FATAL',
     observe: {
-        period: 3000
+        period: 3000,
     },
     ipProtocol: 'udp4',
     serverProtocol: 'udp4',
     formats: [
         {
             name: 'lightweightm2m/text',
-            value: 1541
-        }
+            value: 1541,
+        },
     ],
-    writeFormat: 'lightweightm2m/text'
+    writeFormat: 'lightweightm2m/text',
 };
 
 config.ngsi = {
@@ -80,45 +80,45 @@ config.ngsi = {
     contextBroker: {
         host: 'localhost',
         port: '1026',
-        ngsiVersion: 'v2'
+        ngsiVersion: 'v2',
     },
     server: {
-        port: 4041
+        port: 4041,
     },
     deviceRegistry: {
-        type: 'mongodb'
+        type: 'mongodb',
     },
     mongodb: {
         host: 'localhost',
         port: '27017',
-        db: 'lwtm2m'
+        db: 'lwtm2m',
     },
     types: {
-        'Light': {
+        Light: {
             service: 'smartgondor',
             subservice: '/gardens',
             commands: [],
             lazy: [
                 {
                     name: 'luminescence',
-                    type: 'Lumens'
-                }
+                    type: 'Lumens',
+                },
             ],
             attributes: [
                 {
                     name: 'status',
-                    type: 'Boolean'
-                }
+                    type: 'Boolean',
+                },
             ],
             lwm2mResourceMapping: {
-                'luminescence' : {
+                luminescence: {
                     objectType: 6000,
                     objectInstance: 0,
-                    objectResource: 3
-                }
-            }
+                    objectResource: 3,
+                },
+            },
         },
-        'Pressure': {
+        Pressure: {
             service: 'dumbmordor',
             subservice: '/deserts',
             commands: [],
@@ -126,55 +126,55 @@ config.ngsi = {
             attributes: [
                 {
                     name: 'status',
-                    type: 'Boolean'
+                    type: 'Boolean',
                 },
                 {
                     name: 'pressure',
-                    type: 'bars'
+                    type: 'bars',
                 },
                 {
                     name: 'position',
-                    type: 'coordinates'
-                }
+                    type: 'coordinates',
+                },
             ],
             lwm2mResourceMapping: {
-                'pressure' : {
+                pressure: {
                     objectType: 5000,
                     objectInstance: 0,
-                    objectResource: 2
+                    objectResource: 2,
                 },
-                'position' : {
+                position: {
                     objectType: 67000,
                     objectInstance: 0,
-                    objectResource: 1
-                }
-            }
+                    objectResource: 1,
+                },
+            },
         },
-        'Robot': {
+        Robot: {
             service: 'smartgondor',
             subservice: '/gardens',
             commands: [
                 {
                     name: 'position',
-                    type: 'Array'
-                }
+                    type: 'Array',
+                },
             ],
             lazy: [],
             staticAttributes: [],
             attributes: [],
             lwm2mResourceMapping: {
-                'position' : {
+                position: {
                     objectType: 9090,
                     objectInstance: 0,
-                    objectResource: 0
-                }
-            }
-        }
+                    objectResource: 0,
+                },
+            },
+        },
     },
     service: 'smartgondor',
     subservice: '/gardens',
     providerUrl: 'http://localhost:4041/v1',
-    deviceRegistrationDuration: 'P1M'
+    deviceRegistrationDuration: 'P1M',
 };
 
 module.exports = config;

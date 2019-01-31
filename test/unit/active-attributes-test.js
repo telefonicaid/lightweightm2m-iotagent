@@ -35,7 +35,7 @@ var config = require('./testConfig'),
         port: '60001',
         endpointName: 'ActiveTestClient',
         url: '/pres',
-        ipProtocol: 'udp4'
+        ipProtocol: 'udp4',
     },
     ngsiClient = ngsiTestUtils.create(
         config.ngsi.contextBroker.host,
@@ -45,56 +45,60 @@ var config = require('./testConfig'),
     ),
     deviceInformation;
 
-
 describe('Active attributes test', function() {
     beforeEach(function(done) {
         lwm2mClient.init(config);
 
-        async.series([
-            apply(mongoUtils.cleanDbs, config.ngsi.contextBroker.host),
-            apply(iotAgent.start, config),
-            apply(lwm2mClient.registry.create, '/5000/0')
-        ], function(error) {
-            lwm2mClient.register(
-                clientConfig.host,
-                clientConfig.port,
-                clientConfig.url,
-                clientConfig.endpointName,
-                function(error, result) {
-                    deviceInformation = result;
-                    setTimeout(done, 1000);
-                }
-            );
-        });
+        async.series(
+            [
+                apply(mongoUtils.cleanDbs, config.ngsi.contextBroker.host),
+                apply(iotAgent.start, config),
+                apply(lwm2mClient.registry.create, '/5000/0'),
+            ],
+            function(error) {
+                lwm2mClient.register(
+                    clientConfig.host,
+                    clientConfig.port,
+                    clientConfig.url,
+                    clientConfig.endpointName,
+                    function(error, result) {
+                        deviceInformation = result;
+                        setTimeout(done, 1000);
+                    }
+                );
+            }
+        );
     });
     afterEach(function(done) {
-        async.series([
-            apply(lwm2mClient.unregister, deviceInformation),
-            iotAgent.stop,
-            lwm2mClient.registry.reset,
-            apply(mongoUtils.cleanDbs, config.ngsi.contextBroker.host)
-        ], function(error, results) {
-
-            done();
-        });
+        async.series(
+            [
+                apply(lwm2mClient.unregister, deviceInformation),
+                iotAgent.stop,
+                lwm2mClient.registry.reset,
+                apply(mongoUtils.cleanDbs, config.ngsi.contextBroker.host),
+            ],
+            function(error, results) {
+                done();
+            }
+        );
     });
 
     describe('When an active attribute changes a value in the device', function() {
         it('should update its value in the corresponding Orion entity', function(done) {
-            async.series([
-                async.apply(lwm2mClient.registry.setResource, '/5000/0', '2', '89')
-            ], function(error) {
+            async.series([async.apply(lwm2mClient.registry.setResource, '/5000/0', '2', '89')], function(error) {
                 setTimeout(function() {
-                    ngsiClient.query('ActiveTestClient:Pressure', 'Pressure', ['pressure'],
-                        function(error, response, body) {
+                    ngsiClient.query('ActiveTestClient:Pressure', 'Pressure', ['pressure'], function(
+                        error,
+                        response,
+                        body
+                    ) {
+                        should.not.exist(error);
+                        should.exist(body);
+                        should.not.exist(body.errorCode);
+                        body.contextResponses[0].contextElement.attributes[0].value.should.equal('89');
 
-                            should.not.exist(error);
-                            should.exist(body);
-                            should.not.exist(body.errorCode);
-                            body.contextResponses[0].contextElement.attributes[0].value.should.equal('89');
-
-                            done();
-                        });
+                        done();
+                    });
                 }, 1000);
             });
         });
@@ -107,17 +111,21 @@ describe('Active attributes test', function() {
             }, 500);
         }
         it('should last value should appear in Orion entity', function(done) {
-            async.series([
-                async.apply(setLwm2mResource, '/5000/0', '2', '89'),
-                async.nextTick,
-                async.apply(setLwm2mResource, '/5000/0', '2', '33'),
-                async.nextTick,
-                async.apply(setLwm2mResource, '/5000/0', '2', '19')
-            ], function(error) {
-                setTimeout(function() {
-                    ngsiClient.query('ActiveTestClient:Pressure', 'Pressure', ['pressure'],
-                        function(error, response, body) {
-
+            async.series(
+                [
+                    async.apply(setLwm2mResource, '/5000/0', '2', '89'),
+                    async.nextTick,
+                    async.apply(setLwm2mResource, '/5000/0', '2', '33'),
+                    async.nextTick,
+                    async.apply(setLwm2mResource, '/5000/0', '2', '19'),
+                ],
+                function(error) {
+                    setTimeout(function() {
+                        ngsiClient.query('ActiveTestClient:Pressure', 'Pressure', ['pressure'], function(
+                            error,
+                            response,
+                            body
+                        ) {
                             should.not.exist(error);
                             should.exist(body);
                             should.not.exist(body.errorCode);
@@ -125,8 +133,9 @@ describe('Active attributes test', function() {
 
                             done();
                         });
-                }, 1000);
-            });
+                    }, 1000);
+                }
+            );
         });
     });
 });
