@@ -37,7 +37,7 @@ var config = require('./testConfig'),
         port: '60001',
         endpointName: 'TestClient',
         url: '/robot',
-        ipProtocol: 'udp4',
+        ipProtocol: 'udp4'
     },
     ngsiClient = ngsiTestUtils.create(
         config.ngsi.contextBroker.host,
@@ -55,7 +55,7 @@ describe('Command attributes test', function() {
             [
                 apply(mongoUtils.cleanDbs, config.ngsi.contextBroker.host),
                 apply(iotAgent.start, config),
-                apply(lwm2mClient.registry.create, '/5000/0'),
+                apply(lwm2mClient.registry.create, '/5000/0')
             ],
             function(error) {
                 lwm2mClient.register(
@@ -78,7 +78,7 @@ describe('Command attributes test', function() {
                 apply(lwm2mClient.unregister, deviceInformation),
                 iotAgent.stop,
                 apply(mongoUtils.cleanDbs, config.ngsi.contextBroker.host),
-                lwm2mClient.registry.reset,
+                lwm2mClient.registry.reset
             ],
             done
         );
@@ -96,7 +96,7 @@ describe('Command attributes test', function() {
                     async.series(
                         [
                             async.apply(lwm2mClient.registry.create, '/9090/0'),
-                            async.apply(lwm2mClient.registry.setResource, '/9090/0', '0', '[]'),
+                            async.apply(lwm2mClient.registry.setResource, '/9090/0', '0', '[]')
                         ],
                         done
                     );
@@ -110,8 +110,8 @@ describe('Command attributes test', function() {
                     {
                         name: 'position',
                         type: 'Array',
-                        value: '[15,6234,312]',
-                    },
+                        value: '[15,6234,312]'
+                    }
                 ];
 
             function handleExecute(objectType, objectId, resourceId, args, callback) {
@@ -137,8 +137,8 @@ describe('Command attributes test', function() {
                 {
                     name: 'position',
                     type: 'Array',
-                    value: '[15,6234,312]',
-                },
+                    value: '[15,6234,312]'
+                }
             ];
 
             function handleExecute(objectType, objectId, resourceId, args, callback) {
@@ -166,8 +166,8 @@ describe('Command attributes test', function() {
             json: utils.readExampleFile('./test/provisionExamples/provisionDeviceWithCommands.json'),
             headers: {
                 'fiware-service': 'smartgondor',
-                'fiware-servicepath': '/gardens',
-            },
+                'fiware-servicepath': '/gardens'
+            }
         };
 
         beforeEach(function(done) {
@@ -180,7 +180,7 @@ describe('Command attributes test', function() {
                     async.series(
                         [
                             async.apply(lwm2mClient.registry.create, '/6789/0'),
-                            async.apply(lwm2mClient.registry.setResource, '/6789/0', '17', '[]'),
+                            async.apply(lwm2mClient.registry.setResource, '/6789/0', '17', '[]')
                         ],
                         done
                     );
@@ -194,8 +194,8 @@ describe('Command attributes test', function() {
                     {
                         name: 'position',
                         type: 'Array',
-                        value: '[15,6234,312]',
-                    },
+                        value: '[15,6234,312]'
+                    }
                 ];
 
             function handleExecute(objectType, objectId, resourceId, args, callback) {

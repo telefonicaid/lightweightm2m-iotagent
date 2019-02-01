@@ -37,7 +37,7 @@ var config = require('./testConfig'),
         port: '60001',
         endpointName: 'ActiveTestClient',
         url: '/pres',
-        ipProtocol: 'udp4',
+        ipProtocol: 'udp4'
     },
     ngsiClient = ngsiTestUtils.createNgsi2(
         config.ngsi.contextBroker.host,
@@ -55,7 +55,7 @@ describe('Active attributes test', function() {
             [
                 apply(mongoUtils.cleanDbs, config.ngsi.contextBroker.host),
                 apply(iotAgent.start, config),
-                apply(lwm2mClient.registry.create, '/5000/0'),
+                apply(lwm2mClient.registry.create, '/5000/0')
             ],
             function(error) {
                 lwm2mClient.register(
@@ -77,7 +77,7 @@ describe('Active attributes test', function() {
                 apply(lwm2mClient.unregister, deviceInformation),
                 iotAgent.stop,
                 lwm2mClient.registry.reset,
-                apply(mongoUtils.cleanDbs, config.ngsi.contextBroker.host),
+                apply(mongoUtils.cleanDbs, config.ngsi.contextBroker.host)
             ],
             function(error, results) {
                 done();
@@ -118,7 +118,7 @@ describe('Active attributes test', function() {
                     async.nextTick,
                     async.apply(setLwm2mResource, '/5000/0', '2', '33'),
                     async.nextTick,
-                    async.apply(setLwm2mResource, '/5000/0', '2', '19'),
+                    async.apply(setLwm2mResource, '/5000/0', '2', '19')
                 ],
                 function(error) {
                     setTimeout(function() {

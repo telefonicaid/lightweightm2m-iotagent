@@ -34,7 +34,7 @@ function cleanDb(host, name, callback) {
         url,
         {
             useNewUrlParser: true,
-            connectTimeoutMS: 500,
+            connectTimeoutMS: 500
         },
         function(err, db) {
             if (db) {
@@ -61,7 +61,7 @@ function cleanDbs(host, callback) {
             async.apply(cleanDb, 'localhost', 'lwtm2m'),
             async.apply(cleanDb, 'localhost', 'iotagent'),
             async.apply(cleanDb, host, 'orion'),
-            async.apply(cleanDb, host, 'iotagent'),
+            async.apply(cleanDb, host, 'iotagent')
         ],
         remoteDatabases = ['smartgondor', 'dumbmordor'];
 

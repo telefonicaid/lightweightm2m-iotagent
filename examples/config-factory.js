@@ -39,42 +39,42 @@ config.lwm2m = {
     formats: [
         {
             name: 'application-vnd-oma-lwm2m/text',
-            value: 1541,
+            value: 1541
         },
         {
             name: 'application-vnd-oma-lwm2m/tlv',
-            value: 1542,
+            value: 1542
         },
         {
             name: 'application-vnd-oma-lwm2m/json',
-            value: 1543,
+            value: 1543
         },
         {
             name: 'application-vnd-oma-lwm2m/opaque',
-            value: 1544,
-        },
+            value: 1544
+        }
     ],
     writeFormat: 'application-vnd-oma-lwm2m/text',
-    types: [],
+    types: []
 };
 
 config.ngsi = {
     logLevel: 'DEBUG',
     contextBroker: {
         host: 'localhost',
-        port: '1026',
+        port: '1026'
     },
     server: {
-        port: 4041,
+        port: 4041
     },
     deviceRegistry: {
         //type: 'memory'
-        type: 'mongodb',
+        type: 'mongodb'
     },
     mongodb: {
         host: 'localhost',
         port: '27017',
-        db: 'iotagentlm2m',
+        db: 'iotagentlm2m'
         //replicaSet: ''
     },
     types: {},
@@ -82,7 +82,7 @@ config.ngsi = {
     subservice: '/robots',
     providerUrl: 'http://localhost:4041',
     deviceRegistrationDuration: 'P1Y',
-    defaultType: 'Robot',
+    defaultType: 'Robot'
 };
 
 module.exports = config;

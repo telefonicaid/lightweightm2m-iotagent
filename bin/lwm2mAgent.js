@@ -26,7 +26,7 @@
 
 var iotAgent = require('../lib/iotAgentLwm2m'),
     context = {
-        op: 'IOTAgent.Executable',
+        op: 'IOTAgent.Executable'
     },
     logger = require('logops');
 

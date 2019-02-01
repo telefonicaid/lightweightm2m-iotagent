@@ -35,7 +35,7 @@ var config = require('./testConfig'),
         port: '60001',
         endpointName: 'TestClient',
         url: '/light',
-        ipProtocol: 'udp4',
+        ipProtocol: 'udp4'
     },
     ngsiClient = ngsiTestUtils.create(
         config.ngsi.contextBroker.host,
@@ -52,7 +52,7 @@ describe('Passive attributes test', function() {
             [
                 async.apply(mongoUtils.cleanDbs, config.ngsi.contextBroker.host),
                 async.apply(iotAgent.start, config),
-                lwm2mClient.registry.reset,
+                lwm2mClient.registry.reset
             ],
             done
         );
@@ -64,7 +64,7 @@ describe('Passive attributes test', function() {
                 apply(lwm2mClient.unregister, deviceInformation),
                 iotAgent.stop,
                 apply(mongoUtils.cleanDbs, config.ngsi.contextBroker.host),
-                lwm2mClient.registry.reset,
+                lwm2mClient.registry.reset
             ],
             done
         );
@@ -82,7 +82,7 @@ describe('Passive attributes test', function() {
                     async.series(
                         [
                             async.apply(lwm2mClient.registry.create, '/6000/0'),
-                            async.apply(lwm2mClient.registry.setResource, '/6000/0', '3', '12'),
+                            async.apply(lwm2mClient.registry.setResource, '/6000/0', '3', '12')
                         ],
                         done
                     );
@@ -117,8 +117,8 @@ describe('Passive attributes test', function() {
             {
                 name: 'luminescence',
                 type: 'Lumens',
-                value: '8375',
-            },
+                value: '8375'
+            }
         ];
 
         beforeEach(function(done) {
@@ -132,7 +132,7 @@ describe('Passive attributes test', function() {
                     async.series(
                         [
                             async.apply(lwm2mClient.registry.create, '/6000/0'),
-                            async.apply(lwm2mClient.registry.setResource, '/6000/0', '3', '12'),
+                            async.apply(lwm2mClient.registry.setResource, '/6000/0', '3', '12')
                         ],
                         done
                     );
@@ -167,7 +167,7 @@ describe('Passive attributes test', function() {
             async.series(
                 [
                     async.apply(lwm2mClient.registry.create, '/0/0'),
-                    async.apply(lwm2mClient.registry.setResource, '/0/0', '0', 'coap://localhost'),
+                    async.apply(lwm2mClient.registry.setResource, '/0/0', '0', 'coap://localhost')
                 ],
                 function(error) {
                     lwm2mClient.register(
@@ -210,15 +210,15 @@ describe('Passive attributes test', function() {
             {
                 name: 'LWM2M Server URI',
                 type: 'string',
-                value: 'coap://remotehost:9786',
-            },
+                value: 'coap://remotehost:9786'
+            }
         ];
 
         beforeEach(function(done) {
             async.series(
                 [
                     async.apply(lwm2mClient.registry.create, '/0/0'),
-                    async.apply(lwm2mClient.registry.setResource, '/0/0', '0', 'coap://localhost'),
+                    async.apply(lwm2mClient.registry.setResource, '/0/0', '0', 'coap://localhost')
                 ],
                 function(error) {
                     lwm2mClient.register(

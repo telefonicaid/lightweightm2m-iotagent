@@ -30,7 +30,7 @@ var cheerio = require('cheerio'),
     errors = require('../lib/errors'),
     logger = require('logops'),
     context = {
-        op: 'IOTAgent.OMARegistry',
+        op: 'IOTAgent.OMARegistry'
     },
     registryTargetFile = 'omaRegistry.json',
     inverseRegistryTargetFile = 'omaInverseRegistry.json',
@@ -41,7 +41,7 @@ function downloadRegistry(url) {
     return function(callback) {
         var options = {
             uri: url,
-            method: 'GET',
+            method: 'GET'
         };
 
         request(options, function(error, response, body) {
@@ -98,7 +98,7 @@ function parseRegistry(registryData, callback) {
                             .get(3)
                     )
                         .find('a')
-                        .attr('href'),
+                        .attr('href')
                 };
 
                 if (obj.name && obj.id) {
@@ -127,7 +127,7 @@ function discoverResources(registryObj, callback) {
                         var resource = {
                             name: items[i].getElementsByTagName('Name')[0].textContent,
                             type: items[i].getElementsByTagName('Type')[0].textContent,
-                            operations: items[i].getElementsByTagName('Operations')[0].textContent,
+                            operations: items[i].getElementsByTagName('Operations')[0].textContent
                         };
 
                         newObj.resources.push(resource);
@@ -157,14 +157,14 @@ function createInternalMap(registryObj, callback) {
                     objectResource: i,
                     objectType: current.id,
                     objectInstance: 0,
-                    operations: current.resources[i].operations,
+                    operations: current.resources[i].operations
                 };
             }
         } else {
             previous[current.name] = {
                 objectResource: 0,
                 objectType: current.id,
-                objectInstance: null,
+                objectInstance: null
             };
         }
 
@@ -181,7 +181,7 @@ function writeResults(directMappings, inverseMappings, callback) {
     async.series(
         [
             async.apply(fs.writeFile, registryTargetFile, directMappings),
-            async.apply(fs.writeFile, inverseRegistryTargetFile, inverseMappings),
+            async.apply(fs.writeFile, inverseRegistryTargetFile, inverseMappings)
         ],
         callback
     );
@@ -197,7 +197,7 @@ function processRegistry(callback) {
             parseRegistry,
             discoverResources,
             createInternalMap,
-            writeResults,
+            writeResults
         ],
         callback
     );

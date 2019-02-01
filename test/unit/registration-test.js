@@ -39,7 +39,7 @@ var config = require('./testConfig'),
         port: '60001',
         endpointName: 'TestClient',
         url: '/light',
-        ipProtocol: 'udp4',
+        ipProtocol: 'udp4'
     },
     ngsiClient = ngsiTestUtils.create(
         config.ngsi.contextBroker.host,
@@ -56,7 +56,7 @@ describe('Device auto-registration test', function() {
             [
                 apply(mongoUtils.cleanDbs, config.ngsi.contextBroker.host),
                 apply(iotAgent.start, config),
-                apply(lwm2mClient.registry.create, '/5000/0'),
+                apply(lwm2mClient.registry.create, '/5000/0')
             ],
             done
         );
@@ -219,8 +219,8 @@ describe('Device auto-registration test', function() {
                 json: utils.readExampleFile('./test/provisionExamples/provisionMinimumDevice.json'),
                 headers: {
                     'fiware-service': 'smartgondor',
-                    'fiware-servicepath': '/gardens',
-                },
+                    'fiware-servicepath': '/gardens'
+                }
             };
 
             beforeEach(function(done) {
@@ -231,7 +231,7 @@ describe('Device auto-registration test', function() {
                         apply(lwm2mClient.registry.setResource, '/3303/0', '0', '19'),
                         apply(lwm2mClient.registry.setResource, '/3304/0', '0', '85'),
                         apply(request, registration),
-                        apply(lwm2mClient.register, clientConfig.host, clientConfig.port, '/', 'ws1'),
+                        apply(lwm2mClient.register, clientConfig.host, clientConfig.port, '/', 'ws1')
                     ],
                     function(error) {
                         done();
@@ -253,15 +253,15 @@ describe('Device auto-registration test', function() {
                             {
                                 type: 'WeatherStation',
                                 isPattern: 'false',
-                                id: 'Weather1',
-                            },
+                                id: 'Weather1'
+                            }
                         ],
-                        attributes: ['Temperature Sensor#0'],
+                        attributes: ['Temperature Sensor#0']
                     },
                     headers: {
                         'fiware-service': 'smartgondor',
-                        'fiware-servicepath': '/gardens',
-                    },
+                        'fiware-servicepath': '/gardens'
+                    }
                 };
 
                 request(ngsiQuery, function(error, response, body) {
@@ -294,8 +294,8 @@ describe('Device auto-registration test', function() {
                 json: utils.readExampleFile('./test/provisionExamples/newConfiguration.json'),
                 headers: {
                     'fiware-service': 'smartGondor',
-                    'fiware-servicepath': '/gardens',
-                },
+                    'fiware-servicepath': '/gardens'
+                }
             },
             removeConfiguration = {
                 url: 'http://localhost:' + config.ngsi.server.port + '/iot/services',
@@ -303,8 +303,8 @@ describe('Device auto-registration test', function() {
                 json: {},
                 headers: {
                     'fiware-service': 'smartGondor',
-                    'fiware-servicepath': '/gardens',
-                },
+                    'fiware-servicepath': '/gardens'
+                }
             };
 
         beforeEach(function(done) {
@@ -313,7 +313,7 @@ describe('Device auto-registration test', function() {
                     [
                         apply(lwm2mClient.registry.create, '/3303/0'),
                         async.apply(lwm2mClient.registry.setResource, '/3303/0', '0', '89'),
-                        async.apply(lwm2mClient.registry.setResource, '/3303/0', '0', '19'),
+                        async.apply(lwm2mClient.registry.setResource, '/3303/0', '0', '19')
                     ],
                     done
                 );
@@ -353,7 +353,7 @@ describe('Device auto-registration test', function() {
                         utils.delay(100),
                         async.apply(lwm2mClient.registry.setResource, '/3303/0', '0', '2539'),
                         async.apply(lwm2mClient.registry.setResource, '/3303/0', '0', '10397'),
-                        utils.delay(100),
+                        utils.delay(100)
                     ],
                     function() {
                         ngsiClient.query(
@@ -384,8 +384,8 @@ describe('Device auto-registration test', function() {
             json: utils.readExampleFile('./test/provisionExamples/preprovisionDevice.json'),
             headers: {
                 'fiware-service': 'smartgondor',
-                'fiware-servicepath': '/gardens',
-            },
+                'fiware-servicepath': '/gardens'
+            }
         };
 
         beforeEach(function(done) {
@@ -394,7 +394,7 @@ describe('Device auto-registration test', function() {
                     [
                         apply(lwm2mClient.registry.create, '/5000/0'),
                         async.apply(lwm2mClient.registry.setResource, '/5000/0', '2', '89'),
-                        async.apply(lwm2mClient.registry.setResource, '/5000/0', '2', '19'),
+                        async.apply(lwm2mClient.registry.setResource, '/5000/0', '2', '19')
                     ],
                     done
                 );
@@ -464,8 +464,8 @@ describe('Device auto-registration test', function() {
                 json: utils.readExampleFile('./test/provisionExamples/preprovisionDeviceOMANoInternalMapping.json'),
                 headers: {
                     'fiware-service': 'smartgondor',
-                    'fiware-servicepath': '/gardens',
-                },
+                    'fiware-servicepath': '/gardens'
+                }
             };
 
             beforeEach(function(done) {
@@ -473,7 +473,7 @@ describe('Device auto-registration test', function() {
                     async.series(
                         [
                             apply(lwm2mClient.registry.create, '/3303/0'),
-                            async.apply(lwm2mClient.registry.setResource, '/3303/0', '0', '19'),
+                            async.apply(lwm2mClient.registry.setResource, '/3303/0', '0', '19')
                         ],
                         done
                     );
@@ -504,7 +504,7 @@ describe('Device auto-registration test', function() {
                                 async.apply(lwm2mClient.registry.setResource, '/3303/0', '0', '33'),
                                 async.nextTick,
                                 async.apply(lwm2mClient.registry.setResource, '/3303/0', '0', '19'),
-                                async.nextTick,
+                                async.nextTick
                             ],
                             function(error) {
                                 setTimeout(function() {

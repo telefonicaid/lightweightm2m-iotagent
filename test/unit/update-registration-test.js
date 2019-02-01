@@ -40,7 +40,7 @@ var config = require('./testConfig'),
         port: '60001',
         endpointName: 'TestClient',
         url: '/light',
-        ipProtocol: 'udp4',
+        ipProtocol: 'udp4'
     },
     ngsiClient = ngsiTestUtils.create(
         config.ngsi.contextBroker.host,
@@ -57,7 +57,7 @@ describe('Device update registration test', function() {
             [
                 apply(mongoUtils.cleanDbs, config.ngsi.contextBroker.host),
                 apply(iotAgent.start, config),
-                apply(lwm2mClient.registry.create, '/5000/0'),
+                apply(lwm2mClient.registry.create, '/5000/0')
             ],
             done
         );
@@ -76,7 +76,7 @@ describe('Device update registration test', function() {
             async.series(
                 [
                     apply(lwm2mClient.registry.create, '/3303/0'),
-                    async.apply(lwm2mClient.registry.setResource, '/3303/0', '0', '19'),
+                    async.apply(lwm2mClient.registry.setResource, '/3303/0', '0', '19')
                 ],
                 done
             );
@@ -92,7 +92,7 @@ describe('Device update registration test', function() {
                 path: '/rd/rd',
                 port: 35239,
                 address: '127.0.0.1',
-                creationDate: '2018-01-16T13:29:40.972Z',
+                creationDate: '2018-01-16T13:29:40.972Z'
             };
 
             updateRegistration.handler(deviceInfo, null, function(error) {
@@ -113,8 +113,8 @@ describe('Device update registration test', function() {
                 json: utils.readExampleFile('./test/provisionExamples/preprovisionDeviceOMANoInternalMapping.json'),
                 headers: {
                     'fiware-service': 'smartgondor',
-                    'fiware-servicepath': '/gardens',
-                },
+                    'fiware-servicepath': '/gardens'
+                }
             };
 
             beforeEach(function(done) {
@@ -122,7 +122,7 @@ describe('Device update registration test', function() {
                     async.series(
                         [
                             apply(lwm2mClient.registry.create, '/3303/0'),
-                            async.apply(lwm2mClient.registry.setResource, '/3303/0', '0', '19'),
+                            async.apply(lwm2mClient.registry.setResource, '/3303/0', '0', '19')
                         ],
                         done
                     );
@@ -148,7 +148,7 @@ describe('Device update registration test', function() {
                                     async.apply(lwm2mClient.registry.setResource, '/3303/0', '0', '22'),
                                     async.nextTick,
                                     async.apply(lwm2mClient.registry.setResource, '/3303/0', '0', '00'),
-                                    async.nextTick,
+                                    async.nextTick
                                 ],
                                 function(error) {
                                     setTimeout(function() {
