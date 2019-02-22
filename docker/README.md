@@ -44,10 +44,10 @@ services:
         - mongodb
     expose:
         - "4041"
-        - "7896"
+        - "5684"
     ports:
         - "4041:4041"
-        - "7896:7896"
+        - "5684:5684"
     environment:
         - "IOTA_CB_HOST=orion"
         - "IOTA_CB_PORT=1026"
@@ -56,6 +56,7 @@ services:
         - "IOTA_MONGO_HOST=mongo-db"
         - "IOTA_MONGO_PORT=27017"
         - "IOTA_MONGO_DB=iotagent-lwm2m"
+        - "LWM2M_PORT=5684"
 
   mongodb:
     image: mongo:3.6
@@ -94,6 +95,7 @@ Docker container is driven by environment variables such as those shown below:
   information
 * `IOTA_MONGO_PORT` - The port that MongoDB is listening on
 * `IOTA_MONGO_DB` - The name of the database used in MongoDB
+* `LWM2M_PORT` - The port where the IoT Agent listens for IoT device traffic
 
 ### Further Information
 
