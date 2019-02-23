@@ -67,38 +67,17 @@ function parseRegistry(registryData, callback) {
             logger.info('Initiating data parse.');
             initiateData = true;
         } else if (initiateData) {
-            if (
-                $(
-                    $(this)
-                        .find('td')
-                        .get(1)
-                )
-                    .text()
-                    .indexOf('urn') >= 0
-            ) {
+            // prettier-ignore
+            if ($($(this).find('td').get(1)).text().indexOf('urn') >= 0) {
                 var obj = {
-                    name: $(
-                        $(this)
-                            .find('td')
-                            .get(2)
-                    ).text(),
-                    urn: $(
-                        $(this)
-                            .find('td')
-                            .get(1)
-                    ).text(),
-                    id: $(
-                        $(this)
-                            .find('td')
-                            .get(0)
-                    ).text(),
-                    schema: $(
-                        $(this)
-                            .find('td')
-                            .get(3)
-                    )
-                        .find('a')
-                        .attr('href')
+                    // prettier-ignore
+                    name: $($(this).find('td').get(2)).text(),
+                    // prettier-ignore
+                    urn: $($(this).find('td').get(1)).text(),
+                    // prettier-ignore
+                    id: $($(this).find('td').get(0)).text(),
+                    // prettier-ignore
+                    schema: $($(this).find('td').get(3)).find('a').attr('href')
                 };
 
                 if (obj.name && obj.id) {
