@@ -93,7 +93,7 @@ config.ngsi = {
         db: 'lwtm2m'
     },
     types: {
-        'Light': {
+        Light: {
             service: 'smartgondor',
             subservice: '/gardens',
             commands: [],
@@ -110,14 +110,14 @@ config.ngsi = {
                 }
             ],
             lwm2mResourceMapping: {
-                'luminescence' : {
+                luminescence: {
                     objectType: 6000,
                     objectInstance: 0,
                     objectResource: 3
                 }
             }
         },
-        'Pressure': {
+        Pressure: {
             service: 'dumbmordor',
             subservice: '/deserts',
             commands: [],
@@ -137,19 +137,19 @@ config.ngsi = {
                 }
             ],
             lwm2mResourceMapping: {
-                'pressure' : {
+                pressure: {
                     objectType: 5000,
                     objectInstance: 0,
                     objectResource: 2
                 },
-                'position' : {
+                position: {
                     objectType: 67000,
                     objectInstance: 0,
                     objectResource: 1
                 }
             }
         },
-        'Robot': {
+        Robot: {
             service: 'smartgondor',
             subservice: '/gardens',
             commands: [
@@ -162,7 +162,7 @@ config.ngsi = {
             staticAttributes: [],
             attributes: [],
             lwm2mResourceMapping: {
-                'position' : {
+                position: {
                     objectType: 9090,
                     objectInstance: 0,
                     objectResource: 0

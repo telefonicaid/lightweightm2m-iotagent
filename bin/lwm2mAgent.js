@@ -39,7 +39,7 @@ function start() {
         config = require('../config');
     }
 
-    iotAgent.start(config, function (error) {
+    iotAgent.start(config, function(error) {
         if (error) {
             logger.error(context, 'Error starting Agent: [%s] Exiting process', error);
         } else {

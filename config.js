@@ -55,7 +55,7 @@ config.lwm2m = {
         }
     ],
     writeFormat: 'application-vnd-oma-lwm2m/text',
-    types: [ ]
+    types: []
 };
 
 config.ngsi = {
@@ -77,7 +77,7 @@ config.ngsi = {
         db: 'iotagentlm2m'
         //replicaSet: ''
     },
-    types: { },
+    types: {},
     service: 'smartGondor',
     subservice: '/gardens',
     providerUrl: 'http://localhost:4041',

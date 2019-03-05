@@ -1,5 +1,6 @@
 {
   "name": "lightweightm2m-iotagent",
+  "license": "AGPL-3.0-only",
   "description": "Prototype of an IoT Agent accepting COAP requests and redirecting to NGSI consumer",
   "version": "1.0.0-next",
   "homepage": "https://github.com/telefonicaid/lightweightm2m-iotagent",
@@ -34,6 +35,7 @@
     "test": "mocha --recursive 'test/**/*.js' --reporter spec --timeout 5000 --ui bdd --exit",
     "test:watch": "npm run test -- -w ./lib",
     "lint": "jshint lib/ --config .jshintrc && jshint test/ --config test/.jshintrc",
+    "prettier": "prettier --config .prettierrc.json --write '**/**/**/*.js' '**/**/*.js' '**/*.js' '*.js'",
     "test:coverage": "istanbul cover _mocha -- --recursive 'test/**/*.js' --reporter spec --exit",
     "test:coveralls": "npm run test:coverage && cat ./coverage/lcov.info | coveralls && rm -rf ./coverage",
     "watch": "watch 'npm test && npm run lint' ./lib ./test"
@@ -50,13 +52,27 @@
   },
   "devDependencies": {
     "coveralls": "~3.0.2",
+    "husky": "~1.1.0",
     "istanbul": "~0.4.5",
     "jshint": "~2.9.6",
+    "lint-staged": "~7.3.0",
     "mocha": "5.2.0",
     "mongodb": "3.1.9",
     "nock": "10.0.2",
+    "prettier": "~1.14.2",
     "proxyquire": "2.1.0",
     "should": "13.2.3",
     "watch": "~1.0.2"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.js": [
+      "prettier --config .prettierrc.json --write",
+      "git add"
+    ]
   }
 }

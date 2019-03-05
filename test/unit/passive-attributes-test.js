@@ -48,20 +48,26 @@ var config = require('./testConfig'),
 describe('Passive attributes test', function() {
     beforeEach(function(done) {
         lwm2mClient.init(config);
-        async.series([
-            async.apply(mongoUtils.cleanDbs, config.ngsi.contextBroker.host),
-            async.apply(iotAgent.start, config),
-            lwm2mClient.registry.reset
-        ], done);
+        async.series(
+            [
+                async.apply(mongoUtils.cleanDbs, config.ngsi.contextBroker.host),
+                async.apply(iotAgent.start, config),
+                lwm2mClient.registry.reset
+            ],
+            done
+        );
     });
 
     afterEach(function(done) {
-        async.series([
-            apply(lwm2mClient.unregister, deviceInformation),
-            iotAgent.stop,
-            apply(mongoUtils.cleanDbs, config.ngsi.contextBroker.host),
-            lwm2mClient.registry.reset
-        ], done);
+        async.series(
+            [
+                apply(lwm2mClient.unregister, deviceInformation),
+                iotAgent.stop,
+                apply(mongoUtils.cleanDbs, config.ngsi.contextBroker.host),
+                lwm2mClient.registry.reset
+            ],
+            done
+        );
     });
 
     describe('When a passive attribute of the entity corresponding to a device is queried in Orion', function() {
@@ -73,10 +79,13 @@ describe('Passive attributes test', function() {
                 clientConfig.endpointName,
                 function(error, result) {
                     deviceInformation = result;
-                    async.series([
-                        async.apply(lwm2mClient.registry.create, '/6000/0'),
-                        async.apply(lwm2mClient.registry.setResource, '/6000/0', '3', '12')
-                    ], done);
+                    async.series(
+                        [
+                            async.apply(lwm2mClient.registry.create, '/6000/0'),
+                            async.apply(lwm2mClient.registry.setResource, '/6000/0', '3', '12')
+                        ],
+                        done
+                    );
                 }
             );
         });
@@ -103,7 +112,6 @@ describe('Passive attributes test', function() {
         });
     });
 
-
     describe('When a passive attribute of the entity corresponding to a device is modified in Orion', function() {
         var attributes = [
             {
@@ -121,10 +129,13 @@ describe('Passive attributes test', function() {
                 clientConfig.endpointName,
                 function(error, result) {
                     deviceInformation = result;
-                    async.series([
-                        async.apply(lwm2mClient.registry.create, '/6000/0'),
-                        async.apply(lwm2mClient.registry.setResource, '/6000/0', '3', '12')
-                    ], done);
+                    async.series(
+                        [
+                            async.apply(lwm2mClient.registry.create, '/6000/0'),
+                            async.apply(lwm2mClient.registry.setResource, '/6000/0', '3', '12')
+                        ],
+                        done
+                    );
                 }
             );
         });
@@ -153,21 +164,24 @@ describe('Passive attributes test', function() {
 
     describe('When a passive OMA attribute request is queried in orion', function() {
         beforeEach(function(done) {
-            async.series([
-                async.apply(lwm2mClient.registry.create, '/0/0'),
-                async.apply(lwm2mClient.registry.setResource, '/0/0', '0', 'coap://localhost')
-            ], function(error) {
-                lwm2mClient.register(
-                    clientConfig.host,
-                    clientConfig.port,
-                    clientConfig.url,
-                    clientConfig.endpointName,
-                    function(error, result) {
-                        deviceInformation = result;
-                        done();
-                    }
-                );
-            });
+            async.series(
+                [
+                    async.apply(lwm2mClient.registry.create, '/0/0'),
+                    async.apply(lwm2mClient.registry.setResource, '/0/0', '0', 'coap://localhost')
+                ],
+                function(error) {
+                    lwm2mClient.register(
+                        clientConfig.host,
+                        clientConfig.port,
+                        clientConfig.url,
+                        clientConfig.endpointName,
+                        function(error, result) {
+                            deviceInformation = result;
+                            done();
+                        }
+                    );
+                }
+            );
         });
 
         it('should query the value in the LWM2M device via the IoT Agent using the OMA Mapping', function(done) {
@@ -201,21 +215,24 @@ describe('Passive attributes test', function() {
         ];
 
         beforeEach(function(done) {
-            async.series([
-                async.apply(lwm2mClient.registry.create, '/0/0'),
-                async.apply(lwm2mClient.registry.setResource, '/0/0', '0', 'coap://localhost')
-            ], function(error) {
-                lwm2mClient.register(
-                    clientConfig.host,
-                    clientConfig.port,
-                    clientConfig.url,
-                    clientConfig.endpointName,
-                    function(error, result) {
-                        deviceInformation = result;
-                        done();
-                    }
-                );
-            });
+            async.series(
+                [
+                    async.apply(lwm2mClient.registry.create, '/0/0'),
+                    async.apply(lwm2mClient.registry.setResource, '/0/0', '0', 'coap://localhost')
+                ],
+                function(error) {
+                    lwm2mClient.register(
+                        clientConfig.host,
+                        clientConfig.port,
+                        clientConfig.url,
+                        clientConfig.endpointName,
+                        function(error, result) {
+                            deviceInformation = result;
+                            done();
+                        }
+                    );
+                }
+            );
         });
 
         it('should write the value in the LWM2M device via the IoT Agent', function(done) {

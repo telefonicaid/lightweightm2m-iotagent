@@ -37,7 +37,6 @@ var cheerio = require('cheerio'),
     DOMParser = require('xmldom').DOMParser,
     _ = require('underscore');
 
-
 function downloadRegistry(url) {
     return function(callback) {
         var options = {
@@ -47,7 +46,7 @@ function downloadRegistry(url) {
 
         request(options, function(error, response, body) {
             if (error) {
-                logger.error(context, 'Couldn\'t retrieve OMA Registry due to a connection error: ' + error);
+                logger.error(context, "Couldn't retrieve OMA Registry due to a connection error: " + error);
                 callback(new errors.OmaRegistryConnectionError(error));
             } else if (response.statusCode === 200) {
                 callback(null, body);
@@ -68,11 +67,16 @@ function parseRegistry(registryData, callback) {
             logger.info('Initiating data parse.');
             initiateData = true;
         } else if (initiateData) {
+            // prettier-ignore
             if ($($(this).find('td').get(1)).text().indexOf('urn') >= 0) {
                 var obj = {
+                    // prettier-ignore
                     name: $($(this).find('td').get(2)).text(),
+                    // prettier-ignore
                     urn: $($(this).find('td').get(1)).text(),
+                    // prettier-ignore
                     id: $($(this).find('td').get(0)).text(),
+                    // prettier-ignore
                     schema: $($(this).find('td').get(3)).find('a').attr('href')
                 };
 
@@ -153,21 +157,29 @@ function createInternalMap(registryObj, callback) {
 }
 
 function writeResults(directMappings, inverseMappings, callback) {
-    async.series([
-        async.apply(fs.writeFile, registryTargetFile, directMappings),
-        async.apply(fs.writeFile, inverseRegistryTargetFile, inverseMappings)
-    ], callback);
+    async.series(
+        [
+            async.apply(fs.writeFile, registryTargetFile, directMappings),
+            async.apply(fs.writeFile, inverseRegistryTargetFile, inverseMappings)
+        ],
+        callback
+    );
 }
 
 function processRegistry(callback) {
-    async.waterfall([
-        downloadRegistry('http://technical.openmobilealliance.org' +
-            '/Technical/technical-information/omna/lightweight-m2m-lwm2m-object-registry'),
-        parseRegistry,
-        discoverResources,
-        createInternalMap,
-        writeResults
-    ], callback);
+    async.waterfall(
+        [
+            downloadRegistry(
+                'http://technical.openmobilealliance.org' +
+                    '/Technical/technical-information/omna/lightweight-m2m-lwm2m-object-registry'
+            ),
+            parseRegistry,
+            discoverResources,
+            createInternalMap,
+            writeResults
+        ],
+        callback
+    );
 }
 
 processRegistry(function(error) {
