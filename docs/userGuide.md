@@ -215,7 +215,7 @@ npm run lint
 
 remark
 
-Uses the provided `.remarkrc.js` flag file. To check consistency of the Markdown markup, type
+To check consistency of the Markdown markup, type
 
 ```bash
 npm run lint:md
