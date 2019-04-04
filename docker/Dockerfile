@@ -26,6 +26,7 @@ FROM node:${NODE_VERSION}
 ARG GITHUB_ACCOUNT=telefonicaid
 ARG GITHUB_REPOSITORY=lightweightm2m-iotagent
 ARG DOWNLOAD=latest
+ARG SOURCE_BRANCH=master
 
 # Copying Build time arguments to environment variables so they are persisted at run time and can be 
 # inspected within a running container.
@@ -36,6 +37,12 @@ ENV GITHUB_REPOSITORY=${GITHUB_REPOSITORY}
 ENV DOWNLOAD=${DOWNLOAD}
 
 MAINTAINER FIWARE IoTAgent Team. Telefónica I+D
+
+# IMPORTANT: For production environments use Docker Secrets to protect values of the sensitive ENV 
+# variables defined below, by adding _FILE to the name of the relevant variable.
+#
+# - IOTA_AUTH_USER, IOTA_AUTH_PASSWORD - when using Keystone Security 
+# - IOTA_AUTH_CLIENT_ID, IOTA_AUTH_CLIENT_SECRET - when using OAuth2 Security
 
 #
 # The following RUN command retrieves the source code from GitHub.
@@ -54,8 +61,8 @@ MAINTAINER FIWARE IoTAgent Team. Telefónica I+D
 #
 RUN if [ "${DOWNLOAD}" = "latest" ] ; \
 	then \
-		RELEASE="master"; \
-		echo "INFO: Building Latest Development"; \
+		RELEASE="${SOURCE_BRANCH}"; \
+		echo "INFO: Building Latest Development from ${SOURCE_BRANCH} branch."; \
 	elif [ "${DOWNLOAD}" = "stable" ]; \
 	then \
 		RELEASE=$(curl -s https://api.github.com/repos/"${GITHUB_ACCOUNT}"/"${GITHUB_REPOSITORY}"/releases/latest | grep 'tag_name' | cut -d\" -f4); \
@@ -64,13 +71,14 @@ RUN if [ "${DOWNLOAD}" = "latest" ] ; \
 	 	RELEASE="${DOWNLOAD}"; \
 	 	echo "INFO: Building Release: ${RELEASE}"; \
 	fi && \
+	RELEASE_CONCAT=$(echo "${RELEASE}" | tr / -); \
 	# Ensure that unzip is installed, and download the sources
 	apt-get update && \
 	apt-get install -y  --no-install-recommends unzip && \
 	wget --no-check-certificate -O source.zip https://github.com/"${GITHUB_ACCOUNT}"/"${GITHUB_REPOSITORY}"/archive/"${RELEASE}".zip && \
 	unzip source.zip && \
 	rm source.zip && \
-	mv "${GITHUB_REPOSITORY}-${RELEASE}" /opt/iota-lwm2m && \
+	mv "${GITHUB_REPOSITORY}-${RELEASE_CONCAT}" /opt/iota-lwm2m && \
 	# Remove unzip and clean apt cache
 	apt-get clean && \
 	apt-get remove -y unzip && \
@@ -88,7 +96,8 @@ RUN \
 	# Remove Git and clean apt cache
 	apt-get clean && \
 	apt-get remove -y git && \
-	apt-get -y autoremove
+	apt-get -y autoremove && \
+	chmod +x docker/entrypoint.sh
 
 USER node
 ENV NODE_ENV=production
@@ -96,5 +105,5 @@ ENV NODE_ENV=production
 # Expose Ports - Default to 4041 for NORTH PORT, 5684 for LWM2M PORT
 EXPOSE ${IOTA_NORTH_PORT:-4041} ${LWM2M_PORT:-5684}
 
-ENTRYPOINT ["pm2-runtime", "bin/lwm2mAgent.js"]
+ENTRYPOINT ["docker/entrypoint.sh"]
 CMD ["-- ", "config.js"]
