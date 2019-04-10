@@ -50,7 +50,7 @@
     "cheerio": "1.0.0-rc.2",
     "xmldom": "0.1.27",
     "logops": "2.1.0",
-    "iotagent-node-lib": "git://github.com/telefonicaid/iotagent-node-lib.git#master",
+    "iotagent-node-lib": "git://github.com/dcalvoalonso/iotagent-node-lib.git#task/lazyAttsNgsiv2",
     "lwm2m-node-lib": "git://github.com/telefonicaid/lwm2m-node-lib.git#master"
   },
   "devDependencies": {
