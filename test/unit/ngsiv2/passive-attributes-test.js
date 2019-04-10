@@ -164,49 +164,49 @@ describe('Passive attributes test', function() {
     //     });
     // });
 
-    // describe('When a passive OMA attribute request is queried in orion', function() {
-    //     beforeEach(function(done) {
-    //         async.series(
-    //             [
-    //                 async.apply(lwm2mClient.registry.create, '/0/0'),
-    //                 async.apply(lwm2mClient.registry.setResource, '/0/0', '0', 'coap://localhost')
-    //             ],
-    //             function(error) {
-    //                 lwm2mClient.register(
-    //                     clientConfig.host,
-    //                     clientConfig.port,
-    //                     clientConfig.url,
-    //                     clientConfig.endpointName,
-    //                     function(error, result) {
-    //                         deviceInformation = result;
-    //                         done();
-    //                     }
-    //                 );
-    //             }
-    //         );
-    //     });
+    describe('When a passive OMA attribute request is queried in orion', function() {
+        beforeEach(function(done) {
+            async.series(
+                [
+                    async.apply(lwm2mClient.registry.create, '/0/0'),
+                    async.apply(lwm2mClient.registry.setResource, '/0/0', '0', 'coap://localhost')
+                ],
+                function(error) {
+                    lwm2mClient.register(
+                        clientConfig.host,
+                        clientConfig.port,
+                        clientConfig.url,
+                        clientConfig.endpointName,
+                        function(error, result) {
+                            deviceInformation = result;
+                            done();
+                        }
+                    );
+                }
+            );
+        });
 
-    //     it('should query the value in the LWM2M device via the IoT Agent using the OMA Mapping', function(done) {
-    //         var handleExecuted = false;
+        it('should query the value in the LWM2M device via the IoT Agent using the OMA Mapping', function(done) {
+            var handleExecuted = false;
 
-    //         function handleRead(objectType, objectId, resourceId, value, callback) {
-    //             objectType.should.equal('0');
-    //             objectId.should.equal('0');
-    //             resourceId.should.equal('0');
-    //             handleExecuted = true;
-    //             callback();
-    //         }
+            function handleRead(objectType, objectId, resourceId, value, callback) {
+                objectType.should.equal('0');
+                objectId.should.equal('0');
+                resourceId.should.equal('0');
+                handleExecuted = true;
+                callback();
+            }
 
-    //         lwm2mClient.setHandler(deviceInformation.serverInfo, 'read', handleRead);
+            lwm2mClient.setHandler(deviceInformation.serverInfo, 'read', handleRead);
 
-    //         ngsiClient.query('TestClient:Light', 'Light', ['LWM2M Server URI'], function(error, response, body) {
-    //             should.not.exist(error);
-    //             handleExecuted.should.equal(true);
+            ngsiClient.query('TestClient:Light', 'Light', ['LWM2M Server URI'], function(error, response, body) {
+                should.not.exist(error);
+                handleExecuted.should.equal(true);
 
-    //             done();
-    //         });
-    //     });
-    // });
+                done();
+            });
+        });
+    });
     // describe('When a passive OMA attribute is modified in Orion', function() {
     //     var attributes = [
     //         {
