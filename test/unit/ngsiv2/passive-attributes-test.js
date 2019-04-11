@@ -202,7 +202,6 @@ describe('Passive attributes test', function() {
             ngsiClient.query('TestClient:Light', 'Light', ['LWM2M Server URI'], function(error, response, body) {
                 should.not.exist(error);
                 handleExecuted.should.equal(true);
-
                 done();
             });
         });
