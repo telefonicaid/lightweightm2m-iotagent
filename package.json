@@ -32,7 +32,7 @@
   },
   "scripts": {
     "clean": "rm -rf package-lock.json && rm -rf node_modules && rm -rf coverage",
-    "test": "mocha --recursive 'test/**/*.js' --reporter spec --timeout 5000 --ui bdd --exit",
+    "test": "mocha 'test/unit/tests.js' 'test/unit/ngsiv2/tests.js' --reporter spec --timeout 5000 --ui bdd --exit",
     "test:watch": "npm run test -- -w ./lib",
     "lint": "jshint lib/ --config .jshintrc && jshint test/ --config test/.jshintrc",
     "lint:md": "remark -f 'README.md' docs",
