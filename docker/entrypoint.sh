@@ -65,4 +65,4 @@ else
     fi
 fi
 
-pm2-runtime /opt/iota-lwm2m/bin/lwm2mAgent
+pm2-runtime /opt/iota-lwm2m/bin/lwm2mAgent.js
