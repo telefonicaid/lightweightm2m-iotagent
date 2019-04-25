@@ -19,8 +19,8 @@ jobs:
       node_js: 6
 
       before_install:
-        - docker pull danielcalvo/orion
-        - docker run -d --net host -l orion danielcalvo/orion
+        - docker pull fiware/orion:latest
+        - docker run -d --net host -l orion fiware/orion:latest
 
       before_script:
         - npm run lint
@@ -33,8 +33,8 @@ jobs:
       node_js: 8
 
       before_install:
-        - docker pull danielcalvo/orion
-        - docker run -d --net host -l orion danielcalvo/orion
+        - docker pull fiware/orion:latest
+        - docker run -d --net host -l orion fiware/orion:latest
 
       before_script:
         - npm run lint
@@ -47,8 +47,8 @@ jobs:
       node_js: 10
 
       before_install:
-        - docker pull danielcalvo/orion
-        - docker run -d --net host -l orion danielcalvo/orion
+        - docker pull fiware/orion:latest
+        - docker run -d --net host -l orion fiware/orion:latest
 
       before_script:
         - npm run lint
