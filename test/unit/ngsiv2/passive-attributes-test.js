@@ -108,7 +108,13 @@ describe('Passive attributes test', function() {
             ngsiClient.query('TestClient:Light', 'Light', ['luminescence'], function(error, response, body) {
                 should.not.exist(error);
                 handleExecuted.should.equal(true);
-
+                should.exist(body);
+                body.should.be.instanceof(Array).and.have.lengthOf(1);
+                body[0].id.should.equal('TestClient:Light');
+                body[0].type.should.equal('Light');
+                should.exist(body[0].luminescence);
+                body[0].luminescence.type.should.equal('Lumens');
+                body[0].luminescence.value.should.equal('12');
                 done();
             });
         });
@@ -202,6 +208,13 @@ describe('Passive attributes test', function() {
             ngsiClient.query('TestClient:Light', 'Light', ['LWM2M Server URI'], function(error, response, body) {
                 should.not.exist(error);
                 handleExecuted.should.equal(true);
+                should.exist(body);
+                body.should.be.instanceof(Array).and.have.lengthOf(1);
+                body[0].id.should.equal('TestClient:Light');
+                body[0].type.should.equal('Light');
+                should.exist(body[0]['LWM2M%20Server%20URI']);
+                body[0]['LWM2M%20Server%20URI'].type.should.equal('string');
+                body[0]['LWM2M%20Server%20URI'].value.should.equal('coap://localhost');
                 done();
             });
         });
