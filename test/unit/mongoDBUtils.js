@@ -40,18 +40,22 @@ function cleanDb(host, name, callback) {
             if (db) {
                 var collections = ['devices', 'groups', 'entities', 'registrations'];
 
-                for (var i in collections) {
-                    var collection = db.db().collection(collections[i]);
-
-                    if (collection) {
-                        collection.drop();
+                async.eachSeries(
+                    collections,
+                    function(collection, innerCb) {
+                        var collectionDB = db.db().collection(collection);
+                        if (collectionDB) {
+                            collectionDB.drop(innerCb);
+                        } else {
+                            innerCb();
+                        }
+                    },
+                    function(err) {
+                        db.close();
+                        callback();
                     }
-                }
-
-                db.close();
+                );
             }
-
-            callback();
         }
     );
 }
