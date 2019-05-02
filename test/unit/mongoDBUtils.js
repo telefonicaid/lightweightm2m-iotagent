@@ -43,9 +43,11 @@ function cleanDb(host, name, callback) {
                 async.eachSeries(
                     collections,
                     function(collection, innerCb) {
-                        var collectionDB = db.db().collection(collection);
+                        var collectionDB = db.db(name).collection(collection);
                         if (collectionDB) {
-                            collectionDB.drop(innerCb);
+                            collectionDB.drop(function(err, delOK) {
+                                innerCb();
+                            });
                         } else {
                             innerCb();
                         }
@@ -55,6 +57,8 @@ function cleanDb(host, name, callback) {
                         callback();
                     }
                 );
+            } else {
+                callback();
             }
         }
     );
