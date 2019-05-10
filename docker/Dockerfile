@@ -21,7 +21,7 @@
 #
 # Modified by: Daniel Calvo - ATOS Research & Innovation
 #
-ARG NODE_VERSION=8.15.0-slim
+ARG NODE_VERSION=8.16.0-slim
 FROM node:${NODE_VERSION}
 ARG GITHUB_ACCOUNT=telefonicaid
 ARG GITHUB_REPOSITORY=lightweightm2m-iotagent
