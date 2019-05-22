@@ -149,6 +149,12 @@ rm -rf $RPM_BUILD_ROOT
 %{_install_dir}
 
 %changelog
+* Wed May 22 2019 Fermin Galan <fermin.galanmarquez@telefonica.com>> 1.1.0-1
+- Upgrade NodeJS version from 8.12.0 to 8.16.0 in Dockerfile to improve security
+- Fix: removal of warnings and deprecation warnings
+- Upgrade: iotagent-node-lib dependence from 2.8.1 to 2.9.0
+- Upgrade: lwm2m-node-lib dependence from 1.1.0 to 1.2.0
+
 * Wed Dec 19 2018 Fermin Galan <fermin.galanmarquez@telefonica.com>> 1.0.0-1
 - Set Nodejs 6.14.4 as minimum version in packages.json (effectively removing Nodev4 as supported version)
 - Add: allow NGSIv2 for updating active attributes at CB, through configuration (#104)
@@ -175,7 +181,7 @@ rm -rf $RPM_BUILD_ROOT
 - Upgrade: cheerio dependence from 0.20.0 to 1.0.0-rc.2
 - Upgrade: nock development dependence from 0.48.0 to 10.0.2
 - Upgrade: mocha development dependence from 2.4.5 to 5.2.0
-- Upgrade: should development dependence from 8.4¡2.2 to 13.2.3
+- Upgrade: should development dependence from 8.42.2 to 13.2.3
 - Upgrade: istanbul development dependence from ~0.1.34 to ~0.4.5
 - Ensure precise dependencies (~=) are used in packages.json
 - Remove mongodb dependence from packages.json (already in iota-node-lib)
