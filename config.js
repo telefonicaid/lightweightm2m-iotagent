@@ -60,6 +60,7 @@ config.lwm2m = {
 
 config.ngsi = {
     logLevel: 'DEBUG',
+    timestamp: true,
     contextBroker: {
         host: 'localhost',
         port: '1026'
