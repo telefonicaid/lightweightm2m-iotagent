@@ -44,7 +44,7 @@ NGSI Context Broker using their own native protocols. This project provides the 
 protocol, i.e. the bridge between OMA Lightweight M2M enabled devices and an NGSI Context Broker.
 
 For more information on what an IoT Agent is or how it should work, please check the documentation on the
-[IoT Agent Node.js Library](https://iotagent-node-lib.rtfd.io/).
+[IoT Agent Node.js Library](https://iotagent-node-lib.readthedocs.io/).
 
 For more information on [OMA Lightweight M2M](http://www.omaspecworks.org/about-oma/work-program/m2m-enablers/) you
 can check the [Node.js OMA Lightweight M2M library](https://github.com/telefonicaid/lwm2m-node-lib) we are using.
