@@ -5,7 +5,7 @@
 [![Docker badge](https://img.shields.io/docker/pulls/fiware/lightweightm2m-iotagent.svg)](https://hub.docker.com/r/fiware/lightweightm2m-iotagent/)
 [![Support badge](https://nexus.lab.fiware.org/repository/raw/public/badges/stackoverflow/iot-agents.svg)](https://stackoverflow.com/questions/tagged/fiware+iot)
 <br>
-[![Documentation badge](https://img.shields.io/readthedocs/fiware-iotagent-lwm2m.svg)](http://fiware-iotagent-lwm2m.readthedocs.org/en/latest/?badge=latest)
+[![Documentation badge](https://img.shields.io/readthedocs/fiware-iotagent-lwm2m.svg)](http://fiware-iotagent-lwm2m.readthedocs.io/en/latest/?badge=latest)
 [![Build badge](https://img.shields.io/travis/telefonicaid/lightweightm2m-iotagent.svg)](https://travis-ci.org/telefonicaid/lightweightm2m-iotagent/)
 [![Coverage Status](https://coveralls.io/repos/github/telefonicaid/lightweightm2m-iotagent/badge.svg?branch=master)](https://coveralls.io/github/telefonicaid/lightweightm2m-iotagent?branch=master)
 ![Status](https://nexus.lab.fiware.org/static/badges/statuses/iot-lightweightm2m.svg)
@@ -22,7 +22,7 @@ found in this repository.
 This project is part of [FIWARE](https://www.fiware.org/). For more information check the FIWARE Catalogue entry for the
 [IoT Agents](https://github.com/Fiware/catalogue/tree/master/iot-agents).
 
-| :books: [Documentation](https://fiware-iotagent-lwm2m.rtfd.io) | :mortar_board: [Academy](https://fiware-academy.readthedocs.io/en/latest/iot-agents/idas) | :whale: [Docker Hub](https://hub.docker.com/r/fiware/lightweightm2m-iotagent/) | :dart: [Roadmap](https://github.com/telefonicaid/lightweightm2m-iotagent/blob/master/docs/roadmap.md) |
+| :books: [Documentation](https://fiware-iotagent-lwm2m.readthedocs.io) | :mortar_board: [Academy](https://fiware-academy.readthedocs.io/en/latest/iot-agents/idas) | :whale: [Docker Hub](https://hub.docker.com/r/fiware/lightweightm2m-iotagent/) | :dart: [Roadmap](https://github.com/telefonicaid/lightweightm2m-iotagent/blob/master/docs/roadmap.md) |
 | -------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------- |
 
 
@@ -46,7 +46,7 @@ protocol, i.e. the bridge between OMA Lightweight M2M enabled devices and an NGS
 For more information on what an IoT Agent is or how it should work, please check the documentation on the
 [IoT Agent Node.js Library](https://iotagent-node-lib.rtfd.io/).
 
-For more information on [OMA Lightweight M2M](http://openmobilealliance.org/about-oma/work-program/m2m-enablers/) you
+For more information on [OMA Lightweight M2M](http://www.omaspecworks.org/about-oma/work-program/m2m-enablers/) you
 can check the [Node.js OMA Lightweight M2M library](https://github.com/telefonicaid/lwm2m-node-lib) we are using.
 
 If you just want to start using the agent, jump to the [Quick Start Guide](docs/userGuide.md#getting-started).
@@ -121,8 +121,8 @@ The following features are listed as [deprecated](docs/deprecated.md)
 ## API
 
 Apiary reference for the Configuration API can be found
-[here](http://docs.telefonicaiotiotagents.apiary.io/#reference/configuration-api). More information about IoT Agents and
-their APIs can be found in the IoT Agent Library [documentation](https://iotagent-node-lib.rtfd.io/).
+[here](https://telefonicaiotiotagents.docs.apiary.io/#reference/configuration-api). More information about IoT Agents and
+their APIs can be found in the IoT Agent Library [documentation](https://iotagent-node-lib.readthedocs.io/).
 
 The latest OMA Lightweight M2M IoT Agent documentation is also available on
 [ReadtheDocs](https://fiware-iotagent-lwm2m.readthedocs.io/en/latest)
