@@ -264,4 +264,4 @@ is reproduced here, for clarity:
 ![General](https://raw.githubusercontent.com/telefonicaid/iotagent-node-lib/master/img/ngsiInteractions.png "NGSI Interactions")
 
 The interaction in the South Bound follows the flows defined by the
-[OMA Lightweight M2M Specification](http://openmobilealliance.org/about-oma/work-program/m2m-enablers/).
+[OMA Lightweight M2M Specification](http://www.omaspecworks.org/about-oma/work-program/m2m-enablers/).

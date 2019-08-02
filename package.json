@@ -28,7 +28,7 @@
     "lwm2mAgent": "bin/lwm2mAgent.js"
   },
   "engines": {
-    "node": ">=6.14.4"
+    "node": ">=8"
   },
   "scripts": {
     "clean": "rm -rf package-lock.json && rm -rf node_modules && rm -rf coverage",
