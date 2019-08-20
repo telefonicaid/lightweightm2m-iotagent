@@ -1,1 +1,2 @@
 - Set Nodejs 8 as minimum version in packages.json (effectively removing Nodev6 from supported versions)
+- Upgrade NodeJS version from 8.16.0 to 8.16.1 in Dockerfile due to security issues
