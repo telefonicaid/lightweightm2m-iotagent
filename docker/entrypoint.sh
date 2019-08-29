@@ -65,4 +65,12 @@ else
     fi
 fi
 
-pm2-runtime /opt/iota-lwm2m/bin/lwm2mAgent.js
+if [[  -z "$PM2_ENABLED" ]]; then
+    echo "INFO: IoT Agent running standalone"
+    node /opt/iota-lwm2m/bin/lwm2mAgent.js
+else
+    echo "***********************************************"
+    echo "INFO: IoT Agent encapsulated by pm2-runtime see https://pm2.io/doc/en/runtime/integration/docker/"
+    echo "***********************************************"
+    pm2-runtime /opt/iota-lwm2m/bin/lwm2mAgent.js
+fi
