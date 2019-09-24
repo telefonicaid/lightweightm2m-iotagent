@@ -95,9 +95,9 @@ describe('Active attributes test', function() {
                         body
                     ) {
                         should.not.exist(error);
-                        should.exist(body.pressure);
-                        should.exist(body.pressure.value);
-                        body.pressure.value.should.equal('89');
+                        should.exist(body[0].pressure);
+                        should.exist(body[0].pressure.value);
+                        body[0].pressure.value.should.equal('89');
                         done();
                     });
                 }, 1000);
@@ -129,8 +129,9 @@ describe('Active attributes test', function() {
                         ) {
                             should.not.exist(error);
                             should.exist(body);
-                            should.exist(body.pressure.value);
-                            body.pressure.value.should.equal('19');
+                            body.should.be.instanceof(Array).and.have.lengthOf(1);
+                            should.exist(body[0].pressure.value);
+                            body[0].pressure.value.should.equal('19');
                             done();
                         });
                     }, 1000);

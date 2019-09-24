@@ -32,7 +32,7 @@
   },
   "scripts": {
     "clean": "rm -rf package-lock.json && rm -rf node_modules && rm -rf coverage",
-    "test": "mocha --recursive 'test/**/*.js' --reporter spec --timeout 5000 --ui bdd --exit",
+    "test": "mocha 'test/unit/tests.js' 'test/unit/ngsiv2/tests.js' --reporter spec --timeout 5000 --ui bdd --exit",
     "test:watch": "npm run test -- -w ./lib",
     "lint": "jshint lib/ --config .jshintrc && jshint test/ --config test/.jshintrc",
     "lint:md": "remark -f 'README.md' docs",
@@ -50,7 +50,7 @@
     "cheerio": "1.0.0-rc.2",
     "xmldom": "0.1.27",
     "logops": "2.1.0",
-    "iotagent-node-lib": "git://github.com/telefonicaid/iotagent-node-lib.git#master",
+    "iotagent-node-lib": "git://github.com/dcalvoalonso/iotagent-node-lib.git#task/lazyAttsNgsiv2",
     "lwm2m-node-lib": "git://github.com/telefonicaid/lwm2m-node-lib.git#master"
   },
   "devDependencies": {

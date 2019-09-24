@@ -289,7 +289,8 @@ describe('Device auto-registration test', function() {
                         ) {
                             should.not.exist(error);
                             should.exist(body);
-                            should.exist(body['Temperature%20Sensor']);
+                            body.should.be.instanceof(Array).and.have.lengthOf(1);
+                            should.exist(body[0]['Temperature%20Sensor']);
                             done();
                         });
                     }
