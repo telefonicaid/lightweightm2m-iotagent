@@ -39,7 +39,7 @@ var config = require('./testConfig'),
         url: '/light',
         ipProtocol: 'udp4'
     },
-    ngsiClient = ngsiTestUtils.create(
+    ngsiClient = ngsiTestUtils.createNgsi2(
         config.ngsi.contextBroker.host,
         config.ngsi.contextBroker.port,
         'smartgondor',
@@ -213,12 +213,13 @@ describe('Passive attributes test', function() {
                 body[0].id.should.equal('TestClient:Light');
                 body[0].type.should.equal('Light');
                 should.exist(body[0]['LWM2M%20Server%20URI']);
-                body[0]['LWM2M%20Server%20URI'].type.should.equal('string');
+                body[0]['LWM2M%20Server%20URI'].type.should.equal('String');
                 body[0]['LWM2M%20Server%20URI'].value.should.equal('coap://localhost');
                 done();
             });
         });
     });
+
     describe('When a passive OMA attribute is modified in Orion', function() {
         var attributes = [
             {
@@ -265,7 +266,6 @@ describe('Passive attributes test', function() {
             ngsiClient.update('TestClient:Light', 'Light', attributes, function(error, response, body) {
                 should.not.exist(error);
                 handleExecuted.should.equal(true);
-
                 done();
             });
         });

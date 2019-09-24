@@ -201,6 +201,18 @@ describe('Passive attributes test', function() {
                 should.not.exist(error);
                 handleExecuted.should.equal(true);
 
+                should.exist(body);
+                body.contextResponses.should.be.instanceof(Array).and.have.lengthOf(1);
+                var ce = body.contextResponses[0].contextElement;
+                ce.id.should.equal('TestClient:Light');
+                ce.isPattern.should.equal('false');
+                ce.type.should.equal('Light');
+                ce.attributes.should.be.instanceof(Array).and.have.lengthOf(1);
+                var attr = ce['attributes'][0];
+                attr.name.should.equal('LWM2M Server URI');
+                attr.type.should.equal('String');
+                attr.value.should.equal('coap://localhost');
+
                 done();
             });
         });

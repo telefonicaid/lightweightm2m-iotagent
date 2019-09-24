@@ -41,7 +41,7 @@ var config = require('./testConfig'),
         url: '/robot',
         ipProtocol: 'udp4'
     },
-    ngsiClient = ngsiTestUtils.create(
+    ngsiClient = ngsiTestUtils.createNgsi2(
         config.ngsi.contextBroker.host,
         config.ngsi.contextBroker.port,
         'smartgondor',
@@ -58,29 +58,6 @@ describe('Command attributes test', function() {
                 apply(mongoUtils.cleanDbs, config.ngsi.contextBroker.host),
                 apply(iotAgent.start, config),
                 apply(lwm2mClient.registry.create, '/5000/0')
-            ],
-            function(error) {
-                lwm2mClient.register(
-                    clientConfig.host,
-                    clientConfig.port,
-                    clientConfig.url,
-                    clientConfig.endpointName,
-                    function(error, result) {
-                        deviceInformation = result;
-                        setTimeout(done, 1000);
-                    }
-                );
-            }
-        );
-    });
-
-    afterEach(function(done) {
-        async.series(
-            [
-                apply(lwm2mClient.unregister, deviceInformation),
-                iotAgent.stop,
-                apply(mongoUtils.cleanDbs, config.ngsi.contextBroker.host),
-                lwm2mClient.registry.reset
             ],
             done
         );
@@ -103,6 +80,18 @@ describe('Command attributes test', function() {
                         done
                     );
                 }
+            );
+        });
+
+        afterEach(function(done) {
+            async.series(
+                [
+                    apply(lwm2mClient.unregister, deviceInformation),
+                    iotAgent.stop,
+                    apply(mongoUtils.cleanDbs, config.ngsi.contextBroker.host),
+                    lwm2mClient.registry.reset
+                ],
+                done
             );
         });
 
@@ -183,6 +172,18 @@ describe('Command attributes test', function() {
                     );
                 });
             });
+        });
+
+        afterEach(function(done) {
+            async.series(
+                [
+                    apply(lwm2mClient.unregister, deviceInformation),
+                    iotAgent.stop,
+                    apply(mongoUtils.cleanDbs, config.ngsi.contextBroker.host),
+                    lwm2mClient.registry.reset
+                ],
+                done
+            );
         });
 
         it('should send the execution command to the LWM2M client', function(done) {
