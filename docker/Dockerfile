@@ -103,7 +103,7 @@ USER node
 ENV NODE_ENV=production
 
 # Expose Ports - Default to 4041 for NORTH PORT, 5684 for LWM2M PORT
-EXPOSE ${IOTA_NORTH_PORT:-4041} ${LWM2M_PORT:-5684}
+EXPOSE ${IOTA_NORTH_PORT:-4041} ${LWM2M_PORT:-5684}/udp
 
 ENTRYPOINT ["docker/entrypoint.sh"]
 CMD ["-- ", "config.js"]
