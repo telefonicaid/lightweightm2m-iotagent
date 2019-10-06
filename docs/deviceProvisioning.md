@@ -7,7 +7,7 @@
 
 # Overview
 
-This guide will show the process of using the IoT Agent with device preprovisioning. In this use case, the owner of the
+This guide will show the process of using the IoT Agent with device pre-provisioning. In this use case, the owner of the
 devices, before connecting each device, will provision the device information into the agent. Then, the device can
 register itself in the server and start being used with the agent.
 
@@ -83,8 +83,8 @@ bin/iotagent-lwm2m-client.js
 
 ## Provisioning the device
 
-Before starting to use any device, the device must be provisioned. In this step, we'll be sending a preprovisioning
-request for a 'Robot' device. To send the preprovisioning request we will be using the `curl` command that comes
+Before starting to use any device, the device must be provisioned. In this step, we'll be sending a pre-provisioning
+request for a 'Robot' device. To send the pre-provisioning request we will be using the `curl` command that comes
 installed with any Unix-like OS.
 
 This request has to be sent to the administrative port of the IoT Agent (default value 4041), not to the Lightweight M2M
@@ -231,7 +231,7 @@ EOF
 
 Note that the headers of the request to the Context Broker should match the ones you used in the Device Provisioning.
 Another thing to note is the Entity ID: it is formed by the concatenation of the type and the Device ID, separated by a
-colon. This convention can be overriden in the provisioning request.
+colon. This convention can be overridden in the provisioning request.
 
 ### Updating the active attributes
 
