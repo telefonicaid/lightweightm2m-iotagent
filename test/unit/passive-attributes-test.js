@@ -208,7 +208,7 @@ describe('Passive attributes test', function() {
                 ce.isPattern.should.equal('false');
                 ce.type.should.equal('Light');
                 ce.attributes.should.be.instanceof(Array).and.have.lengthOf(1);
-                var attr = ce['attributes'][0];
+                var attr = ce.attributes[0];
                 attr.name.should.equal('LWM2M Server URI');
                 attr.type.should.equal('String');
                 attr.value.should.equal('coap://localhost');
