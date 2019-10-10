@@ -149,6 +149,11 @@ rm -rf $RPM_BUILD_ROOT
 %{_install_dir}
 
 %changelog
+* Mon Oct 07 2019 Fermin Galan <fermin.galanmarquez@telefonica.com>> 1.2.0-1
+- Set Nodejs 8 as minimum version in packages.json (effectively removing Nodev6 from supported versions)
+- ADD PM2_ENABLED flag to Docker
+- Upgrade NodeJS version from 8.16.0 to 8.16.1 in Dockerfile due to security issues
+
 * Wed May 22 2019 Fermin Galan <fermin.galanmarquez@telefonica.com>> 1.1.0-1
 - Upgrade NodeJS version from 8.12.0 to 8.16.0 in Dockerfile to improve security
 - Fix: removal of warnings and deprecation warnings
