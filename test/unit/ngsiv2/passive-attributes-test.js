@@ -19,14 +19,16 @@
  *
  * For those usages not covered by the GNU Affero General Public License
  * please contact with::[contacto@tid.es]
+ *
+ * Modified by: Daniel Calvo - ATOS Research & Innovation
  */
 'use strict';
 
 var config = require('./testConfig'),
     lwm2mClient = require('lwm2m-node-lib').client,
-    iotAgent = require('../../lib/iotAgentLwm2m'),
-    ngsiTestUtils = require('./../../lib/ngsiUtils'),
-    mongoUtils = require('./mongoDBUtils'),
+    iotAgent = require('../../../lib/iotAgentLwm2m'),
+    ngsiTestUtils = require('./../../../lib/ngsiUtils'),
+    mongoUtils = require('../mongoDBUtils'),
     async = require('async'),
     apply = async.apply,
     should = require('should'),
@@ -37,10 +39,10 @@ var config = require('./testConfig'),
         url: '/light',
         ipProtocol: 'udp4'
     },
-    ngsiClient = ngsiTestUtils.create(
+    ngsiClient = ngsiTestUtils.createNgsi2(
         config.ngsi.contextBroker.host,
         config.ngsi.contextBroker.port,
-        'smartGondor',
+        'smartgondor',
         '/gardens'
     ),
     deviceInformation;
@@ -106,7 +108,13 @@ describe('Passive attributes test', function() {
             ngsiClient.query('TestClient:Light', 'Light', ['luminescence'], function(error, response, body) {
                 should.not.exist(error);
                 handleExecuted.should.equal(true);
-
+                should.exist(body);
+                body.should.be.instanceof(Array).and.have.lengthOf(1);
+                body[0].id.should.equal('TestClient:Light');
+                body[0].type.should.equal('Light');
+                should.exist(body[0].luminescence);
+                body[0].luminescence.type.should.equal('Lumens');
+                body[0].luminescence.value.should.equal('12');
                 done();
             });
         });
@@ -200,23 +208,18 @@ describe('Passive attributes test', function() {
             ngsiClient.query('TestClient:Light', 'Light', ['LWM2M Server URI'], function(error, response, body) {
                 should.not.exist(error);
                 handleExecuted.should.equal(true);
-
                 should.exist(body);
-                body.contextResponses.should.be.instanceof(Array).and.have.lengthOf(1);
-                var ce = body.contextResponses[0].contextElement;
-                ce.id.should.equal('TestClient:Light');
-                ce.isPattern.should.equal('false');
-                ce.type.should.equal('Light');
-                ce.attributes.should.be.instanceof(Array).and.have.lengthOf(1);
-                var attr = ce.attributes[0];
-                attr.name.should.equal('LWM2M Server URI');
-                attr.type.should.equal('String');
-                attr.value.should.equal('coap://localhost');
-
+                body.should.be.instanceof(Array).and.have.lengthOf(1);
+                body[0].id.should.equal('TestClient:Light');
+                body[0].type.should.equal('Light');
+                should.exist(body[0]['LWM2M%20Server%20URI']);
+                body[0]['LWM2M%20Server%20URI'].type.should.equal('String');
+                body[0]['LWM2M%20Server%20URI'].value.should.equal('coap://localhost');
                 done();
             });
         });
     });
+
     describe('When a passive OMA attribute is modified in Orion', function() {
         var attributes = [
             {
@@ -263,7 +266,6 @@ describe('Passive attributes test', function() {
             ngsiClient.update('TestClient:Light', 'Light', attributes, function(error, response, body) {
                 should.not.exist(error);
                 handleExecuted.should.equal(true);
-
                 done();
             });
         });

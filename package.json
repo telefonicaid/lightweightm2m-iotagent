@@ -2,7 +2,7 @@
   "name": "lightweightm2m-iotagent",
   "license": "AGPL-3.0-only",
   "description": "Prototype of an IoT Agent accepting COAP requests and redirecting to NGSI consumer",
-  "version": "1.1.0-next",
+  "version": "1.2.0-next",
   "homepage": "https://github.com/telefonicaid/lightweightm2m-iotagent",
   "keywords": [
     "OMA",
@@ -32,7 +32,7 @@
   },
   "scripts": {
     "clean": "rm -rf package-lock.json && rm -rf node_modules && rm -rf coverage",
-    "test": "mocha --recursive 'test/**/*.js' --reporter spec --timeout 5000 --ui bdd --exit",
+    "test": "mocha 'test/unit/tests.js' 'test/unit/ngsiv2/tests.js' --reporter spec --timeout 5000 --ui bdd --exit",
     "test:watch": "npm run test -- -w ./lib",
     "lint": "jshint lib/ --config .jshintrc && jshint test/ --config test/.jshintrc",
     "lint:md": "remark -f 'README.md' docs",
