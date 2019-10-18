@@ -152,6 +152,6 @@ config.ngsi = {
  * flag indicating whether the node server will be executed in multi-core option (true) or it will be a
  * single-thread one (false).
  */
-config.multiCore = true;
+// config.multiCore = true;
 
 module.exports = config;
