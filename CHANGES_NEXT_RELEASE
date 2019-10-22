@@ -1,1 +1,2 @@
 - Fix: support to lazy attributes and commands based in NGSIv2 (#104)
+- Fix: support to other lwm2m clients i.e. Leshan java client
