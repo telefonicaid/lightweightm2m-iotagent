@@ -1,8 +1,5 @@
-- Set Nodejs 8 as minimum version in packages.json (effectively removing Nodev6 from supported versions)
-- ADD PM2_ENABLED flag to Docker
-- Upgrade NodeJS version from 8.16.0 to 8.16.1 in Dockerfile due to security issues
+- Fix: support to lazy attributes and commands based in NGSIv2 (#104)
 - NOTE: in the "upgrade iotagent-node-lib from X to Y" include a mention to configure multi-threading using cluster
 nodejs module (through multiCore config.js parameter or IOTA_MULTI_CORE)
 - Correct typos in documentation files
 - Add lwm2m agent version in the description of /iot/about request
-- Fix: support to lazy attributes and commands based in NGSIv2 (#104)
