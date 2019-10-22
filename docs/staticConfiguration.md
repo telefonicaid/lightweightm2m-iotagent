@@ -15,7 +15,7 @@ This guide will use a Lightweight M2M client to simulate the interaction with th
 this client will be explained when appropriate.
 
 In this guide we will provide an explicit mapping for all the device attributes, using the `Robot` example given in the
-[Getting Started](userGuide.md#gettingstarted) section. Some of them could be mapped automatically using the OMA
+[Getting Started](userGuide.md#getting-started) section. Some of them could be mapped automatically using the OMA
 Registry automatic mapping (but those will be covered in other step-by-step guides).
 
 # Installation

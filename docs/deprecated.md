@@ -38,4 +38,4 @@ features:
 | --------------------- | ----------------------------------------------------------- | ----------------------------- |
 | NGSIv1 API            | Not yet defined                                             | Not yet defined               |
 | Support to Node.js v6 | Not yet defined but it will be done by May 2019             | Not yet defined               |
-| Support to Node.js v4 | 0.4.0                                                       | Novemeber 28th, 2017          |
+| Support to Node.js v4 | 0.4.0                                                       | November 28th, 2017           |

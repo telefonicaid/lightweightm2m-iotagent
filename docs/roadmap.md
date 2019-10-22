@@ -37,7 +37,7 @@ release(s) generated in the next 9 months after the next planned release:
 
 -   Support to FIWARE complex data models.
 -   Deployment instructions for high availability scenarios.
--   Incremental introduccion of ECMAScript6 syntax (previous analysis of which sub-set of interesting aspect we want to
+-   Incremental introduction of ECMAScript6 syntax (previous analysis of which sub-set of interesting aspect we want to
     take)
 
 ### Long term

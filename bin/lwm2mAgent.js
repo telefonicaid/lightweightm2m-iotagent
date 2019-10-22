@@ -24,14 +24,16 @@
  */
 'use strict';
 
-var iotAgent = require('../lib/iotAgentLwm2m'),
+let iotAgent = require('../lib/iotAgentLwm2m'),
+    iotAgentLib = require('iotagent-node-lib'),
+    info = require('../package.json'),
     context = {
         op: 'IOTAgent.Executable'
     },
     logger = require('logops');
 
 function start() {
-    var config;
+    let config;
 
     if (process.argv.length === 3) {
         config = require('../' + process.argv[2]);
@@ -39,7 +41,9 @@ function start() {
         config = require('../config');
     }
 
-    iotAgent.start(config, function(error) {
+    config.ngsi.iotaVersion = info.version;
+
+    iotAgentLib.startServer(config, iotAgent, function(error) {
         if (error) {
             logger.error(context, 'Error starting Agent: [%s] Exiting process', error);
         } else {

@@ -1,1 +1,5 @@
 - Fix: support to lazy attributes and commands based in NGSIv2 (#104)
+- NOTE: in the "upgrade iotagent-node-lib from X to Y" include a mention to configure multi-threading using cluster
+nodejs module (through multiCore config.js parameter or IOTA_MULTI_CORE)
+- Correct typos in documentation files
+- Add lwm2m agent version in the description of /iot/about request
