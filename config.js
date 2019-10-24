@@ -25,7 +25,7 @@ var config = {};
 
 config.lwm2m = {
     logLevel: 'DEBUG',
-    port: 5684,
+    port: 5683,
     defaultType: 'Device',
     ipProtocol: 'udp4',
     serverProtocol: 'udp4',

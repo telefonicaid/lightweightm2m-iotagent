@@ -40,10 +40,10 @@ services:
             - mongodb
         expose:
             - "4041"
-            - "5684"
+            - "5683"
         ports:
             - "4041:4041"
-            - "5684:5684"
+            - "5683:5683"
         environment:
             - "IOTA_CB_HOST=orion"
             - "IOTA_CB_PORT=1026"
@@ -52,7 +52,7 @@ services:
             - "IOTA_MONGO_HOST=mongodb"
             - "IOTA_MONGO_PORT=27017"
             - "IOTA_MONGO_DB=iotagent-lwm2m"
-            - "LWM2M_PORT=5684"
+            - "LWM2M_PORT=5683"
 
     mongodb:
         image: mongo:3.6
