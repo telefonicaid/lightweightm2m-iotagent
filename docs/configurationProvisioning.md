@@ -180,7 +180,7 @@ LWM2M-Client> set /3312/0 0 On
 Once all the objects are created in the device, connect with the server with the following command:
 
 ```bash
-LWM2M-Client> connect localhost 5684 weather1 /weatherBalloon
+LWM2M-Client> connect localhost 5683 weather1 /weatherBalloon
 ```
 
 A few notes about this command:

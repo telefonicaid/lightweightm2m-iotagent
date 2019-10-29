@@ -186,7 +186,7 @@ LWM2M-Client> set /7392/0 3 "[0, 0]"
 Once all the objects are created in the device, connect with the server with the following command:
 
 ```bash
-LWM2M-Client> connect localhost 5684 robot1 /
+LWM2M-Client> connect localhost 5683 robot1 /
 ```
 
 A few notes about this command:

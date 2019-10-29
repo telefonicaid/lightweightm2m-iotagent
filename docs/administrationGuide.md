@@ -92,7 +92,8 @@ The latter configures the Lightweight M2M library used for communicating with th
 These are the specific LWM2M parameters that can be configured for the agent:
 
 -   **logLevel**: level of logs for the IoTAgent specific information. E.g.: 'DEBUG'.
--   **port**: UDP port where the IoT Agent will be listening. E.g.: 60001.
+-   **port**: UDP port where the IoT Agent will be listening. Note that default CoAP port according to
+    [its specification](https://tools.ietf.org/html/rfc7252) is 5683.
 -   **delayedObservationTimeout**: When a LWM2M client has active attributes, the IoT Agent sends an observe instruction
     for each one, just after the client registers. This may cause an error when the client takes too long to start
     listening, as the observe requests may not reach its destiny. This timeout (ms) is used to give the client the
