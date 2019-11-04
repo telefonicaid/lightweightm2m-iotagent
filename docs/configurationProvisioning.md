@@ -16,7 +16,7 @@ This guide will use a Lightweight M2M client to simulate the interaction with th
 this client will be explained when appropriate.
 
 This guide will make use of the automatic OMA Registry mapping, with the example of the `WeatherBalloon` defined in the
-[Getting Started](userGuide.md#gettingstarted) section. So, the attributes will be defined exclusively by their name,
+[Getting Started](userGuide.md#getting-started) section. So, the attributes will be defined exclusively by their name,
 and the mapping from and to a full LWM2M Mapping (like /387/3/23) will be performed by the IoT Agent.
 
 # Installation

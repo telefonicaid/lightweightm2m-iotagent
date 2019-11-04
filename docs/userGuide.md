@@ -1,11 +1,11 @@
 # OMA Lightweight M2M IoT Agent: User and Development Guide
 
--   [Overview](#overview)
+-   [General Overview](#general-overview)
 -   [Getting started](#getting-started)
--   [Testing](#testing)
+-   [Project Testing](#project-testing)
 -   [Development](#development)
 
-# Overview
+## General Overview
 
 The Lightweight M2M IoT Agent is a standard FIWARE IoT Agent that implements the bridge of the OMA Lightweight M2M
 protocol with the internal protocol for the FIWARE components (OMA NGSI). This IoT Agent is based in the public Node.js
@@ -22,14 +22,14 @@ This project has, then, two APIs:
 -   The API for traffic north of the IoT Agent (NGSI): information about the North Port NGSI mapping can be obtained in
     the same Node.JS IoT Agent Library documentation.
 
-You will find examples and more detailed information in the Getting Started howtos below.
+You will find examples and more detailed information in the Getting Started how-tos below.
 
-# Getting started
+## Getting started
 
-This document links a set of howtos oriented to give a quick step-by-step example on how to use the agent with different
-types of configurations. It's important to remark that those configuration options are not mutually exclusive: an IoT
-Agent can have some device preprovisioned, some configuration groups defined and some static configurations also, each
-for different types of devices.
+This document links a set of how-tos oriented to give a quick step-by-step example on how to use the agent with
+different types of configurations. It's important to remark that those configuration options are not mutually exclusive:
+an IoT Agent can have some device pre-provisioned, some configuration groups defined and some static configurations
+also, each for different types of devices.
 
 Some of the guides will share the use of a faked device type called `Robot` with the following characteristics:
 
@@ -52,11 +52,11 @@ Each guide is presented with a brief explanation about its contents:
 -   [Device Provisioning Guide](deviceProvisioning.md): this guide shows how to configure, launch and use an IoT Agent,
     provisioning each device before sending its measures.
 -   [Configuration Provisioning Guide](configurationProvisioning.md): this guide shows how to configure a group of
-    devices for being autoprovisioned when they register in the agent.
+    devices for being auto-provisioned when they register in the agent.
 -   [Static Configuration Guide](staticConfiguration.md): this guide shows how to configure static routes that map
     incoming devices to different statically configured types.
 
-# Testing
+## Testing
 
 The IoT Agent comes with a test suite to check the main functionalities. You can execute the tests using:
 
@@ -73,11 +73,11 @@ executed so DO NOT EXECUTE THIS TESTS ON PRODUCTION MACHINES.
 It must be also noted that although the lightweightM2M-iotagent works with MongoDB replica sets, the unit testing suite
 and its scripts require using a single MongoDB instance.
 
-# Development
+## Development
 
-## Contribution Guidelines
+### Contribution Guidelines
 
-### Overview
+#### Overview
 
 Being an Open Source project, everyone can contribute, provided that it respect the following points:
 
@@ -124,9 +124,9 @@ branch in the main lightweightm2m-iotagent repository, by following this steps
 ```
 
 Contributions following this guidelines will be added to the `master` branch, and released in the next version. The
-release process is explaind in the _Releasing_ section below.
+release process is explained in the _Releasing_ section below.
 
-### Branching model
+#### Branching model
 
 In order to start developing a new feature or refactoring, a new branch should be created with name `task/<taskName>`.
 This branch must be created from the current version of the `master` branch. Once the new functionality has been
@@ -143,7 +143,7 @@ All the `task/*` and `bug/*` branches are temporary, and should be removed once 
 There is another set of branches called `release/<versionNumber>`, one for each version of the product. This branches
 point to each of the released versions of the project, they are permanent and they are created with each release.
 
-### Change log
+#### Change log
 
 The project contains a version changelog, called CHANGES_NEXT_RELEASE, that can be found in the root of the project.
 Whenever a new feature or bug fix is going to be merged with `master`, a new entry should be added to this changelog.
@@ -152,19 +152,19 @@ The new entry should contain the reference number of the issue it is solving (if
 When a new version is released, the change log is cleared, and remains fixed in the last commit of that version. The
 content of the change log is also moved to the release description in the GitHub release.
 
-### Releasing
+#### Releasing
 
 The process of making a release consists of the following steps:
 
-1.  Create a new task branch changing the development version number in the package.json (with a sufix `-next`), to the
-    new target version (without any sufix), and PR into `master`.
+1.  Create a new task branch changing the development version number in the package.json (with a suffix `-next`), to the
+    new target version (without any suffix), and PR into `master`.
 2.  Create a tag from the last version of `master` named with the version number and push it to the repository.
 3.  Create the release in Github, from the created tag. In the description, add the contents of the change log.
 4.  Create a release branch from the last version of `master` named with the version number.
-5.  Create a new task for preparing the next release, adding the sufix `-next` to the current version number (to signal
+5.  Create a new task for preparing the next release, adding the suffix `-next` to the current version number (to signal
     this as the development version).
 
-## Testing
+## Project Testing
 
 ### Prerequisites
 
@@ -248,7 +248,7 @@ npm run watch
 
 Istanbul
 
-Analizes the code coverage of your tests.
+Analyzes the code coverage of your tests.
 
 To generate an HTML coverage report under `site/coverage/` and to print out a summary, type
 
@@ -269,7 +269,7 @@ npm run clean
 
 ### Prettify Code
 
-Runs the [prettier](https://prettier.io) code formatter to ensure consistent code style (whitespacing, parameter
+Runs the [prettier](https://prettier.io) code formatter to ensure consistent code style (whitespaces, parameter
 placement and breakup of long lines etc.) within the codebase.
 
 ```bash
