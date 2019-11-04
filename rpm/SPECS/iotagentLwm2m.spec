@@ -149,6 +149,15 @@ rm -rf $RPM_BUILD_ROOT
 %{_install_dir}
 
 %changelog
+* Mon Nov 04 2019 Fermin Galan <fermin.galanmarquez@telefonica.com>> 1.3.0-1
+- Add: support to lazy attributes and commands based in NGSIv2 (#104)
+- Add: lwm2m agent version in the description of /iot/about request
+- Fix: support to lwm2m client that separe object instances using spaces (#209)
+- Fix: default southbound non secure port from 5684 to 5683 (#206)
+- Fix: typos in documentation files
+- Upgrade iotagent-node-lib dependency from 2.10.0 to 2.11.0 (inclusing NGSIv2 forwarding -issue #104- and cluster nodejs functionality)
+- Upgrade lwm2m-node-lib dependency from 1.2.0 to 1.3.0
+
 * Mon Oct 07 2019 Fermin Galan <fermin.galanmarquez@telefonica.com>> 1.2.0-1
 - Set Nodejs 8 as minimum version in packages.json (effectively removing Nodev6 from supported versions)
 - ADD PM2_ENABLED flag to Docker
