@@ -149,7 +149,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_install_dir}
 
 %changelog
-* Mon Nov 04 2019 Fermin Galan <fermin.galanmarquez@telefonica.com>> 1.3.0-1
+* Mon Nov 04 2019 Fermin Galan <fermin.galanmarquez@telefonica.com> 1.3.0-1
 - Add: support to lazy attributes and commands based in NGSIv2 (#104)
 - Add: lwm2m agent version in the description of /iot/about request
 - Fix: support to lwm2m client that separe object instances using spaces (#209)
