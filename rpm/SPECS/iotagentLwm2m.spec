@@ -158,18 +158,18 @@ rm -rf $RPM_BUILD_ROOT
 - Upgrade iotagent-node-lib dependency from 2.9.0 to 2.11.0 (inclusing NGSIv2 forwarding -issue #104- and cluster nodejs functionality)
 - Upgrade lwm2m-node-lib dependency from 1.2.0 to 1.3.0
 
-* Mon Oct 07 2019 Fermin Galan <fermin.galanmarquez@telefonica.com>> 1.2.0-1
+* Mon Oct 07 2019 Fermin Galan <fermin.galanmarquez@telefonica.com> 1.2.0-1
 - Set Nodejs 8 as minimum version in packages.json (effectively removing Nodev6 from supported versions)
 - ADD PM2_ENABLED flag to Docker
 - Upgrade NodeJS version from 8.16.0 to 8.16.1 in Dockerfile due to security issues
 
-* Wed May 22 2019 Fermin Galan <fermin.galanmarquez@telefonica.com>> 1.1.0-1
+* Wed May 22 2019 Fermin Galan <fermin.galanmarquez@telefonica.com> 1.1.0-1
 - Upgrade NodeJS version from 8.12.0 to 8.16.0 in Dockerfile to improve security
 - Fix: removal of warnings and deprecation warnings
 - Upgrade: iotagent-node-lib dependence from 2.8.1 to 2.9.0
 - Upgrade: lwm2m-node-lib dependence from 1.1.0 to 1.2.0
 
-* Wed Dec 19 2018 Fermin Galan <fermin.galanmarquez@telefonica.com>> 1.0.0-1
+* Wed Dec 19 2018 Fermin Galan <fermin.galanmarquez@telefonica.com> 1.0.0-1
 - Set Nodejs 6.14.4 as minimum version in packages.json (effectively removing Nodev4 as supported version)
 - Add: allow NGSIv2 for updating active attributes at CB, through configuration (#104)
 - Add: supports NGSIv2 for device provisioning (entity creation and context registration) at CB (#104)
