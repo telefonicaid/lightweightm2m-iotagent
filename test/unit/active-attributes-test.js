@@ -20,30 +20,31 @@
  * For those usages not covered by the GNU Affero General Public License
  * please contact with::[contacto@tid.es]
  */
-'use strict';
 
-var config = require('./testConfig'),
-    lwm2mClient = require('lwm2m-node-lib').client,
-    iotAgent = require('../../lib/iotAgentLwm2m'),
-    ngsiTestUtils = require('./../../lib/ngsiUtils'),
-    mongoUtils = require('./mongoDBUtils'),
-    async = require('async'),
-    apply = async.apply,
-    should = require('should'),
-    clientConfig = {
-        host: 'localhost',
-        port: '60001',
-        endpointName: 'ActiveTestClient',
-        url: '/pres',
-        ipProtocol: 'udp4'
-    },
-    ngsiClient = ngsiTestUtils.create(
-        config.ngsi.contextBroker.host,
-        config.ngsi.contextBroker.port,
-        'dumbmordor',
-        '/deserts'
-    ),
-    deviceInformation;
+/* eslint-disable no-unused-vars */
+
+const config = require('./testConfig');
+const lwm2mClient = require('lwm2m-node-lib').client;
+const iotAgent = require('../../lib/iotAgentLwm2m');
+const ngsiTestUtils = require('./../../lib/ngsiUtils');
+const mongoUtils = require('./mongoDBUtils');
+const async = require('async');
+const apply = async.apply;
+const should = require('should');
+const clientConfig = {
+    host: 'localhost',
+    port: '60001',
+    endpointName: 'ActiveTestClient',
+    url: '/pres',
+    ipProtocol: 'udp4'
+};
+const ngsiClient = ngsiTestUtils.create(
+    config.ngsi.contextBroker.host,
+    config.ngsi.contextBroker.port,
+    'dumbmordor',
+    '/deserts'
+);
+let deviceInformation;
 
 describe('Active attributes test', function() {
     beforeEach(function(done) {

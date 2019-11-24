@@ -20,16 +20,17 @@
  * For those usages not covered by the GNU Affero General Public License
  * please contact with::[contacto@tid.es]
  */
-'use strict';
 
-var MongoClient = require('mongodb').MongoClient,
-    async = require('async');
+/* eslint-disable no-unused-vars */
+
+const MongoClient = require('mongodb').MongoClient;
+const async = require('async');
 
 function cleanDb(host, name, callback) {
     // FIXME: this code doesn't work with MongoDB replica set, we are assuming that an
     // standalone MongoDB instance is used to run unit test.To use a replica set this
     // needs to be adapted
-    var url = 'mongodb://' + host + ':27017/' + name;
+    const url = 'mongodb://' + host + ':27017/' + name;
     MongoClient.connect(
         url,
         {
@@ -38,12 +39,12 @@ function cleanDb(host, name, callback) {
         },
         function(err, db) {
             if (db) {
-                var collections = ['devices', 'groups', 'entities', 'registrations'];
+                const collections = ['devices', 'groups', 'entities', 'registrations'];
 
                 async.eachSeries(
                     collections,
                     function(collection, innerCb) {
-                        var collectionDB = db.db(name).collection(collection);
+                        const collectionDB = db.db(name).collection(collection);
                         if (collectionDB) {
                             collectionDB.drop(function(err, delOK) {
                                 innerCb();
@@ -65,15 +66,15 @@ function cleanDb(host, name, callback) {
 }
 
 function cleanDbs(host, callback) {
-    var operations = [
-            async.apply(cleanDb, 'localhost', 'lwtm2m'),
-            async.apply(cleanDb, 'localhost', 'iotagent'),
-            async.apply(cleanDb, host, 'orion'),
-            async.apply(cleanDb, host, 'iotagent')
-        ],
-        remoteDatabases = ['smartgondor', 'dumbmordor'];
+    const operations = [
+        async.apply(cleanDb, 'localhost', 'lwtm2m'),
+        async.apply(cleanDb, 'localhost', 'iotagent'),
+        async.apply(cleanDb, host, 'orion'),
+        async.apply(cleanDb, host, 'iotagent')
+    ];
+    const remoteDatabases = ['smartgondor', 'dumbmordor'];
 
-    for (var i in remoteDatabases) {
+    for (const i in remoteDatabases) {
         operations.push(async.apply(cleanDb, host, 'orion-' + remoteDatabases[i]));
     }
 

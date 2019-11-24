@@ -23,7 +23,7 @@
  * Modified by: Daniel Calvo - ATOS Research & Innovation
  */
 
-var config = {};
+const config = {};
 
 config.lwm2m = {
     logLevel: 'FATAL',

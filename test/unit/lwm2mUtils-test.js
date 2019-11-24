@@ -20,16 +20,15 @@
  * For those usages not covered by the GNU Affero General Public License
  * please contact with::[contacto@tid.es]
  */
-'use strict';
 
-var lwm2mUtils = require('./../../lib/lwm2mUtils'),
-    should = require('should'),
-    expectedLwm2mObjects = ['/1/0', '/1/1', '/1/2', '/1/3', '/1/4', '/1/5', '/1/6'];
+const lwm2mUtils = require('./../../lib/lwm2mUtils');
+const should = require('should');
+const expectedLwm2mObjects = ['/1/0', '/1/1', '/1/2', '/1/3', '/1/4', '/1/5', '/1/6'];
 
 describe('lwm2mUtils test', function() {
     describe('When parse objects uri list is called with a comma separated list', function() {
         it('should should return an array with parsed resource paths', function(done) {
-            var parsedLwM2MObjetcs = lwm2mUtils.parseObjectUriList(expectedLwm2mObjects.join(','));
+            const parsedLwM2MObjetcs = lwm2mUtils.parseObjectUriList(expectedLwm2mObjects.join(','));
             should.equal(JSON.stringify(expectedLwm2mObjects), JSON.stringify(parsedLwM2MObjetcs));
             done();
         });
@@ -37,7 +36,7 @@ describe('lwm2mUtils test', function() {
 
     describe('When parse objects uri list is called with a comma plus space separated list', function() {
         it('should should return an array with parsed resource paths', function(done) {
-            var parsedLwM2MObjetcs = lwm2mUtils.parseObjectUriList(expectedLwm2mObjects.join(', '));
+            const parsedLwM2MObjetcs = lwm2mUtils.parseObjectUriList(expectedLwm2mObjects.join(', '));
             should.equal(JSON.stringify(expectedLwm2mObjects), JSON.stringify(parsedLwM2MObjetcs));
             done();
         });
