@@ -149,6 +149,10 @@ rm -rf $RPM_BUILD_ROOT
 %{_install_dir}
 
 %changelog
+* Wed Apr 08 2020 Fermin Galan <fermin.galanmarquez@telefonica.com> 1.4.0-1
+- Upgrade iotagent-node-lib dependency from 2.11.0 to 2.12.0
+- Upgrade NodeJS version from 8.16.1 to 10.19.0 in Dockerfile due to Node 8 End-of-Life
+
 * Mon Nov 04 2019 Fermin Galan <fermin.galanmarquez@telefonica.com> 1.3.0-1
 - Add: support to lazy attributes and commands based in NGSIv2 (#104)
 - Add: lwm2m agent version in the description of /iot/about request
