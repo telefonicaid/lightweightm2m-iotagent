@@ -22,32 +22,33 @@
  *
  * Modified by: Daniel Calvo - ATOS Research & Innovation
  */
-'use strict';
 
-var config = require('./testConfig'),
-    lwm2mClient = require('lwm2m-node-lib').client,
-    request = require('request'),
-    iotAgent = require('../../../lib/iotAgentLwm2m'),
-    ngsiTestUtils = require('./../../../lib/ngsiUtils'),
-    mongoUtils = require('../mongoDBUtils'),
-    async = require('async'),
-    apply = async.apply,
-    utils = require('../../utils'),
-    should = require('should'),
-    clientConfig = {
-        host: 'localhost',
-        port: '60001',
-        endpointName: 'TestClient',
-        url: '/light',
-        ipProtocol: 'udp4'
-    },
-    ngsiClient = ngsiTestUtils.createNgsi2(
-        config.ngsi.contextBroker.host,
-        config.ngsi.contextBroker.port,
-        'smartGondor',
-        '/gardens'
-    ),
-    deviceInformation;
+/* eslint-disable no-unused-vars */
+
+const config = require('./testConfig');
+const lwm2mClient = require('lwm2m-node-lib').client;
+const request = require('request');
+const iotAgent = require('../../../lib/iotAgentLwm2m');
+const ngsiTestUtils = require('./../../../lib/ngsiUtils');
+const mongoUtils = require('../mongoDBUtils');
+const async = require('async');
+const apply = async.apply;
+const utils = require('../../utils');
+const should = require('should');
+const clientConfig = {
+    host: 'localhost',
+    port: '60001',
+    endpointName: 'TestClient',
+    url: '/light',
+    ipProtocol: 'udp4'
+};
+const ngsiClient = ngsiTestUtils.createNgsi2(
+    config.ngsi.contextBroker.host,
+    config.ngsi.contextBroker.port,
+    'smartGondor',
+    '/gardens'
+);
+let deviceInformation;
 
 describe('Device auto-registration test', function() {
     beforeEach(function(done) {
@@ -62,7 +63,7 @@ describe('Device auto-registration test', function() {
         );
     });
     afterEach(function(done) {
-        var actions = [iotAgent.stop, apply(mongoUtils.cleanDbs, config.ngsi.contextBroker.host)];
+        const actions = [iotAgent.stop, apply(mongoUtils.cleanDbs, config.ngsi.contextBroker.host)];
 
         if (deviceInformation) {
             actions.splice(0, 0, apply(lwm2mClient.unregister, deviceInformation));
@@ -157,7 +158,7 @@ describe('Device auto-registration test', function() {
     });
 
     describe('When a device sends a unregistration request to the LWM2M endpoint of the IoT Agent', function() {
-        var deviceInformation;
+        let deviceInformation;
 
         beforeEach(function(done) {
             lwm2mClient.register(
@@ -214,24 +215,24 @@ describe('Device auto-registration test', function() {
     });
 
     describe('When a device registers to a URL defined as the resource of a configuration', function() {
-        var configuration = {
-                url: 'http://localhost:' + config.ngsi.server.port + '/iot/services',
-                method: 'POST',
-                json: utils.readExampleFile('./test/unit/ngsiv2/provisionExamples/newConfiguration.json'),
-                headers: {
-                    'fiware-service': 'smartGondor',
-                    'fiware-servicepath': '/gardens'
-                }
-            },
-            removeConfiguration = {
-                url: 'http://localhost:' + config.ngsi.server.port + '/iot/services',
-                method: 'DELETE',
-                json: {},
-                headers: {
-                    'fiware-service': 'smartGondor',
-                    'fiware-servicepath': '/gardens'
-                }
-            };
+        const configuration = {
+            url: 'http://localhost:' + config.ngsi.server.port + '/iot/services',
+            method: 'POST',
+            json: utils.readExampleFile('./test/unit/ngsiv2/provisionExamples/newConfiguration.json'),
+            headers: {
+                'fiware-service': 'smartGondor',
+                'fiware-servicepath': '/gardens'
+            }
+        };
+        const removeConfiguration = {
+            url: 'http://localhost:' + config.ngsi.server.port + '/iot/services',
+            method: 'DELETE',
+            json: {},
+            headers: {
+                'fiware-service': 'smartGondor',
+                'fiware-servicepath': '/gardens'
+            }
+        };
 
         beforeEach(function(done) {
             request(configuration, function(error, result, body) {
@@ -303,7 +304,7 @@ describe('Device auto-registration test', function() {
         'When a preprovisioned device registers to the the IoT Agent with an active attribute ' +
             'without internal mapping, but present in the OMA registry',
         function(done) {
-            var options = {
+            const options = {
                 url: 'http://localhost:' + config.ngsi.server.port + '/iot/devices',
                 method: 'POST',
                 json: utils.readExampleFile('./test/provisionExamples/preprovisionDeviceOMANoInternalMapping.json'),

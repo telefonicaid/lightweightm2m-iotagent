@@ -23,23 +23,26 @@
  * please contact with::[contacto@tid.es]
  */
 
-var cheerio = require('cheerio'),
-    async = require('async'),
-    fs = require('fs'),
-    request = require('request'),
-    errors = require('../lib/errors'),
-    logger = require('logops'),
-    context = {
-        op: 'IOTAgent.OMARegistry'
-    },
-    registryTargetFile = 'omaRegistry.json',
-    inverseRegistryTargetFile = 'omaInverseRegistry.json',
-    DOMParser = require('xmldom').DOMParser,
-    _ = require('underscore');
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-console */
+
+const cheerio = require('cheerio');
+const async = require('async');
+const fs = require('fs');
+const request = require('request');
+const errors = require('../lib/errors');
+const logger = require('logops');
+const context = {
+    op: 'IOTAgent.OMARegistry'
+};
+const registryTargetFile = 'omaRegistry.json';
+const inverseRegistryTargetFile = 'omaInverseRegistry.json';
+const DOMParser = require('xmldom').DOMParser;
+const _ = require('underscore');
 
 function downloadRegistry(url) {
     return function(callback) {
-        var options = {
+        const options = {
             uri: url,
             method: 'GET'
         };
@@ -58,9 +61,9 @@ function downloadRegistry(url) {
 }
 
 function parseRegistry(registryData, callback) {
-    var $ = cheerio.load(registryData),
-        initiateData = false,
-        registry = [];
+    const $ = cheerio.load(registryData);
+    let initiateData = false;
+    const registry = [];
 
     $('tr').each(function(i, elem) {
         if (!initiateData && $.html(this).indexOf('URN') > 0) {
@@ -69,7 +72,7 @@ function parseRegistry(registryData, callback) {
         } else if (initiateData) {
             // prettier-ignore
             if ($($(this).find('td').get(1)).text().indexOf('urn') >= 0) {
-                var obj = {
+                const obj = {
                     // prettier-ignore
                     name: $($(this).find('td').get(2)).text(),
                     // prettier-ignore
@@ -97,13 +100,13 @@ function discoverResources(registryObj, callback) {
                 if (error) {
                     callback(error);
                 } else {
-                    var doc = new DOMParser().parseFromString(body),
-                        items = doc.getElementsByTagName('Item'),
-                        newObj = _.clone(item);
+                    const doc = new DOMParser().parseFromString(body);
+                    const items = doc.getElementsByTagName('Item');
+                    const newObj = _.clone(item);
 
                     newObj.resources = [];
-                    for (var i = 0; i < items.length; i++) {
-                        var resource = {
+                    for (let i = 0; i < items.length; i++) {
+                        const resource = {
                             name: items[i].getElementsByTagName('Name')[0].textContent,
                             type: items[i].getElementsByTagName('Type')[0].textContent,
                             operations: items[i].getElementsByTagName('Operations')[0].textContent
@@ -131,7 +134,7 @@ function createInternalMap(registryObj, callback) {
 
     function createMapFromIds(previous, current) {
         if (current.resources) {
-            for (var i = 0; i < current.resources.length; i++) {
+            for (let i = 0; i < current.resources.length; i++) {
                 previous[current.resources[i].name] = {
                     objectResource: i,
                     objectType: current.id,
@@ -150,8 +153,8 @@ function createInternalMap(registryObj, callback) {
         return previous;
     }
 
-    var directRegistryMap = registryObj.reduce(createMapWithIds, {}),
-        inverseRegistryMap = registryObj.reduce(createMapFromIds, {});
+    const directRegistryMap = registryObj.reduce(createMapWithIds, {});
+    const inverseRegistryMap = registryObj.reduce(createMapFromIds, {});
 
     callback(null, JSON.stringify(directRegistryMap, null, 4), JSON.stringify(inverseRegistryMap, null, 4));
 }

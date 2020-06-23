@@ -22,33 +22,34 @@
  *
  * Author: Daniel Calvo - ATOS Research & Innovation
  */
-'use strict';
 
-var config = require('./testConfig'),
-    lwm2mClient = require('lwm2m-node-lib').client,
-    request = require('request'),
-    iotAgent = require('../../lib/iotAgentLwm2m'),
-    ngsiTestUtils = require('./../../lib/ngsiUtils'),
-    mongoUtils = require('./mongoDBUtils'),
-    async = require('async'),
-    apply = async.apply,
-    utils = require('../utils'),
-    updateRegistration = require('../../lib/services/lwm2mHandlers/updateRegistration'),
-    should = require('should'),
-    clientConfig = {
-        host: 'localhost',
-        port: '60001',
-        endpointName: 'TestClient',
-        url: '/light',
-        ipProtocol: 'udp4'
-    },
-    ngsiClient = ngsiTestUtils.create(
-        config.ngsi.contextBroker.host,
-        config.ngsi.contextBroker.port,
-        'smartGondor',
-        '/gardens'
-    ),
-    deviceInformation;
+/* eslint-disable no-unused-vars */
+
+const config = require('./testConfig');
+const lwm2mClient = require('lwm2m-node-lib').client;
+const request = require('request');
+const iotAgent = require('../../lib/iotAgentLwm2m');
+const ngsiTestUtils = require('./../../lib/ngsiUtils');
+const mongoUtils = require('./mongoDBUtils');
+const async = require('async');
+const apply = async.apply;
+const utils = require('../utils');
+const updateRegistration = require('../../lib/services/lwm2mHandlers/updateRegistration');
+const should = require('should');
+const clientConfig = {
+    host: 'localhost',
+    port: '60001',
+    endpointName: 'TestClient',
+    url: '/light',
+    ipProtocol: 'udp4'
+};
+const ngsiClient = ngsiTestUtils.create(
+    config.ngsi.contextBroker.host,
+    config.ngsi.contextBroker.port,
+    'smartGondor',
+    '/gardens'
+);
+let deviceInformation;
 
 describe('Device update registration test', function() {
     beforeEach(function(done) {
@@ -63,7 +64,7 @@ describe('Device update registration test', function() {
         );
     });
     afterEach(function(done) {
-        var actions = [iotAgent.stop, apply(mongoUtils.cleanDbs, config.ngsi.contextBroker.host)];
+        const actions = [iotAgent.stop, apply(mongoUtils.cleanDbs, config.ngsi.contextBroker.host)];
 
         if (deviceInformation) {
             actions.splice(0, 0, apply(lwm2mClient.unregister, deviceInformation));
@@ -83,7 +84,7 @@ describe('Device update registration test', function() {
         });
 
         it('should return the appropiate error', function(done) {
-            var deviceInfo = {
+            const deviceInfo = {
                 _id: '5a5dfe44f3dffc5e233d27d3',
                 id: 79,
                 type: 'Device',
@@ -107,7 +108,7 @@ describe('Device update registration test', function() {
         'When a preprovisioned device registers to the the IoT Agent with an active attribute ' +
             'without internal mapping, but present in the OMA registry',
         function(done) {
-            var options = {
+            const options = {
                 url: 'http://localhost:' + config.ngsi.server.port + '/iot/devices',
                 method: 'POST',
                 json: utils.readExampleFile('./test/provisionExamples/preprovisionDeviceOMANoInternalMapping.json'),

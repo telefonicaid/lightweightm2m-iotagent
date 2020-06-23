@@ -22,30 +22,31 @@
  *
  * Modified by: Daniel Calvo - ATOS Research & Innovation
  */
-'use strict';
 
-var config = require('./testConfig'),
-    lwm2mClient = require('lwm2m-node-lib').client,
-    iotAgent = require('../../../lib/iotAgentLwm2m'),
-    ngsiTestUtils = require('./../../../lib/ngsiUtils'),
-    mongoUtils = require('../mongoDBUtils'),
-    async = require('async'),
-    apply = async.apply,
-    should = require('should'),
-    clientConfig = {
-        host: 'localhost',
-        port: '60001',
-        endpointName: 'TestClient',
-        url: '/light',
-        ipProtocol: 'udp4'
-    },
-    ngsiClient = ngsiTestUtils.createNgsi2(
-        config.ngsi.contextBroker.host,
-        config.ngsi.contextBroker.port,
-        'smartgondor',
-        '/gardens'
-    ),
-    deviceInformation;
+/* eslint-disable no-unused-vars */
+
+const config = require('./testConfig');
+const lwm2mClient = require('lwm2m-node-lib').client;
+const iotAgent = require('../../../lib/iotAgentLwm2m');
+const ngsiTestUtils = require('./../../../lib/ngsiUtils');
+const mongoUtils = require('../mongoDBUtils');
+const async = require('async');
+const apply = async.apply;
+const should = require('should');
+const clientConfig = {
+    host: 'localhost',
+    port: '60001',
+    endpointName: 'TestClient',
+    url: '/light',
+    ipProtocol: 'udp4'
+};
+const ngsiClient = ngsiTestUtils.createNgsi2(
+    config.ngsi.contextBroker.host,
+    config.ngsi.contextBroker.port,
+    'smartgondor',
+    '/gardens'
+);
+let deviceInformation;
 
 describe('Passive attributes test', function() {
     beforeEach(function(done) {
@@ -93,7 +94,7 @@ describe('Passive attributes test', function() {
         });
 
         it('should query the value in the LWM2M device via the IoT Agent', function(done) {
-            var handleExecuted = false;
+            let handleExecuted = false;
 
             function handleRead(objectType, objectId, resourceId, value, callback) {
                 objectType.should.equal('6000');
@@ -121,7 +122,7 @@ describe('Passive attributes test', function() {
     });
 
     describe('When a passive attribute of the entity corresponding to a device is modified in Orion', function() {
-        var attributes = [
+        const attributes = [
             {
                 name: 'luminescence',
                 type: 'Lumens',
@@ -149,7 +150,7 @@ describe('Passive attributes test', function() {
         });
 
         it('should write the value in the LWM2M device via the IoT Agent', function(done) {
-            var handleExecuted = false;
+            let handleExecuted = false;
 
             function handleWrite(objectType, objectId, resourceId, value, callback) {
                 objectType.should.equal('6000');
@@ -193,7 +194,7 @@ describe('Passive attributes test', function() {
         });
 
         it('should query the value in the LWM2M device via the IoT Agent using the OMA Mapping', function(done) {
-            var handleExecuted = false;
+            let handleExecuted = false;
 
             function handleRead(objectType, objectId, resourceId, value, callback) {
                 objectType.should.equal('0');
@@ -221,7 +222,7 @@ describe('Passive attributes test', function() {
     });
 
     describe('When a passive OMA attribute is modified in Orion', function() {
-        var attributes = [
+        const attributes = [
             {
                 name: 'LWM2M Server URI',
                 type: 'string',
@@ -251,7 +252,7 @@ describe('Passive attributes test', function() {
         });
 
         it('should write the value in the LWM2M device via the IoT Agent', function(done) {
-            var handleExecuted = false;
+            let handleExecuted = false;
 
             function handleWrite(objectType, objectId, resourceId, value, callback) {
                 objectType.should.equal('0');

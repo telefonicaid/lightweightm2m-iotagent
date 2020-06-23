@@ -20,32 +20,33 @@
  * For those usages not covered by the GNU Affero General Public License
  * please contact with::[contacto@tid.es]
  */
-'use strict';
 
-var config = require('./testConfig'),
-    lwm2mClient = require('lwm2m-node-lib').client,
-    request = require('request'),
-    iotAgent = require('../../lib/iotAgentLwm2m'),
-    ngsiTestUtils = require('./../../lib/ngsiUtils'),
-    mongoUtils = require('./mongoDBUtils'),
-    async = require('async'),
-    apply = async.apply,
-    utils = require('../utils'),
-    should = require('should'),
-    clientConfig = {
-        host: 'localhost',
-        port: '60001',
-        endpointName: 'TestClient',
-        url: '/robot',
-        ipProtocol: 'udp4'
-    },
-    ngsiClient = ngsiTestUtils.create(
-        config.ngsi.contextBroker.host,
-        config.ngsi.contextBroker.port,
-        'smartgondor',
-        '/gardens'
-    ),
-    deviceInformation;
+/* eslint-disable no-unused-vars */
+
+const config = require('./testConfig');
+const lwm2mClient = require('lwm2m-node-lib').client;
+const request = require('request');
+const iotAgent = require('../../lib/iotAgentLwm2m');
+const ngsiTestUtils = require('./../../lib/ngsiUtils');
+const mongoUtils = require('./mongoDBUtils');
+const async = require('async');
+const apply = async.apply;
+const utils = require('../utils');
+const should = require('should');
+const clientConfig = {
+    host: 'localhost',
+    port: '60001',
+    endpointName: 'TestClient',
+    url: '/robot',
+    ipProtocol: 'udp4'
+};
+const ngsiClient = ngsiTestUtils.create(
+    config.ngsi.contextBroker.host,
+    config.ngsi.contextBroker.port,
+    'smartgondor',
+    '/gardens'
+);
+let deviceInformation;
 
 describe('Command attributes test', function() {
     beforeEach(function(done) {
@@ -105,14 +106,14 @@ describe('Command attributes test', function() {
         });
 
         it('should send the execution command to the LWM2M client', function(done) {
-            var handleExecuted = false,
-                attributes = [
-                    {
-                        name: 'position',
-                        type: 'Array',
-                        value: '[15,6234,312]'
-                    }
-                ];
+            let handleExecuted = false;
+            const attributes = [
+                {
+                    name: 'position',
+                    type: 'Array',
+                    value: '[15,6234,312]'
+                }
+            ];
 
             function handleExecute(objectType, objectId, resourceId, args, callback) {
                 objectType.should.equal('9090');
@@ -133,7 +134,7 @@ describe('Command attributes test', function() {
         });
 
         it('should return a 200 OK statusCode', function(done) {
-            var attributes = [
+            const attributes = [
                 {
                     name: 'position',
                     type: 'Array',
@@ -160,7 +161,7 @@ describe('Command attributes test', function() {
     });
 
     describe('When a command value is changed in Orion for a preprovisioned device', function() {
-        var options = {
+        const options = {
             url: 'http://localhost:' + config.ngsi.server.port + '/iot/devices',
             method: 'POST',
             json: utils.readExampleFile('./test/provisionExamples/provisionDeviceWithCommands.json'),
@@ -189,14 +190,14 @@ describe('Command attributes test', function() {
         });
 
         it('should send the execution command to the LWM2M client', function(done) {
-            var handleExecuted = false,
-                attributes = [
-                    {
-                        name: 'position',
-                        type: 'Array',
-                        value: '[15,6234,312]'
-                    }
-                ];
+            let handleExecuted = false;
+            const attributes = [
+                {
+                    name: 'position',
+                    type: 'Array',
+                    value: '[15,6234,312]'
+                }
+            ];
 
             function handleExecute(objectType, objectId, resourceId, args, callback) {
                 objectType.should.equal('6789');
