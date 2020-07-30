@@ -23,7 +23,7 @@ This project is part of [FIWARE](https://www.fiware.org/). For more information 
 [IoT Agents](https://github.com/Fiware/catalogue/tree/master/iot-agents).
 
 | :books: [Documentation](https://fiware-iotagent-lwm2m.readthedocs.io) | :mortar_board: [Academy](https://fiware-academy.readthedocs.io/en/latest/iot-agents/idas) | :whale: [Docker Hub](https://hub.docker.com/r/fiware/lightweightm2m-iotagent/) | :dart: [Roadmap](https://github.com/telefonicaid/lightweightm2m-iotagent/blob/master/docs/roadmap.md) |
-| -------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------- |
+| --------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------- |
 
 
 ## Contents
@@ -46,8 +46,8 @@ protocol, i.e. the bridge between OMA Lightweight M2M enabled devices and an NGS
 For more information on what an IoT Agent is or how it should work, please check the documentation on the
 [IoT Agent Node.js Library](https://iotagent-node-lib.readthedocs.io/).
 
-For more information on [OMA Lightweight M2M](http://www.omaspecworks.org/about-oma/work-program/m2m-enablers/) you
-can check the [Node.js OMA Lightweight M2M library](https://github.com/telefonicaid/lwm2m-node-lib) we are using.
+For more information on [OMA Lightweight M2M](http://www.omaspecworks.org/about-oma/work-program/m2m-enablers/) you can
+check the [Node.js OMA Lightweight M2M library](https://github.com/telefonicaid/lwm2m-node-lib) we are using.
 
 If you just want to start using the agent, jump to the [Quick Start Guide](docs/userGuide.md#getting-started).
 
@@ -58,7 +58,7 @@ You will find some more general considerations about the LWM2M Mapping we are us
 In order to assign the proper configuration for each type of device, a mechanism to assign types to new arriving devices
 should be used. This mechanism is based on Prefixes for the registrarion URL. For each type configured in the `lwm2m`
 configuration section in the `config.js` config file, a URL prefix has to be defined. Whenever a registration arrives to
-an URL with that prefix, the device will be assigned the corresponding type.
+a URL with that prefix, the device will be assigned the corresponding type.
 
 ### Mappings
 
@@ -121,8 +121,8 @@ The following features are listed as [deprecated](docs/deprecated.md)
 ## API
 
 Apiary reference for the Configuration API can be found
-[here](https://telefonicaiotiotagents.docs.apiary.io/#reference/configuration-api). More information about IoT Agents and
-their APIs can be found in the IoT Agent Library [documentation](https://iotagent-node-lib.readthedocs.io/).
+[here](https://telefonicaiotiotagents.docs.apiary.io/#reference/configuration-api). More information about IoT Agents
+and their APIs can be found in the IoT Agent Library [documentation](https://iotagent-node-lib.readthedocs.io/).
 
 The latest OMA Lightweight M2M IoT Agent documentation is also available on
 [ReadtheDocs](https://fiware-iotagent-lwm2m.readthedocs.io/en/latest)
@@ -145,8 +145,8 @@ related with the fact that different people assign different interpretations on 
 used in these licenses. Due to this, some people believe that there is a risk in just _using_ software under GPL or AGPL
 licenses (even without _modifying_ it).
 
-For the avoidance of doubt, the owners of this software licensed under an AGPL-3.0 license  
-wish to make a clarifying public statement as follows:
+For the avoidance of doubt, the owners of this software licensed under an AGPL-3.0 license wish to make a clarifying
+public statement as follows:
 
 > Please note that software derived as a result of modifying the source code of this software in order to fix a bug or
 > incorporate enhancements is considered a derivative work of the product. Software that merely uses or aggregates (i.e.
