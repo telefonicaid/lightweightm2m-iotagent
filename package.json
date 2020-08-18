@@ -32,6 +32,7 @@
   },
   "scripts": {
     "clean": "rm -rf package-lock.json && rm -rf node_modules && rm -rf coverage",
+    "healthcheck": "node ./bin/healthcheck",
     "test": "mocha 'test/unit/tests.js' 'test/unit/ngsiv2/tests.js' --reporter spec --timeout 5000 --ui bdd --exit",
     "test:watch": "npm run test -- -w ./lib",
     "lint": "eslint lib/ bin/ test/ --cache --fix",
