@@ -14,8 +14,8 @@ IoT Agent Library, where more information can be found about what the IoT Agents
 This project has, then, two APIs:
 
 -   The API for traffic south of the IoT Agent (LWM2M): information about it can be found in the
-    [OMA Lightweight M2M](http://www.omaspecworks.org/iot/lightweight-m2m-lwm2m) official page. Information about the
-    subset of Lightweight M2M already supported can be found in the
+    [OMA Lightweight M2M](https://omaspecworks.org/what-is-oma-specworks/iot/lightweight-m2m-lwm2m/) official page.
+    Information about the subset of Lightweight M2M already supported can be found in the
     [LWM2M Library for Node.js](https://github.com/telefonicaid/lwm2m-node-lib) we are using.
 -   The North Port Administration API: all the IoT Agents share a single Administration API, and it can be found in the
     [Node.JS IoT Agent Library Documentation](https://github.com/telefonicaid/iotagent-node-lib).
