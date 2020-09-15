@@ -97,13 +97,7 @@ RUN \
 	apt-get remove -y git && \
 	apt-get -y autoremove
 
-USER node
-ENV NODE_ENV=development
-# Expose 4041 for NORTH PORT, 5683 for LWM2M PORT
-EXPOSE ${IOTA_NORTH_PORT:-4041} ${LWM2M_PORT:-5683}/udp
-CMD ["node", "/opt/iota-lwm2m/bin/lwm2mAgent.js", "-- ", "config.js"]
-HEALTHCHECK --interval=30s --timeout=3s --start-period=10s \
-   CMD npm run healthcheck
+
 
 ########################################################################################
 #
@@ -114,7 +108,20 @@ HEALTHCHECK --interval=30s --timeout=3s --start-period=10s \
 # --target=pm2-install
 #
 ########################################################################################
-FROM node:${NODE_VERSION}-slim AS pm2-install
+FROM node:${NODE_VERSION}-slim AS pm2
+ARG GITHUB_ACCOUNT
+ARG GITHUB_REPOSITORY
+ARG NODE_VERSION
+
+LABEL "maintainer"="FIWARE IoTAgent Team. Telefónica I+D"
+LABEL "org.opencontainers.image.authors"="iot_support@tid.es"
+LABEL "org.opencontainers.image.documentation"="https://fiware-iotagent-lwm2m.rtfd.io/"
+LABEL "org.opencontainers.image.vendor"="Telefónica Investigación y Desarrollo, S.A.U"
+LABEL "org.opencontainers.image.licenses"="AGPL-3.0-only"
+LABEL "org.opencontainers.image.title"="FIWARE IoT Agent for OMA LightWeight Machine2Machine with PM2"
+LABEL "org.opencontainers.image.description"="IoT Agent accepting COAP requests. Designed to be a bridge between the OMA Lightweight M2M protocol and the NGSI interface."
+LABEL "org.opencontainers.image.source"="https://github.com/${GITHUB_ACCOUNT}/${GITHUB_REPOSITORY}"
+LABEL "org.nodejs.version"="${NODE_VERSION}"
 
 COPY --from=builder /opt/iota-lwm2m /opt/iota-lwm2m
 RUN npm install pm2@4.4.0 -g --no-package-lock --no-optional
@@ -157,7 +164,7 @@ LABEL "org.opencontainers.image.authors"="iot_support@tid.es"
 LABEL "org.opencontainers.image.documentation"="https://fiware-iotagent-lwm2m.rtfd.io/"
 LABEL "org.opencontainers.image.vendor"="Telefónica Investigación y Desarrollo, S.A.U"
 LABEL "org.opencontainers.image.licenses"="AGPL-3.0-only"
-LABEL "org.opencontainers.image.title"="FIWARE IoT Agent for OMA LightWeight Machine2Machine"
+LABEL "org.opencontainers.image.title"="FIWARE IoT Agent for OMA LightWeight Machine2Machine (Distroless)"
 LABEL "org.opencontainers.image.description"="IoT Agent accepting COAP requests. Designed to be a bridge between the OMA Lightweight M2M protocol and the NGSI interface."
 LABEL "org.opencontainers.image.source"="https://github.com/${GITHUB_ACCOUNT}/${GITHUB_REPOSITORY}"
 LABEL "org.nodejs.version"="${NODE_VERSION}"
@@ -174,3 +181,41 @@ CMD ["./bin/lwm2mAgent.js", "-- ", "config.js"]
 HEALTHCHECK  --interval=30s --timeout=3s --start-period=10s \
   CMD ["/nodejs/bin/node", "./bin/healthcheck"]
 
+
+########################################################################################
+#
+# This build stage creates a node-slim image for production.
+#
+# IMPORTANT: For production environments use Docker Secrets to protect values of the 
+# sensitive ENV variables defined below, by adding _FILE to the name of the relevant 
+# variable.
+#
+# - IOTA_AUTH_USER, IOTA_AUTH_PASSWORD - when using Keystone Security 
+# - IOTA_AUTH_CLIENT_ID, IOTA_AUTH_CLIENT_SECRET - when using OAuth2 Security
+#
+########################################################################################
+FROM node:${NODE_VERSION}-slim AS slim
+ARG GITHUB_ACCOUNT
+ARG GITHUB_REPOSITORY
+ARG NODE_VERSION
+
+LABEL "maintainer"="FIWARE IoTAgent Team. Telefónica I+D"
+LABEL "org.opencontainers.image.authors"="iot_support@tid.es"
+LABEL "org.opencontainers.image.documentation"="https://fiware-iotagent-lwm2m.rtfd.io/"
+LABEL "org.opencontainers.image.vendor"="Telefónica Investigación y Desarrollo, S.A.U"
+LABEL "org.opencontainers.image.licenses"="AGPL-3.0-only"
+LABEL "org.opencontainers.image.title"="FIWARE IoT Agent for OMA LightWeight Machine2Machine"
+LABEL "org.opencontainers.image.description"="IoT Agent accepting COAP requests. Designed to be a bridge between the OMA Lightweight M2M protocol and the NGSI interface."
+LABEL "org.opencontainers.image.source"="https://github.com/${GITHUB_ACCOUNT}/${GITHUB_REPOSITORY}"
+LABEL "org.nodejs.version"="${NODE_VERSION}"
+
+COPY --from=builder /opt/iota-lwm2m /opt/iota-lwm2m
+WORKDIR /opt/iota-lwm2m
+
+USER node
+ENV NODE_ENV=production
+# Expose 4041 for NORTH PORT, 5683 for LWM2M PORT
+EXPOSE ${IOTA_NORTH_PORT:-4041} ${LWM2M_PORT:-5683}/udp
+CMD ["node", "/opt/iota-lwm2m/bin/lwm2mAgent.js", "-- ", "config.js"]
+HEALTHCHECK --interval=30s --timeout=3s --start-period=10s \
+   CMD npm run healthcheck
