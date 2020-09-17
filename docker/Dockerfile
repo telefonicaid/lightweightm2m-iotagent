@@ -1,19 +1,19 @@
 # Copyright 2015 Telefónica Investigación y Desarrollo, S.A.U
 #
-# This file is part of the IoT Agent for Lightweight M2M (iotagent-lwm2m) component
+# This file is part of the IoT Agent for Lightweight M2M (lightweightm2m-iotagent) component
 #
-# iotagent-lwm2m is free software: you can redistribute it and/or
+# lightweightm2m-iotagent is free software: you can redistribute it and/or
 # modify it under the terms of the GNU Affero General Public License as
 # published by the Free Software Foundation, either version 3 of the License,
 # or (at your option) any later version.
 #
-# iotagent-lwm2m is distributed in the hope that it will be useful,
+# lightweightm2m-iotagent is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 # See the GNU Affero General Public License for more details.
 #
 # You should have received a copy of the GNU Affero General Public
-# License along with iotagent-lwm2m.
+# License along with lightweightm2m-iotagent.
 # If not, see http://www.gnu.org/licenses/.
 #
 # For those usages not covered by the GNU Affero General Public License
