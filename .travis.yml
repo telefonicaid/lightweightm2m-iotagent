@@ -23,7 +23,7 @@ jobs:
 
       before_install:
         - docker pull fiware/orion:latest
-        - docker run -d --net host -l orion fiware/orion:latest
+        - docker run -d --net host -l orion fiware/orion:2.4.0
 
       before_script:
         - npm run lint
@@ -37,7 +37,7 @@ jobs:
 
       before_install:
         - docker pull fiware/orion:latest
-        - docker run -d --net host -l orion fiware/orion:latest
+        - docker run -d --net host -l orion fiware/orion:2.4.0
 
       before_script:
         - npm run lint
