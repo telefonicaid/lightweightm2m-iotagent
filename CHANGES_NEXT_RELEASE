@@ -1,4 +1,5 @@
 -  Add iota-node-lib data plugins (attributeAlias, addEvents, expressionTransformation, multiEntity, timestampProcess)  to lwm2m agent
+-  Replace `#` by url escaped in attribute names at registration device to comply with NGSIv2 rules for identifiers
 -  Update Docker security practices (Add HEALTHCHECK, Use Anonymous User, Use two-stage build)
 -  Overall update of update dev package dependencies
 -  Update codebase to use ES6
