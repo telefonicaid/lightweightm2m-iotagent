@@ -95,6 +95,7 @@ jobs:
         with:
           node-version: 12.x
       - run: |
+          docker run -d --net host -l orion fiware/orion:latest
           npm install
           npm run test:coverage
       - name: Push to Coveralls
