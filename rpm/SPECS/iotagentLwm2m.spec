@@ -149,7 +149,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_install_dir}
 
 %changelog
-
 * Tue Mar 02 2020 Fermin Galan <fermin.galanmarquez@telefonica.com> 1.5.0-1
 -  Upgrade iotagent-node-lib dependency from 2.12.0 to 2.15.0
 -  Upgrade lwm2m-node-lib dependency from 1.12.0 to 1.13.0
