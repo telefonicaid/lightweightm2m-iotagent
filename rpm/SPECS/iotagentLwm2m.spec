@@ -151,7 +151,6 @@ rm -rf $RPM_BUILD_ROOT
 %changelog
 * Tue Mar 02 2020 Fermin Galan <fermin.galanmarquez@telefonica.com> 1.5.0-1
 - Upgrade iotagent-node-lib dependency from 2.12.0 to 2.15.0
-- Upgrade lwm2m-node-lib dependency from 1.12.0 to 1.13.0
 - Add iota-node-lib data plugins (attributeAlias, addEvents, expressionTransformation, multiEntity, timestampProcess)  to lwm2m agent
 - Replace `#` by url escaped in attribute names at registration device to comply with NGSIv2 rules for identifiers
 - Update Docker security practices (Add HEALTHCHECK, Use Anonymous User, Use two-stage build)
