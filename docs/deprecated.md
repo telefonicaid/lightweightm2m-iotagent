@@ -13,7 +13,12 @@ longer. In particular:
 A list of deprecated features and the version in which they were deprecated follows:
 
 -   Support to NGSI v1.
--   Support to Node.js v4 in lightweightM2M-iotagent 1.0.0. The use of Node.js v8 is highly recommended.
+-   Support to Node.js v4 in lightweightM2M-iotagent 1.0.0. (finally removed in 1.1.0)
+-   Support to Node.js v6 in lightweightM2M-iotagent 1.1.0. (finally removed in 1.2.0)
+-   Support to Node.js v8 in lightweightM2M-iotagent 1.4.0. (finally removed in 1.5.0)
+-   Support to Node.js v10 in lightweightM2M-iotagent 1.5.0 (finally removed in 1.6.0)
+
+The use of Node.js v12 is highly recommended.
 
 ## Using old lightweightM2M-iotagent versions
 
@@ -37,5 +42,7 @@ features:
 | **Removed feature**   | **Last lightweightM2M-iotagent version supporting feature** | **That version release date** |
 | --------------------- | ----------------------------------------------------------- | ----------------------------- |
 | NGSIv1 API            | Not yet defined                                             | Not yet defined               |
-| Support to Node.js v6 | Not yet defined but it will be done by May 2019             | Not yet defined               |
 | Support to Node.js v4 | 0.4.0                                                       | November 28th, 2017           |
+| Support to Node.js v6 | May 22nd, 2019              | 1.1.0               |
+| Support to Node.js v8 | April 8th, 2020             | 1.4.0               |
+| Support to Node.js v6 | March 3rd, 2021             | 1.5.0               |
