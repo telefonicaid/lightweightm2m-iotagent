@@ -9,6 +9,7 @@
 [![CI](https://github.com/telefonicaid/lightweightm2m-iotagent/workflows/CI/badge.svg)](https://github.com/telefonicaid/lightweightm2m-iotagent/actions?query=workflow%3ACI)
 [![Coverage Status](https://coveralls.io/repos/github/telefonicaid/lightweightm2m-iotagent/badge.svg?branch=master)](https://coveralls.io/github/telefonicaid/lightweightm2m-iotagent?branch=master)
 ![Status](https://nexus.lab.fiware.org/static/badges/statuses/iot-lightweightm2m.svg)
+[![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/4701/badge)](https://bestpractices.coreinfrastructure.org/projects/4701)
 
 This Internet of Things Agent is designed to be a bridge between the [OMA](https://www.omaspecworks.org/)
 [Lightweight M2M](https://www.omaspecworks.org/what-is-oma-specworks/iot/lightweight-m2m-lwm2m/) protocol and the
