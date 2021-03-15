@@ -33,6 +33,8 @@ This project is part of [FIWARE](https://www.fiware.org/). For more information 
 -   [Install](#install)
 -   [Usage](#usage)
 -   [API](#api)
+-   [Contributing](#contributing)
+-   [Testing](#testing)
 -   [Roadmap](#roadmap)
 -   [License](#license)
 
@@ -127,6 +129,23 @@ and their APIs can be found in the IoT Agent Library [documentation](https://iot
 
 The latest OMA Lightweight M2M IoT Agent documentation is also available on
 [ReadtheDocs](https://fiware-iotagent-lwm2m.readthedocs.io/en/latest)
+
+## Contributing
+
+If you'd like to contribute, start by searching through the issues and pull requests to see whether someone else has 
+raised a similar idea or question.
+
+Before contributing, please check out [contribution guidelines](docs/contribution.md)
+
+## Testing
+
+[Mocha](https://mochajs.org/) Test Runner + [Should.js](https://shouldjs.github.io/) Assertion Library.
+The test environment is preconfigured to run BDD testing style.
+Module mocking during testing can be done with [proxyquire](https://github.com/thlorenz/proxyquire)
+To run tests, type
+```console
+npm test
+```
 
 ## Roadmap
 
