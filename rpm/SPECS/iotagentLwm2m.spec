@@ -149,7 +149,10 @@ rm -rf $RPM_BUILD_ROOT
 %{_install_dir}
 
 %changelog
-* Tue Mar 02 2020 Fermin Galan <fermin.galanmarquez@telefonica.com> 1.5.0-1
+* Wed Apr 07 2021 Fermin Galan <fermin.galanmarquez@telefonica.com> 1.5.1-1
+- Upgrade iotagent-node-lib dependency from 2.15.0 to 2.15.1
+
+* Tue Mar 02 2021 Fermin Galan <fermin.galanmarquez@telefonica.com> 1.5.0-1
 - Upgrade iotagent-node-lib dependency from 2.12.0 to 2.15.0
 - Add iota-node-lib data plugins (attributeAlias, addEvents, expressionTransformation, multiEntity, timestampProcess)  to lwm2m agent
 - Replace `#` by url escaped in attribute names at registration device to comply with NGSIv2 rules for identifiers
