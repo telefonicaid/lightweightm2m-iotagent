@@ -42,7 +42,7 @@ const clientConfig = {
     url: '/light',
     ipProtocol: 'udp4'
 };
-const ngsiClient = ngsiTestUtils.createNgsi2(
+const ngsiClient = ngsiTestUtils.createNgsi(
     config.ngsi.contextBroker.host,
     config.ngsi.contextBroker.port,
     'smartGondor',
@@ -50,8 +50,8 @@ const ngsiClient = ngsiTestUtils.createNgsi2(
 );
 let deviceInformation;
 
-describe('Device auto-registration test', function() {
-    beforeEach(function(done) {
+describe('Device auto-registration test', function () {
+    beforeEach(function (done) {
         lwm2mClient.init(config);
         async.series(
             [
@@ -62,7 +62,7 @@ describe('Device auto-registration test', function() {
             done
         );
     });
-    afterEach(function(done) {
+    afterEach(function (done) {
         const actions = [iotAgent.stop, apply(mongoUtils.cleanDbs, config.ngsi.contextBroker.host)];
 
         if (deviceInformation) {
@@ -71,14 +71,14 @@ describe('Device auto-registration test', function() {
 
         async.series(actions, done);
     });
-    describe('When a device sends a registration request to the LWM2M endpoint of the IoT Agent', function(done) {
-        it('should return the registration information', function(done) {
+    describe('When a device sends a registration request to the LWM2M endpoint of the IoT Agent', function (done) {
+        it('should return the registration information', function (done) {
             lwm2mClient.register(
                 clientConfig.host,
                 clientConfig.port,
                 clientConfig.url,
                 clientConfig.endpointName,
-                function(error, result) {
+                function (error, result) {
                     should.not.exist(error);
                     should.exist(result);
                     should.exist(result.serverInfo);
@@ -88,14 +88,14 @@ describe('Device auto-registration test', function() {
                 }
             );
         });
-        it('should register its passive attributes in the Context Broker as a Context Provider', function(done) {
+        it('should register its passive attributes in the Context Broker as a Context Provider', function (done) {
             lwm2mClient.register(
                 clientConfig.host,
                 clientConfig.port,
                 clientConfig.url,
                 clientConfig.endpointName,
-                function(error, result) {
-                    ngsiClient.discover('TestClient:Light', 'Light', undefined, function(error, response, body) {
+                function (error, result) {
+                    ngsiClient.discover('TestClient:Light', 'Light', undefined, function (error, response, body) {
                         should.not.exist(error);
                         should.exist(body);
                         should.not.exist(body.errorCode);
@@ -109,25 +109,25 @@ describe('Device auto-registration test', function() {
         });
     });
 
-    describe('When a device sends a registration request with OMA objects not configured', function(done) {
-        beforeEach(function(done) {
+    describe('When a device sends a registration request with OMA objects not configured', function (done) {
+        beforeEach(function (done) {
             async.series(
                 [apply(lwm2mClient.registry.create, '/0/2'), apply(lwm2mClient.registry.create, '/1/3')],
-                function(error) {
+                function (error) {
                     done();
                 }
             );
         });
-        afterEach(function(done) {
+        afterEach(function (done) {
             done();
         });
-        it('should register normally, ignoring those objects', function(done) {
+        it('should register normally, ignoring those objects', function (done) {
             lwm2mClient.register(
                 clientConfig.host,
                 clientConfig.port,
                 clientConfig.url,
                 clientConfig.endpointName,
-                function(error, result) {
+                function (error, result) {
                     should.not.exist(error);
                     should.exist(result);
                     should.exist(result.serverInfo);
@@ -137,14 +137,14 @@ describe('Device auto-registration test', function() {
                 }
             );
         });
-        it('should register the resources as passive attributes in the CB with their URI', function(done) {
+        it('should register the resources as passive attributes in the CB with their URI', function (done) {
             lwm2mClient.register(
                 clientConfig.host,
                 clientConfig.port,
                 clientConfig.url,
                 clientConfig.endpointName,
-                function(error, result) {
-                    ngsiClient.discover('TestClient:Light', 'Light', undefined, function(error, response, body) {
+                function (error, result) {
+                    ngsiClient.discover('TestClient:Light', 'Light', undefined, function (error, response, body) {
                         should.not.exist(error);
                         should.exist(body);
                         should.not.exist(body.errorCode);
@@ -157,32 +157,32 @@ describe('Device auto-registration test', function() {
         });
     });
 
-    describe('When a device sends a unregistration request to the LWM2M endpoint of the IoT Agent', function() {
+    describe('When a device sends a unregistration request to the LWM2M endpoint of the IoT Agent', function () {
         let deviceInformation;
 
-        beforeEach(function(done) {
+        beforeEach(function (done) {
             lwm2mClient.register(
                 clientConfig.host,
                 clientConfig.port,
                 clientConfig.url,
                 clientConfig.endpointName,
-                function(error, result) {
+                function (error, result) {
                     deviceInformation = result;
                     done();
                 }
             );
         });
 
-        it('should not return any error', function(done) {
-            lwm2mClient.unregister(deviceInformation, function(error) {
+        it('should not return any error', function (done) {
+            lwm2mClient.unregister(deviceInformation, function (error) {
                 should.not.exist(error);
                 done();
             });
         });
-        it('should unregister the context provider', function(done) {
-            lwm2mClient.unregister(deviceInformation, function(error) {
-                setTimeout(function() {
-                    ngsiClient.discover('TestClient:Light', 'Light', undefined, function(error, response, body) {
+        it('should unregister the context provider', function (done) {
+            lwm2mClient.unregister(deviceInformation, function (error) {
+                setTimeout(function () {
+                    ngsiClient.discover('TestClient:Light', 'Light', undefined, function (error, response, body) {
                         should.not.exist(error);
                         should.exist(body);
                         should.exist(body.errorCode);
@@ -194,14 +194,14 @@ describe('Device auto-registration test', function() {
         });
     });
 
-    describe('When a device sends a registration request for an unknown type', function(done) {
-        it('should return the registration information', function(done) {
+    describe('When a device sends a registration request for an unknown type', function (done) {
+        it('should return the registration information', function (done) {
             lwm2mClient.register(
                 clientConfig.host,
                 clientConfig.port,
                 '/longitude',
                 clientConfig.endpointName,
-                function(error, result) {
+                function (error, result) {
                     should.exist(error);
 
                     done();
@@ -210,11 +210,11 @@ describe('Device auto-registration test', function() {
         });
     });
 
-    describe('When a preprovisioned device sends a registration request with its own LWM2M Mappings', function() {
+    describe('When a preprovisioned device sends a registration request with its own LWM2M Mappings', function () {
         it('should use its internal mappings instead of the type configured ones');
     });
 
-    describe('When a device registers to a URL defined as the resource of a configuration', function() {
+    describe('When a device registers to a URL defined as the resource of a configuration', function () {
         const configuration = {
             url: 'http://localhost:' + config.ngsi.server.port + '/iot/services',
             method: 'POST',
@@ -234,8 +234,8 @@ describe('Device auto-registration test', function() {
             }
         };
 
-        beforeEach(function(done) {
-            request(configuration, function(error, result, body) {
+        beforeEach(function (done) {
+            request(configuration, function (error, result, body) {
                 async.series(
                     [
                         apply(lwm2mClient.registry.create, '/3303/0'),
@@ -247,63 +247,69 @@ describe('Device auto-registration test', function() {
             });
         });
 
-        afterEach(function(done) {
+        afterEach(function (done) {
             request(removeConfiguration, done);
         });
 
-        it('should register its passive attributes in the Context Broker as a Context Provider', function(done) {
-            lwm2mClient.register(clientConfig.host, clientConfig.port, '/lightConfig', 'PreprovisionedLight2', function(
-                error,
-                result
-            ) {
-                ngsiClient.discover(
-                    'PreprovisionedLight2:ConfiguredDevice',
-                    'ConfiguredDevice',
-                    ['Luminosity%20Sensor'],
-                    function(error, response, body) {
-                        should.not.exist(error);
-                        should.exist(body);
-                        should.not.exist(body.errorCode);
-                        done();
-                    }
-                );
-            });
-        });
-
-        it('should observe its active attributes', function(done) {
-            lwm2mClient.register(clientConfig.host, clientConfig.port, '/lightConfig', 'PreprovisionedLight2', function(
-                error,
-                result
-            ) {
-                async.series(
-                    [
-                        utils.delay(100),
-                        async.apply(lwm2mClient.registry.setResource, '/3303/0', '0', '2539'),
-                        async.apply(lwm2mClient.registry.setResource, '/3303/0', '0', '10397'),
-                        utils.delay(100)
-                    ],
-                    function() {
-                        ngsiClient.query('PreprovisionedLight2:ConfiguredDevice', 'ConfiguredDevice', [], function(
-                            error,
-                            response,
-                            body
-                        ) {
+        it('should register its passive attributes in the Context Broker as a Context Provider', function (done) {
+            lwm2mClient.register(
+                clientConfig.host,
+                clientConfig.port,
+                '/lightConfig',
+                'PreprovisionedLight2',
+                function (error, result) {
+                    ngsiClient.discover(
+                        'PreprovisionedLight2:ConfiguredDevice',
+                        'ConfiguredDevice',
+                        ['Luminosity%20Sensor'],
+                        function (error, response, body) {
                             should.not.exist(error);
                             should.exist(body);
-                            body.should.be.instanceof(Array).and.have.lengthOf(1);
-                            should.exist(body[0]['Temperature%20Sensor']);
+                            should.not.exist(body.errorCode);
                             done();
-                        });
-                    }
-                );
-            });
+                        }
+                    );
+                }
+            );
+        });
+
+        it('should observe its active attributes', function (done) {
+            lwm2mClient.register(
+                clientConfig.host,
+                clientConfig.port,
+                '/lightConfig',
+                'PreprovisionedLight2',
+                function (error, result) {
+                    async.series(
+                        [
+                            utils.delay(100),
+                            async.apply(lwm2mClient.registry.setResource, '/3303/0', '0', '2539'),
+                            async.apply(lwm2mClient.registry.setResource, '/3303/0', '0', '10397'),
+                            utils.delay(100)
+                        ],
+                        function () {
+                            ngsiClient.query('PreprovisionedLight2:ConfiguredDevice', 'ConfiguredDevice', [], function (
+                                error,
+                                response,
+                                body
+                            ) {
+                                should.not.exist(error);
+                                should.exist(body);
+                                body.should.be.instanceof(Array).and.have.lengthOf(1);
+                                should.exist(body[0]['Temperature%20Sensor']);
+                                done();
+                            });
+                        }
+                    );
+                }
+            );
         });
     });
 
     describe(
         'When a preprovisioned device registers to the the IoT Agent with an active attribute ' +
             'without internal mapping, but present in the OMA registry',
-        function(done) {
+        function (done) {
             const options = {
                 url: 'http://localhost:' + config.ngsi.server.port + '/iot/devices',
                 method: 'POST',
@@ -314,8 +320,8 @@ describe('Device auto-registration test', function() {
                 }
             };
 
-            beforeEach(function(done) {
-                request(options, function(error, response, body) {
+            beforeEach(function (done) {
+                request(options, function (error, response, body) {
                     async.series(
                         [
                             apply(lwm2mClient.registry.create, '/3303/0'),
@@ -325,8 +331,8 @@ describe('Device auto-registration test', function() {
                     );
                 });
             });
-            it('should return the registration information', function(done) {
-                lwm2mClient.register(clientConfig.host, clientConfig.port, '/rd', 'ws1', function(error, result) {
+            it('should return the registration information', function (done) {
+                lwm2mClient.register(clientConfig.host, clientConfig.port, '/rd', 'ws1', function (error, result) {
                     should.not.exist(error);
                     should.exist(result);
                     should.exist(result.serverInfo);
@@ -338,7 +344,7 @@ describe('Device auto-registration test', function() {
         }
     );
 
-    describe('When a preprovisioned device registers with an unmappable attribute', function(done) {
+    describe('When a preprovisioned device registers with an unmappable attribute', function (done) {
         it('should fail to be provisioned');
     });
 });
