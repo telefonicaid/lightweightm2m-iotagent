@@ -1,3 +1,4 @@
 - Upgrade underscore dep from 1.9.1 to 1.12.1
 - Upgrade NodeJS version from 10 to 12 in Dockerfile due to Node 10 End-of-Life
 - Set Nodejs 12 as minimum version in packages.json (effectively removing Nodev10 from supported versions)
+- Fix: processing configurations subscriptions in NGSIv2 (twin of iota-json#563)
