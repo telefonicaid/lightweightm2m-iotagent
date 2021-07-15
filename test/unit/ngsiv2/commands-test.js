@@ -50,8 +50,8 @@ const ngsiClient = ngsiTestUtils.createNgsi(
 );
 let deviceInformation;
 
-describe('Command attributes test', function () {
-    beforeEach(function (done) {
+describe('Command attributes test', function() {
+    beforeEach(function(done) {
         lwm2mClient.init(config);
 
         async.series(
@@ -64,14 +64,14 @@ describe('Command attributes test', function () {
         );
     });
 
-    describe('When a command value is changed in Orion for a statically configured type', function () {
-        beforeEach(function (done) {
+    describe('When a command value is changed in Orion for a statically configured type', function() {
+        beforeEach(function(done) {
             lwm2mClient.register(
                 clientConfig.host,
                 clientConfig.port,
                 clientConfig.url,
                 clientConfig.endpointName,
-                function (error, result) {
+                function(error, result) {
                     deviceInformation = result;
                     async.series(
                         [
@@ -84,7 +84,7 @@ describe('Command attributes test', function () {
             );
         });
 
-        afterEach(function (done) {
+        afterEach(function(done) {
             async.series(
                 [
                     apply(lwm2mClient.unregister, deviceInformation),
@@ -96,7 +96,7 @@ describe('Command attributes test', function () {
             );
         });
 
-        it('should send the execution command to the LWM2M client', function (done) {
+        it('should send the execution command to the LWM2M client', function(done) {
             let handleExecuted = false;
             const attributes = [
                 {
@@ -116,14 +116,14 @@ describe('Command attributes test', function () {
 
             lwm2mClient.setHandler(deviceInformation.serverInfo, 'execute', handleExecute);
 
-            ngsiClient.update('TestClient:Robot', 'Robot', attributes, function (error, response, body) {
+            ngsiClient.update('TestClient:Robot', 'Robot', attributes, function(error, response, body) {
                 should.not.exist(error);
                 handleExecuted.should.equal(true);
                 done();
             });
         });
 
-        it('should return a 200 OK statusCode', function (done) {
+        it('should return a 200 OK statusCode', function(done) {
             const attributes = [
                 {
                     name: 'position',
@@ -138,7 +138,7 @@ describe('Command attributes test', function () {
 
             lwm2mClient.setHandler(deviceInformation.serverInfo, 'execute', handleExecute);
 
-            ngsiClient.update('TestClient:Robot', 'Robot', attributes, function (error, response, body) {
+            ngsiClient.update('TestClient:Robot', 'Robot', attributes, function(error, response, body) {
                 should.not.exist(error);
                 response.statusCode.should.equal(204);
                 done();
@@ -146,7 +146,7 @@ describe('Command attributes test', function () {
         });
     });
 
-    describe('When a command value is changed in Orion for a preprovisioned device', function () {
+    describe('When a command value is changed in Orion for a preprovisioned device', function() {
         const options = {
             url: 'http://localhost:' + config.ngsi.server.port + '/iot/devices',
             method: 'POST',
@@ -157,9 +157,9 @@ describe('Command attributes test', function () {
             }
         };
 
-        beforeEach(function (done) {
-            request(options, function (error, response, body) {
-                lwm2mClient.register(clientConfig.host, clientConfig.port, clientConfig.url, 'TestRobotPre', function (
+        beforeEach(function(done) {
+            request(options, function(error, response, body) {
+                lwm2mClient.register(clientConfig.host, clientConfig.port, clientConfig.url, 'TestRobotPre', function(
                     error,
                     result
                 ) {
@@ -175,7 +175,7 @@ describe('Command attributes test', function () {
             });
         });
 
-        afterEach(function (done) {
+        afterEach(function(done) {
             async.series(
                 [
                     apply(lwm2mClient.unregister, deviceInformation),
@@ -187,7 +187,7 @@ describe('Command attributes test', function () {
             );
         });
 
-        it('should send the execution command to the LWM2M client', function (done) {
+        it('should send the execution command to the LWM2M client', function(done) {
             let handleExecuted = false;
             const attributes = [
                 {
@@ -207,7 +207,7 @@ describe('Command attributes test', function () {
 
             lwm2mClient.setHandler(deviceInformation.serverInfo, 'execute', handleExecute);
 
-            ngsiClient.update('RobotPre:TestRobotPre', 'RobotPre', attributes, function (error, response, body) {
+            ngsiClient.update('RobotPre:TestRobotPre', 'RobotPre', attributes, function(error, response, body) {
                 should.not.exist(error);
                 handleExecuted.should.equal(true);
 
@@ -217,7 +217,7 @@ describe('Command attributes test', function () {
         it('should return a 200 OK statusCode');
     });
 
-    describe('When a command value is changed in Orion for a device registering in a configuration', function () {
+    describe('When a command value is changed in Orion for a device registering in a configuration', function() {
         it('should send the execution command to the LWM2M client');
         it('should return a 200 OK statusCode');
     });
