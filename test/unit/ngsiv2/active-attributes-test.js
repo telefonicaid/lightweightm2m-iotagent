@@ -40,7 +40,7 @@ const clientConfig = {
     url: '/pres',
     ipProtocol: 'udp4'
 };
-const ngsiClient = ngsiTestUtils.createNgsi2(
+const ngsiClient = ngsiTestUtils.createNgsi(
     config.ngsi.contextBroker.host,
     config.ngsi.contextBroker.port,
     'dumbmordor',

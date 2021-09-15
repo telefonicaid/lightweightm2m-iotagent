@@ -42,7 +42,7 @@ const clientConfig = {
     url: '/light',
     ipProtocol: 'udp4'
 };
-const ngsiClient = ngsiTestUtils.createNgsi2(
+const ngsiClient = ngsiTestUtils.createNgsi(
     config.ngsi.contextBroker.host,
     config.ngsi.contextBroker.port,
     'smartGondor',
@@ -252,51 +252,57 @@ describe('Device auto-registration test', function() {
         });
 
         it('should register its passive attributes in the Context Broker as a Context Provider', function(done) {
-            lwm2mClient.register(clientConfig.host, clientConfig.port, '/lightConfig', 'PreprovisionedLight2', function(
-                error,
-                result
-            ) {
-                ngsiClient.discover(
-                    'PreprovisionedLight2:ConfiguredDevice',
-                    'ConfiguredDevice',
-                    ['Luminosity%20Sensor'],
-                    function(error, response, body) {
-                        should.not.exist(error);
-                        should.exist(body);
-                        should.not.exist(body.errorCode);
-                        done();
-                    }
-                );
-            });
+            lwm2mClient.register(
+                clientConfig.host,
+                clientConfig.port,
+                '/lightConfig',
+                'PreprovisionedLight2',
+                function(error, result) {
+                    ngsiClient.discover(
+                        'PreprovisionedLight2:ConfiguredDevice',
+                        'ConfiguredDevice',
+                        ['Luminosity%20Sensor'],
+                        function(error, response, body) {
+                            should.not.exist(error);
+                            should.exist(body);
+                            should.not.exist(body.errorCode);
+                            done();
+                        }
+                    );
+                }
+            );
         });
 
         it('should observe its active attributes', function(done) {
-            lwm2mClient.register(clientConfig.host, clientConfig.port, '/lightConfig', 'PreprovisionedLight2', function(
-                error,
-                result
-            ) {
-                async.series(
-                    [
-                        utils.delay(100),
-                        async.apply(lwm2mClient.registry.setResource, '/3303/0', '0', '2539'),
-                        async.apply(lwm2mClient.registry.setResource, '/3303/0', '0', '10397'),
-                        utils.delay(100)
-                    ],
-                    function() {
-                        ngsiClient.query('PreprovisionedLight2:ConfiguredDevice', 'ConfiguredDevice', [], function(
-                            error,
-                            response,
-                            body
-                        ) {
-                            should.not.exist(error);
-                            should.exist(body);
-                            body.should.be.instanceof(Array).and.have.lengthOf(1);
-                            should.exist(body[0]['Temperature%20Sensor']);
-                            done();
-                        });
-                    }
-                );
-            });
+            lwm2mClient.register(
+                clientConfig.host,
+                clientConfig.port,
+                '/lightConfig',
+                'PreprovisionedLight2',
+                function(error, result) {
+                    async.series(
+                        [
+                            utils.delay(100),
+                            async.apply(lwm2mClient.registry.setResource, '/3303/0', '0', '2539'),
+                            async.apply(lwm2mClient.registry.setResource, '/3303/0', '0', '10397'),
+                            utils.delay(100)
+                        ],
+                        function() {
+                            ngsiClient.query('PreprovisionedLight2:ConfiguredDevice', 'ConfiguredDevice', [], function(
+                                error,
+                                response,
+                                body
+                            ) {
+                                should.not.exist(error);
+                                should.exist(body);
+                                body.should.be.instanceof(Array).and.have.lengthOf(1);
+                                should.exist(body[0]['Temperature%20Sensor']);
+                                done();
+                            });
+                        }
+                    );
+                }
+            );
         });
     });
 

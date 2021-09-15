@@ -42,7 +42,7 @@ const clientConfig = {
     url: '/robot',
     ipProtocol: 'udp4'
 };
-const ngsiClient = ngsiTestUtils.createNgsi2(
+const ngsiClient = ngsiTestUtils.createNgsi(
     config.ngsi.contextBroker.host,
     config.ngsi.contextBroker.port,
     'smartgondor',
