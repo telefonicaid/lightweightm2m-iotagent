@@ -29,7 +29,7 @@
 const cheerio = require('cheerio');
 const async = require('async');
 const fs = require('fs');
-const request = require('request');
+const request = require('iotagent-node-lib').request;
 const errors = require('../lib/errors');
 const logger = require('logops');
 const context = {
@@ -41,13 +41,13 @@ const DOMParser = require('xmldom').DOMParser;
 const _ = require('underscore');
 
 function downloadRegistry(url) {
-    return function(callback) {
+    return function (callback) {
         const options = {
             uri: url,
-            method: 'GET'
+            method: 'GET',
+            responseType: 'text'
         };
-
-        request(options, function(error, response, body) {
+        request(options, function (error, response, body) {
             if (error) {
                 logger.error(context, "Couldn't retrieve OMA Registry due to a connection error: " + error);
                 callback(new errors.OmaRegistryConnectionError(error));
@@ -65,7 +65,7 @@ function parseRegistry(registryData, callback) {
     let initiateData = false;
     const registry = [];
 
-    $('tr').each(function(i, elem) {
+    $('tr').each(function (i, elem) {
         if (!initiateData && $.html(this).indexOf('URN') > 0) {
             logger.info('Initiating data parse.');
             initiateData = true;
@@ -96,7 +96,7 @@ function parseRegistry(registryData, callback) {
 function discoverResources(registryObj, callback) {
     function retrieveResources(item, callback) {
         if (item.schema) {
-            downloadRegistry(item.schema)(function(error, body) {
+            downloadRegistry(item.schema)(function (error, body) {
                 if (error) {
                     callback(error);
                 } else {
@@ -185,7 +185,7 @@ function processRegistry(callback) {
     );
 }
 
-processRegistry(function(error) {
+processRegistry(function (error) {
     if (error) {
         console.log('Download OMA Registry failed: ' + error);
     } else {
