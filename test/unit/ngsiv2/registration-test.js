@@ -184,7 +184,6 @@ describe('Device auto-registration test', function () {
                     ngsiClient.discover('TestClient:Light', 'Light', undefined, function (error, response, body) {
                         console.error(error);
                         console.error(body);
-                        console.error(response);
 
                         /*should.not.exist(error);
                         should.exist(body);
