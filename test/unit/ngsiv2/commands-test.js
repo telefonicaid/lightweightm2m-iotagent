@@ -33,6 +33,7 @@ const mongoUtils = require('../mongoDBUtils');
 const async = require('async');
 const apply = async.apply;
 const utils = require('../../utils');
+const request = utils.request;
 const should = require('should');
 const clientConfig = {
     host: 'localhost',
@@ -157,7 +158,7 @@ describe('Command attributes test', function () {
         };
 
         beforeEach(function (done) {
-            utils.request(options, function (error, response, body) {
+            request(options, function (error, response, body) {
                 lwm2mClient.register(clientConfig.host, clientConfig.port, clientConfig.url, 'TestRobotPre', function (
                     error,
                     result

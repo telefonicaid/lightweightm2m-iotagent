@@ -33,6 +33,7 @@ const mongoUtils = require('../mongoDBUtils');
 const async = require('async');
 const apply = async.apply;
 const utils = require('../../utils');
+const request = utils.request;
 const should = require('should');
 const clientConfig = {
     host: 'localhost',
@@ -237,7 +238,7 @@ describe('Device auto-registration test', function () {
         };
 
         beforeEach(function (done) {
-            utils.request(configuration, function (error, result, body) {
+            request(configuration, function (error, result, body) {
                 async.series(
                     [
                         apply(lwm2mClient.registry.create, '/3303/0'),
@@ -250,7 +251,7 @@ describe('Device auto-registration test', function () {
         });
 
         afterEach(function (done) {
-            utils.request(removeConfiguration, done);
+            request(removeConfiguration, done);
         });
 
         it('should register its passive attributes in the Context Broker as a Context Provider', function (done) {
@@ -323,7 +324,7 @@ describe('Device auto-registration test', function () {
             };
 
             beforeEach(function (done) {
-                utils.request(options, function (error, response, body) {
+                request(options, function (error, response, body) {
                     async.series(
                         [
                             apply(lwm2mClient.registry.create, '/3303/0'),
