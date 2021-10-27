@@ -125,7 +125,7 @@ function queryEntity(host, port, service, subservice, id, type, attributes, call
  * @param {String} type             Type of the entity to query.
  * @param {Array} attributes        List of attributes to retrieve.
  */
-// #FIXME: process the result of the request() call to filter out registrations that doesn't match id, type and attributes provided as function arguments
+// FIXME: process the result of the request() call to filter out registrations that doesn't match id, type and attributes provided as function arguments
 // Read https://github.com/telefonicaid/lightweightm2m-iotagent/issues/256 for mor information
 function getRegistrations(host, port, service, subservice, id, type, attributes, callback) {
     const options = {
