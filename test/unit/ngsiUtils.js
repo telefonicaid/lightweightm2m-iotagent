@@ -125,23 +125,15 @@ function queryEntity(host, port, service, subservice, id, type, attributes, call
  * @param {String} type             Type of the entity to query.
  * @param {Array} attributes        List of attributes to retrieve.
  */
-function discoverContextAvailability(host, port, service, subservice, id, type, attributes, callback) {
+// FIXME: process the result of the request() call to filter out registrations that doesn't match id, type and attributes provided as function arguments
+// Read https://github.com/telefonicaid/lightweightm2m-iotagent/issues/256 for mor information
+function getRegistrations(host, port, service, subservice, id, type, attributes, callback) {
     const options = {
-        url: 'http://' + host + ':' + port + '/v1/registry/discoverContextAvailability ',
-        method: 'POST',
+        url: 'http://' + host + ':' + port + '/v2/registrations ',
+        method: 'GET',
         headers: {
             'fiware-service': service,
             'fiware-servicepath': subservice
-        },
-        json: {
-            entities: [
-                {
-                    type,
-                    id,
-                    isPattern: 'false'
-                }
-            ],
-            attributes
         }
     };
 
@@ -152,12 +144,12 @@ function createClient(host, port, service, subservice) {
     return {
         query: queryEntity.bind(null, host, port, service, subservice),
         update: updateEntity.bind(null, host, port, service, subservice),
-        discover: discoverContextAvailability.bind(null, host, port, service, subservice)
+        getRegistrations: getRegistrations.bind(null, host, port, service, subservice)
     };
 }
 
 exports.updateEntity = updateEntity;
 exports.queryEntity = queryEntity;
-exports.discoverContext = discoverContextAvailability;
+exports.getRegistrations = getRegistrations;
 exports.create = createClient;
 exports.createNgsi = createClient;
