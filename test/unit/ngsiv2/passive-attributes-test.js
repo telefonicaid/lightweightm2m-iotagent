@@ -28,7 +28,7 @@
 const config = require('./testConfig');
 const lwm2mClient = require('lwm2m-node-lib').client;
 const iotAgent = require('../../../lib/iotAgentLwm2m');
-const ngsiTestUtils = require('./../../../lib/ngsiUtils');
+const ngsiTestUtils = require('../ngsiUtils');
 const mongoUtils = require('../mongoDBUtils');
 const async = require('async');
 const apply = async.apply;
@@ -48,8 +48,8 @@ const ngsiClient = ngsiTestUtils.createNgsi(
 );
 let deviceInformation;
 
-describe('Passive attributes test', function() {
-    beforeEach(function(done) {
+describe('Passive attributes test', function () {
+    beforeEach(function (done) {
         lwm2mClient.init(config);
         async.series(
             [
@@ -61,7 +61,7 @@ describe('Passive attributes test', function() {
         );
     });
 
-    afterEach(function(done) {
+    afterEach(function (done) {
         async.series(
             [
                 apply(lwm2mClient.unregister, deviceInformation),
@@ -73,14 +73,14 @@ describe('Passive attributes test', function() {
         );
     });
 
-    describe('When a passive attribute of the entity corresponding to a device is queried in Orion', function() {
-        beforeEach(function(done) {
+    describe('When a passive attribute of the entity corresponding to a device is queried in Orion', function () {
+        beforeEach(function (done) {
             lwm2mClient.register(
                 clientConfig.host,
                 clientConfig.port,
                 clientConfig.url,
                 clientConfig.endpointName,
-                function(error, result) {
+                function (error, result) {
                     deviceInformation = result;
                     async.series(
                         [
@@ -93,7 +93,7 @@ describe('Passive attributes test', function() {
             );
         });
 
-        it('should query the value in the LWM2M device via the IoT Agent', function(done) {
+        it('should query the value in the LWM2M device via the IoT Agent', function (done) {
             let handleExecuted = false;
 
             function handleRead(objectType, objectId, resourceId, value, callback) {
@@ -106,7 +106,7 @@ describe('Passive attributes test', function() {
 
             lwm2mClient.setHandler(deviceInformation.serverInfo, 'read', handleRead);
 
-            ngsiClient.query('TestClient:Light', 'Light', ['luminescence'], function(error, response, body) {
+            ngsiClient.query('TestClient:Light', 'Light', ['luminescence'], function (error, response, body) {
                 should.not.exist(error);
                 handleExecuted.should.equal(true);
                 should.exist(body);
@@ -121,7 +121,7 @@ describe('Passive attributes test', function() {
         });
     });
 
-    describe('When a passive attribute of the entity corresponding to a device is modified in Orion', function() {
+    describe('When a passive attribute of the entity corresponding to a device is modified in Orion', function () {
         const attributes = [
             {
                 name: 'luminescence',
@@ -130,13 +130,13 @@ describe('Passive attributes test', function() {
             }
         ];
 
-        beforeEach(function(done) {
+        beforeEach(function (done) {
             lwm2mClient.register(
                 clientConfig.host,
                 clientConfig.port,
                 clientConfig.url,
                 clientConfig.endpointName,
-                function(error, result) {
+                function (error, result) {
                     deviceInformation = result;
                     async.series(
                         [
@@ -149,7 +149,7 @@ describe('Passive attributes test', function() {
             );
         });
 
-        it('should write the value in the LWM2M device via the IoT Agent', function(done) {
+        it('should write the value in the LWM2M device via the IoT Agent', function (done) {
             let handleExecuted = false;
 
             function handleWrite(objectType, objectId, resourceId, value, callback) {
@@ -162,7 +162,7 @@ describe('Passive attributes test', function() {
 
             lwm2mClient.setHandler(deviceInformation.serverInfo, 'write', handleWrite);
 
-            ngsiClient.update('TestClient:Light', 'Light', attributes, function(error, response, body) {
+            ngsiClient.update('TestClient:Light', 'Light', attributes, function (error, response, body) {
                 should.not.exist(error);
                 handleExecuted.should.equal(true);
 
@@ -171,20 +171,20 @@ describe('Passive attributes test', function() {
         });
     });
 
-    describe('When a passive OMA attribute request is queried in orion', function() {
-        beforeEach(function(done) {
+    describe('When a passive OMA attribute request is queried in orion', function () {
+        beforeEach(function (done) {
             async.series(
                 [
                     async.apply(lwm2mClient.registry.create, '/0/0'),
                     async.apply(lwm2mClient.registry.setResource, '/0/0', '0', 'coap://localhost')
                 ],
-                function(error) {
+                function (error) {
                     lwm2mClient.register(
                         clientConfig.host,
                         clientConfig.port,
                         clientConfig.url,
                         clientConfig.endpointName,
-                        function(error, result) {
+                        function (error, result) {
                             deviceInformation = result;
                             done();
                         }
@@ -193,7 +193,7 @@ describe('Passive attributes test', function() {
             );
         });
 
-        it('should query the value in the LWM2M device via the IoT Agent using the OMA Mapping', function(done) {
+        it('should query the value in the LWM2M device via the IoT Agent using the OMA Mapping', function (done) {
             let handleExecuted = false;
 
             function handleRead(objectType, objectId, resourceId, value, callback) {
@@ -206,7 +206,7 @@ describe('Passive attributes test', function() {
 
             lwm2mClient.setHandler(deviceInformation.serverInfo, 'read', handleRead);
 
-            ngsiClient.query('TestClient:Light', 'Light', ['LWM2M Server URI'], function(error, response, body) {
+            ngsiClient.query('TestClient:Light', 'Light', ['LWM2M Server URI'], function (error, response, body) {
                 should.not.exist(error);
                 handleExecuted.should.equal(true);
                 should.exist(body);
@@ -221,7 +221,7 @@ describe('Passive attributes test', function() {
         });
     });
 
-    describe('When a passive OMA attribute is modified in Orion', function() {
+    describe('When a passive OMA attribute is modified in Orion', function () {
         const attributes = [
             {
                 name: 'LWM2M Server URI',
@@ -230,19 +230,19 @@ describe('Passive attributes test', function() {
             }
         ];
 
-        beforeEach(function(done) {
+        beforeEach(function (done) {
             async.series(
                 [
                     async.apply(lwm2mClient.registry.create, '/0/0'),
                     async.apply(lwm2mClient.registry.setResource, '/0/0', '0', 'coap://localhost')
                 ],
-                function(error) {
+                function (error) {
                     lwm2mClient.register(
                         clientConfig.host,
                         clientConfig.port,
                         clientConfig.url,
                         clientConfig.endpointName,
-                        function(error, result) {
+                        function (error, result) {
                             deviceInformation = result;
                             done();
                         }
@@ -251,7 +251,7 @@ describe('Passive attributes test', function() {
             );
         });
 
-        it('should write the value in the LWM2M device via the IoT Agent', function(done) {
+        it('should write the value in the LWM2M device via the IoT Agent', function (done) {
             let handleExecuted = false;
 
             function handleWrite(objectType, objectId, resourceId, value, callback) {
@@ -264,7 +264,7 @@ describe('Passive attributes test', function() {
 
             lwm2mClient.setHandler(deviceInformation.serverInfo, 'write', handleWrite);
 
-            ngsiClient.update('TestClient:Light', 'Light', attributes, function(error, response, body) {
+            ngsiClient.update('TestClient:Light', 'Light', attributes, function (error, response, body) {
                 should.not.exist(error);
                 handleExecuted.should.equal(true);
                 done();

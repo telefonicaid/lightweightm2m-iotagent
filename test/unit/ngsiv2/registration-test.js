@@ -28,7 +28,7 @@
 const config = require('./testConfig');
 const lwm2mClient = require('lwm2m-node-lib').client;
 const iotAgent = require('../../../lib/iotAgentLwm2m');
-const ngsiTestUtils = require('./../../../lib/ngsiUtils');
+const ngsiTestUtils = require('../ngsiUtils');
 const mongoUtils = require('../mongoDBUtils');
 const async = require('async');
 const apply = async.apply;
@@ -95,13 +95,17 @@ describe('Device auto-registration test', function () {
                 clientConfig.url,
                 clientConfig.endpointName,
                 function (error, result) {
-                    ngsiClient.discover('TestClient:Light', 'Light', undefined, function (error, response, body) {
+                    ngsiClient.getRegistrations('TestClient:Light', 'Light', undefined, function (
+                        error,
+                        response,
+                        body
+                    ) {
                         should.not.exist(error);
                         should.exist(body);
-                        should.not.exist(body.errorCode);
-                        body.contextRegistrationResponses['0'].contextRegistration.attributes['0'].name.should.equal(
-                            'luminescence'
-                        );
+                        response.statusCode.should.equal(200);
+                        let registrations = JSON.parse(body);
+                        registrations[0].dataProvided.attrs[0].should.equal('luminescence');
+
                         done();
                     });
                 }
@@ -144,11 +148,16 @@ describe('Device auto-registration test', function () {
                 clientConfig.url,
                 clientConfig.endpointName,
                 function (error, result) {
-                    ngsiClient.discover('TestClient:Light', 'Light', undefined, function (error, response, body) {
+                    ngsiClient.getRegistrations('TestClient:Light', 'Light', undefined, function (
+                        error,
+                        response,
+                        body
+                    ) {
                         should.not.exist(error);
                         should.exist(body);
-                        should.not.exist(body.errorCode);
-                        body.contextRegistrationResponses['0'].contextRegistration.attributes.length.should.equal(21);
+                        response.statusCode.should.equal(200);
+                        let registrations = JSON.parse(body);
+                        registrations[0].dataProvided.attrs.length.should.equal(21);
 
                         done();
                     });
@@ -182,14 +191,16 @@ describe('Device auto-registration test', function () {
         it('should unregister the context provider', function (done) {
             lwm2mClient.unregister(deviceInformation, function (error) {
                 setTimeout(function () {
-                    ngsiClient.discover('TestClient:Light', 'Light', undefined, function (error, response, body) {
-                        console.error(error);
-                        console.error(body);
-
-                        /*should.not.exist(error);
+                    ngsiClient.getRegistrations('TestClient:Light', 'Light', undefined, function (
+                        error,
+                        response,
+                        body
+                    ) {
+                        should.not.exist(error);
                         should.exist(body);
-                        should.exist(body.errorCode);
-                        body.errorCode.code.should.equal('404');*/
+                        response.statusCode.should.equal(200);
+                        let registrations = JSON.parse(body);
+                        registrations.length.should.equal(0);
                         done();
                     });
                 }, 1500);
@@ -261,14 +272,14 @@ describe('Device auto-registration test', function () {
                 '/lightConfig',
                 'PreprovisionedLight2',
                 function (error, result) {
-                    ngsiClient.discover(
+                    ngsiClient.getRegistrations(
                         'PreprovisionedLight2:ConfiguredDevice',
                         'ConfiguredDevice',
                         ['Luminosity%20Sensor'],
                         function (error, response, body) {
                             should.not.exist(error);
                             should.exist(body);
-                            should.not.exist(body.errorCode);
+                            response.statusCode.should.equal(200);
                             done();
                         }
                     );

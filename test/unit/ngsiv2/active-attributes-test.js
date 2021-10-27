@@ -28,7 +28,7 @@
 const config = require('./testConfig');
 const lwm2mClient = require('lwm2m-node-lib').client;
 const iotAgent = require('../../../lib/iotAgentLwm2m');
-const ngsiTestUtils = require('./../../../lib/ngsiUtils');
+const ngsiTestUtils = require('../ngsiUtils');
 const mongoUtils = require('../mongoDBUtils');
 const async = require('async');
 const apply = async.apply;
@@ -48,8 +48,8 @@ const ngsiClient = ngsiTestUtils.createNgsi(
 );
 let deviceInformation;
 
-describe('Active attributes test', function() {
-    beforeEach(function(done) {
+describe('Active attributes test', function () {
+    beforeEach(function (done) {
         lwm2mClient.init(config);
 
         async.series(
@@ -58,13 +58,13 @@ describe('Active attributes test', function() {
                 apply(iotAgent.start, config),
                 apply(lwm2mClient.registry.create, '/5000/0')
             ],
-            function(error) {
+            function (error) {
                 lwm2mClient.register(
                     clientConfig.host,
                     clientConfig.port,
                     clientConfig.url,
                     clientConfig.endpointName,
-                    function(error, result) {
+                    function (error, result) {
                         deviceInformation = result;
                         setTimeout(done, 1000);
                     }
@@ -72,7 +72,7 @@ describe('Active attributes test', function() {
             }
         );
     });
-    afterEach(function(done) {
+    afterEach(function (done) {
         async.series(
             [
                 apply(lwm2mClient.unregister, deviceInformation),
@@ -80,17 +80,17 @@ describe('Active attributes test', function() {
                 lwm2mClient.registry.reset,
                 apply(mongoUtils.cleanDbs, config.ngsi.contextBroker.host)
             ],
-            function(error, results) {
+            function (error, results) {
                 done();
             }
         );
     });
 
-    describe('When an active attribute changes a value in the device', function() {
-        it('should update its value in the corresponding Orion entity', function(done) {
-            async.series([async.apply(lwm2mClient.registry.setResource, '/5000/0', '2', '89')], function(error) {
-                setTimeout(function() {
-                    ngsiClient.query('ActiveTestClient:Pressure', 'Pressure', ['pressure'], function(
+    describe('When an active attribute changes a value in the device', function () {
+        it('should update its value in the corresponding Orion entity', function (done) {
+            async.series([async.apply(lwm2mClient.registry.setResource, '/5000/0', '2', '89')], function (error) {
+                setTimeout(function () {
+                    ngsiClient.query('ActiveTestClient:Pressure', 'Pressure', ['pressure'], function (
                         error,
                         response,
                         body
@@ -106,13 +106,13 @@ describe('Active attributes test', function() {
         });
     });
 
-    describe('When an active attribute changes multiple values in the device', function() {
+    describe('When an active attribute changes multiple values in the device', function () {
         function setLwm2mResource(objectUri, resourceId, resourceValue, callback) {
-            setTimeout(function() {
+            setTimeout(function () {
                 lwm2mClient.registry.setResource(objectUri, resourceId, resourceValue, callback);
             }, 500);
         }
-        it('should last value should appear in Orion entity', function(done) {
+        it('should last value should appear in Orion entity', function (done) {
             async.series(
                 [
                     async.apply(setLwm2mResource, '/5000/0', '2', '89'),
@@ -121,9 +121,9 @@ describe('Active attributes test', function() {
                     async.nextTick,
                     async.apply(setLwm2mResource, '/5000/0', '2', '19')
                 ],
-                function(error) {
-                    setTimeout(function() {
-                        ngsiClient.query('ActiveTestClient:Pressure', 'Pressure', ['pressure'], function(
+                function (error) {
+                    setTimeout(function () {
+                        ngsiClient.query('ActiveTestClient:Pressure', 'Pressure', ['pressure'], function (
                             error,
                             response,
                             body
