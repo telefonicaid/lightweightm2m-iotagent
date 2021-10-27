@@ -103,8 +103,7 @@ describe('Device auto-registration test', function () {
                         should.not.exist(error);
                         should.exist(body);
                         response.statusCode.should.equal(200);
-                        let registrations = JSON.parse(body);
-                        registrations[0].dataProvided.attrs[0].should.equal('luminescence');
+                        body[0].dataProvided.attrs[0].should.equal('luminescence');
 
                         done();
                     });
@@ -156,8 +155,7 @@ describe('Device auto-registration test', function () {
                         should.not.exist(error);
                         should.exist(body);
                         response.statusCode.should.equal(200);
-                        let registrations = JSON.parse(body);
-                        registrations[0].dataProvided.attrs.length.should.equal(21);
+                        body[0].dataProvided.attrs.length.should.equal(21);
 
                         done();
                     });
@@ -199,8 +197,7 @@ describe('Device auto-registration test', function () {
                         should.not.exist(error);
                         should.exist(body);
                         response.statusCode.should.equal(200);
-                        let registrations = JSON.parse(body);
-                        registrations.length.should.equal(0);
+                        body.length.should.equal(0);
                         done();
                     });
                 }, 1500);
