@@ -95,7 +95,11 @@ describe('Device auto-registration test', function () {
                 clientConfig.url,
                 clientConfig.endpointName,
                 function (error, result) {
-                    ngsiClient.discover('TestClient:Light', 'Light', undefined, function (error, response, body) {
+                    ngsiClient.getRegistrations('TestClient:Light', 'Light', undefined, function (
+                        error,
+                        response,
+                        body
+                    ) {
                         should.not.exist(error);
                         should.exist(body);
                         response.statusCode.should.equal(200);
@@ -144,7 +148,11 @@ describe('Device auto-registration test', function () {
                 clientConfig.url,
                 clientConfig.endpointName,
                 function (error, result) {
-                    ngsiClient.discover('TestClient:Light', 'Light', undefined, function (error, response, body) {
+                    ngsiClient.getRegistrations('TestClient:Light', 'Light', undefined, function (
+                        error,
+                        response,
+                        body
+                    ) {
                         should.not.exist(error);
                         should.exist(body);
                         response.statusCode.should.equal(200);
@@ -183,7 +191,11 @@ describe('Device auto-registration test', function () {
         it('should unregister the context provider', function (done) {
             lwm2mClient.unregister(deviceInformation, function (error) {
                 setTimeout(function () {
-                    ngsiClient.discover('TestClient:Light', 'Light', undefined, function (error, response, body) {
+                    ngsiClient.getRegistrations('TestClient:Light', 'Light', undefined, function (
+                        error,
+                        response,
+                        body
+                    ) {
                         should.not.exist(error);
                         should.exist(body);
                         response.statusCode.should.equal(200);
@@ -260,7 +272,7 @@ describe('Device auto-registration test', function () {
                 '/lightConfig',
                 'PreprovisionedLight2',
                 function (error, result) {
-                    ngsiClient.discover(
+                    ngsiClient.getRegistrations(
                         'PreprovisionedLight2:ConfiguredDevice',
                         'ConfiguredDevice',
                         ['Luminosity%20Sensor'],
