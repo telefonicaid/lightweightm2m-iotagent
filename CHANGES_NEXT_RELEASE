@@ -2,3 +2,4 @@
 - Upgrade NodeJS version from 10 to 12 in Dockerfile due to Node 10 End-of-Life
 - Set Nodejs 12 as minimum version in packages.json (effectively removing Nodev10 from supported versions)
 - Remove: NGSI-v1 specific behaviours (iotagent-node-lib#966)
+- FIX: Add graceful shutdown listening to SIGINT (#258)
