@@ -186,10 +186,12 @@ describe('Device auto-registration test', function () {
                 done();
             });
         });
-        it('should unregister the context provider', function (done) {
+        // FIXME: re-add this test with and appropriate expectation
+        // see: https://github.com/telefonicaid/lightweightm2m-iotagent/issues/259
+        xit('should unregister the context provider', function (done) {
             lwm2mClient.unregister(deviceInformation, function (error) {
                 setTimeout(function () {
-                    /*ngsiClient.getRegistrations('TestClient:Light', 'Light', undefined, function (
+                    ngsiClient.getRegistrations('TestClient:Light', 'Light', undefined, function (
                         error,
                         response,
                         body
@@ -197,9 +199,10 @@ describe('Device auto-registration test', function () {
                         should.not.exist(error);
                         should.exist(body);
                         response.statusCode.should.equal(200);
-                        body.length.should.equal(0);*/
-                    done();
-                    /*});*/
+                        let registrations = JSON.parse(body);
+                        registrations.length.should.equal(0);
+                        done();
+                    });
                 }, 1500);
             });
         });
