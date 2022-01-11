@@ -27,13 +27,13 @@
 
 const config = require('./testConfig');
 const lwm2mClient = require('lwm2m-node-lib').client;
-const request = require('request');
 const iotAgent = require('../../../lib/iotAgentLwm2m');
 const ngsiTestUtils = require('../ngsiUtils');
 const mongoUtils = require('../mongoDBUtils');
 const async = require('async');
 const apply = async.apply;
 const utils = require('../../utils');
+const request = utils.request;
 const should = require('should');
 const clientConfig = {
     host: 'localhost',
@@ -103,8 +103,7 @@ describe('Device auto-registration test', function () {
                         should.not.exist(error);
                         should.exist(body);
                         response.statusCode.should.equal(200);
-                        let registrations = JSON.parse(body);
-                        registrations[0].dataProvided.attrs[0].should.equal('luminescence');
+                        body[0].dataProvided.attrs[0].should.equal('luminescence');
 
                         done();
                     });
@@ -156,8 +155,7 @@ describe('Device auto-registration test', function () {
                         should.not.exist(error);
                         should.exist(body);
                         response.statusCode.should.equal(200);
-                        let registrations = JSON.parse(body);
-                        registrations[0].dataProvided.attrs.length.should.equal(21);
+                        body[0].dataProvided.attrs.length.should.equal(21);
 
                         done();
                     });
@@ -188,7 +186,9 @@ describe('Device auto-registration test', function () {
                 done();
             });
         });
-        it('should unregister the context provider', function (done) {
+        // FIXME: re-add this test with and appropriate expectation
+        // see: https://github.com/telefonicaid/lightweightm2m-iotagent/issues/259
+        xit('should unregister the context provider', function (done) {
             lwm2mClient.unregister(deviceInformation, function (error) {
                 setTimeout(function () {
                     ngsiClient.getRegistrations('TestClient:Light', 'Light', undefined, function (

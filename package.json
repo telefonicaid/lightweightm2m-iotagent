@@ -47,7 +47,6 @@
   },
   "dependencies": {
     "async": "2.6.1",
-    "request": "~2.88.0",
     "underscore": "1.12.1",
     "cheerio": "1.0.0-rc.2",
     "xmldom": "0.1.27",
@@ -84,16 +83,13 @@
   },
   "lint-staged": {
     "*.js": [
-      "prettier --config .prettierrc.json --write",
-      "git add"
+      "prettier --config .prettierrc.json --write"
     ],
     "*.md": [
-      "prettier --no-config --tab-width 4 --print-width 120 --write --prose-wrap always",
-      "git add"
+      "prettier --no-config --tab-width 4 --print-width 120 --write --prose-wrap always"
     ],
     "*.yml": [
-      "prettier --no-config --write",
-      "git add"
+      "prettier --no-config --write"
     ]
   },
   "remarkConfig": {

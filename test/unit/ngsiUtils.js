@@ -23,7 +23,7 @@
  * Modified by: Daniel Calvo - ATOS Research & Innovation
  */
 
-const request = require('request');
+const request = require('iotagent-node-lib').request;
 
 /**
  * Updates the information in a Context Broker entity using NGSIv2.
@@ -87,8 +87,7 @@ function queryEntity(host, port, service, subservice, id, type, attributes, call
             'fiware-service': service,
             'fiware-servicepath': subservice
         },
-        json: true,
-        body: {
+        json: {
             entities: [
                 {
                     id
@@ -98,7 +97,7 @@ function queryEntity(host, port, service, subservice, id, type, attributes, call
     };
 
     if (type) {
-        options.body.entities[0].type = type;
+        options.json.entities[0].type = type;
     }
 
     if (attributes.length > 0) {
@@ -108,7 +107,7 @@ function queryEntity(host, port, service, subservice, id, type, attributes, call
             attributesArray.push(att);
         }
 
-        options.body.attrs = attributesArray;
+        options.json.attrs = attributesArray;
     }
 
     request(options, callback);

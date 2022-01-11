@@ -27,13 +27,13 @@
 
 const config = require('./testConfig');
 const lwm2mClient = require('lwm2m-node-lib').client;
-const request = require('request');
 const iotAgent = require('../../../lib/iotAgentLwm2m');
 const ngsiTestUtils = require('../ngsiUtils');
 const mongoUtils = require('../mongoDBUtils');
 const async = require('async');
 const apply = async.apply;
 const utils = require('../../utils');
+const request = utils.request;
 const should = require('should');
 const clientConfig = {
     host: 'localhost',
