@@ -3,3 +3,4 @@
 - Set Nodejs 12 as minimum version in packages.json (effectively removing Nodev10 from supported versions)
 - Remove: NGSI-v1 specific behaviours (iotagent-node-lib#966)
 - FIX: Add graceful shutdown listening to SIGINT (#258)
+- Upgrade logops dep from 2.1.0 to 2.1.2 due to colors dependency corruption
