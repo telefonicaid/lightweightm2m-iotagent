@@ -4,3 +4,4 @@
 - Remove: NGSI-v1 specific behaviours (iotagent-node-lib#966)
 - Fix: remove request obsolete library, using iotagent-node-lib.request instead (iotagent-node-lib#858)
 - FIX: Add graceful shutdown listening to SIGINT (#258)
+- Upgrade logops dep from 2.1.0 to 2.1.2 due to colors dependency corruption
