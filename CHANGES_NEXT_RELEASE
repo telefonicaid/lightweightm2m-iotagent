@@ -1,8 +1,7 @@
 - Upgrade underscore dep from 1.9.1 to 1.12.1
-- Upgrade NodeJS version from 10 to 12 in Dockerfile due to Node 10 End-of-Life
 - Set Nodejs 12 as minimum version in packages.json (effectively removing Nodev10 from supported versions)
 - Remove: NGSI-v1 specific behaviours (iotagent-node-lib#966)
 - Fix: remove request obsolete library, using iotagent-node-lib.request instead (iotagent-node-lib#858)
 - FIX: Add graceful shutdown listening to SIGINT (#258)
 - Upgrade logops dep from 2.1.0 to 2.1.2 due to colors dependency corruption
-- Upgrade NodeJS version from 12 to 14 in Dockerfile
+- Upgrade NodeJS version from 12 to 14-slim in Dockerfile
