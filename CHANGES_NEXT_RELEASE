@@ -4,4 +4,4 @@
 - Fix: remove request obsolete library, using iotagent-node-lib.request instead (iotagent-node-lib#858)
 - FIX: Add graceful shutdown listening to SIGINT (#258)
 - Upgrade logops dep from 2.1.0 to 2.1.2 due to colors dependency corruption
-- Upgrade NodeJS version from 12 to 14-slim in Dockerfile
+- Upgrade NodeJS version from 12 to 14 in Dockerfile
