@@ -15,4 +15,10 @@ At the present moment, this compoment is in manteinance mode. Evolution will be 
 Thus, there is no explicit description of short/medium/long term roadmap items, although you can have
 a look to the current list of issues [here](https://github.com/telefonicaid/lightweightm2m-iotagent/issues).
 
+Take also into acount that this IoT Agent uses the 
+[FIWARE IoT Agent Node.js Library](https://github.com/telefonicaid/iotagent-node-lib) framework. This is why most of the 
+functionalities of this component depend on the new features of the library itself. You can have a look to the IoT Agent 
+Node Library Roadmap 
+[here](https://github.com/telefonicaid/iotagent-node-lib/blob/master/doc/roadmap.md).
+
 Please feel free to contact us if you wish to get involved in the implementation or influence the roadmap.
