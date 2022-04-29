@@ -150,8 +150,8 @@ rm -rf $RPM_BUILD_ROOT
 
 %changelog
 * Fri Apr 29 2022 Fermin Galan <fermin.galanmarquez@telefonica.com> 1.6.0-1
+- Add: graceful shutdown listening to SIGINT (#258)
 - Fix: remove request obsolete library, using iotagent-node-lib.request instead (iotagent-node-lib#858)
-- Fix: Add graceful shutdown listening to SIGINT (#258)
 - Remove: NGSI-v1 specific behaviours (iotagent-node-lib#966)
 - Upgrade iotagent-node-lib dependency from 2.15.0 to 2.21.0
 - Upgrade lwm2m-node-lib dependency from 1.3.0 to 1.4.0
