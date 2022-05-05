@@ -1,1 +1,2 @@
 - Fix: replace git:// to https:// url for npm dependences
+- Fix: Dockerfile to include initial packages upgrade
