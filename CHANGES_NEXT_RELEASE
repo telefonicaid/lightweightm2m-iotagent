@@ -1,2 +1,3 @@
 - Fix: replace git:// to https:// url for npm dependences
 - Fix: Dockerfile to include initial packages upgrade
+- Upgrade NodeJS version from 14-slim to 16-slim in Dockerfile
