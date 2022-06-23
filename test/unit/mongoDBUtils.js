@@ -30,39 +30,34 @@ function cleanDb(host, name, callback) {
     // FIXME: this code doesn't work with MongoDB replica set, we are assuming that an
     // standalone MongoDB instance is used to run unit test.To use a replica set this
     // needs to be adapted
+    // FIXME: not sure if the statement above is still valid after moving to mongodb 4.x.
+    // Maybe the limitation has been overpassed
     const url = 'mongodb://' + host + ':27017/' + name;
-    MongoClient.connect(
-        url,
-        {
-            useNewUrlParser: true,
-            connectTimeoutMS: 500
-        },
-        function(err, db) {
-            if (db) {
-                const collections = ['devices', 'groups', 'entities', 'registrations'];
+    MongoClient.connect(url, function (err, db) {
+        if (db) {
+            const collections = ['devices', 'groups', 'entities', 'registrations'];
 
-                async.eachSeries(
-                    collections,
-                    function(collection, innerCb) {
-                        const collectionDB = db.db(name).collection(collection);
-                        if (collectionDB) {
-                            collectionDB.drop(function(err, delOK) {
-                                innerCb();
-                            });
-                        } else {
+            async.eachSeries(
+                collections,
+                function (collection, innerCb) {
+                    const collectionDB = db.db(name).collection(collection);
+                    if (collectionDB) {
+                        collectionDB.drop(function (err, delOK) {
                             innerCb();
-                        }
-                    },
-                    function(err) {
-                        db.close();
-                        callback();
+                        });
+                    } else {
+                        innerCb();
                     }
-                );
-            } else {
-                callback();
-            }
+                },
+                function (err) {
+                    db.close();
+                    callback();
+                }
+            );
+        } else {
+            callback();
         }
-    );
+    });
 }
 
 function cleanDbs(host, callback) {
