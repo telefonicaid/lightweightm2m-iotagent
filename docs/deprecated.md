@@ -17,8 +17,9 @@ A list of deprecated features and the version in which they were deprecated foll
 -   Support to Node.js v6 in lightweightM2M-iotagent 1.1.0. (finally removed in 1.2.0)
 -   Support to Node.js v8 in lightweightM2M-iotagent 1.4.0. (finally removed in 1.5.0)
 -   Support to Node.js v10 in lightweightM2M-iotagent 1.5.0 (finally removed in 1.6.0)
+-   Support to NGSI-LD v1.3 in lightweightM2M-iotagent 1.7.0
 
-The use of Node.js v12 is highly recommended.
+The use of Node.js v14 is highly recommended.
 
 ## Using old lightweightM2M-iotagent versions
 
@@ -39,10 +40,10 @@ information in the case you want to use old versions:
 The following table provides information about the last lightweightM2M-iotagent version supporting currently removed
 features:
 
-| **Removed feature**   | **Last lightweightM2M-iotagent version supporting feature** | **That version release date** |
-| --------------------- | ----------------------------------------------------------- | ----------------------------- |
-| NGSIv1 API            | Not yet defined                                             | Not yet defined               |
-| Support to Node.js v4 | 0.4.0                                                       | November 28th, 2017           |
-| Support to Node.js v6 | May 22nd, 2019              | 1.1.0               |
-| Support to Node.js v8 | April 8th, 2020             | 1.4.0               |
-| Support to Node.js v6 | March 3rd, 2021             | 1.5.0               |
+| **Removed feature**    | **Last lightweightM2M-iotagent version supporting feature** | **That version release date** |
+| ---------------------- | ----------------------------------------------------------- | ----------------------------- |
+| NGSIv1 API             | Not yet defined                                             | Not yet defined               |
+| Support to Node.js v4  | 0.4.0                                                       | November 28th, 2017           |
+| Support to Node.js v6  | May 22nd, 2019                                              | 1.1.0                         |
+| Support to Node.js v8  | April 8th, 2020                                             | 1.4.0                         |
+| Support to Node.js v10 | March 3rd, 2021                                             | 1.5.0                         |
