@@ -42,8 +42,8 @@ features:
 
 | **Removed feature**    | **Last lightweightM2M-iotagent version supporting feature** | **That version release date** |
 | ---------------------- | ----------------------------------------------------------- | ----------------------------- |
-| NGSIv1 API             | March 3rd, 2021                                             | 1.5.0                         |
-| Support to Node.js v4  | November 28th, 2017                                         | 0.4.0                         |
-| Support to Node.js v6  | May 22nd, 2019                                              | 1.1.0                         |
-| Support to Node.js v8  | April 8th, 2020                                             | 1.4.0                         |
-| Support to Node.js v10 | March 3rd, 2021                                             | 1.5.0                         |
+| NGSIv1 API             | 1.5.0                                                       | March 3rd, 2021               |
+| Support to Node.js v4  | 0.4.0                                                       | November 28th, 2017           |
+| Support to Node.js v6  | 1.1.0                                                       | May 22nd, 2019                |
+| Support to Node.js v8  | 1.4.0                                                       | April 8th, 2020               |
+| Support to Node.js v10 | 1.5.0                                                       | March 3rd, 2021               |
