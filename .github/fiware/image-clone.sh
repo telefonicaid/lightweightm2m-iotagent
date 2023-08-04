@@ -24,7 +24,6 @@ function clone {
 
 for i in "$@" ; do
     if [[ $i == "docker" ]]; then
-        
         clone "$SOURCE" "$VERSION" "$DOCKER_TARGET" true
         clone "$SOURCE" "$VERSION"-distroless "$DOCKER_TARGET"
     fi
@@ -33,4 +32,10 @@ for i in "$@" ; do
         clone "$SOURCE" "$VERSION"-distroless "$QUAY_TARGET"
     fi
     echo ""
+done
+
+for i in "$@" ; do
+    if [[ $i == "clean" ]]; then
+        docker rmi -f $(docker images -a -q) | true
+    fi
 done

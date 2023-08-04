@@ -76,22 +76,7 @@
     "textlint-rule-write-good": "~1.6.2",
     "watch": "~1.0.2"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
-  "lint-staged": {
-    "*.js": [
-      "prettier --config .prettierrc.json --write"
-    ],
-    "*.md": [
-      "prettier --no-config --tab-width 4 --print-width 120 --write --prose-wrap always"
-    ],
-    "*.yml": [
-      "prettier --no-config --write"
-    ]
-  },
+
   "remarkConfig": {
     "settings": {
       "bullet": "-",
