@@ -1,6 +1,6 @@
 # FIWARE IoT Agent for OMA LightWeight Machine2Machine
 
-[![FIWARE IoT Agents](https://nexus.lab.fiware.org/static/badges/chapters/iot-agents.svg)](https://www.fiware.org/developers/catalogue/)
+[![FIWARE IoT Agents](https://fiware.github.io/catalogue/badges/chapters/iot-agents.svg)](https://www.fiware.org/developers/catalogue/)
 [![License: APGL](https://img.shields.io/github/license/telefonicaid/lightweightm2m-iotagent.svg)](https://opensource.org/licenses/AGPL-3.0)
 [![Support badge](https://img.shields.io/badge/tag-fiware+iot-orange.svg?logo=stackoverflow)](https://stackoverflow.com/questions/tagged/fiware+iot)
 <br>
@@ -10,8 +10,10 @@
 [![Documentation badge](https://img.shields.io/readthedocs/fiware-iotagent-lwm2m.svg)](http://fiware-iotagent-lwm2m.readthedocs.io/en/latest/?badge=latest)
 [![CI](https://github.com/telefonicaid/lightweightm2m-iotagent/workflows/CI/badge.svg)](https://github.com/telefonicaid/lightweightm2m-iotagent/actions?query=workflow%3ACI)
 [![Coverage Status](https://coveralls.io/repos/github/telefonicaid/lightweightm2m-iotagent/badge.svg?branch=master)](https://coveralls.io/github/telefonicaid/lightweightm2m-iotagent?branch=master)
-![Status](https://nexus.lab.fiware.org/static/badges/statuses/iot-lightweightm2m.svg)
+![Status](https://fiware.github.io/catalogue/badges/statuses/status-deprecated.svg)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/4701/badge)](https://bestpractices.coreinfrastructure.org/projects/4701)
+
+**This repository is now archived. IoT Agent for OMA LightWeight Machine2Machine is no longer supported and further development is not envisaged.**
 
 This Internet of Things Agent is designed to be a bridge between the [OMA](https://www.omaspecworks.org/)
 [Lightweight M2M](https://www.omaspecworks.org/what-is-oma-specworks/iot/lightweight-m2m-lwm2m/) protocol and the
@@ -22,7 +24,7 @@ It is based on the [FIWARE IoT Agent Node.js Library](https://github.com/telefon
 general information about the FIWARE IoT Agents framework, its architecture and the common interaction model can be
 found in this repository.
 
-This project is part of [FIWARE](https://www.fiware.org/). For more information check the FIWARE Catalogue entry for the
+Whilst active, this project was part of [FIWARE](https://www.fiware.org/). For more information check the FIWARE Catalogue entry for the
 [IoT Agents](https://github.com/Fiware/catalogue/tree/master/iot-agents).
 
 | :books: [Documentation](https://fiware-iotagent-lwm2m.readthedocs.io) | :mortar_board: [Academy](https://fiware-academy.readthedocs.io/en/latest/iot-agents/idas) | <img style="height:1em" src="https://quay.io/static/img/quay_favicon.png"/> [quay.io](https://quay.io/repository/fiware/lightweightm2m-iotagent)| :whale: [Docker Hub](https://hub.docker.com/r/telefonicaiot/lightweightm2m-iotagent/) | :dart: [Roadmap](https://github.com/telefonicaid/lightweightm2m-iotagent/blob/master/docs/roadmap.md) |

@@ -1,7 +1,7 @@
 # FIWARE IoT Agent for OMA LightWeight Machine2Machine
 
-[![FIWARE IoT Agents](https://nexus.lab.fiware.org/repository/raw/public/badges/chapters/iot-agents.svg)](https://www.fiware.org/developers/catalogue/)
-[![](https://nexus.lab.fiware.org/repository/raw/public/badges/stackoverflow/iot-agents.svg)](https://stackoverflow.com/questions/tagged/fiware+iot)
+[![FIWARE IoT Agents](https://fiware.github.io/catalogue/badges/chapters/iot-agents.svg)](https://www.fiware.org/developers/catalogue/)
+[![](https://fiware.github.io/catalogue/badges/stackoverflow/iot-agents.svg)](https://stackoverflow.com/questions/tagged/fiware+iot)
 
 This Internet of Things Agent is designed to be a bridge between the [OMA](https://www.omaspecworks.org/)
 [Lightweight M2M](https://www.omaspecworks.org/what-is-oma-specworks/iot/lightweight-m2m-lwm2m/) protocol and the
